@@ -1,0 +1,96 @@
+{{ define "header" }}
+<header class="border-b-2 border-black sticky top-0 z-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        
+        <!-- Top Bar -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="/" class="text-3xl font-black tracking-tighter lowercase hover:opacity-70 transition-opacity">tjappen.</a>
+            
+            <div class="flex w-full sm:w-auto gap-2">
+                <div class="relative w-full sm:w-80">
+                    <i class="ph ph-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search..." 
+                        class="w-full pl-10 pr-4 py-2 bg-gray-100 border-none focus:ring-2 focus:ring-black focus:outline-none rounded-none text-sm font-medium transition-all"
+                    >
+                </div>
+                <button id="filterToggleBtn" class="flex items-center gap-2 px-4 py-2 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors">
+                    <i class="ph ph-faders text-lg"></i>
+                    <span id="filterToggleText">Filters</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Collapsible Filter Panel -->
+        <div id="filterPanel" class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-6">
+            <div class="pb-6 border-t border-gray-200 pt-6">
+                <div class="flex justify-between items-end mb-4">
+                    <h2 class="text-sm font-bold uppercase tracking-widest">Taxonomies</h2>
+                    <button id="clearFiltersBtn" class="text-xs font-bold text-gray-500 hover:text-black uppercase hidden tracking-wider">Reset</button>
+                </div>
+                <div id="filterContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Filters injected via JS -->
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</header>
+{{ end }}
+
+{{ define "main" }}
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full mb-12">
+    <div class="mb-8 flex justify-between items-baseline">
+        <h2 class="text-xl font-bold tracking-tight">Index</h2>
+        <p class="text-sm font-medium text-gray-500" id="resultsCount">0 entries</p>
+    </div>
+
+    <div id="recipeGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        {{ range where site.RegularPages "Type" "recipes" }}
+        <a href="{{ .RelPermalink }}" class="article-wrapper block h-full">
+          <article class="recipe-card group cursor-pointer h-full flex flex-col" 
+              data-title="{{ .Title | htmlEscape }}" 
+              data-ingredients="{{ delimit .Params.ingredients " " | htmlEscape }}" 
+              data-cuisine="{{ delimit .Params.cuisine " " | htmlEscape }}" 
+              data-course="{{ delimit .Params.course " " | htmlEscape }}" 
+              data-effort="{{ delimit .Params.effort " " | htmlEscape }}">
+              <div class="image-container mb-4">
+                  {{ $image := .Resources.GetMatch "*hero*" }}
+                  {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
+                  {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
+                  {{ if $image }}
+                      {{ $scaled := $image.Resize "800x webp q80" }}
+                      <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
+                  {{ end }}
+              </div>
+              <div class="flex-grow flex flex-col justify-start">
+                  <div class="flex justify-between items-baseline mb-1 gap-2">
+                      <h2 class="text-lg font-black tracking-tight leading-tight">{{ .Title }}</h2>
+                      <span class="text-xs font-bold text-gray-400 whitespace-nowrap">{{ .Params.time_total }}m</span>
+                  </div>
+                  <div class="flex flex-wrap gap-x-2 gap-y-1 mt-2">
+                      {{ $tags := slice }}
+                      {{ if .Params.cuisine }}{{ $tags = $tags | append .Params.cuisine }}{{ end }}
+                      {{ if .Params.course }}{{ $tags = $tags | append .Params.course }}{{ end }}
+                      {{ if .Params.effort }}{{ $tags = $tags | append .Params.effort }}{{ end }}
+                      
+                      {{ range $tags }}
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">{{ . }}</span>
+                      {{ end }}
+                  </div>
+              </div>
+          </article>
+        </a>
+        {{ end }}
+    </div>
+</main>
+{{ end }}
+
+{{ define "scripts" }}
+  {{ $searchJs := resources.Get "js/search.js" }}
+  {{ if $searchJs }}
+    <script src="{{ $searchJs.RelPermalink }}"></script>
+  {{ end }}
+{{ end }}

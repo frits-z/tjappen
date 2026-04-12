@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - tjappen.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
+
+    <nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-50 transition-opacity">
+                <i class="ph ph-arrow-left text-lg"></i> Index
+            </a>
+            <span class="text-xl font-black lowercase tracking-tighter">tjappen.</span>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-20 w-full flex flex-col justify-center">
+        <h1 class="text-6xl sm:text-8xl font-black tracking-tight mb-8 lowercase">tjappen.</h1>
+        
+        <div class="max-w-xl text-lg font-medium leading-relaxed space-y-6 text-gray-900 border-t-2 border-black pt-8">
+            <p>A personal repository of recipes. No commercial intent, no life stories preceding the ingredients, no advertisements.</p>
+            <p>Built for utility and speed as a functional database for family and friends. The architecture relies on static compilation to guarantee zero maintenance and absolute longevity.</p>
+            <p class="text-gray-500 text-sm font-bold tracking-widest uppercase mt-8 block">
+                Est. 2026
+            </p>
+        </div>
+    </main>
+
+    <footer class="border-t-2 border-black mt-20">
+        <div class="max-w-4xl mx-auto px-4 py-8 flex justify-between items-center text-xs font-bold uppercase tracking-widest">
+            <div class="flex gap-6 items-center">
+                <span>tjappen. directory</span>
+                <span class="text-gray-300">|</span>
+                <a href="about.html" class="text-gray-500 hover:text-black transition-colors">About</a>
+            </div>
+            <span>Bussum, NL</span>
+        </div>
+    </footer>
+
+</body>
+</html>

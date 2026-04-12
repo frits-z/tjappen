@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-black font-sans leading-relaxed flex flex-col min-h-screen relative overflow-x-hidden;
+  }
+}
+
+@layer components {
+  /* Generic inline image styling */
+  .inline-image {
+    @apply max-w-full h-auto block my-6;
+  }
+
+  /* Method Step Dimming */
+  .method-step {
+    @apply transition-opacity duration-300;
+  }
+  .method-list.has-active .method-step:not(.active) {
+    @apply opacity-30;
+  }
+  .method-step.active {
+    @apply opacity-100 font-medium;
+  }
+
+  /* Ingredient Checked Style */
+  .ingredient-checkbox:checked + span {
+    @apply line-through text-gray-500;
+  }
+}

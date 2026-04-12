@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boerenkool Stamppot - tjappen.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .hero-image {
+            aspect-ratio: 21 / 9;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ingredient-item input:checked + span {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        /* Step Tracking CSS */
+        .step-container.has-active-step .method-step:not(.active) {
+            opacity: 0.3;
+        }
+        .method-step {
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+        .method-step.active .step-num {
+            color: #000;
+        }
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
+
+    <nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-50 transition-opacity">
+                <i class="ph ph-arrow-left text-lg"></i> Index
+            </a>
+            
+            <!-- Wake Lock Toggle -->
+            <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black transition-colors">
+                <i class="ph ph-device-mobile text-lg"></i>
+                <span id="wakeLockStatus">Screen Lock: Off</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-10 w-full">
+        
+        <header class="mb-10">
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">Boerenkool Stamppot</h1>
+            
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
+                <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
+                    <i class="ph ph-users text-lg mr-1"></i>
+                    <button id="decServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">-</button>
+                    <span id="servingCount" data-base="4" class="w-4 text-center">4</span>
+                    <button id="incServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">+</button>
+                </div>
+                
+                <!-- Split Time Metrics -->
+                <div class="flex items-center gap-4 text-sm font-bold">
+                    <div class="flex items-center gap-1.5">
+                        <i class="ph ph-knife text-lg text-gray-400"></i>
+                        <span>15m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Active</span></span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <i class="ph ph-clock text-lg text-gray-400"></i>
+                        <span>45m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Total</span></span>
+                    </div>
+                </div>
+
+                <div class="h-4 w-px bg-gray-300 hidden sm:block"></div>
+                <div class="flex gap-3 text-xs font-bold uppercase tracking-widest text-gray-500">
+                    <span>Dutch</span>
+                    <span>•</span>
+                    <span>Dinner</span>
+                    <span>•</span>
+                    <span>Low Effort</span>
+                </div>
+            </div>
+        </header>
+
+        <figure class="hero-image mb-12 border-2 border-black">
+            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=1600" alt="Boerenkool Stamppot">
+        </figure>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            
+            <aside class="md:col-span-4">
+                <h2 class="text-sm font-bold uppercase tracking-widest border-b-2 border-black pb-2 mb-6">Ingredients</h2>
+                
+                <ul class="flex flex-col text-sm font-medium">
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="transition-colors group-hover:text-gray-500">Floury potatoes</span>
+                        </label>
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1">1</span> kg
+                        </span>
+                    </li>
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="transition-colors group-hover:text-gray-500">Chopped kale</span>
+                        </label>
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="500">500</span> g
+                        </span>
+                    </li>
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="transition-colors group-hover:text-gray-500">Smoked sausage</span>
+                        </label>
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1">1</span> pc
+                        </span>
+                    </li>
+                </ul>
+            </aside>
+
+            <section class="md:col-span-8">
+                <div class="flex justify-between items-baseline border-b-2 border-black pb-2 mb-6">
+                    <h2 class="text-sm font-bold uppercase tracking-widest">Method</h2>
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tap step to focus</span>
+                </div>
+                
+                <div class="space-y-8 text-base text-gray-900 leading-relaxed step-container" id="methodContainer">
+                    
+                    <div class="method-step flex gap-6 group">
+                        <span class="step-num text-3xl font-black text-gray-200 transition-colors shrink-0">01</span>
+                        <div class="pt-1 w-full">
+                            <p>Peel the potatoes and cut them into equal-sized chunks. Place them in a large pot, pour in enough water to just cover the potatoes, and add a generous pinch of salt.</p>
+                        </div>
+                    </div>
+
+                    <div class="method-step flex gap-6 group">
+                        <span class="step-num text-3xl font-black text-gray-200 transition-colors shrink-0">02</span>
+                        <div class="pt-1 w-full">
+                            <p>Pile the chopped kale directly on top of the raw potatoes. Do not stir. Place the lid on the pot and bring to a boil. Once boiling, reduce the heat to a simmer and cook for 25 minutes.</p>
+                        </div>
+                    </div>
+
+                    <div class="method-step flex gap-6 group">
+                        <span class="step-num text-3xl font-black text-gray-200 transition-colors shrink-0">03</span>
+                        <div class="pt-1 w-full">
+                            <p>While the vegetables are cooking, fry the bacon lardons in a separate dry skillet over medium heat until they are crispy and have released their fat. Set aside.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <script>
+        // 1. Yield Scaling
+        const servingCountEl = document.getElementById('servingCount');
+        const baseServings = parseInt(servingCountEl.getAttribute('data-base'));
+        let currentServings = baseServings;
+        const qtys = document.querySelectorAll('.ingredient-qty');
+
+        document.getElementById('decServings').addEventListener('click', () => {
+            if (currentServings > 1) {
+                currentServings--;
+                updateYield();
+            }
+        });
+        document.getElementById('incServings').addEventListener('click', () => {
+            currentServings++;
+            updateYield();
+        });
+
+        function updateYield() {
+            servingCountEl.textContent = currentServings;
+            const ratio = currentServings / baseServings;
+            qtys.forEach(qty => {
+                const base = parseFloat(qty.getAttribute('data-base'));
+                let newVal = base * ratio;
+                newVal = Number.isInteger(newVal) ? newVal : newVal.toFixed(1).replace(/\.0$/, '');
+                qty.textContent = newVal;
+            });
+        }
+
+        // 2. Step Tracking (Focus State)
+        const container = document.getElementById('methodContainer');
+        const steps = document.querySelectorAll('.method-step');
+
+        steps.forEach(step => {
+            step.addEventListener('click', () => {
+                const isActive = step.classList.contains('active');
+                steps.forEach(s => s.classList.remove('active'));
+                
+                if (!isActive) {
+                    step.classList.add('active');
+                    container.classList.add('has-active-step');
+                } else {
+                    container.classList.remove('has-active-step');
+                }
+            });
+        });
+
+        // 3. Screen Wake Lock
+        const wakeLockBtn = document.getElementById('wakeLockBtn');
+        const wakeLockStatus = document.getElementById('wakeLockStatus');
+        let wakeLock = null;
+
+        async function toggleWakeLock() {
+            if (!('wakeLock' in navigator)) {
+                wakeLockStatus.textContent = 'Not Supported';
+                return;
+            }
+
+            try {
+                if (wakeLock !== null) {
+                    await wakeLock.release();
+                    wakeLock = null;
+                    wakeLockStatus.textContent = 'Screen Lock: Off';
+                    wakeLockBtn.classList.remove('text-black');
+                    wakeLockBtn.classList.add('text-gray-400');
+                } else {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                    wakeLockStatus.textContent = 'Screen Lock: On';
+                    wakeLockBtn.classList.remove('text-gray-400');
+                    wakeLockBtn.classList.add('text-black');
+                    
+                    wakeLock.addEventListener('release', () => {
+                        wakeLock = null;
+                        wakeLockStatus.textContent = 'Screen Lock: Off';
+                        wakeLockBtn.classList.remove('text-black');
+                        wakeLockBtn.classList.add('text-gray-400');
+                    });
+                }
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
+        }
+
+        wakeLockBtn.addEventListener('click', toggleWakeLock);
+
+        // Re-acquire wake lock if tab becomes visible again
+        document.addEventListener('visibilitychange', async () => {
+            if (wakeLock !== null && document.visibilityState === 'visible') {
+                wakeLock = await navigator.wakeLock.request('screen');
+            }
+        });
+    </script>
+</body>
+</html>

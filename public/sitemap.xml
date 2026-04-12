@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/recipes/boerenkool/</loc>
+  </url><url>
+    <loc>http://localhost:1313/courses/</loc>
+  </url><url>
+    <loc>http://localhost:1313/cuisines/</loc>
+  </url><url>
+    <loc>http://localhost:1313/efforts/</loc>
+  </url><url>
+    <loc>http://localhost:1313/recipes/</loc>
+  </url><url>
+    <loc>http://localhost:1313/about/</loc>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+  </url>
+</urlset>

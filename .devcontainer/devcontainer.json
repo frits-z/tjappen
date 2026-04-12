@@ -1,0 +1,18 @@
+{
+	"name": "Hugo DevContainer",
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {}
+	},
+	"onCreateCommand": "sudo apt-get update && sudo apt-get install -y hugo",
+	"postCreateCommand": "npm install",
+	"forwardPorts": [1313],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"bradlc.vscode-tailwindcss",
+				"esbenp.prettier-vscode"
+			]
+		}
+	}
+}

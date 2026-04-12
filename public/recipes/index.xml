@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recipes on tjappen. Recipe Directory</title>
+    <link>http://localhost:1313/recipes/</link>
+    <description>Recent content in Recipes on tjappen. Recipe Directory</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/recipes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boerenkool met Worst</title>
+      <link>http://localhost:1313/recipes/boerenkool/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recipes/boerenkool/</guid>
+      <description>&lt;p&gt;Peel the potatoes and cut them into chunks. Place them in a large pot.&lt;/p&gt;&#xA;&lt;p&gt;Add the chopped boerenkool (kale) on top of the potatoes. Pour in enough water to just cover the potatoes. Add a pinch of salt.&lt;/p&gt;&#xA;&lt;p&gt;Bring to a boil, then lower the heat, cover, and let it simmer for about 20-25 minutes, or until the potatoes are very tender.&lt;/p&gt;&#xA;&lt;p&gt;About 15 minutes before the potatoes are done, place the smoked sausage on top of the kale to heat through.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

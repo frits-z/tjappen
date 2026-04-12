@@ -1,0 +1,134 @@
+{{ define "header" }}
+<nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-50 transition-opacity">
+            <i class="ph ph-arrow-left text-lg"></i> Index
+        </a>
+        
+        <!-- Wake Lock Toggle -->
+        <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black transition-colors">
+            <i class="ph ph-device-mobile text-lg"></i>
+            <span id="wakeLockStatus">Screen Lock: Off</span>
+        </button>
+    </div>
+</nav>
+{{ end }}
+
+{{ define "main" }}
+<main class="max-w-4xl mx-auto px-4 py-10 w-full mb-12" data-base-servings="{{ .Params.servings }}">
+    
+    <header class="mb-10">
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">{{ .Title }}</h1>
+        
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
+            <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
+                <i class="ph ph-users text-lg mr-1"></i>
+                <button id="decServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">-</button>
+                <span id="servingCount" class="w-4 text-center">{{ .Params.servings }}</span>
+                <button id="incServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">+</button>
+            </div>
+            
+            <!-- Split Time Metrics -->
+            <div class="flex items-center gap-4 text-sm font-bold">
+                <div class="flex items-center gap-1.5">
+                    <i class="ph ph-knife text-lg text-gray-400"></i>
+                    <span>{{ .Params.time_active }}m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Active</span></span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i class="ph ph-clock text-lg text-gray-400"></i>
+                    <span>{{ .Params.time_total }}m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Total</span></span>
+                </div>
+            </div>
+
+            <div class="h-4 w-px bg-gray-300 hidden sm:block"></div>
+            <div class="flex flex-wrap gap-3 text-xs font-bold uppercase tracking-widest text-gray-500">
+                {{ $tags := slice }}
+                {{ if .Params.cuisine }}{{ $tags = $tags | append .Params.cuisine }}{{ end }}
+                {{ if .Params.course }}{{ $tags = $tags | append .Params.course }}{{ end }}
+                {{ if .Params.effort }}{{ $tags = $tags | append .Params.effort }}{{ end }}
+                
+                {{ range $i, $tag := $tags }}
+                    <span>{{ . }}</span>
+                    {{ if ne (add $i 1) (len $tags) }}<span>•</span>{{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </header>
+
+    {{ $hero := .Resources.GetMatch "*hero*" }}
+    {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.jpg" }}{{ end }}
+    {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.png" }}{{ end }}
+    {{ if $hero }}
+        {{ $scaled := $hero.Resize "1600x webp q80" }}
+        <figure class="hero-image mb-12 border-2 border-black">
+            <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}">
+        </figure>
+    {{ end }}
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        
+        <aside class="md:col-span-4">
+            <h2 class="text-sm font-bold uppercase tracking-widest border-b-2 border-black pb-2 mb-6">Ingredients</h2>
+            
+            <ul class="flex flex-col text-sm font-medium">
+                {{ range .Params.ingredients }}
+                    {{ $parts := split . "|" }}
+                    {{ $qty := "" }}
+                    {{ $item := "" }}
+                    {{ if eq (len $parts) 2 }}
+                        {{ $qty = trim (index $parts 0) " " }}
+                        {{ $item = trim (index $parts 1) " " }}
+                    {{ else }}
+                        {{ $item = . }}
+                    {{ end }}
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">{{ $item }}</span>
+                        </label>
+                        {{ if $qty }}
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="{{ $qty }}">{{ $qty }}</span>
+                        </span>
+                        {{ end }}
+                    </li>
+                {{ end }}
+            </ul>
+            
+            {{ if .Params.notes }}
+            <div class="mt-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    {{ range .Params.notes }}
+                    <li class="flex gap-2">
+                        <span class="font-bold text-black">→</span>
+                        <span>{{ . }}</span>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+        </aside>
+
+        <section class="md:col-span-8">
+            <div class="flex justify-between items-baseline border-b-2 border-black pb-2 mb-6">
+                <h2 class="text-sm font-bold uppercase tracking-widest">Method</h2>
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tap step to focus</span>
+            </div>
+            
+            <div class="space-y-8 text-base text-gray-900 leading-relaxed step-container" id="methodContainer">
+                <div id="methodContentRaw" class="hidden">{{ .Content }}</div>
+                <!-- Method steps injected here via JS -->
+            </div>
+        </section>
+        
+    </div>
+</main>
+{{ end }}
+
+{{ define "scripts" }}
+  {{ $recipeJs := resources.Get "js/recipe.js" }}
+  {{ if $recipeJs }}
+    <script src="{{ $recipeJs.RelPermalink }}"></script>
+  {{ end }}
+{{ end }}

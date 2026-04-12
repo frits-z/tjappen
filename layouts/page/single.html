@@ -1,0 +1,23 @@
+{{ define "header" }}
+<nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-50 transition-opacity">
+            <i class="ph ph-arrow-left text-lg"></i> Index
+        </a>
+        <span class="text-xl font-black lowercase tracking-tighter">tjappen.</span>
+    </div>
+</nav>
+{{ end }}
+
+{{ define "main" }}
+<main class="flex-grow max-w-4xl mx-auto px-4 py-20 w-full flex flex-col justify-center">
+    <h1 class="text-6xl sm:text-8xl font-black tracking-tight mb-8 lowercase">{{ .Title }}</h1>
+    
+    <div class="max-w-xl text-lg font-medium leading-relaxed space-y-6 text-gray-900 border-t-2 border-black pt-8">
+        {{ .Content }}
+        <p class="text-gray-500 text-sm font-bold tracking-widest text-[11px] uppercase mt-12 block">
+            Est. 2026
+        </p>
+    </div>
+</main>
+{{ end }}

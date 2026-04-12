@@ -1,0 +1,16 @@
+baseURL = 'https://tjappen.nl/'
+locale = 'en-us'
+title = 'tjappen. Recipe Directory'
+
+[taxonomies]
+  cuisine = "cuisines"
+  course = "courses"
+  effort = "efforts"
+
+[outputs]
+  home = ["HTML", "JSON"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

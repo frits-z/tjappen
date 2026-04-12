@@ -1,0 +1,14 @@
+[
+  {{ range $index, $page := where site.RegularPages "Type" "recipes" }}
+    {{ if gt $index 0 }},{{ end }}
+    {
+      "title": {{ .Title | jsonify }},
+      "url": {{ .RelPermalink | jsonify }},
+      "time_total": {{ .Params.time_total | jsonify }},
+      "ingredients": {{ .Params.ingredients | jsonify }},
+      "cuisine": {{ delimit .Params.cuisine " " | lower | jsonify }},
+      "course": {{ delimit .Params.course " " | lower | jsonify }},
+      "effort": {{ delimit .Params.effort " " | lower | jsonify }}
+    }
+  {{ end }}
+]

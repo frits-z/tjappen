@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.160.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>tjappen. Recipe Directory</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              black: '#000', white: '#fff',
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .image-container {
+            aspect-ratio: 4 / 3;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease, transform 0.5s ease;
+        }
+        .recipe-card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hero-image {
+            aspect-ratio: 21 / 9;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ingredient-item input:checked + span.ingredient-name {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        .step-container.has-active-step .method-step:not(.active) {
+            opacity: 0.3;
+        }
+        .method-step {
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+        .method-step.active .step-num {
+            color: #000;
+        }
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
+
+    
+<header class="border-b-2 border-black sticky top-0 z-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        
+        
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="/" class="text-3xl font-black tracking-tighter lowercase hover:opacity-70 transition-opacity">tjappen.</a>
+            
+            <div class="flex w-full sm:w-auto gap-2">
+                <div class="relative w-full sm:w-80">
+                    <i class="ph ph-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search..." 
+                        class="w-full pl-10 pr-4 py-2 bg-gray-100 border-none focus:ring-2 focus:ring-black focus:outline-none rounded-none text-sm font-medium transition-all"
+                    >
+                </div>
+                <button id="filterToggleBtn" class="flex items-center gap-2 px-4 py-2 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors">
+                    <i class="ph ph-faders text-lg"></i>
+                    <span id="filterToggleText">Filters</span>
+                </button>
+            </div>
+        </div>
+
+        
+        <div id="filterPanel" class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-6">
+            <div class="pb-6 border-t border-gray-200 pt-6">
+                <div class="flex justify-between items-end mb-4">
+                    <h2 class="text-sm font-bold uppercase tracking-widest">Taxonomies</h2>
+                    <button id="clearFiltersBtn" class="text-xs font-bold text-gray-500 hover:text-black uppercase hidden tracking-wider">Reset</button>
+                </div>
+                <div id="filterContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</header>
+
+
+    <div class="flex-grow">
+      
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full mb-12">
+    <div class="mb-8 flex justify-between items-baseline">
+        <h2 class="text-xl font-bold tracking-tight">Index</h2>
+        <p class="text-sm font-medium text-gray-500" id="resultsCount">0 entries</p>
+    </div>
+
+    <div id="recipeGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        
+        <a href="/recipes/boerenkool/" class="article-wrapper block h-full">
+          <article class="recipe-card group cursor-pointer h-full flex flex-col" 
+              data-title="Boerenkool met Worst" 
+              data-ingredients="1.5 | Floury potatoes (kg) 0.5 | Boerenkool (kg, chopped) 1 | Smoked sausage (Unox) 0.5 | Milk (cup) 2 | Butter (tbsp) Salt, pepper, nutmeg to taste" 
+              data-cuisine="Dutch" 
+              data-course="Dinner" 
+              data-effort="Medium">
+              <div class="image-container mb-4">
+                  
+                  
+                  
+                  
+                      
+                      <img src="/recipes/boerenkool/hero_hu_3b69d9454135b4fe.webp" alt="Boerenkool met Worst" loading="lazy">
+                  
+              </div>
+              <div class="flex-grow flex flex-col justify-start">
+                  <div class="flex justify-between items-baseline mb-1 gap-2">
+                      <h2 class="text-lg font-black tracking-tight leading-tight">Boerenkool met Worst</h2>
+                      <span class="text-xs font-bold text-gray-400 whitespace-nowrap">45m</span>
+                  </div>
+                  <div class="flex flex-wrap gap-x-2 gap-y-1 mt-2">
+                      
+                      
+                      
+                      
+                      
+                      
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Dutch</span>
+                      
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Dinner</span>
+                      
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Medium</span>
+                      
+                  </div>
+              </div>
+          </article>
+        </a>
+        
+    </div>
+</main>
+
+    </div>
+
+    <footer class="border-t-2 border-black mt-auto">
+        <div class="max-w-6xl mx-auto px-4 py-8 flex justify-between items-center text-xs font-bold uppercase tracking-widest">
+            <div class="flex gap-6 items-center flex-wrap">
+                <span>tjappen. directory</span>
+                <span class="text-gray-300 hidden sm:inline">|</span>
+                <a href="/about" class="text-gray-500 hover:text-black transition-colors">About</a>
+            </div>
+            <span>by Frits</span>
+        </div>
+    </footer>
+
+    
+  
+  
+    <script src="/js/search.js"></script>
+  
+
+</body>
+</html>
