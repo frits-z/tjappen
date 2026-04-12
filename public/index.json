@@ -11,4 +11,26 @@
       "effort": "medium"
     }
   
+    ,
+    {
+      "title": "Pasta Alla Norma",
+      "url": "/recipes/pasta-alla-norma/",
+      "time_total": 45,
+      "ingredients": ["2 | Eggplants (aubergines)","120 | Olive oil (ml)","5 | Garlic cloves (thinly sliced)","Pinch of dried chilli flakes","800 | Tinned plum tomatoes (g)","1 | Dried oregano (tsp)","1 | Caster sugar (tsp)","300 | Pasta mafaldine (g)","Roasted bell peppers (to taste)","45 | Mature pecorino romano or ricotta salata (g)","20 | Basil leaves (g)","Pistachios (pieces, for garnish)","Salt \u0026 black pepper"],
+      "cuisine": "italian",
+      "course": "dinner",
+      "effort": "medium"
+    }
+  
+    ,
+    {
+      "title": "Vegan Massaman Curry",
+      "url": "/recipes/massaman-curry/",
+      "time_total": 45,
+      "ingredients": ["5 | Red curry paste (tbsp)","1 | Cumin seed (tsp)","1 | Coriander seed (tsp)","0.25 | Ground cinnamon (tsp)","Dash of nutmeg","2 | Maple syrup (tbsp)","1 | Soy sauce (tbsp)","2 | Peanut butter or almond butter (tbsp)","700 | Full-fat coconut milk (ml)","1 | Lime juice (tbsp)","1 | Tamarind paste (tbsp)","500 | Baby potatoes (grams)","2 | Large carrots, chopped","2 | Shallots, thinly sliced","50 | Peanuts (grams)","Peanuts and fresh coriander (for garnish)","Pandan or jasmine rice (to serve)","Green beans (to serve)","Crispy tofu or vegan protein bites (to serve)"],
+      "cuisine": "thai",
+      "course": "dinner",
+      "effort": "medium"
+    }
+  
 ]

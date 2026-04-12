@@ -10,10 +10,14 @@
   </url><url>
     <loc>http://localhost:1313/efforts/</loc>
   </url><url>
+    <loc>http://localhost:1313/recipes/pasta-alla-norma/</loc>
+  </url><url>
     <loc>http://localhost:1313/recipes/</loc>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
   </url><url>
     <loc>http://localhost:1313/</loc>
+  </url><url>
+    <loc>http://localhost:1313/recipes/massaman-curry/</loc>
   </url>
 </urlset>
