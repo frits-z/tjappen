@@ -2,13 +2,50 @@
   
     
     {
-      "title": "Boerenkool met Worst",
-      "url": "/recipes/boerenkool/",
-      "time_total": 45,
-      "ingredients": ["1.5 | Floury potatoes (kg)","0.5 | Boerenkool (kg, chopped)","1 | Smoked sausage (Unox)","0.5 | Milk (cup)","2 | Butter (tbsp)","Salt, pepper, nutmeg to taste"],
-      "cuisine": "dutch",
-      "course": "dinner",
-      "effort": "medium"
+      "title": "Duckbreast á l'orange",
+      "url": "/recipes/duckbreast-a-lorange/",
+      "time_total": 180,
+      "ingredients": ["2 | Duck breasts","1 | Orange (zested)","2 | Oranges (juiced)","20 | Honey (ml)","50 | Soy sauce (ml)","to taste | Freshly ground black pepper"],
+      "cuisine": "french",
+      "course": "main",
+      "effort": "advanced",
+      "diet": "meat"
+    }
+  
+    ,
+    {
+      "title": "Italian Sausage Gnocchi",
+      "url": "/recipes/italian-sausage-gnocchi/",
+      "time_total": 10,
+      "ingredients": ["500 | Gnocchi (g)","6 | Italian sausages","200 | Frozen peas (g)","50 | Parmesan cheese (g)","2 | Garlic cloves (sliced)","0.5 | Chili flakes (tsp)","to taste | Black pepper","Olive oil"],
+      "cuisine": "italian",
+      "course": "main lunch",
+      "effort": "easy",
+      "diet": "meat"
+    }
+  
+    ,
+    {
+      "title": "Korean BBQ chicken wraps",
+      "url": "/recipes/korean-bbq-chicken-wraps/",
+      "time_total": 85,
+      "ingredients": ["2 | Chicken thighs (fat trimmed) (kg)","100 | Gochujang paste (g)","75 | Honey (g)","50 | Soy sauce (ml)","to taste | Garlic/Onion powder","to taste | Sesame seeds","200 | Low fat yogurt (g)","120 | Light mayonnaise (g)","2 | Milk (tbsp)","5.5 | Mini cucumbers","3 | Red onions","1 | Big carrot","40 | Rice vinegar (ml)","30 | Sriracha (ml)","3 | Brown sugar (tbsp)","150 | Water (ml)"],
+      "cuisine": "korean",
+      "course": "main lunch",
+      "effort": "easy",
+      "diet": "meat"
+    }
+  
+    ,
+    {
+      "title": "Modern Pasta Carbonara",
+      "url": "/recipes/modern-pasta-carbonara/",
+      "time_total": 30,
+      "ingredients": ["250 | Pasta (g)","200 | Guanciale (g)","7 | Green asparagus","4 | Eggs (1 whole + 3 yolks)","150 | Parmesan cheese (g)","to taste | Freshly ground Black pepper"],
+      "cuisine": "italian",
+      "course": "main",
+      "effort": "advanced",
+      "diet": "meat"
     }
   
     ,
@@ -18,8 +55,45 @@
       "time_total": 45,
       "ingredients": ["2 | Eggplants (aubergines)","120 | Olive oil (ml)","5 | Garlic cloves (thinly sliced)","Pinch of dried chilli flakes","800 | Tinned plum tomatoes (g)","1 | Dried oregano (tsp)","1 | Caster sugar (tsp)","300 | Pasta mafaldine (g)","Roasted bell peppers (to taste)","45 | Mature pecorino romano or ricotta salata (g)","20 | Basil leaves (g)","Pistachios (pieces, for garnish)","Salt \u0026 black pepper"],
       "cuisine": "italian",
-      "course": "dinner",
-      "effort": "medium"
+      "course": "main",
+      "effort": "medium",
+      "diet": "vegetarian"
+    }
+  
+    ,
+    {
+      "title": "Pasta with salmon and spinach",
+      "url": "/recipes/pasta-with-salmon-and-spinach/",
+      "time_total": 25,
+      "ingredients": ["200 | Pasta (g)","100 | Salmon (g)","200 | Spinach (g)","50 | Soy cream (ml)","100 | Parmesan cheese (g)","1 | Olive oil (tbsp)","to taste | Pine nuts"],
+      "cuisine": "italian",
+      "course": "main",
+      "effort": "easy",
+      "diet": "fish"
+    }
+  
+    ,
+    {
+      "title": "Ragù Bolognese",
+      "url": "/recipes/ragu-bolognese/",
+      "time_total": 999,
+      "ingredients": ["2 | Celery stalks","1 | Large carrot","2 | Onions","700 | Minced meat (half pork, half beef) (g)","100 | Guanciale, diced into small cubes (g)","2 | Cans of peeled tomatoes","140 | Tomato puree (g)","2 | Chicken or beef stock cubes","500 | Water (ml)","1 | Bottle of good red wine","Olive oil","250 | Full milk (ml)"],
+      "cuisine": "italian",
+      "course": "main",
+      "effort": "advanced",
+      "diet": "meat"
+    }
+  
+    ,
+    {
+      "title": "Sweet potato salad",
+      "url": "/recipes/sweet-potato-salad/",
+      "time_total": 40,
+      "ingredients": ["500 | Sweet potatoes (g)","1 | Large carrot","100 | Asparagus tips (g)","1 | Red onion","0.5 | Lemon","100 | Feta (g)","85 | Lambâ€™s lettuce (g)","Olive oil","2 | Handfuls of pecan nuts"],
+      "cuisine": "vegetarian",
+      "course": "main",
+      "effort": "easy",
+      "diet": "vegetarian"
     }
   
     ,
@@ -29,8 +103,9 @@
       "time_total": 45,
       "ingredients": ["5 | Red curry paste (tbsp)","1 | Cumin seed (tsp)","1 | Coriander seed (tsp)","0.25 | Ground cinnamon (tsp)","Dash of nutmeg","2 | Maple syrup (tbsp)","1 | Soy sauce (tbsp)","2 | Peanut butter or almond butter (tbsp)","700 | Full-fat coconut milk (ml)","1 | Lime juice (tbsp)","1 | Tamarind paste (tbsp)","500 | Baby potatoes (grams)","2 | Large carrots, chopped","2 | Shallots, thinly sliced","50 | Peanuts (grams)","Peanuts and fresh coriander (for garnish)","Pandan or jasmine rice (to serve)","Green beans (to serve)","Crispy tofu or vegan protein bites (to serve)"],
       "cuisine": "thai",
-      "course": "dinner",
-      "effort": "medium"
+      "course": "main",
+      "effort": "medium",
+      "diet": "vegetarian vegan"
     }
   
 ]

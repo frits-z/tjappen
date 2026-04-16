@@ -8,11 +8,32 @@
     <language>en-us</language>
     <atom:link href="http://localhost:1313/recipes/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Boerenkool met Worst</title>
-      <link>http://localhost:1313/recipes/boerenkool/</link>
+      <title>Duckbreast á l&#39;orange</title>
+      <link>http://localhost:1313/recipes/duckbreast-a-lorange/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/boerenkool/</guid>
-      <description>&lt;p&gt;Peel the potatoes and cut them into chunks. Place them in a large pot.&lt;/p&gt;&#xA;&lt;p&gt;Add the chopped boerenkool (kale) on top of the potatoes. Pour in enough water to just cover the potatoes. Add a pinch of salt.&lt;/p&gt;&#xA;&lt;p&gt;Bring to a boil, then lower the heat, cover, and let it simmer for about 20-25 minutes, or until the potatoes are very tender.&lt;/p&gt;&#xA;&lt;p&gt;About 15 minutes before the potatoes are done, place the smoked sausage on top of the kale to heat through.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/recipes/duckbreast-a-lorange/</guid>
+      <description>&lt;p&gt;Mix orange zest, juice, honey, soy sauce, and pepper in a zip-lock bag for the marinade.&lt;/p&gt;&#xA;&lt;p&gt;Score the duck fat in a diamond pattern. Add to the marinade for 1-24 hours.&lt;/p&gt;&#xA;&lt;p&gt;Remove duck from marinade. Place duck fat-side down in a cold frying pan.&lt;/p&gt;&#xA;&lt;p&gt;Slowly render the fat over medium heat for 12-15 minutes until it is golden brown and crisp.&lt;/p&gt;&#xA;&lt;p&gt;Flip the duck breasts, cover the pan with a lid, and cook for another 3 minutes (until the internal temp hits 48-50Â°C).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Italian Sausage Gnocchi</title>
+      <link>http://localhost:1313/recipes/italian-sausage-gnocchi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recipes/italian-sausage-gnocchi/</guid>
+      <description>&lt;p&gt;Slice the garlic into thin slices (1mm thick).&lt;/p&gt;&#xA;&lt;p&gt;Bring a pan of water to a boil for the gnocchi.&lt;/p&gt;&#xA;&lt;p&gt;Heat a frying pan over medium-high heat with olive oil.&lt;/p&gt;&#xA;&lt;p&gt;Cut open sausages, crumble the meat into the pan in bite-sized chunks.&lt;/p&gt;&#xA;&lt;p&gt;Brown the sausage chunks on both sides, then lower the heat.&lt;/p&gt;&#xA;&lt;p&gt;Add garlic slices and chili flakes; sweat for 1-2 minutes.&lt;/p&gt;&#xA;&lt;p&gt;Salt the boiling water and cook gnocchi (3-4 minutes).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Korean BBQ chicken wraps</title>
+      <link>http://localhost:1313/recipes/korean-bbq-chicken-wraps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recipes/korean-bbq-chicken-wraps/</guid>
+      <description>&lt;p&gt;Mix spices, Gochujang, honey, and soy sauce. Massage the marinade into the chicken.&lt;/p&gt;&#xA;&lt;p&gt;Bake the chicken at 200Â°C for 25-30 minutes.&lt;/p&gt;&#xA;&lt;p&gt;For the salad: squeeze the cucumbers and onions to release excess liquid, then mix with grated carrot, rice vinegar, Sriracha, brown sugar, and water.&lt;/p&gt;&#xA;&lt;p&gt;For the sauce: mix yogurt, mayo, and milk into a smooth, slightly spicy sauce.&lt;/p&gt;&#xA;&lt;p&gt;Toast the tortillas, and assemble the wraps with chicken, salad, and sauce.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Modern Pasta Carbonara</title>
+      <link>http://localhost:1313/recipes/modern-pasta-carbonara/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recipes/modern-pasta-carbonara/</guid>
+      <description>&lt;p&gt;Dice the asparagus and guanciale. Mix the eggs with grated parmesan into a semi-liquid paste.&lt;/p&gt;&#xA;&lt;p&gt;Boil salted water and cook the pasta al dente.&lt;/p&gt;&#xA;&lt;p&gt;Fry the guanciale in a dry pan until the fat renders out, then add the asparagus and lots of pepper. Fry until the asparagus is cooked and guanciale is crispy.&lt;/p&gt;&#xA;&lt;p&gt;Drain the pasta, but keep 1 glass of pasta water aside.&lt;/p&gt;&#xA;&lt;p&gt;Mix the pasta with the guanciale and asparagus in the pan (off the heat or very low heat).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Pasta Alla Norma</title>
@@ -20,6 +41,27 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/recipes/pasta-alla-norma/</guid>
       <description>&lt;p&gt;Preheat the oven to 220C fan.&lt;/p&gt;&#xA;&lt;p&gt;Using a peeler and working from top to bottom of each aubergine, shave off long alternating strips of peel so that they look striped, like zebras. Cut widthways into 1cm thick slices and place in a bowl with 75ml of oil, 3/4 teaspoon of salt and a generous grind of pepper. Mix well, then spread out on two large baking paper-lined trays. Roast for 30-35 minutes, until dark golden-brown. Remove from the oven and set aside to cool.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pasta with salmon and spinach</title>
+      <link>http://localhost:1313/recipes/pasta-with-salmon-and-spinach/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recipes/pasta-with-salmon-and-spinach/</guid>
+      <description>&lt;p&gt;Cut the salmon into bite-sized pieces.&lt;/p&gt;&#xA;&lt;p&gt;Bring salted water to a boil and cook the pasta until slightly under al dente.&lt;/p&gt;&#xA;&lt;p&gt;Heat olive oil in a large saucepan or wok over medium-high heat.&lt;/p&gt;&#xA;&lt;p&gt;Bake the salmon for 1-2 minutes until slightly golden.&lt;/p&gt;&#xA;&lt;p&gt;Add the spinach in batches, allowing the excess water to evaporate before adding more.&lt;/p&gt;&#xA;&lt;p&gt;Drain the pasta, reserving 1 glass of pasta water.&lt;/p&gt;&#xA;&lt;p&gt;Toast pine nuts in a separate dry pan for 1-2 minutes until golden.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ragù Bolognese</title>
+      <link>http://localhost:1313/recipes/ragu-bolognese/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recipes/ragu-bolognese/</guid>
+      <description>&lt;p&gt;Finely dice the onion, cut the celery and carrot in to small cubes, roughly 2-3mm each.&lt;/p&gt;&#xA;&lt;p&gt;Preheat your oven to 140 degrees celsius.&lt;/p&gt;&#xA;&lt;p&gt;Add some olive oil in to a large pan (that can be placed in the oven, preferably a cast-iron dutch oven) and add your onions, celery and carrot.&lt;/p&gt;&#xA;&lt;p&gt;Fruit the vegetables on low to medium low temp, until soft and sweet.&lt;/p&gt;&#xA;&lt;p&gt;Remove vegetables from the pan, and wipe the pan clean with a paper towel.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sweet potato salad</title>
+      <link>http://localhost:1313/recipes/sweet-potato-salad/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recipes/sweet-potato-salad/</guid>
+      <description>&lt;p&gt;Preheat the oven to 200C.&lt;/p&gt;&#xA;&lt;p&gt;Dice sweet potato and carrot into half-circles (approx. 0.5cm thick) and place on a baking tray.&lt;/p&gt;&#xA;&lt;p&gt;Add olive oil, salt, and pepper; bake for 20-25 minutes.&lt;/p&gt;&#xA;&lt;p&gt;Add asparagus tips and bake for another 10 minutes.&lt;/p&gt;&#xA;&lt;p&gt;Finely dice the red onion, extract lemon juice, and crumble the feta.&lt;/p&gt;&#xA;&lt;p&gt;In a bowl, mix the roasted vegetables, lambâ€™s lettuce, onion, and feta.&lt;/p&gt;&#xA;&lt;p&gt;Whisk lemon juice with 2 tablespoons of olive oil.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vegan Massaman Curry</title>

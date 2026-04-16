@@ -27,7 +27,8 @@ time_active: 15
 time_total: 45
 servings: 4
 cuisine: ["Italian"]
-course: ["Dinner"]
+course: ["Main"]
+diet: ["Vegetarian"]
 effort: ["Medium"]
 ingredients:
   - "400 | Pasta (grams)"
@@ -42,7 +43,7 @@ First, write your first step here. The website will automatically number this as
 
 Leave an empty line, and then write your second step here. The website will number this "02".
 
-Keep writing paragraphs separated by empty lines. Each paragraph becomes a new numbered step in the method. Enjoy!
+Keep writing paragraphs separated by empty lines. Each paragraph becomes a new numbered step in the method. You should NOT include numbers yourself. The website does this in its processing. Enjoy!
 ```
 
 ### Important Formatting Rules:
@@ -50,5 +51,5 @@ Keep writing paragraphs separated by empty lines. Each paragraph becomes a new n
   - *Correct:* `"1.5 | Potatoes (kg)"*
   - *Correct (No scaling needed):* `"Salt and pepper"` 
   - *Incorrect:* `"1.5 kg Potatoes"` (The math won't work on this!)
-- **Lists:** Notice that things inside `cuisine`, `course`, `effort`, `ingredients`, and `notes` are wrapped in square brackets `[ ]` or list dashes `-`. Keep those intact!
+- **Lists:** Notice that things inside `cuisine`, `course`, `diet`, `effort`, `ingredients`, and `notes` are wrapped in square brackets `[ ]` or list dashes `-`. Keep those intact!
 - **Text:** The text at the very bottom (underneath the `---` lines) is your method. Just write it like a normal story, separating each step by pressing `Enter` twice to leave a blank line.

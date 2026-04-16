@@ -46,6 +46,7 @@
                 {{ if .Params.cuisine }}{{ $tags = $tags | append .Params.cuisine }}{{ end }}
                 {{ if .Params.course }}{{ $tags = $tags | append .Params.course }}{{ end }}
                 {{ if .Params.effort }}{{ $tags = $tags | append .Params.effort }}{{ end }}
+                {{ if .Params.diet }}{{ $tags = $tags | append .Params.diet }}{{ end }}
                 
                 {{ range $i, $tag := $tags }}
                     <span>{{ . }}</span>

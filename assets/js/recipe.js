@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             stepDiv.innerHTML = `
                 <span class="step-num text-3xl font-black text-gray-200 transition-colors shrink-0">${numStr}</span>
-                <div class="pt-1 w-full prose prose-a:font-bold prose-a:underline hover:prose-a:text-gray-500">
+                <div class="pt-1 w-full prose">
                     ${child.outerHTML}
                 </div>
             `;

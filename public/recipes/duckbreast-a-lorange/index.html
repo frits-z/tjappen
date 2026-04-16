@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Duckbreast á l&#39;orange - tjappen. Recipe Directory</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              black: '#000', white: '#fff',
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .image-container {
+            aspect-ratio: 4 / 3;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease, transform 0.5s ease;
+        }
+        .recipe-card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hero-image {
+            aspect-ratio: 21 / 9;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ingredient-item input:checked + span.ingredient-name {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        .step-container.has-active-step .method-step:not(.active) {
+            opacity: 0.3;
+        }
+        .method-step {
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+        .method-step.active .step-num {
+            color: #000;
+        }
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
+
+    
+<nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-50 transition-opacity">
+            <i class="ph ph-arrow-left text-lg"></i> Index
+        </a>
+        
+        
+        <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black transition-colors">
+            <i class="ph ph-device-mobile text-lg"></i>
+            <span id="wakeLockStatus">Screen Lock: Off</span>
+        </button>
+    </div>
+</nav>
+
+
+    <div class="flex-grow">
+      
+<main class="max-w-4xl mx-auto px-4 py-10 w-full mb-12" data-base-servings="2">
+    
+    <header class="mb-10">
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">Duckbreast á l&#39;orange</h1>
+        
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
+            <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
+                <i class="ph ph-users text-lg mr-1"></i>
+                <button id="decServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">-</button>
+                <span id="servingCount" class="w-4 text-center">2</span>
+                <button id="incServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">+</button>
+            </div>
+            
+            
+            <div class="flex items-center gap-4 text-sm font-bold">
+                <div class="flex items-center gap-1.5">
+                    <i class="ph ph-knife text-lg text-gray-400"></i>
+                    <span>30m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Active</span></span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i class="ph ph-clock text-lg text-gray-400"></i>
+                    <span>180m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Total</span></span>
+                </div>
+            </div>
+
+            <div class="h-4 w-px bg-gray-300 hidden sm:block"></div>
+            <div class="flex flex-wrap gap-3 text-xs font-bold uppercase tracking-widest text-gray-500">
+                
+                
+                
+                
+                
+                
+                
+                    <span>French</span>
+                    <span>•</span>
+                
+                    <span>Main</span>
+                    <span>•</span>
+                
+                    <span>Advanced</span>
+                    <span>•</span>
+                
+                    <span>Meat</span>
+                    
+                
+            </div>
+        </div>
+    </header>
+
+    
+    
+    
+    
+        
+        <figure class="hero-image mb-12 border-2 border-black">
+            <img src="/recipes/duckbreast-a-lorange/cover_hu_d58ad8f6f84c9ee9.webp" alt="Duckbreast á l&#39;orange">
+        </figure>
+    
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        
+        <aside class="md:col-span-4">
+            <h2 class="text-sm font-bold uppercase tracking-widest border-b-2 border-black pb-2 mb-6">Ingredients</h2>
+            
+            <ul class="flex flex-col text-sm font-medium">
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Duck breasts</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="2">2</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Orange (zested)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1">1</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Oranges (juiced)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="2">2</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Honey (ml)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="20">20</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Soy sauce (ml)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="50">50</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Freshly ground black pepper</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="to taste">to taste</span>
+                        </span>
+                        
+                    </li>
+                
+            </ul>
+            
+            
+            <div class="mt-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    
+                    <li class="flex gap-2">
+                        <span class="font-bold text-black">→</span>
+                        <span>By Rune</span>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+        </aside>
+
+        <section class="md:col-span-8">
+            <div class="flex justify-between items-baseline border-b-2 border-black pb-2 mb-6">
+                <h2 class="text-sm font-bold uppercase tracking-widest">Method</h2>
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tap step to focus</span>
+            </div>
+            
+            <div class="space-y-8 text-base text-gray-900 leading-relaxed step-container" id="methodContainer">
+                <div id="methodContentRaw" class="hidden"><p>Mix orange zest, juice, honey, soy sauce, and pepper in a zip-lock bag for the marinade.</p>
+<p>Score the duck fat in a diamond pattern. Add to the marinade for 1-24 hours.</p>
+<p>Remove duck from marinade. Place duck fat-side down in a cold frying pan.</p>
+<p>Slowly render the fat over medium heat for 12-15 minutes until it is golden brown and crisp.</p>
+<p>Flip the duck breasts, cover the pan with a lid, and cook for another 3 minutes (until the internal temp hits 48-50Â°C).</p>
+<p>Remove from the pan and let it rest wrapped in aluminum foil.</p>
+<p>Remove half of the rendered duck fat from the pan. Add the remaining marinade to the pan and cook it down until it reaches a syrup consistency.</p>
+<p>Slice the resting duck into 0.5-1cm pieces and top generously with the sauce.</p>
+</div>
+                
+            </div>
+        </section>
+        
+    </div>
+</main>
+
+    </div>
+
+    <footer class="border-t-2 border-black mt-auto">
+        <div class="max-w-6xl mx-auto px-4 py-8 flex justify-between items-center text-xs font-bold uppercase tracking-widest">
+            <div class="flex gap-6 items-center flex-wrap">
+                <span>tjappen. directory</span>
+                <span class="text-gray-300 hidden sm:inline">|</span>
+                <a href="/about" class="text-gray-500 hover:text-black transition-colors">About</a>
+            </div>
+            <span>by Frits</span>
+        </div>
+    </footer>
+
+    
+  
+  
+    <script src="/js/recipe.js"></script>
+  
+
+</body>
+</html>

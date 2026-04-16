@@ -6,6 +6,7 @@ title = 'tjappen. Recipe Directory'
   cuisine = "cuisines"
   course = "courses"
   effort = "efforts"
+  diet = "diets"
 
 [outputs]
   home = ["HTML", "JSON"]

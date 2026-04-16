@@ -1,10 +1,11 @@
----
+﻿---
 title: "Pasta Alla Norma"
 time_active: 15
 time_total: 45
 servings: 4
 cuisine: ["Italian"]
-course: ["Dinner"]
+course: ["Main"]
+diet: ["Vegetarian"]
 effort: ["Medium"]
 ingredients:
   - "2 | Eggplants (aubergines)"
@@ -21,7 +22,7 @@ ingredients:
   - "Pistachios (pieces, for garnish)"
   - "Salt & black pepper"
 notes:
-  - "Lekker met wat geroosterde paprikas door de saus!"
+  - "Great with roasted bell peppers as a twist"
 ---
 
 Preheat the oven to 220C fan.

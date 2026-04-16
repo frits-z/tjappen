@@ -29,4 +29,9 @@
   .ingredient-checkbox:checked + span {
     @apply line-through text-gray-500;
   }
+
+  /* Inline Links in Method */
+  .method-step a {
+    @apply font-bold text-gray-600 underline decoration-2 decoration-gray-300 underline-offset-4 transition-all hover:text-black hover:decoration-black hover:bg-gray-100 rounded-sm;
+  }
 }

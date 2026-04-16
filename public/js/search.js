@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let currentSearch = "";
     let isFilterOpen = false;
-    let activeFilters = { cuisine: [], course: [], effort: [] };
+    let activeFilters = { cuisine: [], course: [], effort: [], diet: [] };
 
     const grid = document.getElementById('recipeGrid');
     if (!grid) return;
@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
             taxonomies: {
                 cuisine: (card.dataset.cuisine || "").split(' ').filter(Boolean).sort(),
                 course: (card.dataset.course || "").split(' ').filter(Boolean).sort(),
-                effort: (card.dataset.effort || "").split(' ').filter(Boolean).sort()
+                effort: (card.dataset.effort || "").split(' ').filter(Boolean).sort(),
+                diet: (card.dataset.diet || "").split(' ').filter(Boolean).sort()
             }
         };
     });
@@ -25,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const taxonomyOptions = {
         cuisine: [...new Set(cardsData.flatMap(r => r.taxonomies.cuisine))].sort(),
         course: [...new Set(cardsData.flatMap(r => r.taxonomies.course))].sort(),
-        effort: [...new Set(cardsData.flatMap(r => r.taxonomies.effort))].sort()
+        effort: [...new Set(cardsData.flatMap(r => r.taxonomies.effort))].sort(),
+        diet: [...new Set(cardsData.flatMap(r => r.taxonomies.diet))].sort()
     };
 
     const filterContainer = document.getElementById('filterContainer');
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         clearFiltersBtn.addEventListener('click', () => {
-            activeFilters = { cuisine: [], course: [], effort: [] };
+            activeFilters = { cuisine: [], course: [], effort: [], diet: [] };
             renderFilters();
             renderGrid();
         });
