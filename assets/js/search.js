@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        resultsCount.textContent = `${count} entries`;
+        resultsCount.textContent = `${count} recipes in the cookbook`;
         
         const hasActiveFilters = Object.values(activeFilters).some(arr => arr.length > 0);
         clearFiltersBtn.style.display = hasActiveFilters ? 'block' : 'none';

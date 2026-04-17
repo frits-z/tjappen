@@ -26,10 +26,22 @@
   
     ,
     {
+      "title": "Jackie's Spinach Casserole",
+      "url": "/recipes/jackies-spinach-casserole/",
+      "time_total": 40,
+      "ingredients": ["500 | Frozen spinach (g)","250 | (Vegan) minced meat (g)","1 | Bag grated mild cheese","4 | Eggs","4 | Slices of thawed puff pastry","600 | Potato slices (g)"],
+      "cuisine": "dutch",
+      "course": "main",
+      "effort": "easy",
+      "diet": "meat vegetarian"
+    }
+  
+    ,
+    {
       "title": "Korean BBQ chicken wraps",
       "url": "/recipes/korean-bbq-chicken-wraps/",
       "time_total": 85,
-      "ingredients": ["2 | Chicken thighs (fat trimmed) (kg)","100 | Gochujang paste (g)","75 | Honey (g)","50 | Soy sauce (ml)","to taste | Garlic/Onion powder","to taste | Sesame seeds","200 | Low fat yogurt (g)","120 | Light mayonnaise (g)","2 | Milk (tbsp)","5.5 | Mini cucumbers","3 | Red onions","1 | Big carrot","40 | Rice vinegar (ml)","30 | Sriracha (ml)","3 | Brown sugar (tbsp)","150 | Water (ml)"],
+      "ingredients": ["2 | Chicken thighs (fat trimmed) (kg)","12 | Tortillas (medium size)","5.5 | Mini cucumbers","3 | Red onions","1 | Big carrot","200 | Low fat yogurt (g)","120 | Light mayonnaise (g)","2 | Milk (tbsp, optional)","40 | Rice vinegar (ml)","30 | Sriracha (ml)","100 | Gochujang paste (g)","75 | Honey (g)","50 | Soy sauce (ml)","55 | Sesame seeds (g)","3 | Brown sugar (tbsp)","5 | Garlic powder (tsp)","2 | Onion powder (tsp)","2 | Salt (tsp)","3 | Black pepper (tsp)","150 | Water (ml)"],
       "cuisine": "korean",
       "course": "main lunch",
       "effort": "easy",
@@ -77,7 +89,7 @@
       "title": "Ragù Bolognese",
       "url": "/recipes/ragu-bolognese/",
       "time_total": 999,
-      "ingredients": ["2 | Celery stalks","1 | Large carrot","2 | Onions","700 | Minced meat (half pork, half beef) (g)","100 | Guanciale, diced into small cubes (g)","2 | Cans of peeled tomatoes","140 | Tomato puree (g)","2 | Chicken or beef stock cubes","500 | Water (ml)","1 | Bottle of good red wine","Olive oil","250 | Full milk (ml)"],
+      "ingredients": ["2 | Celery stalks","1 | Large carrot","2 | Onions","700 | Minced meat (half pork, half beef) (g)","100 | Guanciale, diced into small cubes (g)","2 | Cans of peeled tomatoes","140 | Tomato puree (g)","2 | Chicken or beef stock cubes","500 | Water (ml)","1 | Bottle of good red wine","Olive oil","250 | Full milk (ml)","2 | Sugar (tbsp, optional)"],
       "cuisine": "italian",
       "course": "main",
       "effort": "advanced",
@@ -89,9 +101,9 @@
       "title": "Sweet potato salad",
       "url": "/recipes/sweet-potato-salad/",
       "time_total": 40,
-      "ingredients": ["500 | Sweet potatoes (g)","1 | Large carrot","100 | Asparagus tips (g)","1 | Red onion","0.5 | Lemon","100 | Feta (g)","85 | Lambâ€™s lettuce (g)","Olive oil","2 | Handfuls of pecan nuts"],
-      "cuisine": "vegetarian",
-      "course": "main",
+      "ingredients": ["500 | Sweet potatoes (g)","1 | Large carrot","100 | Asparagus tips (g)","1 | Red onion","0.5 | Lemon","100 | Feta (g)","85 | Lamb's lettuce (g)","Olive oil","2 | Handfuls of pecan nuts"],
+      "cuisine": "european",
+      "course": "main salad",
       "effort": "easy",
       "diet": "vegetarian"
     }

@@ -74,6 +74,23 @@
         .method-step.active .step-num {
             color: #000;
         }
+        .method-step a, .method-step .prose a, .notes-content a {
+            font-weight: 700;
+            color: #4b5563;
+            text-decoration-line: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #d1d5db;
+            text-underline-offset: 4px;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+            border-radius: 0.125rem;
+        }
+        .method-step a:hover, .method-step .prose a:hover, .notes-content a:hover {
+            color: #000;
+            text-decoration-color: #000;
+            background-color: #f3f4f6;
+        }
         input[type="number"]::-webkit-inner-spin-button, 
         input[type="number"]::-webkit-outer-spin-button { 
             -webkit-appearance: none; 
@@ -98,10 +115,10 @@
                         type="text" 
                         id="searchInput" 
                         placeholder="Search..." 
-                        class="w-full pl-10 pr-4 py-2 bg-gray-100 border-none focus:ring-2 focus:ring-black focus:outline-none rounded-none text-sm font-medium transition-all"
+                        class="w-full h-10 pl-10 pr-4 bg-gray-100 border-none focus:ring-2 focus:ring-black focus:outline-none rounded-none text-sm font-medium transition-all"
                     >
                 </div>
-                <button id="filterToggleBtn" class="flex items-center gap-2 px-4 py-2 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors">
+                <button id="filterToggleBtn" class="flex items-center justify-center h-10 gap-2 px-4 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors">
                     <i class="ph ph-faders text-lg"></i>
                     <span id="filterToggleText">Filters</span>
                 </button>
@@ -130,7 +147,7 @@
 <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full mb-12">
     <div class="mb-8 flex justify-between items-baseline">
         <h2 class="text-xl font-bold tracking-tight">Index</h2>
-        <p class="text-sm font-medium text-gray-500" id="resultsCount">0 entries</p>
+        <p class="text-sm font-medium text-gray-500" id="resultsCount">0 recipes in the cookbook</p>
     </div>
 
     <div id="recipeGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
@@ -144,6 +161,7 @@
               data-effort="Advanced"
               data-diet="Meat">
               <div class="image-container mb-4">
+                  
                   
                   
                   
@@ -191,8 +209,9 @@
                   
                   
                   
+                  
                       
-                      <img src="/recipes/italian-sausage-gnocchi/cover_hu_add4d43bb341d26a.webp" alt="Italian Sausage Gnocchi" loading="lazy">
+                      <img src="/recipes/italian-sausage-gnocchi/cover_hu_1f2f1bac7e72f492.webp" alt="Italian Sausage Gnocchi" loading="lazy">
                   
               </div>
               <div class="flex-grow flex flex-col justify-start">
@@ -223,15 +242,62 @@
           </article>
         </a>
         
+        <a href="/recipes/jackies-spinach-casserole/" class="article-wrapper block h-full">
+          <article class="recipe-card group cursor-pointer h-full flex flex-col" 
+              data-title="Jackie&amp;#39;s Spinach Casserole" 
+              data-ingredients="500 | Frozen spinach (g) 250 | (Vegan) minced meat (g) 1 | Bag grated mild cheese 4 | Eggs 4 | Slices of thawed puff pastry 600 | Potato slices (g)" 
+              data-cuisine="Dutch" 
+              data-course="Main" 
+              data-effort="Easy"
+              data-diet="Meat Vegetarian">
+              <div class="image-container mb-4">
+                  
+                  
+                  
+                  
+                  
+                      
+                      <img src="/recipes/jackies-spinach-casserole/cover_hu_fe48246c4028eea7.webp" alt="Jackie&#39;s Spinach Casserole" loading="lazy">
+                  
+              </div>
+              <div class="flex-grow flex flex-col justify-start">
+                  <div class="flex justify-between items-baseline mb-1 gap-2">
+                      <h2 class="text-lg font-black tracking-tight leading-tight">Jackie&#39;s Spinach Casserole</h2>
+                      <span class="text-xs font-bold text-gray-400 whitespace-nowrap">40m</span>
+                  </div>
+                  <div class="flex flex-wrap gap-x-2 gap-y-1 mt-2">
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Dutch</span>
+                      
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                      
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Easy</span>
+                      
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Meat</span>
+                      
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Vegetarian</span>
+                      
+                  </div>
+              </div>
+          </article>
+        </a>
+        
         <a href="/recipes/korean-bbq-chicken-wraps/" class="article-wrapper block h-full">
           <article class="recipe-card group cursor-pointer h-full flex flex-col" 
               data-title="Korean BBQ chicken wraps" 
-              data-ingredients="2 | Chicken thighs (fat trimmed) (kg) 100 | Gochujang paste (g) 75 | Honey (g) 50 | Soy sauce (ml) to taste | Garlic/Onion powder to taste | Sesame seeds 200 | Low fat yogurt (g) 120 | Light mayonnaise (g) 2 | Milk (tbsp) 5.5 | Mini cucumbers 3 | Red onions 1 | Big carrot 40 | Rice vinegar (ml) 30 | Sriracha (ml) 3 | Brown sugar (tbsp) 150 | Water (ml)" 
+              data-ingredients="2 | Chicken thighs (fat trimmed) (kg) 12 | Tortillas (medium size) 5.5 | Mini cucumbers 3 | Red onions 1 | Big carrot 200 | Low fat yogurt (g) 120 | Light mayonnaise (g) 2 | Milk (tbsp, optional) 40 | Rice vinegar (ml) 30 | Sriracha (ml) 100 | Gochujang paste (g) 75 | Honey (g) 50 | Soy sauce (ml) 55 | Sesame seeds (g) 3 | Brown sugar (tbsp) 5 | Garlic powder (tsp) 2 | Onion powder (tsp) 2 | Salt (tsp) 3 | Black pepper (tsp) 150 | Water (ml)" 
               data-cuisine="Korean" 
               data-course="Main Lunch" 
               data-effort="Easy"
               data-diet="Meat">
               <div class="image-container mb-4">
+                  
                   
                   
                   
@@ -281,6 +347,7 @@
                   
                   
                   
+                  
                       
                       <img src="/recipes/modern-pasta-carbonara/cover_hu_fdd51117e2434927.webp" alt="Modern Pasta Carbonara" loading="lazy">
                   
@@ -324,8 +391,9 @@
                   
                   
                   
+                  
                       
-                      <img src="/recipes/pasta-alla-norma/hero_hu_b6cb034476a01a34.webp" alt="Pasta Alla Norma" loading="lazy">
+                      <img src="/recipes/pasta-alla-norma/cover_hu_80e77324e85d70aa.webp" alt="Pasta Alla Norma" loading="lazy">
                   
               </div>
               <div class="flex-grow flex flex-col justify-start">
@@ -367,6 +435,11 @@
                   
                   
                   
+                  
+                      <div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-300 transition-all duration-500 group-hover:scale-110 group-hover:text-gray-400">
+                          <i class="ph ph-cooking-pot text-6xl"></i>
+                      </div>
+                  
               </div>
               <div class="flex-grow flex flex-col justify-start">
                   <div class="flex justify-between items-baseline mb-1 gap-2">
@@ -397,12 +470,13 @@
         <a href="/recipes/ragu-bolognese/" class="article-wrapper block h-full">
           <article class="recipe-card group cursor-pointer h-full flex flex-col" 
               data-title="Ragù Bolognese" 
-              data-ingredients="2 | Celery stalks 1 | Large carrot 2 | Onions 700 | Minced meat (half pork, half beef) (g) 100 | Guanciale, diced into small cubes (g) 2 | Cans of peeled tomatoes 140 | Tomato puree (g) 2 | Chicken or beef stock cubes 500 | Water (ml) 1 | Bottle of good red wine Olive oil 250 | Full milk (ml)" 
+              data-ingredients="2 | Celery stalks 1 | Large carrot 2 | Onions 700 | Minced meat (half pork, half beef) (g) 100 | Guanciale, diced into small cubes (g) 2 | Cans of peeled tomatoes 140 | Tomato puree (g) 2 | Chicken or beef stock cubes 500 | Water (ml) 1 | Bottle of good red wine Olive oil 250 | Full milk (ml) 2 | Sugar (tbsp, optional)" 
               data-cuisine="Italian" 
               data-course="Main" 
               data-effort="Advanced"
               data-diet="Meat">
               <div class="image-container mb-4">
+                  
                   
                   
                   
@@ -440,12 +514,13 @@
         <a href="/recipes/sweet-potato-salad/" class="article-wrapper block h-full">
           <article class="recipe-card group cursor-pointer h-full flex flex-col" 
               data-title="Sweet potato salad" 
-              data-ingredients="500 | Sweet potatoes (g) 1 | Large carrot 100 | Asparagus tips (g) 1 | Red onion 0.5 | Lemon 100 | Feta (g) 85 | Lambâ€™s lettuce (g) Olive oil 2 | Handfuls of pecan nuts" 
-              data-cuisine="Vegetarian" 
-              data-course="Main" 
+              data-ingredients="500 | Sweet potatoes (g) 1 | Large carrot 100 | Asparagus tips (g) 1 | Red onion 0.5 | Lemon 100 | Feta (g) 85 | Lamb&amp;#39;s lettuce (g) Olive oil 2 | Handfuls of pecan nuts" 
+              data-cuisine="European" 
+              data-course="Main Salad" 
               data-effort="Easy"
               data-diet="Vegetarian">
               <div class="image-container mb-4">
+                  
                   
                   
                   
@@ -467,9 +542,11 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Vegetarian</span>
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">European</span>
                       
                           <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                      
+                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Salad</span>
                       
                           <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Easy</span>
                       
@@ -489,6 +566,7 @@
               data-effort="Medium"
               data-diet="Vegetarian Vegan">
               <div class="image-container mb-4">
+                  
                   
                   
                   
@@ -531,13 +609,19 @@
     </div>
 
     <footer class="border-t-2 border-black mt-auto">
-        <div class="max-w-6xl mx-auto px-4 py-8 flex justify-between items-center text-xs font-bold uppercase tracking-widest">
+        <div class="max-w-6xl mx-auto px-4 py-8 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
             <div class="flex gap-6 items-center flex-wrap">
-                <span>tjappen. directory</span>
+                <span class="flex items-center gap-2 text-black group cursor-default">
+                    <i class="ph ph-cooking-pot text-lg group-hover:-rotate-12 transition-transform duration-300"></i>
+                    tjappen. digital pantry
+                </span>
                 <span class="text-gray-300 hidden sm:inline">|</span>
-                <a href="/about" class="text-gray-500 hover:text-black transition-colors">About</a>
+                <a href="/about" class="hover:text-black transition-colors">About</a>
             </div>
-            <span>by Frits</span>
+            <span class="flex items-center gap-1.5 cursor-default hover:text-black transition-colors duration-300">
+                Cooked up by Frits
+                <i class="ph ph-fire text-lg"></i>
+            </span>
         </div>
     </footer>
 

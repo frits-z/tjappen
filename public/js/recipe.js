@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             stepDiv.className = 'method-step flex gap-6 group';
             
             stepDiv.innerHTML = `
-                <span class="step-num text-3xl font-black text-gray-200 transition-colors shrink-0">${numStr}</span>
+                <span class="step-num text-3xl font-black text-gray-200 transition-colors shrink-0 w-12 text-right tabular-nums">${numStr}</span>
                 <div class="pt-1 w-full prose">
                     ${child.outerHTML}
                 </div>
@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(stepDiv);
             stepIndex++;
 
-            stepDiv.addEventListener('click', () => {
+            stepDiv.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return;
                 const isActive = stepDiv.classList.contains('active');
                 const steps = document.querySelectorAll('.method-step');
                 steps.forEach(s => s.classList.remove('active'));

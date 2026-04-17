@@ -18,7 +18,7 @@
   .method-step {
     @apply transition-opacity duration-300;
   }
-  .method-list.has-active .method-step:not(.active) {
+  .step-container.has-active-step .method-step:not(.active) {
     @apply opacity-30;
   }
   .method-step.active {
@@ -31,7 +31,7 @@
   }
 
   /* Inline Links in Method */
-  .method-step a {
+  .method-step a, .method-step .prose a {
     @apply font-bold text-gray-600 underline decoration-2 decoration-gray-300 underline-offset-4 transition-all hover:text-black hover:decoration-black hover:bg-gray-100 rounded-sm;
   }
 }

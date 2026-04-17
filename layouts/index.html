@@ -13,10 +13,10 @@
                         type="text" 
                         id="searchInput" 
                         placeholder="Search..." 
-                        class="w-full pl-10 pr-4 py-2 bg-gray-100 border-none focus:ring-2 focus:ring-black focus:outline-none rounded-none text-sm font-medium transition-all"
+                        class="w-full h-10 pl-10 pr-4 bg-gray-100 border-none focus:ring-2 focus:ring-black focus:outline-none rounded-none text-sm font-medium transition-all"
                     >
                 </div>
-                <button id="filterToggleBtn" class="flex items-center gap-2 px-4 py-2 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors">
+                <button id="filterToggleBtn" class="flex items-center justify-center h-10 gap-2 px-4 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors">
                     <i class="ph ph-faders text-lg"></i>
                     <span id="filterToggleText">Filters</span>
                 </button>
@@ -44,7 +44,7 @@
 <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full mb-12">
     <div class="mb-8 flex justify-between items-baseline">
         <h2 class="text-xl font-bold tracking-tight">Index</h2>
-        <p class="text-sm font-medium text-gray-500" id="resultsCount">0 entries</p>
+        <p class="text-sm font-medium text-gray-500" id="resultsCount">0 recipes in the cookbook</p>
     </div>
 
     <div id="recipeGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
@@ -59,11 +59,16 @@
               data-diet="{{ if .Params.diet }}{{ delimit .Params.diet " " | htmlEscape }}{{ end }}">
               <div class="image-container mb-4">
                   {{ $image := .Resources.GetMatch "*hero*" }}
+                  {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
                   {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
                   {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
                   {{ if $image }}
                       {{ $scaled := $image.Resize "800x webp q80" }}
                       <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
+                  {{ else }}
+                      <div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-300 transition-all duration-500 group-hover:scale-110 group-hover:text-gray-400">
+                          <i class="ph ph-cooking-pot text-6xl"></i>
+                      </div>
                   {{ end }}
               </div>
               <div class="flex-grow flex flex-col justify-start">

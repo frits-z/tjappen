@@ -73,6 +73,23 @@
         .method-step.active .step-num {
             color: #000;
         }
+        .method-step a, .method-step .prose a, .notes-content a {
+            font-weight: 700;
+            color: #4b5563;
+            text-decoration-line: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #d1d5db;
+            text-underline-offset: 4px;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+            border-radius: 0.125rem;
+        }
+        .method-step a:hover, .method-step .prose a:hover, .notes-content a:hover {
+            color: #000;
+            text-decoration-color: #000;
+            background-color: #f3f4f6;
+        }
         input[type="number"]::-webkit-inner-spin-button, 
         input[type="number"]::-webkit-outer-spin-button { 
             -webkit-appearance: none; 
@@ -134,10 +151,13 @@
                 
                 
                 
-                    <span>Vegetarian</span>
+                    <span>European</span>
                     <span>•</span>
                 
                     <span>Main</span>
+                    <span>•</span>
+                
+                    <span>Salad</span>
                     <span>•</span>
                 
                     <span>Easy</span>
@@ -150,6 +170,7 @@
         </div>
     </header>
 
+    
     
     
     
@@ -291,7 +312,7 @@
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
                             <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
-                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Lambâ€™s lettuce (g)</span>
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Lamb&#39;s lettuce (g)</span>
                         </label>
                         
                         <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
@@ -340,7 +361,7 @@
                 <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
                 <ul class="space-y-3 text-sm text-gray-600">
                     
-                    <li class="flex gap-2">
+                    <li class="flex gap-2 notes-content">
                         <span class="font-bold text-black">→</span>
                         <span>By Rune</span>
                     </li>
@@ -362,15 +383,10 @@
 <p>Add olive oil, salt, and pepper; bake for 20-25 minutes.</p>
 <p>Add asparagus tips and bake for another 10 minutes.</p>
 <p>Finely dice the red onion, extract lemon juice, and crumble the feta.</p>
-<p>In a bowl, mix the roasted vegetables, lambâ€™s lettuce, onion, and feta.</p>
+<p>In a bowl, mix the roasted vegetables, lamb&rsquo;s lettuce, onion, and feta.</p>
 <p>Whisk lemon juice with 2 tablespoons of olive oil.</p>
 <p>Add dressing to the salad and mix thoroughly.</p>
-<p>Garnish with pecan nuts.
-
-
-  <img src="inline%20test.jpg" alt="Sweet potato salad step" class="inline-image border-4 border-black mx-auto w-full"  />
-
-</p>
+<p>Garnish with pecan nuts.</p>
 </div>
                 
             </div>
@@ -382,13 +398,19 @@
     </div>
 
     <footer class="border-t-2 border-black mt-auto">
-        <div class="max-w-6xl mx-auto px-4 py-8 flex justify-between items-center text-xs font-bold uppercase tracking-widest">
+        <div class="max-w-6xl mx-auto px-4 py-8 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
             <div class="flex gap-6 items-center flex-wrap">
-                <span>tjappen. directory</span>
+                <span class="flex items-center gap-2 text-black group cursor-default">
+                    <i class="ph ph-cooking-pot text-lg group-hover:-rotate-12 transition-transform duration-300"></i>
+                    tjappen. digital pantry
+                </span>
                 <span class="text-gray-300 hidden sm:inline">|</span>
-                <a href="/about" class="text-gray-500 hover:text-black transition-colors">About</a>
+                <a href="/about" class="hover:text-black transition-colors">About</a>
             </div>
-            <span>by Frits</span>
+            <span class="flex items-center gap-1.5 cursor-default hover:text-black transition-colors duration-300">
+                Cooked up by Frits
+                <i class="ph ph-fire text-lg"></i>
+            </span>
         </div>
     </footer>
 

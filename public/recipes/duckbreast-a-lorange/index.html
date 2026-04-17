@@ -73,6 +73,23 @@
         .method-step.active .step-num {
             color: #000;
         }
+        .method-step a, .method-step .prose a, .notes-content a {
+            font-weight: 700;
+            color: #4b5563;
+            text-decoration-line: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #d1d5db;
+            text-underline-offset: 4px;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+            border-radius: 0.125rem;
+        }
+        .method-step a:hover, .method-step .prose a:hover, .notes-content a:hover {
+            color: #000;
+            text-decoration-color: #000;
+            background-color: #f3f4f6;
+        }
         input[type="number"]::-webkit-inner-spin-button, 
         input[type="number"]::-webkit-outer-spin-button { 
             -webkit-appearance: none; 
@@ -150,6 +167,7 @@
         </div>
     </header>
 
+    
     
     
     
@@ -288,7 +306,7 @@
                 <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
                 <ul class="space-y-3 text-sm text-gray-600">
                     
-                    <li class="flex gap-2">
+                    <li class="flex gap-2 notes-content">
                         <span class="font-bold text-black">→</span>
                         <span>By Rune</span>
                     </li>
@@ -306,13 +324,13 @@
             
             <div class="space-y-8 text-base text-gray-900 leading-relaxed step-container" id="methodContainer">
                 <div id="methodContentRaw" class="hidden"><p>Mix orange zest, juice, honey, soy sauce, and pepper in a zip-lock bag for the marinade.</p>
-<p>Score the duck fat in a diamond pattern. Add to the marinade for 1-24 hours.</p>
-<p>Remove duck from marinade. Place duck fat-side down in a cold frying pan.</p>
+<p>To prep the duck breast: score the duck fat layer in a diamond pattern. Add to the marinade for 1-24 hours.</p>
+<p>Cooking the duck breast: remove duck from marinade. Place duck fat-side down in a cold frying pan.</p>
 <p>Slowly render the fat over medium heat for 12-15 minutes until it is golden brown and crisp.</p>
-<p>Flip the duck breasts, cover the pan with a lid, and cook for another 3 minutes (until the internal temp hits 48-50Â°C).</p>
+<p>Flip the duck breasts, cover the pan with a lid, and cook for another 3 minutes (until the internal temp hits 48-50C).</p>
 <p>Remove from the pan and let it rest wrapped in aluminum foil.</p>
-<p>Remove half of the rendered duck fat from the pan. Add the remaining marinade to the pan and cook it down until it reaches a syrup consistency.</p>
-<p>Slice the resting duck into 0.5-1cm pieces and top generously with the sauce.</p>
+<p>Making the sauce: remove half of the rendered duck fat from the pan. Add the remaining marinade to the pan and cook it down until it reaches a syrup consistency.</p>
+<p>Serving: slice the resting duck into 0.5-1cm pieces and top generously with the sauce.</p>
 </div>
                 
             </div>
@@ -324,13 +342,19 @@
     </div>
 
     <footer class="border-t-2 border-black mt-auto">
-        <div class="max-w-6xl mx-auto px-4 py-8 flex justify-between items-center text-xs font-bold uppercase tracking-widest">
+        <div class="max-w-6xl mx-auto px-4 py-8 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
             <div class="flex gap-6 items-center flex-wrap">
-                <span>tjappen. directory</span>
+                <span class="flex items-center gap-2 text-black group cursor-default">
+                    <i class="ph ph-cooking-pot text-lg group-hover:-rotate-12 transition-transform duration-300"></i>
+                    tjappen. digital pantry
+                </span>
                 <span class="text-gray-300 hidden sm:inline">|</span>
-                <a href="/about" class="text-gray-500 hover:text-black transition-colors">About</a>
+                <a href="/about" class="hover:text-black transition-colors">About</a>
             </div>
-            <span>by Frits</span>
+            <span class="flex items-center gap-1.5 cursor-default hover:text-black transition-colors duration-300">
+                Cooked up by Frits
+                <i class="ph ph-fire text-lg"></i>
+            </span>
         </div>
     </footer>
 

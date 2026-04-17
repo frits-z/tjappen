@@ -57,6 +57,7 @@
     </header>
 
     {{ $hero := .Resources.GetMatch "*hero*" }}
+    {{ if not $hero }}{{ $hero = .Resources.GetMatch "*cover*" }}{{ end }}
     {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.jpg" }}{{ end }}
     {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.png" }}{{ end }}
     {{ if $hero }}
@@ -101,9 +102,9 @@
                 <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
                 <ul class="space-y-3 text-sm text-gray-600">
                     {{ range .Params.notes }}
-                    <li class="flex gap-2">
+                    <li class="flex gap-2 notes-content">
                         <span class="font-bold text-black">→</span>
-                        <span>{{ . }}</span>
+                        <span>{{ . | markdownify }}</span>
                     </li>
                     {{ end }}
                 </ul>
