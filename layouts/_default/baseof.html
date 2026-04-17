@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
     
+    <!-- Open Graph / WhatsApp / Twitter Embeds -->
+    <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}">
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:site_name" content="tjappen">
+    {{ if .IsPage }}
+        <meta property="og:description" content="{{ if .Params.time_total }}{{ .Params.time_total }} min recipe. {{ end }}{{ .Summary | plainify | truncate 150 }}">
+        {{ $image := .Resources.GetMatch "*hero*" }}
+        {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
+        {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
+        {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
+        {{ if $image }}
+            {{ $scaled := $image.Resize "1200x630 webp q80 crop" }}
+            <meta property="og:image" content="{{ $scaled.Permalink }}">
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:image" content="{{ $scaled.Permalink }}">
+        {{ else }}
+            <meta name="twitter:card" content="summary">
+        {{ end }}
+    {{ else }}
+        <meta property="og:description" content="Personal recipe directory">
+        <meta name="twitter:card" content="summary">
+    {{ end }}
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
