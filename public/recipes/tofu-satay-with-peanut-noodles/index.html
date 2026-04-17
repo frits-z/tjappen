@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tofu Satay with noodles - tjappen.</title>
+    
+    
+    <meta property="og:title" content="Tofu Satay with noodles - tjappen.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://localhost:1313/recipes/tofu-satay-with-peanut-noodles/">
+    <meta property="og:site_name" content="tjappen">
+    
+        <meta property="og:description" content="45 min recipe. If you choose to freeze the tofu: place the block of tofu (in its packaging) in the freezer the day before you want to make this. Take it out on the …">
+        
+        
+        
+        
+        
+            
+            <meta property="og:image" content="http://localhost:1313/recipes/tofu-satay-with-peanut-noodles/cover_hu_e6b695750b4224ee.webp">
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:image" content="http://localhost:1313/recipes/tofu-satay-with-peanut-noodles/cover_hu_e6b695750b4224ee.webp">
+        
+    
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              black: '#000', white: '#fff',
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .image-container {
+            aspect-ratio: 4 / 3;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease, transform 0.5s ease;
+        }
+        .recipe-card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hero-image {
+            aspect-ratio: 21 / 9;
+            background-color: #f3f4f6;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ingredient-item input:checked + span.ingredient-name {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        .step-container.has-active-step .method-step:not(.active) {
+            opacity: 0.3;
+        }
+        .method-step {
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+        .method-step.active .step-num {
+            color: #000;
+        }
+        .method-step a, .method-step .prose a, .notes-content a {
+            font-weight: 700;
+            color: #4b5563;
+            text-decoration-line: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #d1d5db;
+            text-underline-offset: 4px;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+            border-radius: 0.125rem;
+        }
+        .method-step a:hover, .method-step .prose a:hover, .notes-content a:hover {
+            color: #000;
+            text-decoration-color: #000;
+            background-color: #f3f4f6;
+        }
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
+
+    
+<nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-50 transition-opacity">
+            <i class="ph ph-arrow-left text-lg"></i> Index
+        </a>
+        
+        
+        <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black transition-colors">
+            <i class="ph ph-device-mobile text-lg"></i>
+            <span id="wakeLockStatus">Screen Lock: Off</span>
+        </button>
+    </div>
+</nav>
+
+
+    <div class="flex-grow">
+      
+<main class="max-w-4xl mx-auto px-4 py-10 w-full mb-12" data-base-servings="4">
+    
+    <header class="mb-10">
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">Tofu Satay with noodles</h1>
+        
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
+            <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
+                <i class="ph ph-users text-lg mr-1"></i>
+                <button id="decServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">-</button>
+                <span id="servingCount" class="w-4 text-center">4</span>
+                <button id="incServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">+</button>
+            </div>
+            
+            
+            <div class="flex items-center gap-4 text-sm font-bold">
+                <div class="flex items-center gap-1.5">
+                    <i class="ph ph-knife text-lg text-gray-400"></i>
+                    <span>25m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Active</span></span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i class="ph ph-clock text-lg text-gray-400"></i>
+                    <span>45m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Total</span></span>
+                </div>
+            </div>
+
+            <div class="h-4 w-px bg-gray-300 hidden sm:block"></div>
+            <div class="flex flex-wrap gap-3 text-xs font-bold uppercase tracking-widest text-gray-500">
+                
+                
+                
+                
+                
+                
+                
+                    <span>Indonesian</span>
+                    <span>•</span>
+                
+                    <span>Main</span>
+                    <span>•</span>
+                
+                    <span>Medium</span>
+                    <span>•</span>
+                
+                    <span>Vegan</span>
+                    
+                
+            </div>
+        </div>
+    </header>
+
+    
+    
+    
+    
+    
+        
+        <figure class="hero-image mb-12 border-2 border-black">
+            <img src="/recipes/tofu-satay-with-peanut-noodles/cover_hu_fd8ac6d0939cdc54.webp" alt="Tofu Satay with noodles">
+        </figure>
+    
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        
+        <aside class="md:col-span-4">
+            <h2 class="text-sm font-bold uppercase tracking-widest border-b-2 border-black pb-2 mb-6">Ingredients</h2>
+            
+            <ul class="flex flex-col text-sm font-medium">
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Firm tofu (g)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="500">500</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Light soy sauce (tbsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="3">3</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Rice vinegar (tbsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1">1</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Brown sugar (tbsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="2">2</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Garlic cloves</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="6">6</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Fresh ginger (thumb-sized pieces)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="2">2</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Cucumber</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1">1</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">White vinegar (ml)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="300">300</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Boiling water (ml)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="300">300</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Salt (tsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1">1</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Sugar (tsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1">1</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Neutral oil (tbsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="4">4</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Crunchy peanut butter (g)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="200">200</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Full-fat coconut milk (ml)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="120">120</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Sambal badjak (tbsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1.5">1.5</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Soy sauce (tbsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="2">2</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Ketjap manis (tbsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1">1</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Lime (juiced)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="0.5">0.5</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Long skewers</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="12">12</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Knife-cut noodles (g)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="360">360</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Crispy chili oil (tsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="2">2</span>
+                        </span>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Fried onions (to taste)</span>
+                        </label>
+                        
+                    </li>
+                
+                    
+                    
+                    
+                    
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Fresh cilantro (to taste)</span>
+                        </label>
+                        
+                    </li>
+                
+            </ul>
+            
+            
+            <div class="mt-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    
+                    <li class="flex gap-2 notes-content">
+                        <span class="font-bold text-black">→</span>
+                        <span>Freezing the tofu (Step 1) is optional but highly recommended. It changes the structure and ensures the tofu absorbs the marinade much better. You can skip directly to step 2 if you are short on time.</span>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+        </aside>
+
+        <section class="md:col-span-8">
+            <div class="flex justify-between items-baseline border-b-2 border-black pb-2 mb-6">
+                <h2 class="text-sm font-bold uppercase tracking-widest">Method</h2>
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tap step to focus</span>
+            </div>
+            
+            <div class="space-y-8 text-base text-gray-900 leading-relaxed step-container" id="methodContainer">
+                <div id="methodContentRaw" class="hidden"><p>If you choose to freeze the tofu: place the block of tofu (in its packaging) in the freezer the day before you want to make this. Take it out on the day you plan to cook and let it thaw at room temperature.</p>
+<p>Cut the tofu into bite-sized cubes. Finely grate half of the garlic and finely chop half of your ginger.</p>
+<p>Place the tofu cubes in a deep, sealable plastic container. Add the light soy sauce, rice vinegar, 1 (half of total) tbsp of brown sugar, the grated garlic, and the chopped ginger.</p>
+<p>Put the lid tightly on the container and shake well. Let this marinate for at least 15 minutes.</p>
+<p>Make the quick pickled cucumber by slicing the cucumber very thinly. Place the slices in a bowl and pour over the white vinegar and boiling water. Add the salt and sugar and stir briefly. Push down so all the cucumber is submerged and let it sit.</p>
+<p>Soak the wooden skewers in a bowl of water (so they don&rsquo;t burn in the oven).</p>
+<p>Preheat the oven to 180C (conventional oven). Thread the marinated tofu cubes onto the skewers (about 4-5 cubes per skewer) and lay them on a baking tray lined with parchment paper.</p>
+<p>Drizzle the tofu skewers with 2 tbsp of neutral oil. Roast in the oven for 20-25 minutes at 180C (or 14 minutes in an airfryer).</p>
+<p>Meanwhile, make the satay sauce. Finely chop the remaining cloves of garlic and the other half of the fresh ginger.</p>
+<p>Heat 1 tbsp of neutral oil in a small saucepan. Sauté the garlic and ginger for a minute, then add the peanut butter, coconut milk, sambal badjak, soy sauce, ketjap manis, 1 (half of total) tbsp of brown sugar, and lime juice. Turn the heat to low and let it bubble for a few minutes while stirring well. <em>Add a bit more coconut milk if you prefer a thinner sauce.</em></p>
+<p>Cook the noodles according to the package instructions and drain them, but <strong>save a small splash of the cooking water</strong>.</p>
+<p>Add 3 tbsp of your homemade satay sauce and 2 tsp of crispy chili oil to the drained noodles. Stir this briefly together with the saved noodle cooking water. <em>Season the noodles with some extra soy sauce if desired.</em></p>
+<p>Serve the noodles topped with the tofu satay skewers, the pickled cucumbers, extra satay sauce, and generously garnish with fried onions and fresh cilantro.</p>
+</div>
+                
+            </div>
+        </section>
+        
+    </div>
+</main>
+
+    </div>
+
+    <footer class="border-t-2 border-black mt-auto">
+        <div class="max-w-6xl mx-auto px-4 py-8 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
+            <div class="flex gap-6 items-center flex-wrap">
+                <span class="flex items-center gap-2 text-black group cursor-default">
+                    <i class="ph ph-cooking-pot text-lg group-hover:-rotate-12 transition-transform duration-300"></i>
+                    tjappen. digital pantry
+                </span>
+                <span class="text-gray-300 hidden sm:inline">|</span>
+                <a href="/about" class="hover:text-black transition-colors">About</a>
+            </div>
+            <span class="flex items-center gap-1.5 cursor-default hover:text-black transition-colors duration-300">
+                Cooked up by Frits
+                <i class="ph ph-fire text-lg"></i>
+            </span>
+        </div>
+    </footer>
+
+    
+  
+  
+    <script src="/js/recipe.js"></script>
+  
+
+</body>
+</html>

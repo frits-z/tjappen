@@ -110,6 +110,18 @@
   
     ,
     {
+      "title": "Tofu Satay with noodles",
+      "url": "/recipes/tofu-satay-with-peanut-noodles/",
+      "time_total": 45,
+      "ingredients": ["500 | Firm tofu (g)","3 | Light soy sauce (tbsp)","1 | Rice vinegar (tbsp)","2 | Brown sugar (tbsp)","6 | Garlic cloves","2 | Fresh ginger (thumb-sized pieces)","1 | Cucumber","300 | White vinegar (ml)","300 | Boiling water (ml)","1 | Salt (tsp)","1 | Sugar (tsp)","4 | Neutral oil (tbsp)","200 | Crunchy peanut butter (g)","120 | Full-fat coconut milk (ml)","1.5 | Sambal badjak (tbsp)","2 | Soy sauce (tbsp)","1 | Ketjap manis (tbsp)","0.5 | Lime (juiced)","12 | Long skewers","360 | Knife-cut noodles (g)","2 | Crispy chili oil (tsp)","Fried onions (to taste)","Fresh cilantro (to taste)"],
+      "cuisine": "indonesian",
+      "course": "main",
+      "effort": "medium",
+      "diet": "vegan"
+    }
+  
+    ,
+    {
       "title": "Vegan Massaman Curry",
       "url": "/recipes/massaman-curry/",
       "time_total": 45,
