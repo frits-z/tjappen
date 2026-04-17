@@ -87,6 +87,17 @@
             text-decoration: line-through;
             color: #9ca3af;
         }
+        ul.has-active-step .ingredient-item:not(.active-ingredient) {
+            opacity: 0.2;
+        }
+        .ingredient-item {
+            transition: opacity 0.3s ease;
+        }
+        .ingredient-item.active-ingredient .ingredient-name,
+        .ingredient-item.active-ingredient .ingredient-qty {
+            color: #000;
+            font-weight: 900;
+        }
         .step-container.has-active-step .method-step:not(.active) {
             opacity: 0.3;
         }
