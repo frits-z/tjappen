@@ -17,7 +17,7 @@
         {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
         {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
         {{ if $image }}
-            {{ $scaled := $image.Resize "1200x630 webp q80 crop" }}
+            {{ $scaled := $image.Fill "1200x630 webp q80 Center" }}
             <meta property="og:image" content="{{ $scaled.Permalink }}">
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:image" content="{{ $scaled.Permalink }}">

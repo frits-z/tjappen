@@ -1,6 +1,6 @@
 baseURL = 'https://tjappen.com/'
 locale = 'en-us'
-title = 'tjappen. Recipe Directory'
+title = 'tjappen.'
 
 [taxonomies]
   cuisine = "cuisines"
