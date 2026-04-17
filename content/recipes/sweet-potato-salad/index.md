@@ -16,12 +16,12 @@ ingredients:
   - "100 | Feta (g)"
   - "85 | Lamb's lettuce (g)"
   - "Olive oil"
-  - "2 | Handfuls of pecan nuts"
+  - "2 | Handfuls of walnuts"
 notes:
   - "By Rune"
 ---
 
-Preheat the oven to 200C.
+Preheat the oven to 200C (conventional oven).
 
 Dice sweet potato and carrot into half-circles (approx. 0.5cm thick) and place on a baking tray.
 
@@ -37,5 +37,5 @@ Whisk lemon juice with 2 tablespoons of olive oil.
 
 Add dressing to the salad and mix thoroughly.
 
-Garnish with pecan nuts.
+Garnish with walnuts.
 

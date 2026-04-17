@@ -2,14 +2,14 @@
 title: "Korean BBQ chicken wraps"
 time_active: 25
 time_total: 85
-servings: 12
+servings: 14
 cuisine: ["Korean"]
 course: ["Main", "Lunch"]
 diet: ["Meat"]
 effort: ["Easy"]
 ingredients:
   - "2 | Chicken thighs (fat trimmed) (kg)"
-  - "12 | Tortillas (medium size)"
+  - "14 | Tortillas (large)"
   - "5.5 | Mini cucumbers"
   - "3 | Red onions"
   - "1 | Big carrot"
@@ -39,7 +39,7 @@ notes:
 
 Mix spices, Gochujang, honey, and soy sauce. Massage the marinade into the chicken. Use two thirds of the garlic powder, sesame seeds and honey.
 
-Bake the chicken at 200C for 25-30 minutes.
+Bake the chicken at 200C (conventional oven) for 25-30 minutes.
 
 For the salad: thinly slice the cucumbers and onions, then mix with grated carrot, rice vinegar, sriracha, and remaining sesame seeds.
 
