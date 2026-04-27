@@ -14,7 +14,22 @@
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:site_name" content="tjappen">
     {{ if .IsPage }}
-        <meta property="og:description" content="{{ if .Params.time_total }}{{ .Params.time_total }} min recipe. {{ end }}{{ .Summary | plainify | truncate 150 }}">
+        {{ $cuisine := "" }}{{ if .Params.cuisine }}{{ $cuisine = delimit .Params.cuisine ", " }}{{ end }}
+        {{ $diet := "" }}{{ if .Params.diet }}{{ $diet = delimit .Params.diet ", " | lower }}{{ end }}
+        {{ $category := "" }}{{ if .Params.category }}{{ $category = delimit .Params.category ", " | lower }}{{ end }}
+        {{ $occasion := "" }}{{ if .Params.occasion }}{{ $occasion = delimit .Params.occasion ", " }}{{ end }}
+        {{ $time := "" }}{{ if .Params.time_total }}{{ $time = printf "%v min recipe" .Params.time_total }}{{ end }}
+        
+        {{ $part1 := slice }}
+        {{ if $cuisine }}{{ $part1 = $part1 | append $cuisine }}{{ end }}
+        {{ if $diet }}{{ $part1 = $part1 | append $diet }}{{ end }}
+        {{ if $category }}{{ $part1 = $part1 | append $category }}{{ end }}
+        
+        {{ $part2 := slice }}
+        {{ if $occasion }}{{ $part2 = $part2 | append $occasion }}{{ end }}
+        {{ if $time }}{{ $part2 = $part2 | append $time }}{{ end }}
+        
+        <meta property="og:description" content="{{ delimit $part1 " " }}{{ if and $part1 $part2 }} • {{ end }}{{ delimit $part2 " " }}">
         {{ $image := .Resources.GetMatch "*hero*" }}
         {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
         {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}

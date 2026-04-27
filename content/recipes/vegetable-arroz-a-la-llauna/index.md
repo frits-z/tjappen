@@ -5,7 +5,7 @@ time_total: 35
 servings: 2
 cuisine: ["Catalan"]
 category: ["Main"]
-diet: ["Vegan"]
+diet: ["Plant-based"]
 occasion: ["Weeknight"]
 ingredients:
   - "3 | Olive oil (tbsp)"
