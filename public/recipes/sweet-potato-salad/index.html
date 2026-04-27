@@ -140,6 +140,38 @@ Add …">
             -webkit-appearance: none; 
             margin: 0; 
         }
+
+         
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1rem;
+            height: 1rem;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 0.25rem;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #fe5a11;
+            border-color: #fe5a11;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 0.25rem;
+            height: 0.5rem;
+            border: solid #fff3e8;
+            border-width: 0 1.5px 1.5px 0;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
@@ -177,13 +209,13 @@ Add …">
             
             
             <div class="flex items-center gap-4 text-sm font-bold">
-                <div class="flex items-center gap-1.5">
-                    <i class="ph ph-knife text-lg text-gray-400"></i>
-                    <span>20m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Active</span></span>
+                <div class="flex items-center gap-1.5 text-gray-500">
+                    <i class="ph ph-knife text-lg"></i>
+                    <span>20m <span class="text-xs uppercase tracking-widest ml-0.5">Active</span></span>
                 </div>
-                <div class="flex items-center gap-1.5">
-                    <i class="ph ph-clock text-lg text-gray-400"></i>
-                    <span>40m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Total</span></span>
+                <div class="flex items-center gap-1.5 text-gray-500">
+                    <i class="ph ph-clock text-lg"></i>
+                    <span>40m <span class="text-xs uppercase tracking-widest ml-0.5">Total</span></span>
                 </div>
             </div>
 
@@ -243,7 +275,7 @@ Add …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Sweet potatoes (g)</span>
                         </label>
                         
@@ -264,7 +296,7 @@ Add …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Large carrot</span>
                         </label>
                         
@@ -285,7 +317,7 @@ Add …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Asparagus tips (g)</span>
                         </label>
                         
@@ -306,7 +338,7 @@ Add …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Red onion</span>
                         </label>
                         
@@ -327,7 +359,7 @@ Add …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Lemon</span>
                         </label>
                         
@@ -348,7 +380,7 @@ Add …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Feta (g)</span>
                         </label>
                         
@@ -369,7 +401,7 @@ Add …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Lamb&#39;s lettuce (g)</span>
                         </label>
                         
@@ -389,7 +421,7 @@ Add …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Olive oil</span>
                         </label>
                         
@@ -406,7 +438,7 @@ Add …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Handfuls of walnuts</span>
                         </label>
                         

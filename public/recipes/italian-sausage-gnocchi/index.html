@@ -140,6 +140,38 @@ Heat a frying pan over medium-high heat with olive oil. …">
             -webkit-appearance: none; 
             margin: 0; 
         }
+
+         
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1rem;
+            height: 1rem;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 0.25rem;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #fe5a11;
+            border-color: #fe5a11;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 0.25rem;
+            height: 0.5rem;
+            border: solid #fff3e8;
+            border-width: 0 1.5px 1.5px 0;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
@@ -243,7 +275,7 @@ Heat a frying pan over medium-high heat with olive oil. …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Gnocchi (g)</span>
                         </label>
                         
@@ -264,7 +296,7 @@ Heat a frying pan over medium-high heat with olive oil. …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Italian sausages</span>
                         </label>
                         
@@ -285,7 +317,7 @@ Heat a frying pan over medium-high heat with olive oil. …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Frozen peas (g)</span>
                         </label>
                         
@@ -306,7 +338,7 @@ Heat a frying pan over medium-high heat with olive oil. …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Parmesan cheese (g)</span>
                         </label>
                         
@@ -327,7 +359,7 @@ Heat a frying pan over medium-high heat with olive oil. …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Garlic cloves (sliced)</span>
                         </label>
                         
@@ -348,7 +380,7 @@ Heat a frying pan over medium-high heat with olive oil. …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Chili flakes (tsp)</span>
                         </label>
                         
@@ -369,7 +401,7 @@ Heat a frying pan over medium-high heat with olive oil. …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Black pepper</span>
                         </label>
                         
@@ -389,7 +421,7 @@ Heat a frying pan over medium-high heat with olive oil. …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Olive oil</span>
                         </label>
                         

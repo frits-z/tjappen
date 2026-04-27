@@ -139,6 +139,38 @@ Bake …">
             -webkit-appearance: none; 
             margin: 0; 
         }
+
+         
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1rem;
+            height: 1rem;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 0.25rem;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #fe5a11;
+            border-color: #fe5a11;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 0.25rem;
+            height: 0.5rem;
+            border: solid #fff3e8;
+            border-width: 0 1.5px 1.5px 0;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
@@ -242,7 +274,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Chicken thighs (fat trimmed) (kg)</span>
                         </label>
                         
@@ -263,7 +295,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Tortillas (large)</span>
                         </label>
                         
@@ -284,7 +316,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Mini cucumbers</span>
                         </label>
                         
@@ -305,7 +337,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Red onions</span>
                         </label>
                         
@@ -326,7 +358,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Big carrot</span>
                         </label>
                         
@@ -347,7 +379,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Low fat yogurt (g)</span>
                         </label>
                         
@@ -368,7 +400,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Light mayonnaise (g)</span>
                         </label>
                         
@@ -389,7 +421,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Milk (tbsp, optional)</span>
                         </label>
                         
@@ -410,7 +442,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Rice vinegar (ml)</span>
                         </label>
                         
@@ -431,7 +463,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Sriracha (ml)</span>
                         </label>
                         
@@ -452,7 +484,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Gochujang paste (g)</span>
                         </label>
                         
@@ -473,7 +505,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Honey (g)</span>
                         </label>
                         
@@ -494,7 +526,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Soy sauce (ml)</span>
                         </label>
                         
@@ -515,7 +547,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Sesame seeds (g)</span>
                         </label>
                         
@@ -536,7 +568,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Brown sugar (tbsp)</span>
                         </label>
                         
@@ -557,7 +589,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Garlic powder (tsp)</span>
                         </label>
                         
@@ -578,7 +610,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Onion powder (tsp)</span>
                         </label>
                         
@@ -599,7 +631,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Salt (tsp)</span>
                         </label>
                         
@@ -620,7 +652,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Black pepper (tsp)</span>
                         </label>
                         
@@ -641,7 +673,7 @@ Bake …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Water (ml)</span>
                         </label>
                         
