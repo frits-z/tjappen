@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterToggleBtn = document.getElementById('filterToggleBtn');
     const filterPanel = document.getElementById('filterPanel');
     const filterToggleText = document.getElementById('filterToggleText');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const noResultsMessage = document.getElementById('noResultsMessage');
 
     function init() {
         renderFilters();
@@ -54,6 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupEventListeners() {
         searchInput.addEventListener('input', (e) => {
             currentSearch = e.target.value.toLowerCase();
+            clearSearchBtn.classList.toggle('hidden', currentSearch.length === 0);
+            renderGrid();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            currentSearch = '';
+            clearSearchBtn.classList.add('hidden');
+            searchInput.focus();
             renderGrid();
         });
 
@@ -97,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (options.length === 0) continue;
             html += `
                 <div>
-                    <h3 class="text-[10px] font-bold text-primary uppercase tracking-widest mb-3">${category}</h3>
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">${category}</h3>
                     <div class="flex flex-wrap gap-2">
                         ${options.map(option => {
                             const isActive = activeFilters[category].includes(option);
@@ -140,14 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const hasActiveFilters = Object.values(activeFilters).some(arr => arr.length > 0);
         clearFiltersBtn.style.display = hasActiveFilters ? 'block' : 'none';
 
-        if (count === 0 && !document.getElementById('noResultsMsg')) {
-            const msg = document.createElement('div');
-            msg.id = 'noResultsMsg';
-            msg.className = "col-span-full py-20 text-center";
-            msg.innerHTML = `<p class="text-sm font-bold uppercase tracking-widest text-gray-400">Null results.</p>`;
-            grid.appendChild(msg);
-        } else if (count > 0 && document.getElementById('noResultsMsg')) {
-            document.getElementById('noResultsMsg').remove();
+        if (count === 0) {
+            noResultsMessage.classList.remove('hidden');
+        } else {
+            noResultsMessage.classList.add('hidden');
         }
     }
 

@@ -106,6 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
             updateYield();
         });
 
+        function smartRound(val) {
+            if (val >= 100) return Math.round(val);
+            if (val >= 10) return parseFloat(val.toFixed(1));
+            return parseFloat(val.toFixed(2));
+        }
+
         function updateYield() {
             if (isNaN(baseServings)) return;
             servingCountEl.textContent = currentServings;
@@ -114,9 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const baseStr = qty.getAttribute('data-base');
                 const base = parseFloat(baseStr);
                 if (!isNaN(base)) {
-                    let newVal = base * ratio;
-                    newVal = Number.isInteger(newVal) ? newVal : newVal.toFixed(1).replace(/\.0$/, '');
-                    
+                    let newVal = smartRound(base * ratio);
                     qty.textContent = baseStr.replace(/^[0-9.]+/, newVal);
                 }
             });

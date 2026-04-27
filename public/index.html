@@ -149,8 +149,11 @@
                         type="text" 
                         id="searchInput" 
                         placeholder="Find something tasty..." 
-                        class="w-full h-10 pl-10 pr-4 bg-gray-100 border-none focus:ring-2 focus:ring-primary focus:outline-none rounded-none text-sm font-medium transition-all placeholder-gray-500 text-black"
+                        class="w-full h-10 pl-10 pr-10 bg-gray-100 border-none focus:ring-2 focus:ring-primary focus:outline-none rounded-none text-sm font-medium transition-all placeholder-gray-500 text-black"
                     >
+                    <button id="clearSearchBtn" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary transition-colors hidden">
+                        <i class="ph ph-x-circle text-lg"></i>
+                    </button>
                 </div>
                 <button id="filterToggleBtn" class="flex items-center justify-center h-10 gap-2 px-4 bg-black text-white text-sm font-medium hover:bg-primary hover:text-white transition-colors">
                     <i class="ph ph-faders text-lg"></i>
@@ -163,8 +166,8 @@
         <div id="filterPanel" class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-6">
             <div class="pb-6 border-t border-gray-200 pt-6">
                 <div class="flex justify-between items-end mb-4">
-                    <h2 class="text-xs font-bold uppercase tracking-widest text-primary">Filters</h2>
-                    <button id="clearFiltersBtn" class="text-xs font-bold text-gray-500 hover:text-black uppercase hidden tracking-wider">Reset</button>
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-black">Filters</h2>
+                    <button id="clearFiltersBtn" class="text-xs font-bold text-black hover:text-primary uppercase hidden tracking-wider">Reset</button>
                 </div>
                 <div id="filterContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                     
@@ -182,6 +185,12 @@
     <div class="mb-8 flex justify-between items-baseline">
         <h2 class="text-xl font-bold tracking-tight">Index</h2>
         <p class="text-sm font-medium text-gray-500" id="resultsCount">0 recipes in the cookbook</p>
+    </div>
+
+    <div id="noResultsMessage" class="hidden py-20 text-center">
+        <i class="ph ph-detective text-5xl text-gray-300 mb-4 block"></i>
+        <h3 class="text-xl font-bold mb-2">No snacks here, try another search!</h3>
+        <p class="text-gray-500">Maybe try broadening your filters or checking your spelling?</p>
     </div>
 
     <div id="recipeGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
@@ -217,13 +226,13 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">French</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">French</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Meat</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Meat</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Advanced</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Advanced</span>
                       
                   </div>
               </div>
@@ -261,15 +270,15 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Italian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Italian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Lunch</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Lunch</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Meat</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Meat</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Easy</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Easy</span>
                       
                   </div>
               </div>
@@ -307,15 +316,15 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Dutch</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Dutch</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Meat</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Meat</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Vegetarian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Vegetarian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Easy</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Easy</span>
                       
                   </div>
               </div>
@@ -353,15 +362,15 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Korean</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Korean</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Lunch</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Lunch</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Meat</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Meat</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Easy</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Easy</span>
                       
                   </div>
               </div>
@@ -399,13 +408,13 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Italian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Italian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Meat</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Meat</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Advanced</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Advanced</span>
                       
                   </div>
               </div>
@@ -443,13 +452,13 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Italian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Italian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Vegetarian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Vegetarian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Medium</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Medium</span>
                       
                   </div>
               </div>
@@ -488,13 +497,13 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Italian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Italian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Fish</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Fish</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Easy</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Easy</span>
                       
                   </div>
               </div>
@@ -532,13 +541,13 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Italian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Italian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Meat</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Meat</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Advanced</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Advanced</span>
                       
                   </div>
               </div>
@@ -576,15 +585,15 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">European</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">European</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Salad</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Salad</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Vegetarian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Vegetarian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Easy</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Easy</span>
                       
                   </div>
               </div>
@@ -622,13 +631,13 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Indonesian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Indonesian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Vegan</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Vegan</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Medium</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Medium</span>
                       
                   </div>
               </div>
@@ -666,15 +675,15 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Thai</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Thai</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Vegetarian</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Vegetarian</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Vegan</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Vegan</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Medium</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Medium</span>
                       
                   </div>
               </div>
@@ -712,13 +721,13 @@
                       
                       
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Spanish</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Spanish</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Main</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Main</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Vegan</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Vegan</span>
                       
-                          <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Medium</span>
+                          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Medium</span>
                       
                   </div>
               </div>
