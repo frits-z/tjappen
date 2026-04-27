@@ -34,6 +34,10 @@
   </url><url>
     <loc>http://localhost:1313/about/</loc>
   </url><url>
+    <loc>http://localhost:1313/recipes/tofu-satay-with-peanut-noodles/</loc>
+  </url><url>
     <loc>http://localhost:1313/recipes/massaman-curry/</loc>
+  </url><url>
+    <loc>http://localhost:1313/recipes/vegetable-arroz-a-la-llauna/</loc>
   </url>
 </urlset>

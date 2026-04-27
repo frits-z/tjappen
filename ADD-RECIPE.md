@@ -31,7 +31,9 @@ course: ["Main"]
 diet: ["Vegetarian"]
 effort: ["Medium"]
 ingredients:
+  - "# Pasta"
   - "400 | Pasta (grams)"
+  - "# Sauce"
   - "1 | Jar of tomato sauce"
   - "0.5 | Splash of olive oil (cup)"
   - "Salt and pepper to taste"
@@ -51,5 +53,6 @@ Keep writing paragraphs separated by empty lines. Each paragraph becomes a new n
   - *Correct:* `"1.5 | Potatoes (kg)"*
   - *Correct (No scaling needed):* `"Salt and pepper"` 
   - *Incorrect:* `"1.5 kg Potatoes"` (The math won't work on this!)
+  - *Subcategories:* You can group ingredients by prefixing a line with `# ` (e.g., `"# Sauce"` or `"# Main"`).
 - **Lists:** Notice that things inside `cuisine`, `course`, `diet`, `effort`, `ingredients`, and `notes` are wrapped in square brackets `[ ]` or list dashes `-`. Keep those intact!
 - **Text:** The text at the very bottom (underneath the `---` lines) is your method. Just write it like a normal story, separating each step by pressing `Enter` twice to leave a blank line.

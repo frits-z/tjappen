@@ -1,7 +1,7 @@
 {{ $image := .Page.Resources.GetMatch .Destination }}
 {{ if $image }}
   {{ $processed := $image.Resize "1200x webp q75" }}
-  <img src="{{ $processed.RelPermalink }}" alt="{{ .Text }}" class="inline-image border-4 border-black mx-auto w-full" {{ with .Title }}title="{{ . }}"{{ end }} />
+  <img src="{{ $processed.RelPermalink }}" alt="{{ .Text }}" class="inline-image mx-auto w-full" {{ with .Title }}title="{{ . }}"{{ end }} />
 {{ else }}
-  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" class="inline-image border-4 border-black mx-auto w-full" {{ with .Title }}title="{{ . }}"{{ end }} />
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" class="inline-image mx-auto w-full" {{ with .Title }}title="{{ . }}"{{ end }} />
 {{ end }}

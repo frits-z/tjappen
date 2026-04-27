@@ -34,7 +34,20 @@ In …">
           extend: {
             fontFamily: { sans: ['Inter', 'sans-serif'] },
             colors: {
-              black: '#000', white: '#fff',
+              black: '#1a1a1a', 
+              white: '#fff3e8',
+              primary: '#fe5a11',
+              gray: {
+                100: '#faebd8',
+                200: '#edd8c3',
+                300: '#d8bda2',
+                400: '#bd9d7f',
+                500: '#9e7f62',
+                600: '#7d6148',
+                700: '#5c4632',
+                800: '#403022',
+                900: '#291e14',
+              }
             }
           }
         }
@@ -43,12 +56,12 @@ In …">
     <style type="text/tailwindcss">
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #000000;
+            background-color: #fff3e8;
+            color: #1a1a1a;
         }
         .image-container {
             aspect-ratio: 4 / 3;
-            background-color: #f3f4f6;
+            background-color: #faebd8;
             overflow: hidden;
         }
         .image-container img {
@@ -71,7 +84,7 @@ In …">
         }
         .hero-image {
             aspect-ratio: 21 / 9;
-            background-color: #f3f4f6;
+            background-color: #faebd8;
             overflow: hidden;
         }
         .hero-image img {
@@ -81,7 +94,7 @@ In …">
         }
         .ingredient-item input:checked + span.ingredient-name {
             text-decoration: line-through;
-            color: #9ca3af;
+            color: #bd9d7f;
         }
         ul.has-active-step .ingredient-item:not(.active-ingredient) {
             opacity: 0.2;
@@ -91,8 +104,8 @@ In …">
         }
         .ingredient-item.active-ingredient .ingredient-name,
         .ingredient-item.active-ingredient .ingredient-qty {
-            color: #000;
-            font-weight: 900;
+            color: #1a1a1a;
+            font-weight: 700;
         }
         .step-container.has-active-step .method-step:not(.active) {
             opacity: 0.3;
@@ -102,14 +115,14 @@ In …">
             cursor: pointer;
         }
         .method-step.active .step-num {
-            color: #000;
+            color: #fe5a11;
         }
         .method-step a, .method-step .prose a, .notes-content a {
             font-weight: 700;
-            color: #4b5563;
+            color: #5c4632;
             text-decoration-line: underline;
             text-decoration-thickness: 2px;
-            text-decoration-color: #d1d5db;
+            text-decoration-color: #fe5a11;
             text-underline-offset: 4px;
             transition-property: all;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -117,9 +130,9 @@ In …">
             border-radius: 0.125rem;
         }
         .method-step a:hover, .method-step .prose a:hover, .notes-content a:hover {
-            color: #000;
-            text-decoration-color: #000;
-            background-color: #f3f4f6;
+            color: #1a1a1a;
+            text-decoration-color: #1a1a1a;
+            background-color: #fe5a1133;
         }
         input[type="number"]::-webkit-inner-spin-button, 
         input[type="number"]::-webkit-outer-spin-button { 
@@ -133,12 +146,12 @@ In …">
     
 <nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-50 transition-opacity">
+        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
             <i class="ph ph-arrow-left text-lg"></i> Index
         </a>
         
         
-        <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black transition-colors">
+        <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors">
             <i class="ph ph-device-mobile text-lg"></i>
             <span id="wakeLockStatus">Screen Lock: Off</span>
         </button>
@@ -156,9 +169,9 @@ In …">
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
             <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
                 <i class="ph ph-users text-lg mr-1"></i>
-                <button id="decServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">-</button>
+                <button id="decServings" class="hover:text-primary transition-colors px-1 cursor-pointer">-</button>
                 <span id="servingCount" class="w-4 text-center">2</span>
-                <button id="incServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">+</button>
+                <button id="incServings" class="hover:text-primary transition-colors px-1 cursor-pointer">+</button>
             </div>
             
             
@@ -188,10 +201,10 @@ In …">
                     <span>Main</span>
                     <span>•</span>
                 
-                    <span>Advanced</span>
+                    <span>Meat</span>
                     <span>•</span>
                 
-                    <span>Meat</span>
+                    <span>Advanced</span>
                     
                 
             </div>
@@ -204,7 +217,7 @@ In …">
     
     
         
-        <figure class="hero-image mb-12 border-2 border-black">
+        <figure class="hero-image mb-12">
             <img src="/recipes/modern-pasta-carbonara/cover_hu_7c972793c17a57de.webp" alt="Modern Pasta Carbonara">
         </figure>
     
@@ -220,12 +233,13 @@ In …">
                     
                     
                     
+                    
                         
                         
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Pasta (g)</span>
                         </label>
                         
@@ -234,7 +248,9 @@ In …">
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -244,7 +260,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Guanciale (g)</span>
                         </label>
                         
@@ -253,7 +269,9 @@ In …">
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -263,7 +281,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Green asparagus</span>
                         </label>
                         
@@ -272,7 +290,9 @@ In …">
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -282,7 +302,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Eggs (1 whole &#43; 3 yolks)</span>
                         </label>
                         
@@ -291,7 +311,9 @@ In …">
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -301,7 +323,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Parmesan cheese (g)</span>
                         </label>
                         
@@ -310,7 +332,9 @@ In …">
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -320,7 +344,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Freshly ground Black pepper</span>
                         </label>
                         
@@ -329,6 +353,7 @@ In …">
                         </span>
                         
                     </li>
+                    
                 
             </ul>
             
@@ -337,23 +362,23 @@ In …">
                 <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
                 <ul class="space-y-3 text-sm text-gray-600">
                     
-                    <li class="flex gap-2 notes-content">
-                        <span class="font-bold text-black">→</span>
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
                         <span>By Rune</span>
                     </li>
                     
-                    <li class="flex gap-2 notes-content">
-                        <span class="font-bold text-black">→</span>
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
                         <span>This one takes practice to get right, especially the sauce consistency.</span>
                     </li>
                     
-                    <li class="flex gap-2 notes-content">
-                        <span class="font-bold text-black">→</span>
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
                         <span><strong>Fun fact 1</strong>: The recipe is rumored to have 2 origins, but surrounding the “Coal” theme. (Coal = Carbone in Italian). First: The pasta was considered a nice, hearty meal for the coal-mine workers back in the day. Second: The pasta has copious amounts of black pepper in the recipe, giving it a black tint, the tint of coal</span>
                     </li>
                     
-                    <li class="flex gap-2 notes-content">
-                        <span class="font-bold text-black">→</span>
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
                         <span><strong>Fun fact 2</strong>: The recipe first came to prominence when the US liberated Italy during World War 2. The soldiers brought Bacon &amp; egg yolk powder for the population as rations. Adding these ingredients to a more traditional “Cacio e pepe” and you get a Carbonara. The Carbonara from this recipe is also a modern version of the older bacon &amp; egg yolk version. This modern version is however seen as the standard nowadays.</span>
                     </li>
                     
@@ -391,16 +416,14 @@ In …">
     <footer class="border-t-2 border-black mt-auto">
         <div class="max-w-6xl mx-auto px-4 py-8 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
             <div class="flex gap-6 items-center flex-wrap">
-                <span class="flex items-center gap-2 text-black group cursor-default">
+                <a href="/about" class="flex items-center gap-1.5 group hover:text-primary transition-colors duration-300">
                     <i class="ph ph-cooking-pot text-lg group-hover:-rotate-12 transition-transform duration-300"></i>
                     tjappen. digital pantry
-                </span>
-                <span class="text-gray-300 hidden sm:inline">|</span>
-                <a href="/about" class="hover:text-black transition-colors">About</a>
+                </a>
             </div>
-            <span class="flex items-center gap-1.5 cursor-default hover:text-black transition-colors duration-300">
+            <span class="flex items-center gap-1.5 cursor-default hover:text-primary transition-colors duration-300 text-right">
                 Cooked up by Frits
-                <i class="ph ph-fire text-lg"></i>
+                <i class="ph ph-fire text-lg text-primary"></i>
             </span>
         </div>
     </footer>

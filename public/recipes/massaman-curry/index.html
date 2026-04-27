@@ -33,7 +33,20 @@
           extend: {
             fontFamily: { sans: ['Inter', 'sans-serif'] },
             colors: {
-              black: '#000', white: '#fff',
+              black: '#1a1a1a', 
+              white: '#fff3e8',
+              primary: '#fe5a11',
+              gray: {
+                100: '#faebd8',
+                200: '#edd8c3',
+                300: '#d8bda2',
+                400: '#bd9d7f',
+                500: '#9e7f62',
+                600: '#7d6148',
+                700: '#5c4632',
+                800: '#403022',
+                900: '#291e14',
+              }
             }
           }
         }
@@ -42,12 +55,12 @@
     <style type="text/tailwindcss">
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #000000;
+            background-color: #fff3e8;
+            color: #1a1a1a;
         }
         .image-container {
             aspect-ratio: 4 / 3;
-            background-color: #f3f4f6;
+            background-color: #faebd8;
             overflow: hidden;
         }
         .image-container img {
@@ -70,7 +83,7 @@
         }
         .hero-image {
             aspect-ratio: 21 / 9;
-            background-color: #f3f4f6;
+            background-color: #faebd8;
             overflow: hidden;
         }
         .hero-image img {
@@ -80,7 +93,7 @@
         }
         .ingredient-item input:checked + span.ingredient-name {
             text-decoration: line-through;
-            color: #9ca3af;
+            color: #bd9d7f;
         }
         ul.has-active-step .ingredient-item:not(.active-ingredient) {
             opacity: 0.2;
@@ -90,8 +103,8 @@
         }
         .ingredient-item.active-ingredient .ingredient-name,
         .ingredient-item.active-ingredient .ingredient-qty {
-            color: #000;
-            font-weight: 900;
+            color: #1a1a1a;
+            font-weight: 700;
         }
         .step-container.has-active-step .method-step:not(.active) {
             opacity: 0.3;
@@ -101,14 +114,14 @@
             cursor: pointer;
         }
         .method-step.active .step-num {
-            color: #000;
+            color: #fe5a11;
         }
         .method-step a, .method-step .prose a, .notes-content a {
             font-weight: 700;
-            color: #4b5563;
+            color: #5c4632;
             text-decoration-line: underline;
             text-decoration-thickness: 2px;
-            text-decoration-color: #d1d5db;
+            text-decoration-color: #fe5a11;
             text-underline-offset: 4px;
             transition-property: all;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -116,9 +129,9 @@
             border-radius: 0.125rem;
         }
         .method-step a:hover, .method-step .prose a:hover, .notes-content a:hover {
-            color: #000;
-            text-decoration-color: #000;
-            background-color: #f3f4f6;
+            color: #1a1a1a;
+            text-decoration-color: #1a1a1a;
+            background-color: #fe5a1133;
         }
         input[type="number"]::-webkit-inner-spin-button, 
         input[type="number"]::-webkit-outer-spin-button { 
@@ -132,12 +145,12 @@
     
 <nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:opacity-50 transition-opacity">
+        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
             <i class="ph ph-arrow-left text-lg"></i> Index
         </a>
         
         
-        <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black transition-colors">
+        <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors">
             <i class="ph ph-device-mobile text-lg"></i>
             <span id="wakeLockStatus">Screen Lock: Off</span>
         </button>
@@ -155,9 +168,9 @@
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
             <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
                 <i class="ph ph-users text-lg mr-1"></i>
-                <button id="decServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">-</button>
+                <button id="decServings" class="hover:text-primary transition-colors px-1 cursor-pointer">-</button>
                 <span id="servingCount" class="w-4 text-center">4</span>
-                <button id="incServings" class="hover:text-gray-500 transition-colors px-1 cursor-pointer">+</button>
+                <button id="incServings" class="hover:text-primary transition-colors px-1 cursor-pointer">+</button>
             </div>
             
             
@@ -187,13 +200,13 @@
                     <span>Main</span>
                     <span>•</span>
                 
-                    <span>Medium</span>
-                    <span>•</span>
-                
                     <span>Vegetarian</span>
                     <span>•</span>
                 
                     <span>Vegan</span>
+                    <span>•</span>
+                
+                    <span>Medium</span>
                     
                 
             </div>
@@ -206,7 +219,7 @@
     
     
         
-        <figure class="hero-image mb-12 border-2 border-black">
+        <figure class="hero-image mb-12">
             <img src="/recipes/massaman-curry/hero_hu_bbd698447d26cf3b.webp" alt="Vegan Massaman Curry">
         </figure>
     
@@ -222,12 +235,13 @@
                     
                     
                     
+                    
                         
                         
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Red curry paste (tbsp)</span>
                         </label>
                         
@@ -236,7 +250,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -246,7 +262,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Cumin seed (tsp)</span>
                         </label>
                         
@@ -255,7 +271,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -265,7 +283,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Coriander seed (tsp)</span>
                         </label>
                         
@@ -274,7 +292,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -284,7 +304,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Ground cinnamon (tsp)</span>
                         </label>
                         
@@ -293,7 +313,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -302,12 +324,14 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Dash of nutmeg</span>
                         </label>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -317,7 +341,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Maple syrup (tbsp)</span>
                         </label>
                         
@@ -326,7 +350,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -336,7 +362,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Soy sauce (tbsp)</span>
                         </label>
                         
@@ -345,7 +371,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -355,7 +383,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Peanut butter or almond butter (tbsp)</span>
                         </label>
                         
@@ -364,7 +392,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -374,7 +404,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Full-fat coconut milk (ml)</span>
                         </label>
                         
@@ -383,7 +413,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -393,7 +425,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Lime juice (tbsp)</span>
                         </label>
                         
@@ -402,7 +434,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -412,7 +446,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Tamarind paste (tbsp)</span>
                         </label>
                         
@@ -421,7 +455,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -431,7 +467,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Baby potatoes (grams)</span>
                         </label>
                         
@@ -440,7 +476,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -450,7 +488,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Large carrots, chopped</span>
                         </label>
                         
@@ -459,7 +497,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -469,7 +509,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Shallots, thinly sliced</span>
                         </label>
                         
@@ -478,7 +518,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -488,7 +530,7 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Peanuts (grams)</span>
                         </label>
                         
@@ -497,7 +539,9 @@
                         </span>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -506,12 +550,14 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Peanuts and fresh coriander (for garnish)</span>
                         </label>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -520,12 +566,14 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Pandan or jasmine rice (to serve)</span>
                         </label>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -534,12 +582,14 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Green beans (to serve)</span>
                         </label>
                         
                     </li>
+                    
                 
+                    
                     
                     
                     
@@ -548,11 +598,12 @@
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-black cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Crispy tofu or vegan protein bites (to serve)</span>
                         </label>
                         
                     </li>
+                    
                 
             </ul>
             
@@ -561,8 +612,8 @@
                 <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
                 <ul class="space-y-3 text-sm text-gray-600">
                     
-                    <li class="flex gap-2 notes-content">
-                        <span class="font-bold text-black">→</span>
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
                         <span>If you want to save time on the spices, you can simply use a pre-made Massaman paste instead of the red curry paste + spices.</span>
                     </li>
                     
@@ -597,16 +648,14 @@
     <footer class="border-t-2 border-black mt-auto">
         <div class="max-w-6xl mx-auto px-4 py-8 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
             <div class="flex gap-6 items-center flex-wrap">
-                <span class="flex items-center gap-2 text-black group cursor-default">
+                <a href="/about" class="flex items-center gap-1.5 group hover:text-primary transition-colors duration-300">
                     <i class="ph ph-cooking-pot text-lg group-hover:-rotate-12 transition-transform duration-300"></i>
                     tjappen. digital pantry
-                </span>
-                <span class="text-gray-300 hidden sm:inline">|</span>
-                <a href="/about" class="hover:text-black transition-colors">About</a>
+                </a>
             </div>
-            <span class="flex items-center gap-1.5 cursor-default hover:text-black transition-colors duration-300">
+            <span class="flex items-center gap-1.5 cursor-default hover:text-primary transition-colors duration-300 text-right">
                 Cooked up by Frits
-                <i class="ph ph-fire text-lg"></i>
+                <i class="ph ph-fire text-lg text-primary"></i>
             </span>
         </div>
     </footer>

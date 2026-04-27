@@ -8,11 +8,13 @@ course: ["Main"]
 diet: ["Meat", "Vegetarian"]
 effort: ["Easy"]
 ingredients:
+  - "# Main"
   - "500 | Frozen spinach (g)"
   - "250 | (Vegan) minced meat (g)"
   - "1 | Bag grated mild cheese"
   - "4 | Eggs"
   - "4 | Slices of thawed puff pastry"
+  - "# On the side"
   - "600 | Potato slices (g)"
 notes:
   - "By Jackie"

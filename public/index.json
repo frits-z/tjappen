@@ -29,7 +29,7 @@
       "title": "Jackie's Spinach Casserole",
       "url": "/recipes/jackies-spinach-casserole/",
       "time_total": 40,
-      "ingredients": ["500 | Frozen spinach (g)","250 | (Vegan) minced meat (g)","1 | Bag grated mild cheese","4 | Eggs","4 | Slices of thawed puff pastry","600 | Potato slices (g)"],
+      "ingredients": ["# Main","500 | Frozen spinach (g)","250 | (Vegan) minced meat (g)","1 | Bag grated mild cheese","4 | Eggs","4 | Slices of thawed puff pastry","# On the side","600 | Potato slices (g)"],
       "cuisine": "dutch",
       "course": "main",
       "effort": "easy",
@@ -130,6 +130,18 @@
       "course": "main",
       "effort": "medium",
       "diet": "vegetarian vegan"
+    }
+  
+    ,
+    {
+      "title": "Vegetable Arroz a la Llauna",
+      "url": "/recipes/vegetable-arroz-a-la-llauna/",
+      "time_total": 50,
+      "ingredients": ["180 | Paella rice (grams)","0.25 | Sofregit (cup)"],
+      "cuisine": "spanish",
+      "course": "main",
+      "effort": "medium",
+      "diet": "vegan"
     }
   
 ]

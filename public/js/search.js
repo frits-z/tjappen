@@ -1,13 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     let currentSearch = "";
     let isFilterOpen = false;
-    let activeFilters = { cuisine: [], course: [], effort: [], diet: [] };
+    let activeFilters = { cuisine: [], course: [], diet: [], effort: [] };
 
     const grid = document.getElementById('recipeGrid');
     if (!grid) return;
     
-    // Convert nodelist mapping wrappers
+    // Convert nodelist mapping wrappers and shuffle them
     const recipeWrappers = Array.from(document.querySelectorAll('.article-wrapper'));
+    
+    for (let i = recipeWrappers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [recipeWrappers[i], recipeWrappers[j]] = [recipeWrappers[j], recipeWrappers[i]];
+    }
+    
+    recipeWrappers.forEach(wrapper => grid.appendChild(wrapper));
     const cardsData = recipeWrappers.map(wrapper => {
         const card = wrapper.querySelector('.recipe-card');
         return {
@@ -17,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
             taxonomies: {
                 cuisine: (card.dataset.cuisine || "").split(' ').filter(Boolean).sort(),
                 course: (card.dataset.course || "").split(' ').filter(Boolean).sort(),
-                effort: (card.dataset.effort || "").split(' ').filter(Boolean).sort(),
-                diet: (card.dataset.diet || "").split(' ').filter(Boolean).sort()
+                diet: (card.dataset.diet || "").split(' ').filter(Boolean).sort(),
+                effort: (card.dataset.effort || "").split(' ').filter(Boolean).sort()
             }
         };
     });
@@ -26,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const taxonomyOptions = {
         cuisine: [...new Set(cardsData.flatMap(r => r.taxonomies.cuisine))].sort(),
         course: [...new Set(cardsData.flatMap(r => r.taxonomies.course))].sort(),
-        effort: [...new Set(cardsData.flatMap(r => r.taxonomies.effort))].sort(),
-        diet: [...new Set(cardsData.flatMap(r => r.taxonomies.diet))].sort()
+        diet: [...new Set(cardsData.flatMap(r => r.taxonomies.diet))].sort(),
+        effort: [...new Set(cardsData.flatMap(r => r.taxonomies.effort))].sort()
     };
 
     const filterContainer = document.getElementById('filterContainer');
@@ -51,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         clearFiltersBtn.addEventListener('click', () => {
-            activeFilters = { cuisine: [], course: [], effort: [], diet: [] };
+            activeFilters = { cuisine: [], course: [], diet: [], effort: [] };
             renderFilters();
             renderGrid();
         });
@@ -90,14 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (options.length === 0) continue;
             html += `
                 <div>
-                    <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">${category}</h3>
+                    <h3 class="text-[10px] font-bold text-primary uppercase tracking-widest mb-3">${category}</h3>
                     <div class="flex flex-wrap gap-2">
                         ${options.map(option => {
                             const isActive = activeFilters[category].includes(option);
                             const baseClasses = "px-3 py-1 text-xs font-medium cursor-pointer transition-colors border";
                             const activeClasses = isActive 
-                                ? "bg-black text-white border-black" 
-                                : "bg-white text-black border-gray-300 hover:border-black";
+                                ? "bg-primary text-white border-primary" 
+                                : "bg-white text-black border-gray-300 hover:border-primary hover:text-primary";
                             return `<button class="${baseClasses} ${activeClasses}" onclick="handleFilterClick('${category}', '${option}')">${option}</button>`;
                         }).join('')}
                     </div>

@@ -84,5 +84,12 @@
       <guid>http://localhost:1313/recipes/massaman-curry/</guid>
       <description>&lt;p&gt;Heat 1/2 cup (about 120ml) of the coconut milk in a large pot or wok over medium heat until it begins to bubble and the oil starts to slightly separate. Add the red curry paste, cumin seeds, coriander seeds, cinnamon, and nutmeg. Stir well and fry for 1-2 minutes until deeply fragrant.&lt;/p&gt;&#xA;&lt;p&gt;Pour in the remaining coconut milk along with the maple syrup, soy sauce, peanut butter, lime juice, and tamarind paste. Stir continuously until the peanut butter completely dissolves and the curry base is smooth.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Vegetable Arroz a la Llauna</title>
+      <link>http://localhost:1313/recipes/vegetable-arroz-a-la-llauna/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recipes/vegetable-arroz-a-la-llauna/</guid>
+      <description>&lt;p&gt;First, write your first step here. The website will automatically number this as &amp;ldquo;01&amp;rdquo; for you!&lt;/p&gt;&#xA;&lt;p&gt;Leave an empty line, and then write your second step here. The website will number this &amp;ldquo;02&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;Keep writing paragraphs separated by empty lines. Each paragraph becomes a new numbered step in the method. You should NOT include numbers yourself. The website does this in its processing. Enjoy!&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
   </channel>
 </rss>
