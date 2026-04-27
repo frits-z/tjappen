@@ -7,8 +7,8 @@
       "time_total": {{ .Params.time_total | jsonify }},
       "ingredients": {{ .Params.ingredients | jsonify }},
       "cuisine": {{ delimit .Params.cuisine " " | lower | jsonify }},
-      "course": {{ delimit .Params.course " " | lower | jsonify }},
-      "effort": {{ if .Params.effort }}{{ delimit .Params.effort " " | lower | jsonify }}{{ else }}""{{ end }},
+      "category": {{ delimit .Params.category " " | lower | jsonify }},
+      "occasion": {{ if .Params.occasion }}{{ delimit .Params.occasion " " | lower | jsonify }}{{ else }}""{{ end }},
       "diet": {{ if .Params.diet }}{{ delimit .Params.diet " " | lower | jsonify }}{{ else }}""{{ end }}
     }
   {{ end }}

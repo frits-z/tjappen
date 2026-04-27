@@ -1,12 +1,12 @@
-﻿---
+---
 title: "Ragù Bolognese"
 time_active: 30
 time_total: 999
 servings: 6
 cuisine: ["Italian"]
-course: ["Main"]
+category: ["Main"]
 diet: ["Meat"]
-effort: ["Advanced"]
+occasion: ["Special"]
 ingredients:
   - "2 | Celery stalks"
   - "1 | Large carrot"

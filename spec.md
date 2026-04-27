@@ -12,8 +12,8 @@
 ## **2\. Architecture & Data Structure**
 
 * **Content Model:** Hugo Page Bundles. Every recipe is a directory (content/recipes/boerenkool/index.md) containing its text and images. No global /static/images/ folder.  
-* **Taxonomies:** Configure three strict taxonomies in hugo.toml: cuisine, course, and effort. Do not use generic tags.  
-* **Front Matter Schema:** \* Required: title, time\_active, time\_total, servings (integer), cuisine (array), course (array), effort (array), ingredients (array of strings).  
+* **Taxonomies:** Configure three strict taxonomies in hugo.toml: cuisine, category, and occasion. Do not use generic tags.  
+* **Front Matter Schema:** \* Required: title, time\_active, time\_total, servings (integer), cuisine (array), category (array), occasion (array), ingredients (array of strings).  
   * Optional: notes (array of strings).  
 * **Ingredient Parsing:** The ingredients array must use a pipe | to separate quantity and item (e.g., \["1.5 | Floury potatoes (kg)"\]).  
   * **Constraint:** The value to the left of the pipe MUST be a strict integer or float to allow JS math. Qualitative amounts belong on the right (e.g., \["1 | Splash of milk"\]).

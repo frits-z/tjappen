@@ -4,8 +4,8 @@ title = 'tjappen.'
 
 [taxonomies]
   cuisine = "cuisines"
-  course = "courses"
-  effort = "efforts"
+  category = "categories"
+  occasion = "occasions"
   diet = "diets"
 
 [outputs]

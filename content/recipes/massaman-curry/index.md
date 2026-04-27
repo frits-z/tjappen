@@ -1,12 +1,12 @@
-﻿---
+---
 title: "Vegan Massaman Curry"
 time_active: 20
 time_total: 45
 servings: 4
 cuisine: ["Thai"]
-course: ["Main"]
-diet: ["Vegetarian", "Vegan"]
-effort: ["Medium"]
+category: ["Main"]
+diet: ["Vegan"]
+occasion: ["Batch-cook"]
 ingredients:
   - "5 | Red curry paste (tbsp)"
   - "1 | Cumin seed (tsp)"

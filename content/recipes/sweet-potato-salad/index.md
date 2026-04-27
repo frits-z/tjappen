@@ -1,12 +1,12 @@
-﻿---
+---
 title: "Sweet potato salad"
 time_active: 20
 time_total: 40
 servings: 2
 cuisine: ["European"]
-course: ["Main", "Salad"]
+category: ["Main", "Salad"]
 diet: ["Vegetarian"]
-effort: ["Easy"]
+occasion: ["Weeknight"]
 ingredients:
   - "500 | Sweet potatoes (g)"
   - "1 | Large carrot"

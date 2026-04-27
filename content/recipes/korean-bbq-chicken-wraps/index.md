@@ -1,12 +1,12 @@
-﻿---
+---
 title: "Korean BBQ chicken wraps"
 time_active: 25
 time_total: 85
 servings: 14
 cuisine: ["Korean"]
-course: ["Main", "Lunch"]
+category: ["Main", "Lunch"]
 diet: ["Meat"]
-effort: ["Easy"]
+occasion: ["Weeknight"]
 ingredients:
   - "2 | Chicken thighs (fat trimmed) (kg)"
   - "14 | Tortillas (large)"

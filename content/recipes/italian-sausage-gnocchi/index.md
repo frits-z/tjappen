@@ -1,12 +1,12 @@
-﻿---
+---
 title: "Italian Sausage Gnocchi"
 time_active: 2
 time_total: 10
 servings: 2
 cuisine: ["Italian"]
-course: ["Main", "Lunch"]
+category: ["Main", "Lunch"]
 diet: ["Meat"]
-effort: ["Easy"]
+occasion: ["Weeknight"]
 ingredients:
   - "500 | Gnocchi (g)"
   - "6 | Italian sausages"

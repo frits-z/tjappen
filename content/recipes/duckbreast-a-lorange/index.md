@@ -1,12 +1,12 @@
-﻿---
+---
 title: "Duckbreast á l'orange"
 time_active: 30
 time_total: 180
 servings: 2
 cuisine: ["French"]
-course: ["Main"]
+category: ["Main"]
 diet: ["Meat"]
-effort: ["Advanced"]
+occasion: ["Special"]
 ingredients:
   - "2 | Duck breasts"
   - "1 | Orange (zested)"

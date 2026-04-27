@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
     
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.svg"> <!-- Fallback -->
+    
     <!-- Open Graph / WhatsApp / Twitter Embeds -->
     <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}">
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
@@ -64,7 +67,7 @@
             color: #1a1a1a;
         }
         .image-container {
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 3 / 2;
             background-color: #faebd8;
             overflow: hidden;
         }
@@ -87,7 +90,7 @@
             scrollbar-width: none;
         }
         .hero-image {
-            aspect-ratio: 21 / 9;
+            aspect-ratio: 2 / 1;
             background-color: #faebd8;
             overflow: hidden;
         }

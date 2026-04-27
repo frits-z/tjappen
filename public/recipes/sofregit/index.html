@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sofregit - tjappen.</title>
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.svg"> 
+    
+    
+    <meta property="og:title" content="Sofregit - tjappen.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://localhost:1313/recipes/sofregit/">
+    <meta property="og:site_name" content="tjappen">
+    
+        <meta property="og:description" content="120 min recipe. Halve the onions and slice them through root end in strips.
+Bring onions, all water (less 1 tbsp), half the olive all, sugar, and salt to a boil in a …">
+        
+        
+        
+        
+        
+            
+            <meta property="og:image" content="http://localhost:1313/recipes/sofregit/cover_hu_cb3b4a7de3294989.webp">
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:image" content="http://localhost:1313/recipes/sofregit/cover_hu_cb3b4a7de3294989.webp">
+        
+    
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              black: '#1a1a1a', 
+              white: '#fff3e8',
+              primary: '#fe5a11',
+              gray: {
+                100: '#faebd8',
+                200: '#edd8c3',
+                300: '#d8bda2',
+                400: '#bd9d7f',
+                500: '#9e7f62',
+                600: '#7d6148',
+                700: '#5c4632',
+                800: '#403022',
+                900: '#291e14',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff3e8;
+            color: #1a1a1a;
+        }
+        .image-container {
+            aspect-ratio: 3 / 2;
+            background-color: #faebd8;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease, transform 0.5s ease;
+        }
+        .recipe-card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hero-image {
+            aspect-ratio: 2 / 1;
+            background-color: #faebd8;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ingredient-item input:checked + span.ingredient-name {
+            text-decoration: line-through;
+            color: #bd9d7f;
+        }
+        ul.has-active-step .ingredient-item:not(.active-ingredient) {
+            opacity: 0.2;
+        }
+        .ingredient-item {
+            transition: opacity 0.3s ease;
+        }
+        .ingredient-item.active-ingredient .ingredient-name,
+        .ingredient-item.active-ingredient .ingredient-qty {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+        .step-container.has-active-step .method-step:not(.active) {
+            opacity: 0.3;
+        }
+        .method-step {
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+        .method-step.active .step-num {
+            color: #fe5a11;
+        }
+        .method-step a, .method-step .prose a, .notes-content a {
+            font-weight: 700;
+            color: #5c4632;
+            text-decoration-line: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #fe5a11;
+            text-underline-offset: 4px;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+            border-radius: 0.125rem;
+        }
+        .method-step a:hover, .method-step .prose a:hover, .notes-content a:hover {
+            color: #1a1a1a;
+            text-decoration-color: #1a1a1a;
+            background-color: #fe5a1133;
+        }
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+         
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1rem;
+            height: 1rem;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 0.25rem;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #fe5a11;
+            border-color: #fe5a11;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 0.25rem;
+            height: 0.5rem;
+            border: solid #fff3e8;
+            border-width: 0 1.5px 1.5px 0;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
+
+    
+<nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
+            <i class="ph ph-arrow-left text-lg"></i> Index
+        </a>
+        
+        
+        <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors">
+            <i class="ph ph-device-mobile text-lg"></i>
+            <span id="wakeLockStatus">Screen Lock: Off</span>
+        </button>
+    </div>
+</nav>
+
+
+    <div class="flex-grow">
+      
+<main class="max-w-4xl mx-auto px-4 py-10 w-full mb-12" data-base-servings="24">
+    
+    <header class="mb-10">
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">Sofregit</h1>
+        
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
+            <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
+                <i class="ph ph-users text-lg mr-1"></i>
+                <button id="decServings" class="hover:text-primary transition-colors px-1 cursor-pointer">-</button>
+                <span id="servingCount" class="w-4 text-center">24</span>
+                <button id="incServings" class="hover:text-primary transition-colors px-1 cursor-pointer">+</button>
+            </div>
+            
+            
+            <div class="flex items-center gap-4 text-sm font-bold">
+                <div class="flex items-center gap-1.5 text-gray-500">
+                    <i class="ph ph-knife text-lg"></i>
+                    <span>120m <span class="text-xs uppercase tracking-widest ml-0.5">Active</span></span>
+                </div>
+                <div class="flex items-center gap-1.5 text-gray-500">
+                    <i class="ph ph-clock text-lg"></i>
+                    <span>120m <span class="text-xs uppercase tracking-widest ml-0.5">Total</span></span>
+                </div>
+            </div>
+
+            <div class="h-4 w-px bg-gray-300 hidden sm:block"></div>
+            <div class="flex flex-wrap gap-3 text-xs font-bold uppercase tracking-widest text-gray-500">
+                
+                
+                
+                
+                
+                
+                
+                    <span>Catalan</span>
+                    <span>•</span>
+                
+                    <span>Essential</span>
+                    <span>•</span>
+                
+                    <span>Plant-based</span>
+                    <span>•</span>
+                
+                    <span>Batch-cook</span>
+                    
+                
+            </div>
+        </div>
+    </header>
+
+    
+    
+    
+    
+    
+        
+        <figure class="hero-image mb-12">
+            <img src="/recipes/sofregit/cover_hu_69bed527e6d76e6c.webp" alt="Sofregit">
+        </figure>
+    
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        
+        <aside class="md:col-span-4">
+            <h2 class="text-sm font-bold uppercase tracking-widest border-b-2 border-black pb-2 mb-6">Ingredients</h2>
+            
+            <ul class="flex flex-col text-sm font-medium">
+                
+                    
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Yellow onions  (kg)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1.5">1.5</span>
+                        </span>
+                        
+                    </li>
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Olive oil (tbsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="4">4</span>
+                        </span>
+                        
+                    </li>
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Water (cup)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="0.75">0.75</span>
+                        </span>
+                        
+                    </li>
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Salt (tsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="0.5">0.5</span>
+                        </span>
+                        
+                    </li>
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Sugar (tsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="0.5">0.5</span>
+                        </span>
+                        
+                    </li>
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Baking soda (optional) (tsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="0.1">0.1</span>
+                        </span>
+                        
+                    </li>
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Tomato pulp (g)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="800">800</span>
+                        </span>
+                        
+                    </li>
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                        
+                        
+                    
+                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+                        <label class="flex items-center gap-3 cursor-pointer w-full">
+                            <input type="checkbox" class="cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Smoked paprika (tsp)</span>
+                        </label>
+                        
+                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
+                            <span class="ingredient-qty" data-base="1">1</span>
+                        </span>
+                        
+                    </li>
+                    
+                
+            </ul>
+            
+            
+            <div class="mt-12 hidden md:block">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>Sofregit is a slow-cooked aromatic base in Catalan cuisine made by caramelizing onions and tomatoes in olive oil until thick and jam-like. It serves as the foundational flavor builder for paellas, stews, and seafood dishes.</span>
+                    </li>
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>Recipe yields roughly 3 cups. This is about 24 servings, considering 2 tbsp per serving (1/4th cup for two servings).</span>
+                    </li>
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>Patience is key in this recipe. Less heat and more time yield best results.</span>
+                    </li>
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>Using baking soda is optional. It speeds up the process of caramelizing the onions, but will make the onions lose some of their texture (more jammy). Use very sparingly.</span>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+        </aside>
+
+        <section class="md:col-span-8">
+            <div class="flex justify-between items-baseline border-b-2 border-black pb-2 mb-6">
+                <h2 class="text-sm font-bold uppercase tracking-widest">Method</h2>
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tap step to focus</span>
+            </div>
+            
+            <div class="space-y-8 text-base text-gray-900 leading-relaxed step-container" id="methodContainer">
+                <div id="methodContentRaw" class="hidden"><p>Halve the onions and slice them through root end in strips.</p>
+<p>Bring onions, all water (less 1 tbsp), half the olive all, sugar, and salt to a boil in a large pan over high heat. Cover and cook until water has evaporated and onions start to sizzle (10+ minutes).</p>
+<p>Uncover the pan, reduce heat to medium-high. Gently press onions into sides and bottom of the pan. Wait for half a minute. Stir onions, scraping fond from the pan, and repeat. After roughly 15-20 minutes, when onions start to brown a bit, combine baking soda and remaining 1 tbsp of water and add to the pan (optional, see notes). Continue browning process until the onions are deeply caramelized and have a jammy consistency (another 15-20 mins). Stir more frequently towards the end to prevent burning. Increment the heat downward as onions get further caramelized to avoid burning.</p>
+<p>When the onions are ready, add the tomato pulp, smoked paprika, and the rest of the olive oil. Cook for another 20 mins (medium-low heat), stirring occasionally, until the oil separates from the pulp and forms its own layer on top.</p>
+</div>
+                
+            </div>
+
+            
+            <div class="mt-12 block md:hidden">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>Sofregit is a slow-cooked aromatic base in Catalan cuisine made by caramelizing onions and tomatoes in olive oil until thick and jam-like. It serves as the foundational flavor builder for paellas, stews, and seafood dishes.</span>
+                    </li>
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>Recipe yields roughly 3 cups. This is about 24 servings, considering 2 tbsp per serving (1/4th cup for two servings).</span>
+                    </li>
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>Patience is key in this recipe. Less heat and more time yield best results.</span>
+                    </li>
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>Using baking soda is optional. It speeds up the process of caramelizing the onions, but will make the onions lose some of their texture (more jammy). Use very sparingly.</span>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+        </section>
+        
+    </div>
+</main>
+
+    </div>
+
+    <footer class="border-t-2 border-black mt-auto">
+        <div class="max-w-6xl mx-auto px-4 py-8 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
+            <div class="flex gap-6 items-center flex-wrap">
+                <a href="/about" class="flex items-center gap-1.5 group hover:text-primary transition-colors duration-300">
+                    <i class="ph ph-cooking-pot text-lg group-hover:-rotate-12 transition-transform duration-300"></i>
+                    tjappen. digital pantry
+                </a>
+            </div>
+            <span class="flex items-center gap-1.5 cursor-default hover:text-primary transition-colors duration-300 text-right">
+                Cooked up by Frits
+                <i class="ph ph-fire text-lg text-primary"></i>
+            </span>
+        </div>
+    </footer>
+
+    
+  
+  
+    <script src="/js/recipe.js"></script>
+  
+
+</body>
+</html>

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modern Pasta Carbonara - tjappen.</title>
     
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.svg"> 
+    
     
     <meta property="og:title" content="Modern Pasta Carbonara - tjappen.">
     <meta property="og:type" content="article">
@@ -60,7 +63,7 @@ In …">
             color: #1a1a1a;
         }
         .image-container {
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 3 / 2;
             background-color: #faebd8;
             overflow: hidden;
         }
@@ -83,7 +86,7 @@ In …">
             scrollbar-width: none;
         }
         .hero-image {
-            aspect-ratio: 21 / 9;
+            aspect-ratio: 2 / 1;
             background-color: #faebd8;
             overflow: hidden;
         }
@@ -139,6 +142,38 @@ In …">
             -webkit-appearance: none; 
             margin: 0; 
         }
+
+         
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1rem;
+            height: 1rem;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 0.25rem;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #fe5a11;
+            border-color: #fe5a11;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 0.25rem;
+            height: 0.5rem;
+            border: solid #fff3e8;
+            border-width: 0 1.5px 1.5px 0;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
@@ -176,13 +211,13 @@ In …">
             
             
             <div class="flex items-center gap-4 text-sm font-bold">
-                <div class="flex items-center gap-1.5">
-                    <i class="ph ph-knife text-lg text-gray-400"></i>
-                    <span>5m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Active</span></span>
+                <div class="flex items-center gap-1.5 text-gray-500">
+                    <i class="ph ph-knife text-lg"></i>
+                    <span>5m <span class="text-xs uppercase tracking-widest ml-0.5">Active</span></span>
                 </div>
-                <div class="flex items-center gap-1.5">
-                    <i class="ph ph-clock text-lg text-gray-400"></i>
-                    <span>30m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Total</span></span>
+                <div class="flex items-center gap-1.5 text-gray-500">
+                    <i class="ph ph-clock text-lg"></i>
+                    <span>30m <span class="text-xs uppercase tracking-widest ml-0.5">Total</span></span>
                 </div>
             </div>
 
@@ -204,7 +239,7 @@ In …">
                     <span>Meat</span>
                     <span>•</span>
                 
-                    <span>Advanced</span>
+                    <span>Special</span>
                     
                 
             </div>
@@ -218,7 +253,7 @@ In …">
     
         
         <figure class="hero-image mb-12">
-            <img src="/recipes/modern-pasta-carbonara/cover_hu_7c972793c17a57de.webp" alt="Modern Pasta Carbonara">
+            <img src="/recipes/modern-pasta-carbonara/cover_hu_9c0b172edcefabed.webp" alt="Modern Pasta Carbonara">
         </figure>
     
 
@@ -239,7 +274,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Pasta (g)</span>
                         </label>
                         
@@ -260,7 +295,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Guanciale (g)</span>
                         </label>
                         
@@ -281,7 +316,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Green asparagus</span>
                         </label>
                         
@@ -302,7 +337,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Eggs (1 whole &#43; 3 yolks)</span>
                         </label>
                         
@@ -323,7 +358,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Parmesan cheese (g)</span>
                         </label>
                         
@@ -344,7 +379,7 @@ In …">
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Freshly ground Black pepper</span>
                         </label>
                         
@@ -358,7 +393,7 @@ In …">
             </ul>
             
             
-            <div class="mt-12">
+            <div class="mt-12 hidden md:block">
                 <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
                 <ul class="space-y-3 text-sm text-gray-600">
                     
@@ -406,6 +441,35 @@ In …">
 </div>
                 
             </div>
+
+            
+            <div class="mt-12 block md:hidden">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>By Rune</span>
+                    </li>
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>This one takes practice to get right, especially the sauce consistency.</span>
+                    </li>
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span><strong>Fun fact 1</strong>: The recipe is rumored to have 2 origins, but surrounding the “Coal” theme. (Coal = Carbone in Italian). First: The pasta was considered a nice, hearty meal for the coal-mine workers back in the day. Second: The pasta has copious amounts of black pepper in the recipe, giving it a black tint, the tint of coal</span>
+                    </li>
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span><strong>Fun fact 2</strong>: The recipe first came to prominence when the US liberated Italy during World War 2. The soldiers brought Bacon &amp; egg yolk powder for the population as rations. Adding these ingredients to a more traditional “Cacio e pepe” and you get a Carbonara. The Carbonara from this recipe is also a modern version of the older bacon &amp; egg yolk version. This modern version is however seen as the standard nowadays.</span>
+                    </li>
+                    
+                </ul>
+            </div>
+            
         </section>
         
     </div>

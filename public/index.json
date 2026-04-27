@@ -7,8 +7,8 @@
       "time_total": 180,
       "ingredients": ["2 | Duck breasts","1 | Orange (zested)","2 | Oranges (juiced)","20 | Honey (ml)","50 | Soy sauce (ml)","to taste | Freshly ground black pepper"],
       "cuisine": "french",
-      "course": "main",
-      "effort": "advanced",
+      "category": "main",
+      "occasion": "special",
       "diet": "meat"
     }
   
@@ -19,8 +19,8 @@
       "time_total": 10,
       "ingredients": ["500 | Gnocchi (g)","6 | Italian sausages","200 | Frozen peas (g)","50 | Parmesan cheese (g)","2 | Garlic cloves (sliced)","0.5 | Chili flakes (tsp)","to taste | Black pepper","Olive oil"],
       "cuisine": "italian",
-      "course": "main lunch",
-      "effort": "easy",
+      "category": "main lunch",
+      "occasion": "weeknight",
       "diet": "meat"
     }
   
@@ -31,8 +31,8 @@
       "time_total": 40,
       "ingredients": ["# Main","500 | Frozen spinach (g)","250 | (Vegan) minced meat (g)","1 | Bag grated mild cheese","4 | Eggs","4 | Slices of thawed puff pastry","# On the side","600 | Potato slices (g)"],
       "cuisine": "dutch",
-      "course": "main",
-      "effort": "easy",
+      "category": "main",
+      "occasion": "weeknight",
       "diet": "meat vegetarian"
     }
   
@@ -43,8 +43,8 @@
       "time_total": 85,
       "ingredients": ["2 | Chicken thighs (fat trimmed) (kg)","14 | Tortillas (large)","5.5 | Mini cucumbers","3 | Red onions","1 | Big carrot","200 | Low fat yogurt (g)","120 | Light mayonnaise (g)","2 | Milk (tbsp, optional)","40 | Rice vinegar (ml)","30 | Sriracha (ml)","100 | Gochujang paste (g)","75 | Honey (g)","50 | Soy sauce (ml)","55 | Sesame seeds (g)","3 | Brown sugar (tbsp)","5 | Garlic powder (tsp)","2 | Onion powder (tsp)","2 | Salt (tsp)","3 | Black pepper (tsp)","150 | Water (ml)"],
       "cuisine": "korean",
-      "course": "main lunch",
-      "effort": "easy",
+      "category": "main lunch",
+      "occasion": "weeknight",
       "diet": "meat"
     }
   
@@ -55,8 +55,8 @@
       "time_total": 30,
       "ingredients": ["250 | Pasta (g)","200 | Guanciale (g)","7 | Green asparagus","4 | Eggs (1 whole + 3 yolks)","150 | Parmesan cheese (g)","to taste | Freshly ground Black pepper"],
       "cuisine": "italian",
-      "course": "main",
-      "effort": "advanced",
+      "category": "main",
+      "occasion": "special",
       "diet": "meat"
     }
   
@@ -65,10 +65,10 @@
       "title": "Pasta Alla Norma",
       "url": "/recipes/pasta-alla-norma/",
       "time_total": 45,
-      "ingredients": ["2 | Eggplants (aubergines)","120 | Olive oil (ml)","5 | Garlic cloves (thinly sliced)","Pinch of dried chilli flakes","800 | Tinned plum tomatoes (g)","1 | Dried oregano (tsp)","1 | Caster sugar (tsp)","300 | Pasta mafaldine (g)","Roasted bell peppers (to taste)","45 | Mature pecorino romano or ricotta salata (g)","20 | Basil leaves (g)","Pistachios (pieces, for garnish)","Salt \u0026 black pepper"],
+      "ingredients": ["2 | Aubergines","120 | Olive oil (ml)","5 | Garlic cloves (thinly sliced)","Pinch of dried chilli flakes","800 | Tinned plum tomatoes (g)","1 | Dried oregano (tsp)","1 | Caster sugar (tsp)","300 | Pasta mafaldine (g)","Roasted bell peppers (to taste)","45 | Mature pecorino romano or ricotta salata (g)","20 | Basil leaves (g)","Pistachios (pieces, for garnish)","Salt \u0026 black pepper"],
       "cuisine": "italian",
-      "course": "main",
-      "effort": "medium",
+      "category": "main",
+      "occasion": "weeknight",
       "diet": "vegetarian"
     }
   
@@ -79,8 +79,8 @@
       "time_total": 25,
       "ingredients": ["200 | Pasta (g)","100 | Salmon (g)","200 | Spinach (g)","50 | Soy cream (ml)","100 | Parmesan cheese (g)","1 | Olive oil (tbsp)","to taste | Pine nuts"],
       "cuisine": "italian",
-      "course": "main",
-      "effort": "easy",
+      "category": "main",
+      "occasion": "weeknight",
       "diet": "fish"
     }
   
@@ -91,9 +91,21 @@
       "time_total": 999,
       "ingredients": ["2 | Celery stalks","1 | Large carrot","2 | Onions","700 | Minced meat (half pork, half beef) (g)","100 | Guanciale, diced into small cubes (g)","2 | Cans of peeled tomatoes","140 | Tomato puree (g)","2 | Chicken or beef stock cubes","500 | Water (ml)","1 | Bottle of good red wine","Olive oil","250 | Full milk (ml)","2 | Sugar (tbsp, optional)"],
       "cuisine": "italian",
-      "course": "main",
-      "effort": "advanced",
+      "category": "main",
+      "occasion": "special",
       "diet": "meat"
+    }
+  
+    ,
+    {
+      "title": "Sofregit",
+      "url": "/recipes/sofregit/",
+      "time_total": 120,
+      "ingredients": ["1.5 | Yellow onions  (kg)","4 | Olive oil (tbsp)","0.75 | Water (cup)","0.5 | Salt (tsp)","0.5 | Sugar (tsp)","0.1 | Baking soda (optional) (tsp)","800 | Tomato pulp (g)","1 | Smoked paprika (tsp)"],
+      "cuisine": "catalan",
+      "category": "essential",
+      "occasion": "batch-cook",
+      "diet": "plant-based"
     }
   
     ,
@@ -103,8 +115,8 @@
       "time_total": 40,
       "ingredients": ["500 | Sweet potatoes (g)","1 | Large carrot","100 | Asparagus tips (g)","1 | Red onion","0.5 | Lemon","100 | Feta (g)","85 | Lamb's lettuce (g)","Olive oil","2 | Handfuls of walnuts"],
       "cuisine": "european",
-      "course": "main salad",
-      "effort": "easy",
+      "category": "main salad",
+      "occasion": "weeknight",
       "diet": "vegetarian"
     }
   
@@ -115,8 +127,8 @@
       "time_total": 45,
       "ingredients": ["500 | Firm tofu (g)","3 | Light soy sauce (tbsp)","1 | Rice vinegar (tbsp)","2 | Brown sugar (tbsp)","6 | Garlic cloves","2 | Fresh ginger (thumb-sized pieces)","1 | Cucumber","300 | White vinegar (ml)","300 | Boiling water (ml)","1 | Salt (tsp)","1 | Sugar (tsp)","4 | Neutral oil (tbsp)","200 | Crunchy peanut butter (g)","120 | Full-fat coconut milk (ml)","1.5 | Sambal badjak (tbsp)","2 | Soy sauce (tbsp)","1 | Ketjap manis (tbsp)","0.5 | Lime (juiced)","12 | Long skewers","360 | Knife-cut noodles (g)","2 | Crispy chili oil (tsp)","Fried onions (to taste)","Fresh cilantro (to taste)"],
       "cuisine": "indonesian",
-      "course": "main",
-      "effort": "medium",
+      "category": "main",
+      "occasion": "batch-cook",
       "diet": "vegan"
     }
   
@@ -127,9 +139,9 @@
       "time_total": 45,
       "ingredients": ["5 | Red curry paste (tbsp)","1 | Cumin seed (tsp)","1 | Coriander seed (tsp)","0.25 | Ground cinnamon (tsp)","Dash of nutmeg","2 | Maple syrup (tbsp)","1 | Soy sauce (tbsp)","2 | Peanut butter or almond butter (tbsp)","700 | Full-fat coconut milk (ml)","1 | Lime juice (tbsp)","1 | Tamarind paste (tbsp)","500 | Baby potatoes (grams)","2 | Large carrots, chopped","2 | Shallots, thinly sliced","50 | Peanuts (grams)","Peanuts and fresh coriander (for garnish)","Pandan or jasmine rice (to serve)","Green beans (to serve)","Crispy tofu or vegan protein bites (to serve)"],
       "cuisine": "thai",
-      "course": "main",
-      "effort": "medium",
-      "diet": "vegetarian vegan"
+      "category": "main",
+      "occasion": "batch-cook",
+      "diet": "vegan"
     }
   
     ,
@@ -137,10 +149,10 @@
       "title": "Vegetable Arroz a la Llauna",
       "url": "/recipes/vegetable-arroz-a-la-llauna/",
       "time_total": 50,
-      "ingredients": ["180 | Paella rice (grams)","0.25 | Sofregit (cup)"],
-      "cuisine": "spanish",
-      "course": "main",
-      "effort": "medium",
+      "ingredients": ["3 | Olive oil (tbsp)","125g | Chestnut mushrooms","60 | Flat green beans (g)","2 | Artichoke hearts","1 | Roasted red bell pepper","40 | Frozen peas (g)","180 | Paella rice (g)","500 | Boiling vegetable stock (ml)","0.25 | Sofregit (cup)","# Picada","1 | Almond paste (tbsp)","1 | Boiling vegetable stock (tsp)","0.5 | Small garlic clove","some | Fresh parsley (optional)"],
+      "cuisine": "catalan",
+      "category": "main",
+      "occasion": "weeknight",
       "diet": "vegan"
     }
   

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pasta Alla Norma - tjappen.</title>
     
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.svg"> 
+    
     
     <meta property="og:title" content="Pasta Alla Norma - tjappen.">
     <meta property="og:type" content="article">
@@ -12,7 +15,7 @@
     <meta property="og:site_name" content="tjappen">
     
         <meta property="og:description" content="45 min recipe. Preheat the oven to 220C fan.
-Using a peeler and working from top to bottom of each aubergine, shave off long alternating strips of peel so that they …">
+Using a peeler and working from top to bottom of the aubergines, shave off long alternating strips of peel so that they …">
         
         
         
@@ -60,7 +63,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
             color: #1a1a1a;
         }
         .image-container {
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 3 / 2;
             background-color: #faebd8;
             overflow: hidden;
         }
@@ -83,7 +86,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
             scrollbar-width: none;
         }
         .hero-image {
-            aspect-ratio: 21 / 9;
+            aspect-ratio: 2 / 1;
             background-color: #faebd8;
             overflow: hidden;
         }
@@ -139,6 +142,38 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
             -webkit-appearance: none; 
             margin: 0; 
         }
+
+         
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1rem;
+            height: 1rem;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 0.25rem;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #fe5a11;
+            border-color: #fe5a11;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 0.25rem;
+            height: 0.5rem;
+            border: solid #fff3e8;
+            border-width: 0 1.5px 1.5px 0;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
@@ -176,13 +211,13 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
             
             
             <div class="flex items-center gap-4 text-sm font-bold">
-                <div class="flex items-center gap-1.5">
-                    <i class="ph ph-knife text-lg text-gray-400"></i>
-                    <span>15m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Active</span></span>
+                <div class="flex items-center gap-1.5 text-gray-500">
+                    <i class="ph ph-knife text-lg"></i>
+                    <span>15m <span class="text-xs uppercase tracking-widest ml-0.5">Active</span></span>
                 </div>
-                <div class="flex items-center gap-1.5">
-                    <i class="ph ph-clock text-lg text-gray-400"></i>
-                    <span>45m <span class="text-xs text-gray-500 uppercase tracking-widest ml-0.5">Total</span></span>
+                <div class="flex items-center gap-1.5 text-gray-500">
+                    <i class="ph ph-clock text-lg"></i>
+                    <span>45m <span class="text-xs uppercase tracking-widest ml-0.5">Total</span></span>
                 </div>
             </div>
 
@@ -204,7 +239,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     <span>Vegetarian</span>
                     <span>•</span>
                 
-                    <span>Medium</span>
+                    <span>Weeknight</span>
                     
                 
             </div>
@@ -218,7 +253,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
     
         
         <figure class="hero-image mb-12">
-            <img src="/recipes/pasta-alla-norma/cover_hu_2a6fd1812fd61b48.webp" alt="Pasta Alla Norma">
+            <img src="/recipes/pasta-alla-norma/cover_hu_dfe22f343dcd82fc.webp" alt="Pasta Alla Norma">
         </figure>
     
 
@@ -239,8 +274,8 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
-                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Eggplants (aubergines)</span>
+                            <input type="checkbox" class="cursor-pointer">
+                            <span class="ingredient-name transition-colors group-hover:text-gray-500">Aubergines</span>
                         </label>
                         
                         <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
@@ -260,7 +295,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Olive oil (ml)</span>
                         </label>
                         
@@ -281,7 +316,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Garlic cloves (thinly sliced)</span>
                         </label>
                         
@@ -301,7 +336,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Pinch of dried chilli flakes</span>
                         </label>
                         
@@ -318,7 +353,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Tinned plum tomatoes (g)</span>
                         </label>
                         
@@ -339,7 +374,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Dried oregano (tsp)</span>
                         </label>
                         
@@ -360,7 +395,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Caster sugar (tsp)</span>
                         </label>
                         
@@ -381,7 +416,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Pasta mafaldine (g)</span>
                         </label>
                         
@@ -401,7 +436,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Roasted bell peppers (to taste)</span>
                         </label>
                         
@@ -418,7 +453,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Mature pecorino romano or ricotta salata (g)</span>
                         </label>
                         
@@ -439,7 +474,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Basil leaves (g)</span>
                         </label>
                         
@@ -459,7 +494,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Pistachios (pieces, for garnish)</span>
                         </label>
                         
@@ -475,7 +510,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
                     
                     <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
                         <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="w-4 h-4 accent-primary cursor-pointer mix-blend-multiply">
+                            <input type="checkbox" class="cursor-pointer">
                             <span class="ingredient-name transition-colors group-hover:text-gray-500">Salt &amp; black pepper</span>
                         </label>
                         
@@ -485,7 +520,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
             </ul>
             
             
-            <div class="mt-12">
+            <div class="mt-12 hidden md:block">
                 <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
                 <ul class="space-y-3 text-sm text-gray-600">
                     
@@ -507,7 +542,7 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
             
             <div class="space-y-8 text-base text-gray-900 leading-relaxed step-container" id="methodContainer">
                 <div id="methodContentRaw" class="hidden"><p>Preheat the oven to 220C fan.</p>
-<p>Using a peeler and working from top to bottom of each aubergine, shave off long alternating strips of peel so that they look striped, like zebras. Cut widthways into 1cm thick slices and place in a bowl with 75ml of oil, 3/4 teaspoon of salt and a generous grind of pepper. Mix well, then spread out on two large baking paper-lined trays. Roast for 30-35 minutes, until dark golden-brown. Remove from the oven and set aside to cool.</p>
+<p>Using a peeler and working from top to bottom of the aubergines, shave off long alternating strips of peel so that they look striped, like zebras. Cut widthways into 1cm thick slices and place in a bowl with 75ml of oil, 3/4 teaspoon of salt and a generous grind of pepper. Mix well, then spread out on two large baking paper-lined trays. Roast for 30-35 minutes, until dark golden-brown. Remove from the oven and set aside to cool.</p>
 <p>Put 2 tablespoons of oil into a frying pan or pot and place on a medium high heat. Add the garlic and chillies and fry for 1-2 minutes, stirring constantly, until the garlic is golden brown. Add the tinned tomatoes, chopped roasted bell peppers, oregano, sugar, 1/2 teaspoon salt and a grind of pepper. Reduce the heat to medium low and cook for 10 minutes, until the sauce is thick. Remove the oregano and stir in the aubergine. Set aside.</p>
 <p>Cook the mafaldine according to packet instructions and once al dente, drain and retain some cooking water.</p>
 <p>Add the pasta to the sauce and mix well, adding two thirds of the pecorino and basil, add a few tablespoons of the cooking water if the sauce has become too thick.</p>
@@ -515,6 +550,20 @@ Using a peeler and working from top to bottom of each aubergine, shave off long 
 </div>
                 
             </div>
+
+            
+            <div class="mt-12 block md:hidden">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    
+                    <li class="flex gap-2.5 items-start notes-content">
+                        <span class="font-bold text-primary">-</span>
+                        <span>Great with roasted bell peppers as a twist</span>
+                    </li>
+                    
+                </ul>
+            </div>
+            
         </section>
         
     </div>

@@ -4,9 +4,9 @@ time_active: 10
 time_total: 40
 servings: 4
 cuisine: ["Dutch"]
-course: ["Main"]
+category: ["Main"]
 diet: ["Meat", "Vegetarian"]
-effort: ["Easy"]
+occasion: ["Weeknight"]
 ingredients:
   - "# Main"
   - "500 | Frozen spinach (g)"

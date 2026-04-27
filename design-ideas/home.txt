@@ -101,22 +101,22 @@
 
     <script>
         const mockDatabase = [
-            { id: 1, title: "Boerenkool Stamppot", time: "45m", taxonomies: { cuisine: ["Dutch"], course: ["Dinner"], effort: ["Low"] }, image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=800" },
-            { id: 2, title: "Classic Carbonara", time: "20m", taxonomies: { cuisine: ["Italian"], course: ["Dinner"], effort: ["Medium"] }, image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&q=80&w=800" },
-            { id: 3, title: "Sourdough Starter", time: "7d", taxonomies: { cuisine: ["Basics"], course: ["Prep"], effort: ["High"] }, image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800" },
-            { id: 4, title: "Tom Kha Gai", time: "30m", taxonomies: { cuisine: ["Thai"], course: ["Dinner", "Lunch"], effort: ["Medium"] }, image: "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?auto=format&fit=crop&q=80&w=800" },
-            { id: 5, title: "Overnight Oats", time: "5m", taxonomies: { cuisine: ["Global"], course: ["Breakfast"], effort: ["Low"] }, image: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&q=80&w=800" },
-            { id: 6, title: "Beef Wellington", time: "3h", taxonomies: { cuisine: ["British"], course: ["Dinner"], effort: ["High"] }, image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=800" }
+            { id: 1, title: "Boerenkool Stamppot", time: "45m", taxonomies: { cuisine: ["Dutch"], course: ["Dinner"], occasion: ["Low"] }, image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=800" },
+            { id: 2, title: "Classic Carbonara", time: "20m", taxonomies: { cuisine: ["Italian"], course: ["Dinner"], occasion: ["Medium"] }, image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&q=80&w=800" },
+            { id: 3, title: "Sourdough Starter", time: "7d", taxonomies: { cuisine: ["Basics"], course: ["Prep"], occasion: ["High"] }, image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800" },
+            { id: 4, title: "Tom Kha Gai", time: "30m", taxonomies: { cuisine: ["Thai"], course: ["Dinner", "Lunch"], occasion: ["Medium"] }, image: "https://images.unsplash.com/photo-1548943487-a2e4e43b485d?auto=format&fit=crop&q=80&w=800" },
+            { id: 5, title: "Overnight Oats", time: "5m", taxonomies: { cuisine: ["Global"], course: ["Breakfast"], occasion: ["Low"] }, image: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&q=80&w=800" },
+            { id: 6, title: "Beef Wellington", time: "3h", taxonomies: { cuisine: ["British"], course: ["Dinner"], occasion: ["High"] }, image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=800" }
         ];
 
         let currentSearch = "";
         let isFilterOpen = false;
-        let activeFilters = { cuisine: [], course: [], effort: [] };
+        let activeFilters = { cuisine: [], course: [], occasion: [] };
 
         const taxonomyOptions = {
             cuisine: [...new Set(mockDatabase.flatMap(r => r.taxonomies.cuisine))].sort(),
             course: [...new Set(mockDatabase.flatMap(r => r.taxonomies.course))].sort(),
-            effort: ["Low", "Medium", "High"]
+            occasion: ["Low", "Medium", "High"]
         };
 
         const grid = document.getElementById('recipeGrid');
@@ -141,7 +141,7 @@
             });
 
             clearFiltersBtn.addEventListener('click', () => {
-                activeFilters = { cuisine: [], course: [], effort: [] };
+                activeFilters = { cuisine: [], course: [], occasion: [] };
                 renderFilters();
                 renderGrid();
             });

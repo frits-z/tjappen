@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Occasions - tjappen.</title>
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.svg"> 
+    
+    
+    <meta property="og:title" content="Occasions - tjappen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:1313/occasions/">
+    <meta property="og:site_name" content="tjappen">
+    
+        <meta property="og:description" content="Personal recipe directory">
+        <meta name="twitter:card" content="summary">
+    
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              black: '#1a1a1a', 
+              white: '#fff3e8',
+              primary: '#fe5a11',
+              gray: {
+                100: '#faebd8',
+                200: '#edd8c3',
+                300: '#d8bda2',
+                400: '#bd9d7f',
+                500: '#9e7f62',
+                600: '#7d6148',
+                700: '#5c4632',
+                800: '#403022',
+                900: '#291e14',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff3e8;
+            color: #1a1a1a;
+        }
+        .image-container {
+            aspect-ratio: 3 / 2;
+            background-color: #faebd8;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease, transform 0.5s ease;
+        }
+        .recipe-card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hero-image {
+            aspect-ratio: 2 / 1;
+            background-color: #faebd8;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ingredient-item input:checked + span.ingredient-name {
+            text-decoration: line-through;
+            color: #bd9d7f;
+        }
+        ul.has-active-step .ingredient-item:not(.active-ingredient) {
+            opacity: 0.2;
+        }
+        .ingredient-item {
+            transition: opacity 0.3s ease;
+        }
+        .ingredient-item.active-ingredient .ingredient-name,
+        .ingredient-item.active-ingredient .ingredient-qty {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+        .step-container.has-active-step .method-step:not(.active) {
+            opacity: 0.3;
+        }
+        .method-step {
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+        .method-step.active .step-num {
+            color: #fe5a11;
+        }
+        .method-step a, .method-step .prose a, .notes-content a {
+            font-weight: 700;
+            color: #5c4632;
+            text-decoration-line: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #fe5a11;
+            text-underline-offset: 4px;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+            border-radius: 0.125rem;
+        }
+        .method-step a:hover, .method-step .prose a:hover, .notes-content a:hover {
+            color: #1a1a1a;
+            text-decoration-color: #1a1a1a;
+            background-color: #fe5a1133;
+        }
+        input[type="number"]::-webkit-inner-spin-button, 
+        input[type="number"]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+         
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1rem;
+            height: 1rem;
+            border: 1.5px solid #1a1a1a;
+            border-radius: 0.25rem;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #fe5a11;
+            border-color: #fe5a11;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 0.25rem;
+            height: 0.5rem;
+            border: solid #fff3e8;
+            border-width: 0 1.5px 1.5px 0;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
+
+    
+
+    <div class="flex-grow">
+      
+<div class="w-full max-w-4xl mx-auto">
+  <h1 class="text-4xl font-black uppercase">Occasions</h1>
+</div>
+
+    </div>
+
+    <footer class="border-t-2 border-black mt-auto">
+        <div class="max-w-6xl mx-auto px-4 py-8 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
+            <div class="flex gap-6 items-center flex-wrap">
+                <a href="/about" class="flex items-center gap-1.5 group hover:text-primary transition-colors duration-300">
+                    <i class="ph ph-cooking-pot text-lg group-hover:-rotate-12 transition-transform duration-300"></i>
+                    tjappen. digital pantry
+                </a>
+            </div>
+            <span class="flex items-center gap-1.5 cursor-default hover:text-primary transition-colors duration-300 text-right">
+                Cooked up by Frits
+                <i class="ph ph-fire text-lg text-primary"></i>
+            </span>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

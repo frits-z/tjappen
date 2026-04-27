@@ -2,15 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/courses/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/cuisines/</loc>
   </url><url>
     <loc>http://localhost:1313/diets/</loc>
   </url><url>
     <loc>http://localhost:1313/recipes/duckbreast-a-lorange/</loc>
-  </url><url>
-    <loc>http://localhost:1313/efforts/</loc>
   </url><url>
     <loc>http://localhost:1313/recipes/italian-sausage-gnocchi/</loc>
   </url><url>
@@ -20,6 +18,8 @@
   </url><url>
     <loc>http://localhost:1313/recipes/modern-pasta-carbonara/</loc>
   </url><url>
+    <loc>http://localhost:1313/occasions/</loc>
+  </url><url>
     <loc>http://localhost:1313/recipes/pasta-alla-norma/</loc>
   </url><url>
     <loc>http://localhost:1313/recipes/pasta-with-salmon-and-spinach/</loc>
@@ -27,6 +27,8 @@
     <loc>http://localhost:1313/recipes/ragu-bolognese/</loc>
   </url><url>
     <loc>http://localhost:1313/recipes/</loc>
+  </url><url>
+    <loc>http://localhost:1313/recipes/sofregit/</loc>
   </url><url>
     <loc>http://localhost:1313/recipes/sweet-potato-salad/</loc>
   </url><url>

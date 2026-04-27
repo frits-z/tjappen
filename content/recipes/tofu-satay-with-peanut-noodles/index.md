@@ -4,9 +4,9 @@ time_active: 25
 time_total: 45
 servings: 4
 cuisine: ["Indonesian"]
-course: ["Main"]
+category: ["Main"]
 diet: ["Vegan"]
-effort: ["Medium"]
+occasion: ["Batch-cook"]
 ingredients:
   - "500 | Firm tofu (g)"
   - "3 | Light soy sauce (tbsp)"

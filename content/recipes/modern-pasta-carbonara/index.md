@@ -1,12 +1,12 @@
-﻿---
+---
 title: "Modern Pasta Carbonara"
 time_active: 5
 time_total: 30
 servings: 2
 cuisine: ["Italian"]
-course: ["Main"]
+category: ["Main"]
 diet: ["Meat"]
-effort: ["Advanced"]
+occasion: ["Special"]
 ingredients:
   - "250 | Pasta (g)"
   - "200 | Guanciale (g)"

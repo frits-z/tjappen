@@ -1,12 +1,12 @@
-﻿---
+---
 title: "Pasta with salmon and spinach"
 time_active: 5
 time_total: 25
 servings: 2
 cuisine: ["Italian"]
-course: ["Main"]
+category: ["Main"]
 diet: ["Fish"]
-effort: ["Easy"]
+occasion: ["Weeknight"]
 ingredients:
   - "200 | Pasta (g)"
   - "100 | Salmon (g)"

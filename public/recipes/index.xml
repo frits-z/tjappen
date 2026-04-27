@@ -47,7 +47,7 @@
       <link>http://localhost:1313/recipes/pasta-alla-norma/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/recipes/pasta-alla-norma/</guid>
-      <description>&lt;p&gt;Preheat the oven to 220C fan.&lt;/p&gt;&#xA;&lt;p&gt;Using a peeler and working from top to bottom of each aubergine, shave off long alternating strips of peel so that they look striped, like zebras. Cut widthways into 1cm thick slices and place in a bowl with 75ml of oil, 3/4 teaspoon of salt and a generous grind of pepper. Mix well, then spread out on two large baking paper-lined trays. Roast for 30-35 minutes, until dark golden-brown. Remove from the oven and set aside to cool.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Preheat the oven to 220C fan.&lt;/p&gt;&#xA;&lt;p&gt;Using a peeler and working from top to bottom of the aubergines, shave off long alternating strips of peel so that they look striped, like zebras. Cut widthways into 1cm thick slices and place in a bowl with 75ml of oil, 3/4 teaspoon of salt and a generous grind of pepper. Mix well, then spread out on two large baking paper-lined trays. Roast for 30-35 minutes, until dark golden-brown. Remove from the oven and set aside to cool.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Pasta with salmon and spinach</title>
@@ -62,6 +62,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/recipes/ragu-bolognese/</guid>
       <description>&lt;p&gt;Finely dice the onion, cut the celery and carrot in to small cubes, roughly 2-3mm each.&lt;/p&gt;&#xA;&lt;p&gt;Preheat your oven to 140 degrees celsius.&lt;/p&gt;&#xA;&lt;p&gt;Add some olive oil in to a large pan (that can be placed in the oven, preferably a cast-iron dutch oven) and add your onions, celery and carrot.&lt;/p&gt;&#xA;&lt;p&gt;Fruit the vegetables on low to medium low temp, until soft and sweet.&lt;/p&gt;&#xA;&lt;p&gt;Remove vegetables from the pan, and wipe the pan clean with a paper towel.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sofregit</title>
+      <link>http://localhost:1313/recipes/sofregit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recipes/sofregit/</guid>
+      <description>&lt;p&gt;Halve the onions and slice them through root end in strips.&lt;/p&gt;&#xA;&lt;p&gt;Bring onions, all water (less 1 tbsp), half the olive all, sugar, and salt to a boil in a large pan over high heat. Cover and cook until water has evaporated and onions start to sizzle (10+ minutes).&lt;/p&gt;&#xA;&lt;p&gt;Uncover the pan, reduce heat to medium-high. Gently press onions into sides and bottom of the pan. Wait for half a minute. Stir onions, scraping fond from the pan, and repeat. After roughly 15-20 minutes, when onions start to brown a bit, combine baking soda and remaining 1 tbsp of water and add to the pan (optional, see notes). Continue browning process until the onions are deeply caramelized and have a jammy consistency (another 15-20 mins). Stir more frequently towards the end to prevent burning. Increment the heat downward as onions get further caramelized to avoid burning.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sweet potato salad</title>
@@ -89,7 +96,7 @@
       <link>http://localhost:1313/recipes/vegetable-arroz-a-la-llauna/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/recipes/vegetable-arroz-a-la-llauna/</guid>
-      <description>&lt;p&gt;First, write your first step here. The website will automatically number this as &amp;ldquo;01&amp;rdquo; for you!&lt;/p&gt;&#xA;&lt;p&gt;Leave an empty line, and then write your second step here. The website will number this &amp;ldquo;02&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;Keep writing paragraphs separated by empty lines. Each paragraph becomes a new numbered step in the method. You should NOT include numbers yourself. The website does this in its processing. Enjoy!&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</description>
+      <description>&lt;p&gt;Quarter the chestnut mushrooms and artichoke hearts. Cut the flat green beans into 3 cm pieces. Cut the roasted red bell pepper into strips.&lt;/p&gt;&#xA;&lt;p&gt;Preheat oven to 180c fan.&lt;/p&gt;&#xA;&lt;p&gt;Heat the olive oil in a large pan. Brown the chestnut mushrooms. Add the flat green beans and saute for 3 minutes.&lt;/p&gt;&#xA;&lt;p&gt;Stir in your &lt;a href=&#34;http://localhost:1313/recipes/sofregit/&#34;&gt;homemade sofregit&lt;/a&gt; (See notes if you are out of sofregit). Stir in the rice and saute for 2 minutes until the grains are translucent at the edges and coated in the fat.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
