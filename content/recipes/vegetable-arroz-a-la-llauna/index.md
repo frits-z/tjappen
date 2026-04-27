@@ -1,7 +1,7 @@
 ---
 title: "Vegetable Arroz a la Llauna"
 time_active: 20
-time_total: 50
+time_total: 35
 servings: 2
 cuisine: ["Catalan"]
 category: ["Main"]
@@ -25,6 +25,7 @@ ingredients:
 notes:
  - "Out of sofregit and short on time? Try a mixture of caramelised onion chutney and tomato concentrate puree (try 2:1 ratio) mixed and sauteed in a generous amount of olive oil."
  - "Chestnut mushrooms can be substituted for other mushrooms as long as they have similar texture and are not too watery. For example take king oyster mushrooms."
+ - "Flat green beans can be substituted for green asparagus as well."
 ---
 Quarter the chestnut mushrooms and artichoke hearts. Cut the flat green beans into 3 cm pieces. Cut the roasted red bell pepper into strips.
 
