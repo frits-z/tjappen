@@ -19,7 +19,7 @@
       "time_total": 10,
       "ingredients": ["500 | Gnocchi (g)","6 | Italian sausages","200 | Frozen peas (g)","50 | Parmesan cheese (g)","2 | Garlic cloves (sliced)","0.5 | Chili flakes (tsp)","to taste | Black pepper","Olive oil"],
       "cuisine": "italian",
-      "category": "main lunch",
+      "category": "main",
       "occasion": "weeknight",
       "diet": "meat"
     }
@@ -33,7 +33,7 @@
       "cuisine": "dutch",
       "category": "main",
       "occasion": "weeknight",
-      "diet": "meat vegetarian"
+      "diet": "meat"
     }
   
     ,
@@ -43,7 +43,7 @@
       "time_total": 85,
       "ingredients": ["2 | Chicken thighs (fat trimmed) (kg)","14 | Tortillas (large)","5.5 | Mini cucumbers","3 | Red onions","1 | Big carrot","200 | Low fat yogurt (g)","120 | Light mayonnaise (g)","2 | Milk (tbsp, optional)","40 | Rice vinegar (ml)","30 | Sriracha (ml)","100 | Gochujang paste (g)","75 | Honey (g)","50 | Soy sauce (ml)","55 | Sesame seeds (g)","3 | Brown sugar (tbsp)","5 | Garlic powder (tsp)","2 | Onion powder (tsp)","2 | Salt (tsp)","3 | Black pepper (tsp)","150 | Water (ml)"],
       "cuisine": "korean",
-      "category": "main lunch",
+      "category": "main",
       "occasion": "weeknight",
       "diet": "meat"
     }
@@ -115,7 +115,7 @@
       "time_total": 40,
       "ingredients": ["500 | Sweet potatoes (g)","1 | Large carrot","100 | Asparagus tips (g)","1 | Red onion","0.5 | Lemon","100 | Feta (g)","85 | Lamb's lettuce (g)","Olive oil","2 | Handfuls of walnuts"],
       "cuisine": "european",
-      "category": "main salad",
+      "category": "salad",
       "occasion": "weeknight",
       "diet": "vegetarian"
     }
@@ -128,8 +128,8 @@
       "ingredients": ["500 | Firm tofu (g)","3 | Light soy sauce (tbsp)","1 | Rice vinegar (tbsp)","2 | Brown sugar (tbsp)","6 | Garlic cloves","2 | Fresh ginger (thumb-sized pieces)","1 | Cucumber","300 | White vinegar (ml)","300 | Boiling water (ml)","1 | Salt (tsp)","1 | Sugar (tsp)","4 | Neutral oil (tbsp)","200 | Crunchy peanut butter (g)","120 | Full-fat coconut milk (ml)","1.5 | Sambal badjak (tbsp)","2 | Soy sauce (tbsp)","1 | Ketjap manis (tbsp)","0.5 | Lime (juiced)","12 | Long skewers","360 | Knife-cut noodles (g)","2 | Crispy chili oil (tsp)","Fried onions (to taste)","Fresh cilantro (to taste)"],
       "cuisine": "indonesian",
       "category": "main",
-      "occasion": "batch-cook",
-      "diet": "vegan"
+      "occasion": "weeknight",
+      "diet": "plant-based"
     }
   
     ,
@@ -141,7 +141,7 @@
       "cuisine": "thai",
       "category": "main",
       "occasion": "batch-cook",
-      "diet": "vegan"
+      "diet": "plant-based"
     }
   
     ,

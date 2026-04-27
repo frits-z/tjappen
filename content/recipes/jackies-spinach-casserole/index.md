@@ -5,7 +5,7 @@ time_total: 40
 servings: 4
 cuisine: ["Dutch"]
 category: ["Main"]
-diet: ["Meat", "Vegetarian"]
+diet: ["Meat"]
 occasion: ["Weeknight"]
 ingredients:
   - "# Main"

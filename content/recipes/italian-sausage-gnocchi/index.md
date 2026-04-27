@@ -4,7 +4,7 @@ time_active: 2
 time_total: 10
 servings: 2
 cuisine: ["Italian"]
-category: ["Main", "Lunch"]
+category: ["Main"]
 diet: ["Meat"]
 occasion: ["Weeknight"]
 ingredients:

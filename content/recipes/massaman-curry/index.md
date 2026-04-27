@@ -5,7 +5,7 @@ time_total: 45
 servings: 4
 cuisine: ["Thai"]
 category: ["Main"]
-diet: ["Vegan"]
+diet: ["Plant-based"]
 occasion: ["Batch-cook"]
 ingredients:
   - "5 | Red curry paste (tbsp)"

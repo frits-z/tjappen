@@ -4,7 +4,7 @@ time_active: 25
 time_total: 85
 servings: 14
 cuisine: ["Korean"]
-category: ["Main", "Lunch"]
+category: ["Main"]
 diet: ["Meat"]
 occasion: ["Weeknight"]
 ingredients:

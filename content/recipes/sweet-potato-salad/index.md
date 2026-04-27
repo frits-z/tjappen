@@ -4,7 +4,7 @@ time_active: 20
 time_total: 40
 servings: 2
 cuisine: ["European"]
-category: ["Main", "Salad"]
+category: ["Salad"]
 diet: ["Vegetarian"]
 occasion: ["Weeknight"]
 ingredients:
