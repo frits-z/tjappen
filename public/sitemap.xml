@@ -2,44 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://tjappen.com/recipes/sofregit/</loc>
   </url><url>
-    <loc>http://localhost:1313/cuisines/</loc>
+    <loc>https://tjappen.com/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/diets/</loc>
+    <loc>https://tjappen.com/cuisines/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/duckbreast-a-lorange/</loc>
+    <loc>https://tjappen.com/diets/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/italian-sausage-gnocchi/</loc>
+    <loc>https://tjappen.com/recipes/duckbreast-a-lorange/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/jackies-spinach-casserole/</loc>
+    <loc>https://tjappen.com/recipes/italian-sausage-gnocchi/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/korean-bbq-chicken-wraps/</loc>
+    <loc>https://tjappen.com/recipes/jackies-spinach-casserole/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/modern-pasta-carbonara/</loc>
+    <loc>https://tjappen.com/recipes/korean-bbq-chicken-wraps/</loc>
   </url><url>
-    <loc>http://localhost:1313/occasions/</loc>
+    <loc>https://tjappen.com/recipes/modern-pasta-carbonara/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/pasta-alla-norma/</loc>
+    <loc>https://tjappen.com/occasions/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/pasta-with-salmon-and-spinach/</loc>
+    <loc>https://tjappen.com/recipes/pasta-alla-norma/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/ragu-bolognese/</loc>
+    <loc>https://tjappen.com/recipes/pasta-with-salmon-and-spinach/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/</loc>
+    <loc>https://tjappen.com/recipes/ragu-bolognese/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/sofregit/</loc>
+    <loc>https://tjappen.com/recipes/ras-el-hanout-eggplant-lasagna/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/sweet-potato-salad/</loc>
+    <loc>https://tjappen.com/recipes/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://tjappen.com/recipes/sweet-potato-salad/</loc>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://tjappen.com/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/tofu-satay-with-peanut-noodles/</loc>
+    <loc>https://tjappen.com/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/massaman-curry/</loc>
+    <loc>https://tjappen.com/recipes/tofu-satay-with-peanut-noodles/</loc>
   </url><url>
-    <loc>http://localhost:1313/recipes/vegetable-arroz-a-la-llauna/</loc>
+    <loc>https://tjappen.com/recipes/massaman-curry/</loc>
+  </url><url>
+    <loc>https://tjappen.com/recipes/vegetable-arroz-a-la-llauna/</loc>
   </url>
 </urlset>

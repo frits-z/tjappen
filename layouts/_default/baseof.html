@@ -3,33 +3,49 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
+    <title>{{ if .IsHome }}tjappen. recipes{{ else if eq .Title site.Title }}about - {{ site.Title }}{{ else }}{{ .Title }} - {{ site.Title }}{{ end }}</title>
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" href="/favicon.svg"> <!-- Fallback -->
-    
+    <link rel="canonical" href="{{ .Permalink }}">
+
+    {{- $description := "No food-blog fluff. No life stories preceding the ingredients. Just a personal, minimalist pantry of recipes cooked up for family and friends." -}}
+    {{- if .Params.description -}}
+        {{- $description = .Params.description -}}
+    {{- else if and .IsPage (ne .Type "page") -}}
+        {{- $cuisine := "" }}{{ if .Params.cuisine }}{{ $cuisine = delimit .Params.cuisine ", " }}{{ end -}}
+        {{- $diet := "" }}{{ if .Params.diet }}{{ $diet = delimit .Params.diet ", " | lower }}{{ end -}}
+        {{- $category := "" }}{{ if .Params.category }}{{ $category = delimit .Params.category ", " | lower }}{{ end -}}
+        {{- $occasion := "" }}{{ if .Params.occasion }}{{ $occasion = delimit .Params.occasion ", " }}{{ end -}}
+        {{- $time := "" }}{{ if .Params.time_total }}{{ $time = printf "%v min recipe" .Params.time_total }}{{ end -}}
+        
+        {{- $part1 := slice -}}
+        {{- if $cuisine }}{{ $part1 = $part1 | append $cuisine }}{{ end -}}
+        {{- if $diet }}{{ $part1 = $part1 | append $diet }}{{ end -}}
+        {{- if $category }}{{ $part1 = $part1 | append $category }}{{ end -}}
+        
+        {{- $part2 := slice -}}
+        {{- if $occasion }}{{ $part2 = $part2 | append $occasion }}{{ end -}}
+        {{- if $time }}{{ $part2 = $part2 | append $time }}{{ end -}}
+        
+        {{- $descVal := delimit $part1 " " -}}
+        {{- if and $part1 $part2 }}{{ $descVal = printf "%s • %s" $descVal (delimit $part2 " ") }}{{ else if $part2 }}{{ $descVal = delimit $part2 " " }}{{ end -}}
+        {{- if $descVal -}}
+            {{- $description = printf "Recipe for %s: %s" .Title $descVal -}}
+        {{- else -}}
+            {{- $description = printf "Step-by-step recipe for cooking %s." .Title -}}
+        {{- end -}}
+    {{- end -}}
+
+    <meta name="description" content="{{ $description }}">
+
     <!-- Open Graph / WhatsApp / Twitter Embeds -->
     <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}">
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:site_name" content="tjappen">
+    <meta property="og:description" content="{{ $description }}">
     {{ if .IsPage }}
-        {{ $cuisine := "" }}{{ if .Params.cuisine }}{{ $cuisine = delimit .Params.cuisine ", " }}{{ end }}
-        {{ $diet := "" }}{{ if .Params.diet }}{{ $diet = delimit .Params.diet ", " | lower }}{{ end }}
-        {{ $category := "" }}{{ if .Params.category }}{{ $category = delimit .Params.category ", " | lower }}{{ end }}
-        {{ $occasion := "" }}{{ if .Params.occasion }}{{ $occasion = delimit .Params.occasion ", " }}{{ end }}
-        {{ $time := "" }}{{ if .Params.time_total }}{{ $time = printf "%v min recipe" .Params.time_total }}{{ end }}
-        
-        {{ $part1 := slice }}
-        {{ if $cuisine }}{{ $part1 = $part1 | append $cuisine }}{{ end }}
-        {{ if $diet }}{{ $part1 = $part1 | append $diet }}{{ end }}
-        {{ if $category }}{{ $part1 = $part1 | append $category }}{{ end }}
-        
-        {{ $part2 := slice }}
-        {{ if $occasion }}{{ $part2 = $part2 | append $occasion }}{{ end }}
-        {{ if $time }}{{ $part2 = $part2 | append $time }}{{ end }}
-        
-        <meta property="og:description" content="{{ delimit $part1 " " }}{{ if and $part1 $part2 }} • {{ end }}{{ delimit $part2 " " }}">
         {{ $image := .Resources.GetMatch "*hero*" }}
         {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
         {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
@@ -43,7 +59,6 @@
             <meta name="twitter:card" content="summary">
         {{ end }}
     {{ else }}
-        <meta property="og:description" content="Personal recipe directory">
         <meta name="twitter:card" content="summary">
     {{ end }}
     
@@ -194,6 +209,7 @@
             transform: translate(-50%, -50%) rotate(45deg);
         }
     </style>
+    {{ block "structured-data-recipe-head" . }}{{ end }}
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-black selection:text-white">
 

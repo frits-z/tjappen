@@ -2,6 +2,18 @@
   
     
     {
+      "title": "Catalan Sofregit",
+      "url": "/recipes/sofregit/",
+      "time_total": 120,
+      "ingredients": ["1.5 | Yellow onions  (kg)","4 | Olive oil (tbsp)","0.75 | Water (cup)","0.5 | Salt (tsp)","0.5 | Sugar (tsp)","0.1 | Baking soda (optional) (tsp)","800 | Tomato pulp (g)","1 | Smoked paprika (tsp)"],
+      "cuisine": "catalan",
+      "category": "essential",
+      "occasion": "batch-cook",
+      "diet": "plant-based"
+    }
+  
+    ,
+    {
       "title": "Duckbreast á l'orange",
       "url": "/recipes/duckbreast-a-lorange/",
       "time_total": 180,
@@ -98,14 +110,14 @@
   
     ,
     {
-      "title": "Sofregit",
-      "url": "/recipes/sofregit/",
-      "time_total": 120,
-      "ingredients": ["1.5 | Yellow onions  (kg)","4 | Olive oil (tbsp)","0.75 | Water (cup)","0.5 | Salt (tsp)","0.5 | Sugar (tsp)","0.1 | Baking soda (optional) (tsp)","800 | Tomato pulp (g)","1 | Smoked paprika (tsp)"],
-      "cuisine": "catalan",
-      "category": "essential",
-      "occasion": "batch-cook",
-      "diet": "plant-based"
+      "title": "Ras el Hanout Eggplant Lasagna",
+      "url": "/recipes/ras-el-hanout-eggplant-lasagna/",
+      "time_total": 55,
+      "ingredients": ["3 | Eggplants","500 | Minced meat (g)","500 | Passata (ml)","2 | Handfuls of mozzarella cheese","1 | Handful of parmesan cheese","Salt for dehydration","# Spices","3 | Ras El Hanout (tbsp)","2 | Garlic powder (tsp)","2 | Onion powder (tsp)","1 | Salt (tsp)","1 | Black pepper (tsp)"],
+      "cuisine": "fusion middle eastern",
+      "category": "main",
+      "occasion": "weeknight",
+      "diet": "meat low-carb"
     }
   
     ,

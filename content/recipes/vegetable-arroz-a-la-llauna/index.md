@@ -26,6 +26,7 @@ notes:
  - "Out of sofregit and short on time? Try a mixture of caramelised onion chutney and tomato concentrate puree (try 2:1 ratio) mixed and sauteed in a generous amount of olive oil."
  - "Chestnut mushrooms can be substituted for other mushrooms as long as they have similar texture and are not too watery. For example take king oyster mushrooms."
  - "Flat green beans can be substituted for green asparagus as well."
+ - "[Inspiration for a variation](https://elpais.com/gastronomia/recetas/2022/03/14/receta/1647247864_023606.html)"
 ---
 Quarter the chestnut mushrooms and artichoke hearts. Cut the flat green beans into 3 cm pieces. Cut the roasted red bell pepper into strips.
 

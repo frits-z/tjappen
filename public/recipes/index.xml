@@ -2,101 +2,108 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recipes on tjappen.</title>
-    <link>http://localhost:1313/recipes/</link>
+    <link>https://tjappen.com/recipes/</link>
     <description>Recent content in Recipes on tjappen.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/recipes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tjappen.com/recipes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Catalan Sofregit</title>
+      <link>https://tjappen.com/recipes/sofregit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tjappen.com/recipes/sofregit/</guid>
+      <description>&lt;p&gt;Halve the onions and slice them through root end in strips.&lt;/p&gt;&#xA;&lt;p&gt;Bring onions, all water (less 1 tbsp), half the olive oil, sugar, and salt to a boil in a large pan over high heat. Cover and cook until water has evaporated and onions start to sizzle (10+ minutes).&lt;/p&gt;&#xA;&lt;p&gt;Uncover the pan, reduce heat to medium-high. Gently press onions into sides and bottom of the pan. Wait for half a minute. Stir onions, scraping fond from the pan, and repeat. After roughly 15-20 minutes, when onions start to brown a bit, combine baking soda and remaining 1 tbsp of water and add to the pan (optional, see notes). Continue browning process until the onions are deeply caramelized and have a jammy consistency (another 15-20 mins). Stir more frequently towards the end to prevent burning. Increment the heat downward as onions get further caramelized to avoid burning.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Duckbreast á l&#39;orange</title>
-      <link>http://localhost:1313/recipes/duckbreast-a-lorange/</link>
+      <link>https://tjappen.com/recipes/duckbreast-a-lorange/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/duckbreast-a-lorange/</guid>
+      <guid>https://tjappen.com/recipes/duckbreast-a-lorange/</guid>
       <description>&lt;p&gt;Mix orange zest, juice, honey, soy sauce, and pepper in a zip-lock bag for the marinade.&lt;/p&gt;&#xA;&lt;p&gt;To prep the duck breast: score the duck fat layer in a diamond pattern. Add to the marinade for 1-24 hours.&lt;/p&gt;&#xA;&lt;p&gt;Cooking the duck breast: remove duck from marinade. Place duck fat-side down in a cold frying pan.&lt;/p&gt;&#xA;&lt;p&gt;Slowly render the fat over medium heat for 12-15 minutes until it is golden brown and crisp.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Italian Sausage Gnocchi</title>
-      <link>http://localhost:1313/recipes/italian-sausage-gnocchi/</link>
+      <link>https://tjappen.com/recipes/italian-sausage-gnocchi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/italian-sausage-gnocchi/</guid>
+      <guid>https://tjappen.com/recipes/italian-sausage-gnocchi/</guid>
       <description>&lt;p&gt;Slice the garlic into thin slices (1mm thick).&lt;/p&gt;&#xA;&lt;p&gt;Bring a pan of water to a boil for the gnocchi.&lt;/p&gt;&#xA;&lt;p&gt;Heat a frying pan over medium-high heat with olive oil.&lt;/p&gt;&#xA;&lt;p&gt;Cut open sausages, crumble the meat into the pan in bite-sized chunks.&lt;/p&gt;&#xA;&lt;p&gt;Brown the sausage chunks on both sides, then lower the heat.&lt;/p&gt;&#xA;&lt;p&gt;Add garlic slices and chili flakes; sweat for 1-2 minutes.&lt;/p&gt;&#xA;&lt;p&gt;Salt the boiling water and cook gnocchi (3-4 minutes).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Jackie&#39;s Spinach Casserole</title>
-      <link>http://localhost:1313/recipes/jackies-spinach-casserole/</link>
+      <link>https://tjappen.com/recipes/jackies-spinach-casserole/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/jackies-spinach-casserole/</guid>
+      <guid>https://tjappen.com/recipes/jackies-spinach-casserole/</guid>
       <description>&lt;p&gt;Preheat the oven to 200C (conventional oven).&lt;/p&gt;&#xA;&lt;p&gt;Thaw the frozen spinach in the microwave.&lt;/p&gt;&#xA;&lt;p&gt;Cook the (vegan) minced meat in a pan until brown and crumbly. Meanwhile, boil the 4 eggs for about 10 minutes until hard-boiled.&lt;/p&gt;&#xA;&lt;p&gt;In an oven dish, mix the thawed spinach, the cooked minced meat, and the grated cheese. Peel and slice the boiled eggs, and add them to the dish. Cover the top of the mixture with the slices of puff pastry.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Korean BBQ chicken wraps</title>
-      <link>http://localhost:1313/recipes/korean-bbq-chicken-wraps/</link>
+      <link>https://tjappen.com/recipes/korean-bbq-chicken-wraps/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/korean-bbq-chicken-wraps/</guid>
+      <guid>https://tjappen.com/recipes/korean-bbq-chicken-wraps/</guid>
       <description>&lt;p&gt;Mix spices, Gochujang, honey, and soy sauce. Massage the marinade into the chicken. Use two thirds of the garlic powder, sesame seeds and honey.&lt;/p&gt;&#xA;&lt;p&gt;Bake the chicken at 200C (conventional oven) for 25-30 minutes.&lt;/p&gt;&#xA;&lt;p&gt;For the salad: thinly slice the cucumbers and onions, then mix with grated carrot, rice vinegar, sriracha, and remaining sesame seeds.&lt;/p&gt;&#xA;&lt;p&gt;For the slightly spicy sauce: mix yogurt, mayo, gochujang, remaining honey, and remaining garlic powder. In case the consistency is too thick, add a splash of milk.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Modern Pasta Carbonara</title>
-      <link>http://localhost:1313/recipes/modern-pasta-carbonara/</link>
+      <link>https://tjappen.com/recipes/modern-pasta-carbonara/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/modern-pasta-carbonara/</guid>
+      <guid>https://tjappen.com/recipes/modern-pasta-carbonara/</guid>
       <description>&lt;p&gt;Dice the asparagus into tiny pieces (0.5cm each). Do not use the tips, save thosse for a different recipe. Cut the guanciale into bite sized cubes.&lt;/p&gt;&#xA;&lt;p&gt;In a bowl, mix the egg and egg yolks, and slowly add   the grated parmesan until it forms a semi-liquid paste.&lt;/p&gt;&#xA;&lt;p&gt;Boil salted water and cook the pasta al dente.&lt;/p&gt;&#xA;&lt;p&gt;Fry the guanciale over medium-high heat in a dry pan until the fat renders out, then add the asparagus and lots of pepper. Fry until the asparagus is cooked and guanciale is crispy.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Pasta Alla Norma</title>
-      <link>http://localhost:1313/recipes/pasta-alla-norma/</link>
+      <link>https://tjappen.com/recipes/pasta-alla-norma/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/pasta-alla-norma/</guid>
+      <guid>https://tjappen.com/recipes/pasta-alla-norma/</guid>
       <description>&lt;p&gt;Preheat the oven to 220C fan.&lt;/p&gt;&#xA;&lt;p&gt;Using a peeler and working from top to bottom of the aubergines, shave off long alternating strips of peel so that they look striped, like zebras. Cut widthways into 1cm thick slices and place in a bowl with 75ml of oil, 3/4 teaspoon of salt and a generous grind of pepper. Mix well, then spread out on two large baking paper-lined trays. Roast for 30-35 minutes, until dark golden-brown. Remove from the oven and set aside to cool.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Pasta with salmon and spinach</title>
-      <link>http://localhost:1313/recipes/pasta-with-salmon-and-spinach/</link>
+      <link>https://tjappen.com/recipes/pasta-with-salmon-and-spinach/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/pasta-with-salmon-and-spinach/</guid>
+      <guid>https://tjappen.com/recipes/pasta-with-salmon-and-spinach/</guid>
       <description>&lt;p&gt;Cut the salmon into bite-sized pieces.&lt;/p&gt;&#xA;&lt;p&gt;Bring salted water to a boil and cook the pasta until slightly under al dente.&lt;/p&gt;&#xA;&lt;p&gt;Heat olive oil in a large saucepan or wok over medium-high heat.&lt;/p&gt;&#xA;&lt;p&gt;Bake the salmon for 1-2 minutes until slightly golden.&lt;/p&gt;&#xA;&lt;p&gt;Add the spinach in batches, allowing the excess water to evaporate before adding more.&lt;/p&gt;&#xA;&lt;p&gt;Drain the pasta, reserving 1 glass of pasta water.&lt;/p&gt;&#xA;&lt;p&gt;Toast pine nuts in a separate dry pan for 1-2 minutes until golden.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Ragù Bolognese</title>
-      <link>http://localhost:1313/recipes/ragu-bolognese/</link>
+      <link>https://tjappen.com/recipes/ragu-bolognese/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/ragu-bolognese/</guid>
+      <guid>https://tjappen.com/recipes/ragu-bolognese/</guid>
       <description>&lt;p&gt;Finely dice the onion, cut the celery and carrot in to small cubes, roughly 2-3mm each.&lt;/p&gt;&#xA;&lt;p&gt;Preheat your oven to 140 degrees celsius.&lt;/p&gt;&#xA;&lt;p&gt;Add some olive oil in to a large pan (that can be placed in the oven, preferably a cast-iron dutch oven) and add your onions, celery and carrot.&lt;/p&gt;&#xA;&lt;p&gt;Fruit the vegetables on low to medium low temp, until soft and sweet.&lt;/p&gt;&#xA;&lt;p&gt;Remove vegetables from the pan, and wipe the pan clean with a paper towel.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Sofregit</title>
-      <link>http://localhost:1313/recipes/sofregit/</link>
+      <title>Ras el Hanout Eggplant Lasagna</title>
+      <link>https://tjappen.com/recipes/ras-el-hanout-eggplant-lasagna/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/sofregit/</guid>
-      <description>&lt;p&gt;Halve the onions and slice them through root end in strips.&lt;/p&gt;&#xA;&lt;p&gt;Bring onions, all water (less 1 tbsp), half the olive all, sugar, and salt to a boil in a large pan over high heat. Cover and cook until water has evaporated and onions start to sizzle (10+ minutes).&lt;/p&gt;&#xA;&lt;p&gt;Uncover the pan, reduce heat to medium-high. Gently press onions into sides and bottom of the pan. Wait for half a minute. Stir onions, scraping fond from the pan, and repeat. After roughly 15-20 minutes, when onions start to brown a bit, combine baking soda and remaining 1 tbsp of water and add to the pan (optional, see notes). Continue browning process until the onions are deeply caramelized and have a jammy consistency (another 15-20 mins). Stir more frequently towards the end to prevent burning. Increment the heat downward as onions get further caramelized to avoid burning.&lt;/p&gt;</description>
+      <guid>https://tjappen.com/recipes/ras-el-hanout-eggplant-lasagna/</guid>
+      <description>&lt;p&gt;Half your eggplant from top (crown) to bottom. Trim off both ends and slice the eggplants lengthwise to mimic lasagna sheets. Lay them out next to each other and salt generously to draw out the moisture. Let them sit for roughly 15 minutes. Once done, grill your eggplants in a frying pan or grilling pan until soft and no longer rubbery in texture on both sides.&lt;/p&gt;&#xA;&lt;p&gt;Combine the minced meat thoroughly with the Ras El Hanout, garlic powder, onion powder, salt, and black pepper. Place a deep frying pan over medium-high heat and brown the seasoned minced meat.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sweet potato salad</title>
-      <link>http://localhost:1313/recipes/sweet-potato-salad/</link>
+      <link>https://tjappen.com/recipes/sweet-potato-salad/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/sweet-potato-salad/</guid>
+      <guid>https://tjappen.com/recipes/sweet-potato-salad/</guid>
       <description>&lt;p&gt;Preheat the oven to 200C (conventional oven).&lt;/p&gt;&#xA;&lt;p&gt;Dice sweet potato and carrot into half-circles (approx. 0.5cm thick) and place on a baking tray.&lt;/p&gt;&#xA;&lt;p&gt;Add olive oil, salt, and pepper; bake for 20-25 minutes.&lt;/p&gt;&#xA;&lt;p&gt;Add asparagus tips and bake for another 10 minutes.&lt;/p&gt;&#xA;&lt;p&gt;Finely dice the red onion, extract lemon juice, and crumble the feta.&lt;/p&gt;&#xA;&lt;p&gt;In a bowl, mix the roasted vegetables, lamb&amp;rsquo;s lettuce, onion, and feta.&lt;/p&gt;&#xA;&lt;p&gt;Whisk lemon juice with 2 tablespoons of olive oil.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Tofu Satay with noodles</title>
-      <link>http://localhost:1313/recipes/tofu-satay-with-peanut-noodles/</link>
+      <link>https://tjappen.com/recipes/tofu-satay-with-peanut-noodles/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/tofu-satay-with-peanut-noodles/</guid>
+      <guid>https://tjappen.com/recipes/tofu-satay-with-peanut-noodles/</guid>
       <description>&lt;p&gt;If you choose to freeze the tofu: place the block of tofu (in its packaging) in the freezer the day before you want to make this. Take it out on the day you plan to cook and let it thaw at room temperature.&lt;/p&gt;&#xA;&lt;p&gt;Cut the tofu into bite-sized cubes. Finely grate half of the garlic and finely chop half of your ginger.&lt;/p&gt;&#xA;&lt;p&gt;Place the tofu cubes in a deep, sealable plastic container. Add the light soy sauce, rice vinegar, 1 (half of total) tbsp of brown sugar, the grated garlic, and the chopped ginger.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vegan Massaman Curry</title>
-      <link>http://localhost:1313/recipes/massaman-curry/</link>
+      <link>https://tjappen.com/recipes/massaman-curry/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/massaman-curry/</guid>
+      <guid>https://tjappen.com/recipes/massaman-curry/</guid>
       <description>&lt;p&gt;Heat 1/2 cup (about 120ml) of the coconut milk in a large pot or wok over medium heat until it begins to bubble and the oil starts to slightly separate. Add the red curry paste, cumin seeds, coriander seeds, cinnamon, and nutmeg. Stir well and fry for 1-2 minutes until deeply fragrant.&lt;/p&gt;&#xA;&lt;p&gt;Pour in the remaining coconut milk along with the maple syrup, soy sauce, peanut butter, lime juice, and tamarind paste. Stir continuously until the peanut butter completely dissolves and the curry base is smooth.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Vegetable Arroz a la Llauna</title>
-      <link>http://localhost:1313/recipes/vegetable-arroz-a-la-llauna/</link>
+      <link>https://tjappen.com/recipes/vegetable-arroz-a-la-llauna/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/recipes/vegetable-arroz-a-la-llauna/</guid>
-      <description>&lt;p&gt;Quarter the chestnut mushrooms and artichoke hearts. Cut the flat green beans into 3 cm pieces. Cut the roasted red bell pepper into strips.&lt;/p&gt;&#xA;&lt;p&gt;Preheat oven to 180c fan.&lt;/p&gt;&#xA;&lt;p&gt;Heat the olive oil in a large pan. Brown the chestnut mushrooms. Add the flat green beans and saute for 3 minutes.&lt;/p&gt;&#xA;&lt;p&gt;Stir in your &lt;a href=&#34;http://localhost:1313/recipes/sofregit/&#34;&gt;homemade sofregit&lt;/a&gt; (See notes if you are out of sofregit). Stir in the rice and saute for 2 minutes until the grains are translucent at the edges and coated in the fat.&lt;/p&gt;</description>
+      <guid>https://tjappen.com/recipes/vegetable-arroz-a-la-llauna/</guid>
+      <description>&lt;p&gt;Quarter the chestnut mushrooms and artichoke hearts. Cut the flat green beans into 3 cm pieces. Cut the roasted red bell pepper into strips.&lt;/p&gt;&#xA;&lt;p&gt;Preheat oven to 180c fan.&lt;/p&gt;&#xA;&lt;p&gt;Heat the olive oil in a large pan. Brown the chestnut mushrooms. Add the flat green beans and saute for 3 minutes.&lt;/p&gt;&#xA;&lt;p&gt;Stir in your &lt;a href=&#34;https://tjappen.com/recipes/sofregit/&#34;&gt;homemade sofregit&lt;/a&gt; (See notes if you are out of sofregit). Stir in the rice and saute for 2 minutes until the grains are translucent at the edges and coated in the fat.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

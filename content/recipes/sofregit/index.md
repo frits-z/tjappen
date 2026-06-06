@@ -1,5 +1,5 @@
 ---
-title: "Sofregit"
+title: "Catalan Sofregit"
 time_active: 120
 time_total: 120
 servings: 24
@@ -25,7 +25,7 @@ notes:
 ---
 Halve the onions and slice them through root end in strips.
 
-Bring onions, all water (less 1 tbsp), half the olive all, sugar, and salt to a boil in a large pan over high heat. Cover and cook until water has evaporated and onions start to sizzle (10+ minutes).
+Bring onions, all water (less 1 tbsp), half the olive oil, sugar, and salt to a boil in a large pan over high heat. Cover and cook until water has evaporated and onions start to sizzle (10+ minutes).
 
 Uncover the pan, reduce heat to medium-high. Gently press onions into sides and bottom of the pan. Wait for half a minute. Stir onions, scraping fond from the pan, and repeat. After roughly 15-20 minutes, when onions start to brown a bit, combine baking soda and remaining 1 tbsp of water and add to the pan (optional, see notes). Continue browning process until the onions are deeply caramelized and have a jammy consistency (another 15-20 mins). Stir more frequently towards the end to prevent burning. Increment the heat downward as onions get further caramelized to avoid burning.
 

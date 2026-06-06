@@ -1,3 +1,127 @@
+{{ define "structured-data-recipe-head" }}
+  {{- $hero := .Resources.GetMatch "*hero*" -}}
+  {{- if not $hero }}{{ $hero = .Resources.GetMatch "*cover*" }}{{ end -}}
+  {{- if not $hero }}{{ $hero = .Resources.GetMatch "*.jpg" }}{{ end -}}
+  {{- if not $hero }}{{ $hero = .Resources.GetMatch "*.png" }}{{ end -}}
+  
+  {{- $description := "" -}}
+  {{- if .Params.description -}}
+    {{- $description = .Params.description -}}
+  {{- else if and .Params.notes (gt (len .Params.notes) 0) -}}
+    {{- $firstNote := index .Params.notes 0 -}}
+    {{- if not (findRE `!\[` $firstNote) -}}
+      {{- $description = $firstNote | markdownify | plainify | htmlUnescape | strings.TrimSpace -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $description -}}
+    {{- $cuisine := "" }}{{ if .Params.cuisine }}{{ $cuisine = delimit .Params.cuisine ", " }}{{ end -}}
+    {{- $diet := "" }}{{ if .Params.diet }}{{ $diet = delimit .Params.diet ", " | lower }}{{ end -}}
+    {{- $category := "" }}{{ if .Params.category }}{{ $category = delimit .Params.category ", " | lower }}{{ end -}}
+    {{- $occasion := "" }}{{ if .Params.occasion }}{{ $occasion = delimit .Params.occasion ", " }}{{ end -}}
+    {{- $time := "" }}{{ if .Params.time_total }}{{ $time = printf "%v min recipe" .Params.time_total }}{{ end -}}
+    
+    {{- $part1 := slice -}}
+    {{- if $cuisine }}{{ $part1 = $part1 | append $cuisine }}{{ end -}}
+    {{- if $diet }}{{ $part1 = $part1 | append $diet }}{{ end -}}
+    {{- if $category }}{{ $part1 = $part1 | append $category }}{{ end -}}
+    
+    {{- $part2 := slice -}}
+    {{- if $occasion }}{{ $part2 = $part2 | append $occasion }}{{ end -}}
+    {{- if $time }}{{ $part2 = $part2 | append $time }}{{ end -}}
+    
+    {{- $tagDesc := delimit $part1 " " -}}
+    {{- if and $part1 $part2 }}{{ $tagDesc = printf "%s • %s" $tagDesc (delimit $part2 " ") }}{{ else if $part2 }}{{ $tagDesc = delimit $part2 " " }}{{ end -}}
+    
+    {{- $description = printf "A recipe for %s. %s" .Title $tagDesc -}}
+  {{- end -}}
+
+  {{- $keywords := slice -}}
+  {{- if .Params.cuisine }}{{ $keywords = $keywords | union .Params.cuisine }}{{ end -}}
+  {{- if .Params.category }}{{ $keywords = $keywords | union .Params.category }}{{ end -}}
+  {{- if .Params.diet }}{{ $keywords = $keywords | union .Params.diet }}{{ end -}}
+  {{- if .Params.occasion }}{{ $keywords = $keywords | union .Params.occasion }}{{ end -}}
+
+  {{- $ingredients := slice -}}
+  {{- range .Params.ingredients -}}
+    {{- if not (hasPrefix . "# ") -}}
+      {{- $parts := split . "|" -}}
+      {{- if eq (len $parts) 2 -}}
+        {{- $qty := trim (index $parts 0) " " -}}
+        {{- $item := trim (index $parts 1) " " -}}
+        {{- $ingredients = $ingredients | append (printf "%s %s" $qty $item) -}}
+      {{- else -}}
+        {{- $ingredients = $ingredients | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $steps := slice -}}
+  {{- $stepsRaw := findRE "(?s)<(p|ul|ol|h3|h4).*?>.*?</(p|ul|ol|h3|h4)>" .Content -}}
+  {{- range $stepsRaw -}}
+    {{- $text := . | plainify | htmlUnescape | strings.TrimSpace -}}
+    {{- if $text -}}
+      {{- $steps = $steps | append $text -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $cookTime := 0 -}}
+  {{- if and .Params.time_total .Params.time_active -}}
+    {{- $cookTime = sub (int .Params.time_total) (int .Params.time_active) -}}
+  {{- end -}}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": {{ .Title | jsonify | safeJS }},
+    {{- if $hero }}
+    "image": [
+      {{ $hero.Permalink | jsonify | safeJS }}
+    ],
+    {{- end }}
+    "author": {
+      "@type": "Person",
+      "name": "Frits"
+    },
+    {{- if not .Date.IsZero }}
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    {{- end }}
+    "description": {{ $description | jsonify | safeJS }},
+    {{- if .Params.time_active }}
+    "prepTime": "PT{{ .Params.time_active }}M",
+    {{- end }}
+    {{- if gt $cookTime 0 }}
+    "cookTime": "PT{{ $cookTime }}M",
+    {{- end }}
+    {{- if .Params.time_total }}
+    "totalTime": "PT{{ .Params.time_total }}M",
+    {{- end }}
+    {{- if .Params.servings }}
+    "recipeYield": "{{ .Params.servings }}",
+    {{- end }}
+    {{- if .Params.category }}
+    "recipeCategory": "{{ delimit .Params.category ", " }}",
+    {{- end }}
+    {{- if .Params.cuisine }}
+    "recipeCuisine": "{{ delimit .Params.cuisine ", " }}",
+    {{- end }}
+    {{- if $keywords }}
+    "keywords": "{{ delimit $keywords ", " }}",
+    {{- end }}
+    "recipeIngredient": {{ $ingredients | jsonify | safeJS }},
+    "recipeInstructions": [
+      {{- range $index, $step := $steps -}}
+        {{- if $index }},{{ end }}
+        {
+          "@type": "HowToStep",
+          "text": {{ $step | jsonify | safeJS }}
+        }
+      {{- end -}}
+    ]
+  }
+  </script>
+{{ end }}
+
 {{ define "header" }}
 <nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">

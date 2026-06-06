@@ -19,6 +19,7 @@ ingredients:
   - "2 | Handfuls of walnuts"
 notes:
   - "By Rune"
+  - "Sweet potatoes amount can be scaled down to around 70% of the original if serving together with another (side) dish (e.g. a piece of fish)"
 ---
 
 Preheat the oven to 200C (conventional oven).
