@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSearch = e.target.value.toLowerCase();
             clearSearchBtn.classList.toggle('hidden', currentSearch.length === 0);
             renderGrid();
+            renderFilters();
         });
 
         clearSearchBtn.addEventListener('click', () => {
@@ -66,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearSearchBtn.classList.add('hidden');
             searchInput.focus();
             renderGrid();
+            renderFilters();
         });
 
         clearFiltersBtn.addEventListener('click', () => {
@@ -102,6 +104,30 @@ document.addEventListener('DOMContentLoaded', () => {
         renderGrid();
     }
 
+    function getOptionCount(category, option) {
+        let count = 0;
+        cardsData.forEach(recipe => {
+            const matchesSearch = !currentSearch || recipe.title.includes(currentSearch) || recipe.ingredients.includes(currentSearch);
+            if (!matchesSearch) return;
+
+            const matchesOtherCategories = Object.keys(activeFilters).every(cat => {
+                if (cat === category) return true;
+                const selected = activeFilters[cat];
+                if (selected.length === 0) return true;
+                const tags = recipe.taxonomies[cat] || [];
+                return selected.some(s => tags.includes(s));
+            });
+
+            if (matchesOtherCategories) {
+                const tags = recipe.taxonomies[category] || [];
+                if (tags.includes(option)) {
+                    count++;
+                }
+            }
+        });
+        return count;
+    }
+
     function renderFilters() {
         let html = '';
         for (const [category, options] of Object.entries(taxonomyOptions)) {
@@ -112,11 +138,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="flex flex-wrap gap-2">
                         ${options.map(option => {
                             const isActive = activeFilters[category].includes(option);
-                            const baseClasses = "px-3 py-1 text-xs font-medium cursor-pointer transition-colors border";
-                            const activeClasses = isActive 
-                                ? "bg-primary text-white border-primary" 
-                                : "bg-white text-black border-gray-300 hover:border-primary hover:text-primary";
-                            return `<button class="${baseClasses} ${activeClasses}" onclick="handleFilterClick('${category}', '${option}')">${option}</button>`;
+                            const count = getOptionCount(category, option);
+                            
+                            let buttonHtml = '';
+                            if (isActive) {
+                                // Active button - always clickable to deselect
+                                const baseClasses = "px-3 py-1 text-xs font-medium cursor-pointer transition-colors border";
+                                const activeClasses = "bg-primary text-white border-primary";
+                                buttonHtml = `<button class="${baseClasses} ${activeClasses}" onclick="handleFilterClick('${category}', '${option}')">${option} (${count})</button>`;
+                            } else if (count === 0) {
+                                // Disabled button - count is 0 and not active
+                                const baseClasses = "px-3 py-1 text-xs font-medium border";
+                                const disabledClasses = "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed opacity-60";
+                                buttonHtml = `<button class="${baseClasses} ${disabledClasses}" disabled>${option} (0)</button>`;
+                            } else {
+                                // Enabled inactive button
+                                const baseClasses = "px-3 py-1 text-xs font-medium cursor-pointer transition-colors border";
+                                const inactiveClasses = "bg-white text-black border-gray-300 hover:border-primary hover:text-primary";
+                                buttonHtml = `<button class="${baseClasses} ${inactiveClasses}" onclick="handleFilterClick('${category}', '${option}')">${option} (${count})</button>`;
+                            }
+                            return buttonHtml;
                         }).join('')}
                     </div>
                 </div>
