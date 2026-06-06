@@ -10,7 +10,7 @@
   {{- else if and .Params.notes (gt (len .Params.notes) 0) -}}
     {{- $firstNote := index .Params.notes 0 -}}
     {{- if not (findRE `!\[` $firstNote) -}}
-      {{- $description = $firstNote | markdownify | plainify | htmlUnescape | strings.TrimSpace -}}
+      {{- $description = trim ($firstNote | markdownify | plainify | htmlUnescape) " \n\r\t" -}}
     {{- end -}}
   {{- end -}}
   {{- if not $description -}}
@@ -58,7 +58,7 @@
   {{- $steps := slice -}}
   {{- $stepsRaw := findRE "(?s)<(p|ul|ol|h3|h4).*?>.*?</(p|ul|ol|h3|h4)>" .Content -}}
   {{- range $stepsRaw -}}
-    {{- $text := . | plainify | htmlUnescape | strings.TrimSpace -}}
+    {{- $text := trim (. | plainify | htmlUnescape) " \n\r\t" -}}
     {{- if $text -}}
       {{- $steps = $steps | append $text -}}
     {{- end -}}
