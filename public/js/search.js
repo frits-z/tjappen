@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
             title: card.dataset.title.toLowerCase(),
             ingredients: (card.dataset.ingredients || '').toLowerCase(),
             taxonomies: {
-                cuisine: (card.dataset.cuisine || "").split(' ').filter(Boolean).sort(),
-                category: (card.dataset.category || "").split(' ').filter(Boolean).sort(),
-                diet: (card.dataset.diet || "").split(' ').filter(Boolean).sort(),
-                occasion: (card.dataset.occasion || "").split(' ').filter(Boolean).sort()
+                cuisine: (card.dataset.cuisine || "").split(',').filter(Boolean).sort(),
+                category: (card.dataset.category || "").split(',').filter(Boolean).sort(),
+                diet: (card.dataset.diet || "").split(',').filter(Boolean).sort(),
+                occasion: (card.dataset.occasion || "").split(',').filter(Boolean).sort()
             }
         };
     });
@@ -130,11 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderFilters() {
         let html = '';
-        for (const [category, options] of Object.entries(taxonomyOptions)) {
-            if (options.length === 0) continue;
+        const categories = Object.entries(taxonomyOptions).filter(([_, options]) => options.length > 0);
+        categories.forEach(([category, options], index) => {
+            const isLast = index === categories.length - 1;
+            const marginStyle = isLast ? '' : 'style="margin-bottom: 16px;"';
             html += `
-                <div>
-                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">${category}</h3>
+                <div ${marginStyle}>
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3" style="margin-bottom: 12px;">${category}</h3>
                     <div class="flex flex-wrap gap-2">
                         ${options.map(option => {
                             const isActive = activeFilters[category].includes(option);
@@ -162,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
-        }
+        });
         filterContainer.innerHTML = html;
     }
 

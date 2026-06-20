@@ -53,19 +53,6 @@
                 </button>
             </div>
         </div>
-
-        
-        <div id="filterPanel" class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-6">
-            <div class="pb-6 border-t border-gray-200 pt-6">
-                <div class="flex justify-between items-end mb-4">
-                    <h2 class="text-xs font-bold uppercase tracking-widest text-black">Filters</h2>
-                    <button id="clearFiltersBtn" class="text-xs font-bold text-black hover:text-primary uppercase hidden tracking-wider">Reset</button>
-                </div>
-                <div id="filterContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                    
-                </div>
-            </div>
-        </div>
         
     </div>
 </header>
@@ -73,6 +60,19 @@
 
     <div class="flex-grow">
       
+
+<div id="filterPanel" class="hidden overflow-hidden transition-all duration-300 ease-in-out bg-white border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex justify-between items-end mb-4">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-black">Filters</h2>
+            <button id="clearFiltersBtn" class="text-xs font-bold text-black hover:text-primary uppercase hidden tracking-wider">Reset</button>
+        </div>
+        <div id="filterContainer" class="grid grid-cols-1">
+            
+        </div>
+    </div>
+</div>
+
 <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full mb-12">
     <div class="mb-8 flex justify-between items-baseline">
         <h2 class="text-xl font-bold tracking-tight">Index</h2>
@@ -488,10 +488,10 @@
           <article class="recipe-card group cursor-pointer h-full flex flex-col" 
               data-title="Ras el Hanout Eggplant Lasagna" 
               data-ingredients="3 | Eggplants 500 | Minced meat (g) 500 | Passata (ml) 2 | Handfuls of mozzarella cheese 1 | Handful of parmesan cheese Salt for dehydration # Spices 3 | Ras El Hanout (tbsp) 2 | Garlic powder (tsp) 2 | Onion powder (tsp) 1 | Salt (tsp) 1 | Black pepper (tsp)" 
-              data-cuisine="Fusion Middle Eastern" 
+              data-cuisine="Fusion,Middle Eastern" 
               data-category="Main" 
               data-occasion="Weeknight"
-              data-diet="Meat Low-carb">
+              data-diet="Meat,Low-carb">
               <div class="image-container mb-4">
                   
                   
@@ -538,8 +538,8 @@
               data-ingredients="40 | Cherry tomatoes (~350-400gr) 20 | Mini mozzarella balls (~250 gr) 20 | Leaves of basil 4 | Classic Cremaceto 55% balsamic vinegar (tsp) 2 | Olive oil (tsp) 1 | Honey (tsp) Salt to taste Freshly ground black pepper to taste 20 | Small slices of Italian ham (Optional, e.g., half a slice of parma ham per skewer)" 
               data-cuisine="Italian" 
               data-category="Salad" 
-              data-occasion="Weeknight Special"
-              data-diet="Vegetarian Meat">
+              data-occasion="Weeknight,Special"
+              data-diet="Vegetarian,Meat">
               <div class="image-container mb-4">
                   
                   
