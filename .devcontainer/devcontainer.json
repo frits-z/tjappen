@@ -1,12 +1,17 @@
 {
 	"name": "Hugo DevContainer",
-	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"image": "mcr.microsoft.com/devcontainers/base:bookworm",
 	"features": {
-		"ghcr.io/devcontainers/features/node:1": {}
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/hugo:1": {
+			"extended": true,
+			"version": "latest"
+		}
 	},
-	"onCreateCommand": "sudo apt-get update && sudo apt-get install -y hugo",
 	"postCreateCommand": "npm install",
-	"forwardPorts": [1313],
+	"forwardPorts": [
+		1313
+	],
 	"customizations": {
 		"vscode": {
 			"extensions": [

@@ -11,19 +11,19 @@ module.exports = {
         sans: ['Inter', 'sans-serif'],
       },
       colors: {
-        // Monochrome theme
-        black: '#111',
-        white: '#fff',
+        black: '#1a1a1a', 
+        white: '#fff3e8',
+        primary: '#fe5a11',
         gray: {
-          100: '#f4f4f5',
-          200: '#e4e4e7',
-          300: '#d4d4d8',
-          400: '#a1a1aa',
-          500: '#71717a',
-          600: '#52525b',
-          700: '#3f3f46',
-          800: '#27272a',
-          900: '#18181b',
+          100: '#faebd8',
+          200: '#edd8c3',
+          300: '#d8bda2',
+          400: '#bd9d7f',
+          500: '#9e7f62',
+          600: '#7d6148',
+          700: '#5c4632',
+          800: '#403022',
+          900: '#291e14',
         }
       }
     },

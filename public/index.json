@@ -122,6 +122,18 @@
   
     ,
     {
+      "title": "Summer Skewers",
+      "url": "/recipes/summer-skewers/",
+      "time_total": 15,
+      "ingredients": ["40 | Cherry tomatoes (~350-400gr)","20 | Mini mozzarella balls (~250 gr)","20 | Leaves of basil","4 | Classic Cremaceto 55% balsamic vinegar (tsp)","2 | Olive oil (tsp)","1 | Honey (tsp)","Salt to taste","Freshly ground black pepper to taste","20 | Small slices of Italian ham (Optional, e.g., half a slice of parma ham per skewer)"],
+      "cuisine": "italian",
+      "category": "salad",
+      "occasion": "weeknight special",
+      "diet": "vegetarian meat"
+    }
+  
+    ,
+    {
       "title": "Sweet potato salad",
       "url": "/recipes/sweet-potato-salad/",
       "time_total": 40,
