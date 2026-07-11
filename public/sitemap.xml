@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/recipes/asparagus-lemon-risotto/</loc>
+  </url><url>
     <loc>http://localhost:1313/recipes/sofregit/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
@@ -11,6 +13,8 @@
     <loc>http://localhost:1313/diets/</loc>
   </url><url>
     <loc>http://localhost:1313/recipes/duckbreast-a-lorange/</loc>
+  </url><url>
+    <loc>http://localhost:1313/recipes/grilled-apple-salad/</loc>
   </url><url>
     <loc>http://localhost:1313/recipes/italian-sausage-gnocchi/</loc>
   </url><url>
@@ -31,6 +35,8 @@
     <loc>http://localhost:1313/recipes/ras-el-hanout-eggplant-lasagna/</loc>
   </url><url>
     <loc>http://localhost:1313/recipes/</loc>
+  </url><url>
+    <loc>http://localhost:1313/recipes/feta-burgers/</loc>
   </url><url>
     <loc>http://localhost:1313/recipes/summer-skewers/</loc>
   </url><url>

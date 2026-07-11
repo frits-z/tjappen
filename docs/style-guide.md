@@ -33,5 +33,5 @@ To match the site’s aesthetic, photography should feel **organic, high-quality
 ---
 
 ## 3. Interaction Principles
-- **Subtle Motion:** The site uses micro-interactions (like the -12° icon rotation and the grayscale-to-color card hover).
+- **Subtle Motion:** The site uses micro-interactions (like the -12° icon rotation and the scale-up card hover).
 - **Focus:** The "Step Focus" mode emphasizes clarity. In photography, this translates to a **shallow depth of field**—keeping the main dish sharp while the background blurs slightly.

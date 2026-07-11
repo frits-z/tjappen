@@ -2,6 +2,18 @@
   
     
     {
+      "title": "Asparagus-Lemon Risotto",
+      "url": "/recipes/asparagus-lemon-risotto/",
+      "time_total": 45,
+      "ingredients": ["# Base","2 | Onions (finely chopped)","2 | Cloves of garlic (finely chopped)","400 | Risotto rice (grams)","4 | Bouillon cubes","250 | Dry white wine, e.g., Riesling (ml)","# Finishers \u0026 Garnish","500 | Green asparagus (grams)","200 | Ricotta, drained (grams)","50 | Parmesan cheese (grams)","1 | Juice of a large lemon","Fresh basil leaves for garnish","Pepper and salt to taste"],
+      "cuisine": "italian",
+      "category": "main",
+      "occasion": "weeknight special",
+      "diet": "vegetarian"
+    }
+  
+    ,
+    {
       "title": "Catalan Sofregit",
       "url": "/recipes/sofregit/",
       "time_total": 120,
@@ -22,6 +34,18 @@
       "category": "main",
       "occasion": "special",
       "diet": "meat"
+    }
+  
+    ,
+    {
+      "title": "Grilled Apple Salad",
+      "url": "/recipes/grilled-apple-salad/",
+      "time_total": 30,
+      "ingredients": ["# Base","3 | Apples, cut into wedges (approx. 3-4)","1 | Red onion (finely diced)","100 | Baby spinach, roughly chopped into bite-sized pieces (grams)","100 | Butter lettuce, roughly chopped into bite-sized pieces (grams)","50 | Aged cheese, cut into small cubes (grams)","20 | Croutons (grams)","A handful of walnuts","A splash of olive oil","# Dressing","4 | Teaspoons of coarse mustard","4 | Tablespoons of white wine vinegar","4 | Tablespoons of honey"],
+      "cuisine": "european",
+      "category": "salad",
+      "occasion": "weeknight",
+      "diet": "vegetarian"
     }
   
     ,
@@ -118,6 +142,18 @@
       "category": "main",
       "occasion": "weeknight",
       "diet": "meat low-carb"
+    }
+  
+    ,
+    {
+      "title": "Simple Feta \u0026 Sriracha Beef Burger",
+      "url": "/recipes/feta-burgers/",
+      "time_total": 20,
+      "ingredients": ["# Burger \u0026 Seasoning","125 | Beef / ground beef (grams)","Salt (to taste)","Black pepper (to taste)","Onion powder (to taste)","Garlic powder (to taste)","Cayenne pepper (to taste)","# Toppings \u0026 Sauce","50 | Feta cheese (grams)","0.25 | Lemon (zest only)","1 | Burger bun","4-5 | Cucumber (thin slices)","1 | Light mayonnaise (tablespoon)","2-4 | Sriracha (teaspoons, to taste)"],
+      "cuisine": "fusion",
+      "category": "main",
+      "occasion": "weeknight",
+      "diet": "meat"
     }
   
     ,

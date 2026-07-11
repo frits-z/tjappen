@@ -1,72 +1,73 @@
 {{ define "structured-data-recipe-head" }}
-  {{- $hero := .Resources.GetMatch "*hero*" -}}
-  {{- if not $hero }}{{ $hero = .Resources.GetMatch "*cover*" }}{{ end -}}
-  {{- if not $hero }}{{ $hero = .Resources.GetMatch "*.jpg" }}{{ end -}}
-  {{- if not $hero }}{{ $hero = .Resources.GetMatch "*.png" }}{{ end -}}
-  
-  {{- $description := "" -}}
-  {{- if .Params.description -}}
-    {{- $description = .Params.description -}}
-  {{- else if and .Params.notes (gt (len .Params.notes) 0) -}}
-    {{- $firstNote := index .Params.notes 0 -}}
-    {{- if not (findRE `!\[` $firstNote) -}}
-      {{- $description = trim ($firstNote | markdownify | plainify | htmlUnescape) " \n\r\t" -}}
-    {{- end -}}
-  {{- end -}}
-  {{- if not $description -}}
-    {{- $cuisine := "" }}{{ if .Params.cuisine }}{{ $cuisine = delimit .Params.cuisine ", " }}{{ end -}}
-    {{- $diet := "" }}{{ if .Params.diet }}{{ $diet = delimit .Params.diet ", " | lower }}{{ end -}}
-    {{- $category := "" }}{{ if .Params.category }}{{ $category = delimit .Params.category ", " | lower }}{{ end -}}
-    {{- $occasion := "" }}{{ if .Params.occasion }}{{ $occasion = delimit .Params.occasion ", " }}{{ end -}}
-    {{- $time := "" }}{{ if .Params.time_total }}{{ $time = printf "%v min recipe" .Params.time_total }}{{ end -}}
-    
-    {{- $part1 := slice -}}
-    {{- if $cuisine }}{{ $part1 = $part1 | append $cuisine }}{{ end -}}
-    {{- if $diet }}{{ $part1 = $part1 | append $diet }}{{ end -}}
-    {{- if $category }}{{ $part1 = $part1 | append $category }}{{ end -}}
-    
-    {{- $part2 := slice -}}
-    {{- if $occasion }}{{ $part2 = $part2 | append $occasion }}{{ end -}}
-    {{- if $time }}{{ $part2 = $part2 | append $time }}{{ end -}}
-    
-    {{- $tagDesc := delimit $part1 " " -}}
-    {{- if and $part1 $part2 }}{{ $tagDesc = printf "%s • %s" $tagDesc (delimit $part2 " ") }}{{ else if $part2 }}{{ $tagDesc = delimit $part2 " " }}{{ end -}}
-    
-    {{- $description = printf "A recipe for %s. %s" .Title $tagDesc -}}
-  {{- end -}}
+{{- $hero := .Resources.GetMatch "*hero*" -}}
+{{- if not $hero }}{{ $hero = .Resources.GetMatch "*cover*" }}{{ end -}}
+{{- if not $hero }}{{ $hero = .Resources.GetMatch "*.jpg" }}{{ end -}}
+{{- if not $hero }}{{ $hero = .Resources.GetMatch "*.png" }}{{ end -}}
 
-  {{- $keywords := slice -}}
-  {{- if .Params.cuisine }}{{ $keywords = $keywords | union .Params.cuisine }}{{ end -}}
-  {{- if .Params.category }}{{ $keywords = $keywords | union .Params.category }}{{ end -}}
-  {{- if .Params.diet }}{{ $keywords = $keywords | union .Params.diet }}{{ end -}}
-  {{- if .Params.occasion }}{{ $keywords = $keywords | union .Params.occasion }}{{ end -}}
+{{- $description := "" -}}
+{{- if .Params.description -}}
+{{- $description = .Params.description -}}
+{{- else if and .Params.notes (gt (len .Params.notes) 0) -}}
+{{- $firstNote := index .Params.notes 0 -}}
+{{- if not (findRE `!\[` $firstNote) -}}
+{{- $description = trim ($firstNote | markdownify | plainify | htmlUnescape) " \n\r\t" -}}
+{{- end -}}
+{{- end -}}
+{{- if not $description -}}
+{{- $cuisine := "" }}{{ if .Params.cuisine }}{{ $cuisine = delimit .Params.cuisine ", " }}{{ end -}}
+{{- $diet := "" }}{{ if .Params.diet }}{{ $diet = delimit .Params.diet ", " | lower }}{{ end -}}
+{{- $category := "" }}{{ if .Params.category }}{{ $category = delimit .Params.category ", " | lower }}{{ end -}}
+{{- $occasion := "" }}{{ if .Params.occasion }}{{ $occasion = delimit .Params.occasion ", " }}{{ end -}}
+{{- $time := "" }}{{ if .Params.time_total }}{{ $time = printf "%v min recipe" .Params.time_total }}{{ end -}}
 
-  {{- $ingredients := slice -}}
-  {{- range .Params.ingredients -}}
-    {{- if not (hasPrefix . "# ") -}}
-      {{- $parts := split . "|" -}}
-      {{- if eq (len $parts) 2 -}}
-        {{- $qty := trim (index $parts 0) " " -}}
-        {{- $item := trim (index $parts 1) " " -}}
-        {{- $ingredients = $ingredients | append (printf "%s %s" $qty $item) -}}
-      {{- else -}}
-        {{- $ingredients = $ingredients | append . -}}
-      {{- end -}}
-    {{- end -}}
-  {{- end -}}
+{{- $part1 := slice -}}
+{{- if $cuisine }}{{ $part1 = $part1 | append $cuisine }}{{ end -}}
+{{- if $diet }}{{ $part1 = $part1 | append $diet }}{{ end -}}
+{{- if $category }}{{ $part1 = $part1 | append $category }}{{ end -}}
 
-  {{- $steps := slice -}}
-  {{- $stepsRaw := findRE "(?s)<(p|ul|ol|h3|h4).*?>.*?</(p|ul|ol|h3|h4)>" .Content -}}
+{{- $part2 := slice -}}
+{{- if $occasion }}{{ $part2 = $part2 | append $occasion }}{{ end -}}
+{{- if $time }}{{ $part2 = $part2 | append $time }}{{ end -}}
+
+{{- $tagDesc := delimit $part1 " " -}}
+{{- if and $part1 $part2 }}{{ $tagDesc = printf "%s • %s" $tagDesc (delimit $part2 " ") }}{{ else if $part2 }}{{
+$tagDesc = delimit $part2 " " }}{{ end -}}
+
+{{- $description = printf "A recipe for %s. %s" .Title $tagDesc -}}
+{{- end -}}
+
+{{- $keywords := slice -}}
+{{- if .Params.cuisine }}{{ $keywords = $keywords | union .Params.cuisine }}{{ end -}}
+{{- if .Params.category }}{{ $keywords = $keywords | union .Params.category }}{{ end -}}
+{{- if .Params.diet }}{{ $keywords = $keywords | union .Params.diet }}{{ end -}}
+{{- if .Params.occasion }}{{ $keywords = $keywords | union .Params.occasion }}{{ end -}}
+
+{{- $ingredients := slice -}}
+{{- range .Params.ingredients -}}
+{{- if not (hasPrefix . "# ") -}}
+{{- $parts := split . "|" -}}
+{{- if eq (len $parts) 2 -}}
+{{- $qty := trim (index $parts 0) " " -}}
+{{- $item := trim (index $parts 1) " " -}}
+{{- $ingredients = $ingredients | append (printf "%s %s" $qty $item) -}}
+{{- else -}}
+{{- $ingredients = $ingredients | append . -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{- $steps := slice -}}
+{{- $stepsRaw := findRE "(?s)<(p|ul|ol|h3|h4).*?>.*?</(p|ul|ol|h3|h4)>" .Content -}}
   {{- range $stepsRaw -}}
-    {{- $text := trim (. | plainify | htmlUnescape) " \n\r\t" -}}
-    {{- if $text -}}
-      {{- $steps = $steps | append $text -}}
-    {{- end -}}
+  {{- $text := trim (. | plainify | htmlUnescape) " \n\r\t" -}}
+  {{- if $text -}}
+  {{- $steps = $steps | append $text -}}
+  {{- end -}}
   {{- end -}}
 
   {{- $cookTime := 0 -}}
   {{- if and .Params.time_total .Params.time_active -}}
-    {{- $cookTime = sub (int .Params.time_total) (int .Params.time_active) -}}
+  {{- $cookTime = sub (int .Params.time_total) (int .Params.time_active) -}}
   {{- end -}}
 
   <script type="application/ld+json">
@@ -120,64 +121,66 @@
     ]
   }
   </script>
-{{ end }}
+  {{ end }}
 
-{{ define "header" }}
-<nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+  {{ define "header" }}
+  <nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
-            <i class="ph ph-arrow-left text-lg"></i> Index
-        </a>
-        
-        <!-- Wake Lock Toggle -->
-        <button id="wakeLockBtn" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors">
-            <i class="ph ph-device-mobile text-lg"></i>
-            <span id="wakeLockStatus">Screen Lock: Off</span>
-        </button>
+      <a href="/"
+        class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
+        <i class="ph ph-arrow-left text-lg"></i> Index
+      </a>
+
+      <!-- Wake Lock Toggle -->
+      <button id="wakeLockBtn"
+        class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors">
+        <i class="ph ph-device-mobile text-lg"></i>
+        <span id="wakeLockStatus">Screen Lock: Off</span>
+      </button>
     </div>
-</nav>
-{{ end }}
+  </nav>
+  {{ end }}
 
-{{ define "main" }}
-<main class="max-w-4xl mx-auto px-4 py-10 w-full mb-12" data-base-servings="{{ .Params.servings }}">
-    
+  {{ define "main" }}
+  <main class="max-w-4xl mx-auto px-4 py-10 w-full mb-12" data-base-servings="{{ .Params.servings }}">
+
     <header class="mb-10">
-        <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">{{ .Title }}</h1>
-        
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
-            <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
-                <i class="ph ph-users text-lg mr-1"></i>
-                <button id="decServings" class="hover:text-primary transition-colors px-1 cursor-pointer">-</button>
-                <span id="servingCount" class="w-4 text-center">{{ .Params.servings }}</span>
-                <button id="incServings" class="hover:text-primary transition-colors px-1 cursor-pointer">+</button>
-            </div>
-            
-            <!-- Split Time Metrics -->
-            <div class="flex items-center gap-4 text-sm font-bold">
-                <div class="flex items-center gap-1.5 text-gray-500">
-                    <i class="ph ph-knife text-lg"></i>
-                    <span>{{ .Params.time_active }}m <span class="text-xs uppercase tracking-widest ml-0.5">Active</span></span>
-                </div>
-                <div class="flex items-center gap-1.5 text-gray-500">
-                    <i class="ph ph-clock text-lg"></i>
-                    <span>{{ .Params.time_total }}m <span class="text-xs uppercase tracking-widest ml-0.5">Total</span></span>
-                </div>
-            </div>
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">{{ .Title }}</h1>
 
-            <div class="h-4 w-px bg-gray-300 hidden sm:block"></div>
-            <div class="flex flex-wrap gap-3 text-xs font-bold uppercase tracking-widest text-gray-500">
-                {{ $tags := slice }}
-                {{ if .Params.cuisine }}{{ $tags = $tags | append .Params.cuisine }}{{ end }}
-                {{ if .Params.category }}{{ $tags = $tags | append .Params.category }}{{ end }}
-                {{ if .Params.diet }}{{ $tags = $tags | append .Params.diet }}{{ end }}
-                {{ if .Params.occasion }}{{ $tags = $tags | append .Params.occasion }}{{ end }}
-                
-                {{ range $i, $tag := $tags }}
-                    <span>{{ . }}</span>
-                    {{ if ne (add $i 1) (len $tags) }}<span>•</span>{{ end }}
-                {{ end }}
-            </div>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
+        <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
+          <i class="ph ph-users text-lg mr-1"></i>
+          <button id="decServings" class="hover:text-primary transition-colors px-1 cursor-pointer">-</button>
+          <span id="servingCount" class="w-4 text-center">{{ .Params.servings }}</span>
+          <button id="incServings" class="hover:text-primary transition-colors px-1 cursor-pointer">+</button>
         </div>
+
+        <!-- Split Time Metrics -->
+        <div class="flex items-center gap-4 text-sm font-bold">
+          <div class="flex items-center gap-1.5 text-gray-500">
+            <i class="ph ph-knife text-lg"></i>
+            <span>{{ .Params.time_active }}m <span class="text-xs uppercase tracking-widest ml-0.5">Active</span></span>
+          </div>
+          <div class="flex items-center gap-1.5 text-gray-500">
+            <i class="ph ph-clock text-lg"></i>
+            <span>{{ .Params.time_total }}m <span class="text-xs uppercase tracking-widest ml-0.5">Total</span></span>
+          </div>
+        </div>
+
+        <div class="h-4 w-px bg-gray-300 hidden sm:block"></div>
+        <div class="flex flex-wrap gap-3 text-xs font-bold uppercase tracking-widest text-gray-500">
+          {{ $tags := slice }}
+          {{ if .Params.cuisine }}{{ $tags = $tags | append .Params.cuisine }}{{ end }}
+          {{ if .Params.category }}{{ $tags = $tags | append .Params.category }}{{ end }}
+          {{ if .Params.diet }}{{ $tags = $tags | append .Params.diet }}{{ end }}
+          {{ if .Params.occasion }}{{ $tags = $tags | append .Params.occasion }}{{ end }}
+
+          {{ range $i, $tag := $tags }}
+          <span>{{ . }}</span>
+          {{ if ne (add $i 1) (len $tags) }}<span>•</span>{{ end }}
+          {{ end }}
+        </div>
+      </div>
     </header>
 
     {{ $hero := .Resources.GetMatch "*hero*" }}
@@ -185,96 +188,97 @@
     {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.jpg" }}{{ end }}
     {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.png" }}{{ end }}
     {{ if $hero }}
-        {{ $scaled := $hero.Fill "1600x800 webp q80 Center" }}
-        <figure class="hero-image mb-12">
-            <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}">
-        </figure>
+    {{ $scaled := $hero.Fill "1600x800 webp q80 Center" }}
+    <figure class="hero-image mb-12">
+      <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}">
+    </figure>
     {{ end }}
 
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-        
-        <aside class="md:col-span-4">
-            <h2 class="text-sm font-bold uppercase tracking-widest border-b-2 border-black pb-2 mb-6">Ingredients</h2>
-            
-            <ul class="flex flex-col text-sm font-medium">
-                {{ range .Params.ingredients }}
-                    {{ if hasPrefix . "# " }}
-                    <li class="pt-4 pb-1">
-                        <h3 class="text-xs font-bold uppercase tracking-widest text-black border-b border-black inline-block">{{ trim (strings.TrimPrefix "# " .) " " }}</h3>
-                    </li>
-                    {{ else }}
-                    {{ $parts := split . "|" }}
-                    {{ $qty := "" }}
-                    {{ $item := "" }}
-                    {{ if eq (len $parts) 2 }}
-                        {{ $qty = trim (index $parts 0) " " }}
-                        {{ $item = trim (index $parts 1) " " }}
-                    {{ else }}
-                        {{ $item = . }}
-                    {{ end }}
-                    <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
-                        <label class="flex items-center gap-3 cursor-pointer w-full">
-                            <input type="checkbox" class="cursor-pointer">
-                            <span class="ingredient-name transition-colors group-hover:text-gray-500">{{ $item }}</span>
-                        </label>
-                        {{ if $qty }}
-                        <span class="text-gray-500 font-bold ml-4 text-right whitespace-nowrap">
-                            <span class="ingredient-qty" data-base="{{ $qty }}">{{ $qty }}</span>
-                        </span>
-                        {{ end }}
-                    </li>
-                    {{ end }}
-                {{ end }}
-            </ul>
-            
-            {{ if .Params.notes }}
-            <div class="mt-12 hidden md:block">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
-                <ul class="space-y-3 text-sm text-gray-600">
-                    {{ range .Params.notes }}
-                    <li class="flex gap-2.5 items-start notes-content">
-                        <span class="font-bold text-primary">-</span>
-                        <span>{{ . | markdownify }}</span>
-                    </li>
-                    {{ end }}
-                </ul>
-            </div>
-            {{ end }}
-        </aside>
 
-        <section class="md:col-span-8">
-            <div class="flex justify-between items-baseline border-b-2 border-black pb-2 mb-6">
-                <h2 class="text-sm font-bold uppercase tracking-widest">Method</h2>
-                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tap step to focus</span>
-            </div>
-            
-            <div class="space-y-8 text-base text-gray-900 leading-relaxed step-container" id="methodContainer">
-                <div id="methodContentRaw" class="hidden">{{ .Content }}</div>
-                <!-- Method steps injected here via JS -->
-            </div>
+      <aside class="md:col-span-4">
+        <h2 class="text-sm font-bold uppercase tracking-widest border-b-2 border-black pb-2 mb-6">Ingredients</h2>
 
-            {{ if .Params.notes }}
-            <div class="mt-12 block md:hidden">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
-                <ul class="space-y-3 text-sm text-gray-600">
-                    {{ range .Params.notes }}
-                    <li class="flex gap-2.5 items-start notes-content">
-                        <span class="font-bold text-primary">-</span>
-                        <span>{{ . | markdownify }}</span>
-                    </li>
-                    {{ end }}
-                </ul>
-            </div>
+        <ul class="flex flex-col text-sm font-medium">
+          {{ range .Params.ingredients }}
+          {{ if hasPrefix . "# " }}
+          <li class="pt-4 pb-1">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-black border-b border-black inline-block">{{
+              trim (strings.TrimPrefix "# " .) " " }}</h3>
+          </li>
+          {{ else }}
+          {{ $parts := split . "|" }}
+          {{ $qty := "" }}
+          {{ $item := "" }}
+          {{ if eq (len $parts) 2 }}
+          {{ $qty = trim (index $parts 0) " " }}
+          {{ $item = trim (index $parts 1) " " }}
+          {{ else }}
+          {{ $item = . }}
+          {{ end }}
+          <li class="ingredient-item flex justify-between items-center py-3 border-b border-gray-100 group">
+            <label class="flex items-center gap-3 cursor-pointer w-full">
+              <input type="checkbox" class="cursor-pointer">
+              <span class="ingredient-name transition-colors group-hover:text-gray-500">{{ $item }}</span>
+            </label>
+            {{ if $qty }}
+            <span class="text-gray-600 font-bold ml-4 text-right whitespace-nowrap">
+              <span class="ingredient-qty" data-base="{{ $qty }}">{{ $qty }}</span>
+            </span>
             {{ end }}
-        </section>
-        
+          </li>
+          {{ end }}
+          {{ end }}
+        </ul>
+
+        {{ if .Params.notes }}
+        <div class="mt-12 hidden md:block">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
+          <ul class="space-y-3 text-sm text-gray-600">
+            {{ range .Params.notes }}
+            <li class="flex gap-2.5 items-start notes-content">
+              <span class="font-bold text-primary">•</span>
+              <span>{{ . | markdownify }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </aside>
+
+      <section class="md:col-span-8">
+        <div class="flex justify-between items-baseline border-b-2 border-black pb-2 mb-6">
+          <h2 class="text-sm font-bold uppercase tracking-widest">Method</h2>
+          <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tap step to focus</span>
+        </div>
+
+        <div class="space-y-8 text-base text-gray-900 leading-relaxed step-container" id="methodContainer">
+          <div id="methodContentRaw" class="hidden">{{ .Content }}</div>
+          <!-- Method steps injected here via JS -->
+        </div>
+
+        {{ if .Params.notes }}
+        <div class="mt-12 block md:hidden">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Notes</h2>
+          <ul class="space-y-3 text-sm text-gray-600">
+            {{ range .Params.notes }}
+            <li class="flex gap-2.5 items-start notes-content">
+              <span class="font-bold text-gray-800">•</span>
+              <span>{{ . | markdownify }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </section>
+
     </div>
-</main>
-{{ end }}
+  </main>
+  {{ end }}
 
-{{ define "scripts" }}
+  {{ define "scripts" }}
   {{ $recipeJs := resources.Get "js/recipe.js" }}
   {{ if $recipeJs }}
-    <script src="{{ $recipeJs.RelPermalink }}"></script>
+  <script src="{{ $recipeJs.RelPermalink }}"></script>
   {{ end }}
-{{ end }}
+  {{ end }}

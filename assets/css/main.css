@@ -8,38 +8,39 @@
     @apply bg-white text-black leading-relaxed flex flex-col min-h-screen relative overflow-x-hidden antialiased;
   }
 
-  input[type="number"]::-webkit-inner-spin-button, 
-  input[type="number"]::-webkit-outer-spin-button { 
-      -webkit-appearance: none; 
-      margin: 0; 
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   /* Custom Checkbox */
   input[type="checkbox"] {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 1rem;
-      height: 1rem;
-      @apply border-[1.5px] border-black rounded-sm bg-transparent cursor-pointer relative shrink-0 transition-all duration-200;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1rem;
+    height: 1rem;
+    @apply border-[1.5px] border-black rounded-sm bg-transparent cursor-pointer relative shrink-0 transition-all duration-200;
   }
 
   input[type="checkbox"]:checked {
-      @apply bg-primary border-primary;
+    @apply bg-primary border-primary;
   }
 
   input[type="checkbox"]:checked::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 45%;
-      width: 0.25rem;
-      height: 0.5rem;
-      @apply border-white border-r-[1.5px] border-b-[1.5px];
-      transform: translate(-50%, -50%) rotate(45deg);
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 0.25rem;
+    height: 0.5rem;
+    @apply border-white border-r-[1.5px] border-b-[1.5px];
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 }
 
 @layer components {
+
   /* Generic inline image styling */
   .inline-image {
     @apply max-w-full h-auto block my-6;
@@ -52,17 +53,17 @@
   }
 
   .image-container img {
-    @apply w-full h-full object-cover grayscale-[20%] transition-all duration-500 ease-out;
+    @apply w-full h-full object-cover transition-all duration-200 ease-out;
   }
 
   .recipe-card:hover img {
-    @apply grayscale-0 scale-[1.03];
+    @apply scale-[1.03];
   }
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -79,10 +80,10 @@
 
   /* Ingredients list interactivity */
   .ingredient-item {
-    @apply transition-opacity duration-300;
+    @apply transition-opacity duration-200;
   }
 
-  .ingredient-item input:checked + span.ingredient-name {
+  .ingredient-item input:checked+span.ingredient-name {
     @apply line-through text-gray-400;
   }
 
@@ -92,12 +93,12 @@
 
   .ingredient-item.active-ingredient .ingredient-name,
   .ingredient-item.active-ingredient .ingredient-qty {
-    @apply text-black font-bold;
+    @apply text-black;
   }
 
   /* Method Step Dimming */
   .method-step {
-    @apply transition-opacity duration-300 cursor-pointer;
+    @apply transition-opacity duration-200 cursor-pointer;
   }
 
   .step-container.has-active-step .method-step:not(.active) {
@@ -113,11 +114,15 @@
   }
 
   /* Inline Links in Method & Notes */
-  .method-step a, .method-step .prose a, .notes-content a {
-    @apply font-bold text-gray-700 underline decoration-2 decoration-primary underline-offset-4 transition-all duration-150 rounded-sm;
+  .method-step a,
+  .method-step .prose a,
+  .notes-content a {
+    @apply underline decoration-2 decoration-primary underline-offset-4 transition-all duration-150 rounded-sm;
   }
 
-  .method-step a:hover, .method-step .prose a:hover, .notes-content a:hover {
+  .method-step a:hover,
+  .method-step .prose a:hover,
+  .notes-content a:hover {
     @apply text-black decoration-black bg-primary/20;
   }
 }
