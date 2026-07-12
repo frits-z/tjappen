@@ -103,10 +103,11 @@
       {{ $favourites = $recipes.ByDate.Reverse | first 7 }}
     {{ else }}
       {{ range $recipes }}
-        {{ if ge (default 0 .Params.rating) 4.5 }}
+        {{ if ge (float (default 0 .Params.rating)) 4.5 }}
           {{ $favourites = $favourites | append . }}
         {{ end }}
       {{ end }}
+      {{ $favourites = shuffle $favourites | first 10 }}
     {{ end }}
 
     {{ if gt (len $favourites) 0 }}
@@ -114,7 +115,7 @@
     <div class="w-full relative">
         <!-- Overflow Container - py-16 allows staggered offsets without clipping -->
         <div class="w-full overflow-hidden py-16">
-            <div id="carouselTrack" class="flex gap-8 transition-transform duration-600 ease-out cursor-grab active:cursor-grabbing select-none py-4">
+            <div id="carouselTrack" data-list-type="{{ .Params.list_type }}" class="flex gap-8 transition-transform duration-600 ease-out cursor-grab active:cursor-grabbing select-none py-4">
                 {{ range $index, $recipe := $favourites }}
                 {{ $offsetClass := "mt-6" }}
                 {{ $mod := mod $index 3 }}
@@ -181,7 +182,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = document.getElementById('carouselTrack');
     if (!track) return;
 
-    const slides = Array.from(track.children);
+    const listType = track.getAttribute('data-list-type');
+    let slides = Array.from(track.children);
+
+    if (listType === 'favourites' && slides.length > 0) {
+        // Fisher-Yates Shuffle (Client-side randomizer on refresh)
+        for (let i = slides.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [slides[i], slides[j]] = [slides[j], slides[i]];
+        }
+        // Re-append slides and re-apply stagger margins dynamically to keep clean cycles
+        slides.forEach((slide, index) => {
+            track.appendChild(slide);
+            const innerDiv = slide.firstElementChild;
+            if (innerDiv) {
+                innerDiv.classList.remove('mt-0', 'mt-6', 'mt-16');
+                const mod = index % 3;
+                if (mod === 0) {
+                    innerDiv.classList.add('mt-6');
+                } else if (mod === 1) {
+                    innerDiv.classList.add('mt-16');
+                } else {
+                    innerDiv.classList.add('mt-0');
+                }
+            }
+        });
+    }
+
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('dotsContainer');

@@ -9,7 +9,7 @@ cuisine: ["Italian"]
 category: ["Main"]
 diet: ["Vegetarian"]
 occasion: ["Weeknight"]
-rating: 5
+rating: 5.0
 source: "Yotam Ottolenghi - Simple"
 source_url: "https://ottolenghi.co.uk/products/simple-cookbook"
 ingredients:
