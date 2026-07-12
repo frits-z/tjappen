@@ -18,8 +18,11 @@
                 <div class="px-4 pb-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
                     Curations
                 </div>
-                <a href="/lists/all-time-favourites/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors mb-2">
+                <a href="/lists/all-time-favourites/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
                     All-Time Favourites
+                </a>
+                <a href="/lists/recently-added/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors mb-2">
+                    Recently Added
                 </a>
                 
                 <!-- Subtle Divider -->
@@ -86,8 +89,8 @@
 
 <main class="w-full py-10 mb-12 flex-grow flex flex-col justify-center">
     <div class="mb-12 text-center max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span class="text-primary text-xs font-black uppercase tracking-widest block mb-2">curated collection</span>
-        <h1 class="text-5xl sm:text-6xl font-black tracking-tight mb-4 lowercase">all-time favourites</h1>
+        <span class="text-primary text-xs font-black uppercase tracking-widest block mb-2">{{ .Params.subtitle | default "curated collection" }}</span>
+        <h1 class="text-5xl sm:text-6xl font-black tracking-tight mb-4 lowercase">{{ .Title }}</h1>
         <p class="text-gray-500 font-medium text-sm">
             {{ .Content | default "A curated selection of our handpicked favorites, cooked and loved." }}
         </p>
@@ -96,9 +99,13 @@
 
     {{ $recipes := where site.RegularPages "Type" "recipes" }}
     {{ $favourites := slice }}
-    {{ range $recipes }}
-      {{ if ge (default 0 .Params.rating) 4.5 }}
-        {{ $favourites = $favourites | append . }}
+    {{ if eq .Params.list_type "recent" }}
+      {{ $favourites = $recipes.ByDate.Reverse | first 7 }}
+    {{ else }}
+      {{ range $recipes }}
+        {{ if ge (default 0 .Params.rating) 4.5 }}
+          {{ $favourites = $favourites | append . }}
+        {{ end }}
       {{ end }}
     {{ end }}
 
