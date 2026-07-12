@@ -1,6 +1,7 @@
 ---
 title: "Pasta Alla Norma"
 date: 2026-04-12
+description: "A Sicilian classic with roasted aubergines, rich tomato sauce, and salty pecorino cheese."
 time_active: 15
 time_total: 45
 servings: 4
@@ -8,6 +9,9 @@ cuisine: ["Italian"]
 category: ["Main"]
 diet: ["Vegetarian"]
 occasion: ["Weeknight"]
+rating: 5
+source: "Yotam Ottolenghi - Simple"
+source_url: "https://ottolenghi.co.uk/products/simple-cookbook"
 ingredients:
   - "2 | Aubergines"
   - "120 | Olive oil (ml)"

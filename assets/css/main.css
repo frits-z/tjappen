@@ -113,16 +113,18 @@
     @apply text-primary;
   }
 
-  /* Inline Links in Method & Notes */
+  /* Inline Links in Method, Notes & Credits */
   .method-step a,
   .method-step .prose a,
-  .notes-content a {
+  .notes-content a,
+  .credits-content a {
     @apply underline decoration-2 decoration-primary underline-offset-4 transition-all duration-150 rounded-sm;
   }
 
   .method-step a:hover,
   .method-step .prose a:hover,
-  .notes-content a:hover {
+  .notes-content a:hover,
+  .credits-content a:hover {
     @apply text-black decoration-black bg-primary/20;
   }
 }

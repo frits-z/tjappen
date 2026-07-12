@@ -82,7 +82,7 @@ $tagDesc = delimit $part2 " " }}{{ end -}}
     {{- end }}
     "author": {
       "@type": "Person",
-      "name": "Frits"
+      "name": {{ .Params.author | default "Frits" | jsonify | safeJS }}
     },
     {{- if not .Date.IsZero }}
     "datePublished": "{{ .Date.Format "2006-01-02" }}",
@@ -147,7 +147,7 @@ $tagDesc = delimit $part2 " " }}{{ end -}}
     <header class="mb-10">
       <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">{{ .Title }}</h1>
 
-      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-black py-3">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-3 border-y border-black py-3">
         <div class="flex items-center gap-2 text-sm font-bold bg-gray-100 px-3 py-1">
           <i class="ph ph-users text-lg mr-1"></i>
           <button id="decServings" class="hover:text-primary transition-colors px-1 cursor-pointer">-</button>
@@ -156,28 +156,30 @@ $tagDesc = delimit $part2 " " }}{{ end -}}
         </div>
 
         <!-- Split Time Metrics -->
-        <div class="flex items-center gap-4 text-sm font-bold">
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-bold">
           <div class="flex items-center gap-1.5 text-gray-500">
             <i class="ph ph-knife text-lg"></i>
-            <span>{{ .Params.time_active }}m <span class="text-xs uppercase tracking-widest ml-0.5">Active</span></span>
+            <span>{{ .Params.time_active }}m<span class="hidden sm:inline text-xs uppercase tracking-widest ml-1">Active</span></span>
           </div>
+          <span class="text-gray-300 select-none hidden sm:inline">•</span>
           <div class="flex items-center gap-1.5 text-gray-500">
             <i class="ph ph-clock text-lg"></i>
-            <span>{{ .Params.time_total }}m <span class="text-xs uppercase tracking-widest ml-0.5">Total</span></span>
+            <span>{{ .Params.time_total }}m<span class="hidden sm:inline text-xs uppercase tracking-widest ml-1">Total</span></span>
           </div>
-        </div>
-
-        <div class="h-4 w-px bg-gray-300 hidden sm:block"></div>
-        <div class="flex flex-wrap gap-3 text-xs font-bold uppercase tracking-widest text-gray-500">
-          {{ $tags := slice }}
-          {{ if .Params.cuisine }}{{ $tags = $tags | append .Params.cuisine }}{{ end }}
-          {{ if .Params.category }}{{ $tags = $tags | append .Params.category }}{{ end }}
-          {{ if .Params.diet }}{{ $tags = $tags | append .Params.diet }}{{ end }}
-          {{ if .Params.occasion }}{{ $tags = $tags | append .Params.occasion }}{{ end }}
-
-          {{ range $i, $tag := $tags }}
-          <span>{{ . }}</span>
-          {{ if ne (add $i 1) (len $tags) }}<span>•</span>{{ end }}
+          {{ if .Params.diet }}
+            {{ if or (in .Params.diet "Vegetarian") (in .Params.diet "Plant-based") }}
+            <span class="text-gray-300 select-none hidden sm:inline">•</span>
+            <div class="flex items-center gap-1.5 text-gray-500">
+              <i class="ph ph-leaf text-lg"></i>
+              <span class="hidden sm:inline text-xs uppercase tracking-widest ml-0.5">Vegetarian</span>
+            </div>
+            {{ else if in .Params.diet "Fish" }}
+            <span class="text-gray-300 select-none hidden sm:inline">•</span>
+            <div class="flex items-center gap-1.5 text-gray-500">
+              <i class="ph ph-fish text-lg"></i>
+              <span class="hidden sm:inline text-xs uppercase tracking-widest ml-0.5">Fish</span>
+            </div>
+            {{ end }}
           {{ end }}
         </div>
       </div>
@@ -244,6 +246,26 @@ $tagDesc = delimit $part2 " " }}{{ end -}}
           </ul>
         </div>
         {{ end }}
+
+        {{ if or (and .Params.author (ne .Params.author "Frits")) .Params.source }}
+        <div class="mt-12 hidden md:block">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Credits</h2>
+          <div class="text-sm text-gray-600 space-y-2 credits-content">
+            {{ if and .Params.author (ne .Params.author "Frits") }}
+            <p>This recipe was cooked up and contributed by {{ .Params.author }}.</p>
+            {{ end }}
+            {{ if .Params.source }}
+            <p>Inspired by / adapted from 
+              {{ if .Params.source_url }}
+              <a href="{{ .Params.source_url }}" target="_blank" rel="noopener noreferrer">{{ .Params.source }}</a>.
+              {{ else }}
+              {{ .Params.source }}.
+              {{ end }}
+            </p>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
       </aside>
 
       <section class="md:col-span-8">
@@ -270,8 +292,47 @@ $tagDesc = delimit $part2 " " }}{{ end -}}
           </ul>
         </div>
         {{ end }}
+
+        {{ if or (and .Params.author (ne .Params.author "Frits")) .Params.source }}
+        <div class="mt-12 block md:hidden">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Credits</h2>
+          <div class="text-sm text-gray-600 space-y-2 credits-content">
+            {{ if and .Params.author (ne .Params.author "Frits") }}
+            <p>This recipe was cooked up and contributed by {{ .Params.author }}.</p>
+            {{ end }}
+            {{ if .Params.source }}
+            <p>Inspired by / adapted from 
+              {{ if .Params.source_url }}
+              <a href="{{ .Params.source_url }}" target="_blank" rel="noopener noreferrer">{{ .Params.source }}</a>.
+              {{ else }}
+              {{ .Params.source }}.
+              {{ end }}
+            </p>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
       </section>
 
+    </div>
+
+    <!-- Recipe Tags Footer -->
+    <div class="mt-16 pt-8 border-t border-gray-200 flex flex-wrap gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest text-gray-400">
+      {{ $tags := slice }}
+      {{ if .Params.cuisine }}{{ $tags = $tags | append .Params.cuisine }}{{ end }}
+      {{ if .Params.category }}{{ $tags = $tags | append .Params.category }}{{ end }}
+      {{ if .Params.diet }}{{ $tags = $tags | append .Params.diet }}{{ end }}
+      {{ if .Params.occasion }}{{ $tags = $tags | append .Params.occasion }}{{ end }}
+
+      {{ if gt (len $tags) 0 }}
+      <span>Tags:</span>
+      <div class="flex flex-wrap gap-x-3 gap-y-1">
+        {{ range $i, $tag := $tags }}
+        <span class="text-gray-600 hover:text-black transition-colors duration-200">{{ . }}</span>
+        {{ if ne (add $i 1) (len $tags) }}<span class="text-gray-300 select-none">•</span>{{ end }}
+        {{ end }}
+      </div>
+      {{ end }}
     </div>
   </main>
   {{ end }}

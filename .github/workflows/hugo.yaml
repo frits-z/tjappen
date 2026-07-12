@@ -50,6 +50,8 @@ jobs:
           key: ${{ runner.os }}-hugo-resources-${{ hashFiles('**/hugo.toml', '**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-hugo-resources-
+      - name: Validate Recipes
+        run: node scripts/validate-recipes.js
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production

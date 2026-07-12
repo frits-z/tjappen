@@ -86,14 +86,21 @@
                 <div class="flex-grow flex flex-col justify-start">
                     <div class="flex justify-between items-baseline mb-1 gap-2">
                         <h2 class="text-lg font-black tracking-tight leading-tight">{{ .Title }}</h2>
-                        <span class="text-xs font-bold text-gray-400 whitespace-nowrap">{{ .Params.time_total }}m</span>
+                        <span class="text-xs font-bold text-gray-400 whitespace-nowrap flex items-center gap-1.5">
+                            {{ if .Params.diet }}
+                                {{ if or (in .Params.diet "Vegetarian") (in .Params.diet "Plant-based") }}
+                                    <i class="ph ph-leaf text-sm" title="Vegetarian/Plant-based"></i>
+                                {{ else if in .Params.diet "Fish" }}
+                                    <i class="ph ph-fish text-sm" title="Fish"></i>
+                                {{ end }}
+                            {{ end }}
+                            {{ .Params.time_total }}m
+                        </span>
                     </div>
                     <div class="flex flex-wrap gap-x-2 gap-y-1 mt-2">
                         {{ $tags := slice }}
                         {{ if .Params.cuisine }}{{ $tags = $tags | append .Params.cuisine }}{{ end }}
                         {{ if .Params.category }}{{ $tags = $tags | append .Params.category }}{{ end }}
-                        {{ if .Params.diet }}{{ $tags = $tags | append .Params.diet }}{{ end }}
-                        {{ if .Params.occasion }}{{ $tags = $tags | append .Params.occasion }}{{ end }}
 
                         {{ range $tags }}
                         <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">{{ . }}</span>

@@ -2,6 +2,7 @@
 title: "Asparagus-Lemon Risotto"
 date: 2026-07-11
 description: "A creamy, flavorful asparagus risotto made with fresh green asparagus, ricotta, and a touch of lemon."
+author: "Rune"
 time_active: 30
 time_total: 45
 servings: 4
