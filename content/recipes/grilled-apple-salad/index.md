@@ -1,5 +1,6 @@
 ---
 title: "Grilled Apple Salad"
+date: 2026-07-11
 description: "A fresh and savory salad featuring grilled apple wedges, aged cheese, crunchy walnuts, and a sweet honey-mustard dressing."
 time_active: 30
 time_total: 30

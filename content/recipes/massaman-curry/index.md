@@ -1,5 +1,6 @@
 ---
 title: "Vegan Massaman Curry"
+date: 2026-04-12
 time_active: 20
 time_total: 45
 servings: 4

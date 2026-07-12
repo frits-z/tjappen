@@ -1,5 +1,6 @@
 ---
 title: "Ragù Bolognese"
+date: 2026-04-16
 time_active: 30
 time_total: 999
 servings: 6

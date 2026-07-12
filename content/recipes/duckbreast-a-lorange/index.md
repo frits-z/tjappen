@@ -1,5 +1,6 @@
 ---
 title: "Duckbreast á l'orange"
+date: 2026-04-16
 time_active: 30
 time_total: 180
 servings: 2

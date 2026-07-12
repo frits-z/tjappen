@@ -1,5 +1,6 @@
 ---
 title: "Pasta Alla Norma"
+date: 2026-04-12
 time_active: 15
 time_total: 45
 servings: 4

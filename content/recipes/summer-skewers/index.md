@@ -1,11 +1,12 @@
 ---
 title: "Summer Skewers"
+date: 2026-06-06
 description: "A refreshing caprese-style summer appetizer with an optional Italian ham twist, perfect for a beach day or road trip."
 time_active: 15
 time_total: 15
 servings: 20
 cuisine: ["Italian"]
-category: ["Salad"]
+category: ["Salad", "Snack"]
 diet: ["Vegetarian", "Meat"]
 occasion: ["Weeknight", "Special"]
 ingredients:

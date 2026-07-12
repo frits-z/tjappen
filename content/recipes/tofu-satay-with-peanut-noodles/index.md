@@ -1,5 +1,6 @@
 ---
 title: "Tofu Satay with noodles"
+date: 2026-04-17
 time_active: 25
 time_total: 45
 servings: 4

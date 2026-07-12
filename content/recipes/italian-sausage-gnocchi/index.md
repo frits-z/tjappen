@@ -1,5 +1,6 @@
 ---
 title: "Italian Sausage Gnocchi"
+date: 2026-04-16
 time_active: 2
 time_total: 10
 servings: 2

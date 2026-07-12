@@ -1,5 +1,6 @@
 ---
 title: "Jackie's Spinach Casserole"
+date: 2026-04-17
 time_active: 10
 time_total: 40
 servings: 4

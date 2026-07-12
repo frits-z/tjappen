@@ -64,10 +64,10 @@
             <article class="recipe-card group cursor-pointer h-full flex flex-col"
                 data-title="{{ .Title | htmlEscape }}"
                 data-ingredients="{{ delimit .Params.ingredients " " | htmlEscape }}"
-                data-cuisine="{{ if .Params.cuisine }}{{ delimit .Params.cuisine " ," | htmlEscape }}{{ end }}"
-                data-category="{{ if .Params.category }}{{ delimit .Params.category " ," | htmlEscape }}{{ end }}"
-                data-occasion="{{ if .Params.occasion }}{{ delimit .Params.occasion " ," | htmlEscape }}{{ end }}"
-                data-diet="{{ if .Params.diet }}{{ delimit .Params.diet " ," | htmlEscape }}{{ end }}">
+                data-cuisine="{{ if .Params.cuisine }}{{ delimit .Params.cuisine "," | htmlEscape }}{{ end }}"
+                data-category="{{ if .Params.category }}{{ delimit .Params.category "," | htmlEscape }}{{ end }}"
+                data-occasion="{{ if .Params.occasion }}{{ delimit .Params.occasion "," | htmlEscape }}{{ end }}"
+                data-diet="{{ if .Params.diet }}{{ delimit .Params.diet "," | htmlEscape }}{{ end }}">
                 <div class="image-container mb-4">
                     {{ $image := .Resources.GetMatch "*hero*" }}
                     {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}

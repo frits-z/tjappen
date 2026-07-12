@@ -13,3 +13,6 @@ resources/_gen/
 # OS/System files
 .DS_Store
 Thumbs.db
+
+# Other
+.agents/

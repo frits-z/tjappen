@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
             title: card.dataset.title.toLowerCase(),
             ingredients: (card.dataset.ingredients || '').toLowerCase(),
             taxonomies: {
-                cuisine: (card.dataset.cuisine || "").split(',').filter(Boolean).sort(),
-                category: (card.dataset.category || "").split(',').filter(Boolean).sort(),
-                diet: (card.dataset.diet || "").split(',').filter(Boolean).sort(),
-                occasion: (card.dataset.occasion || "").split(',').filter(Boolean).sort()
+                cuisine: (card.dataset.cuisine || "").split(',').map(s => s.trim()).filter(Boolean).sort(),
+                category: (card.dataset.category || "").split(',').map(s => s.trim()).filter(Boolean).sort(),
+                diet: (card.dataset.diet || "").split(',').map(s => s.trim()).filter(Boolean).sort(),
+                occasion: (card.dataset.occasion || "").split(',').map(s => s.trim()).filter(Boolean).sort()
             }
         };
     });

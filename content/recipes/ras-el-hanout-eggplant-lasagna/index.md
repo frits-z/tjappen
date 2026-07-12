@@ -1,5 +1,6 @@
 ---
 title: "Ras el Hanout Eggplant Lasagna"
+date: 2026-06-06
 time_active: 30
 time_total: 55
 servings: 4
