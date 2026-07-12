@@ -9,6 +9,7 @@ cuisine: ["Fusion"]
 category: ["Main"]
 diet: ["Meat"]
 occasion: ["Weeknight"]
+rating: 4.2
 ingredients:
  - "# Burger & Seasoning"
  - "125 | Beef / ground beef (grams)"

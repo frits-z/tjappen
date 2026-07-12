@@ -166,6 +166,7 @@ $tagDesc = delimit $part2 " " }}{{ end -}}
             <i class="ph ph-clock text-lg"></i>
             <span>{{ .Params.time_total }}m<span class="hidden sm:inline text-xs uppercase tracking-widest ml-1">Total</span></span>
           </div>
+
           {{ if .Params.diet }}
             {{ if or (in .Params.diet "Vegetarian") (in .Params.diet "Plant-based") }}
             <span class="text-gray-300 select-none hidden sm:inline">•</span>

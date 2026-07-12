@@ -5,7 +5,7 @@
   "scripts": {
     "validate": "node scripts/validate-recipes.js",
     "build": "node scripts/validate-recipes.js && hugo --gc --cleanDestinationDir --minify --noTimes",
-    "server": "hugo server -D --noTimes --poll 5000ms"
+    "server": "hugo server -D --disableFastRender --noTimes --poll 2s"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",

@@ -8,6 +8,7 @@ cuisine: ["French"]
 category: ["Main"]
 diet: ["Meat"]
 occasion: ["Special"]
+rating: 4.8
 ingredients:
   - "2 | Duck breasts"
   - "1 | Orange (zested)"
@@ -17,7 +18,6 @@ ingredients:
   - "to taste | Freshly ground black pepper"
 notes:
   - "By Rune"
-  
 ---
 
 Mix orange zest, juice, honey, soy sauce, and pepper in a zip-lock bag for the marinade.

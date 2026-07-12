@@ -8,6 +8,7 @@ cuisine: ["Italian"]
 category: ["Main"]
 diet: ["Meat"]
 occasion: ["Special"]
+rating: 4.6
 ingredients:
   - "2 | Celery stalks"
   - "1 | Large carrot"
@@ -78,5 +79,3 @@ Your sauce should now be done. You can store by freezing for up to 2-3 months.
 But the sauce will be even better if you let it rest. Can be served from the pan up to 2-3 days later. 
 
 To make a meal, simply cook some pasta up until 1 minute before al dente *(read notes as to why)*. Drain 90% of the pasta water, keep the other 10% with the pasta. Add sauce over the pasta in the pasta pan, finish cooking the pasta in the sauce. Serve with freshly grated parmesan (and some shredded basil if you want to)
-
- 

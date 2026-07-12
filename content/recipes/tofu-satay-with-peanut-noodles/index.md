@@ -8,6 +8,7 @@ cuisine: ["Indonesian"]
 category: ["Main"]
 diet: ["Plant-based"]
 occasion: ["Weeknight"]
+rating: 4.7
 ingredients:
   - "500 | Firm tofu (g)"
   - "3 | Light soy sauce (tbsp)"

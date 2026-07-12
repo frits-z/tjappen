@@ -9,6 +9,7 @@ cuisine: ["European"]
 category: ["Salad"]
 diet: ["Vegetarian"]
 occasion: ["Weeknight"]
+rating: 4.8
 ingredients:
  - "# Base"
  - "3 | Apples, cut into wedges (approx. 3-4)"

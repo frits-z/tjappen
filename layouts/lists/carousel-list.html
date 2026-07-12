@@ -1,0 +1,378 @@
+{{ define "header" }}
+<nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
+            <i class="ph ph-arrow-left text-lg"></i> Index
+        </a>
+        
+        <div class="flex items-center gap-3 relative">
+            <a href="/" class="text-xl font-black lowercase tracking-tighter hover:text-primary transition-colors">tjappen.</a>
+            
+            <button id="curationsDropdownBtn" class="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none">
+                more <i class="ph-fill ph-caret-down text-sm"></i>
+            </button>
+            
+            <!-- Dropdown menu -->
+            <div id="curationsDropdownMenu" class="hidden absolute right-0 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-xs uppercase tracking-wider select-none py-3" style="top: 100%; margin-top: 8px;">
+                <!-- Subtitle: Curations -->
+                <div class="px-4 pb-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                    Curations
+                </div>
+                <a href="/lists/all-time-favourites/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors mb-2">
+                    All-Time Favourites
+                </a>
+                
+                <!-- Subtle Divider -->
+                <div class="border-t border-gray-200 my-2 mx-3"></div>
+                
+                <!-- Subtitle: Other -->
+                <div class="px-4 pt-4 pb-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                    Other
+                </div>
+                <a href="/about" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
+                    About
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+{{ end }}
+
+{{ define "main" }}
+<style>
+    #carouselTrack {
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .carousel-slide {
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        user-select: none;
+    }
+    .carousel-slide img {
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+    .carousel-slide a {
+        user-select: none;
+    }
+    .custom-carousel-img {
+        height: 240px;
+        max-width: 80vw;
+        width: auto;
+        object-fit: cover;
+    }
+    .custom-carousel-title {
+        max-width: 80vw;
+    }
+    
+    @media (min-width: 640px) { /* sm */
+        .custom-carousel-img {
+            height: 450px;
+            max-width: none;
+        }
+        .custom-carousel-title {
+            max-width: 420px;
+        }
+    }
+    
+    @media (min-width: 768px) { /* md */
+        .custom-carousel-img {
+            height: 500px;
+        }
+        .custom-carousel-title {
+            max-width: 460px;
+        }
+    }
+</style>
+
+<main class="w-full py-10 mb-12 flex-grow flex flex-col justify-center">
+    <div class="mb-12 text-center max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <span class="text-primary text-xs font-black uppercase tracking-widest block mb-2">curated collection</span>
+        <h1 class="text-5xl sm:text-6xl font-black tracking-tight mb-4 lowercase">all-time favourites</h1>
+        <p class="text-gray-500 font-medium text-sm">
+            {{ .Content | default "A curated selection of our handpicked favorites, cooked and loved." }}
+        </p>
+        <div class="h-0.5 bg-black w-24 mx-auto mt-6"></div>
+    </div>
+
+    {{ $recipes := where site.RegularPages "Type" "recipes" }}
+    {{ $favourites := slice }}
+    {{ range $recipes }}
+      {{ if ge (default 0 .Params.rating) 4.5 }}
+        {{ $favourites = $favourites | append . }}
+      {{ end }}
+    {{ end }}
+
+    {{ if gt (len $favourites) 0 }}
+    <!-- Carousel Outer Wrapper - Full Width -->
+    <div class="w-full relative">
+        <!-- Overflow Container - py-16 allows staggered offsets without clipping -->
+        <div class="w-full overflow-hidden py-16">
+            <div id="carouselTrack" class="flex gap-8 transition-transform duration-600 ease-out cursor-grab active:cursor-grabbing select-none py-4">
+                {{ range $index, $recipe := $favourites }}
+                {{ $offsetClass := "mt-6" }}
+                {{ $mod := mod $index 3 }}
+                {{ if eq $mod 1 }}
+                  {{ $offsetClass = "mt-16" }}
+                {{ else if eq $mod 2 }}
+                  {{ $offsetClass = "mt-0" }}
+                {{ end }}
+                <div class="carousel-slide flex-shrink-0 w-auto opacity-100" data-index="{{ $index }}">
+                    <div class="{{ $offsetClass }}">
+                        <a href="{{ .RelPermalink }}" draggable="false" class="block pointer-events-auto">
+                            <!-- Image Container with no borders, natural aspect ratios -->
+                            <div class="bg-gray-100 overflow-hidden shadow-sm">
+                                {{ $image := .Resources.GetMatch "*hero*" }}
+                                {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
+                                {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
+                                {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
+                                {{ if $image }}
+                                    {{/* Resize by height (e.g. 800px height) to maintain natural aspect ratios */}}
+                                    {{ $scaled := $image.Resize "x800 webp q85" }}
+                                    <img draggable="false" src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" class="custom-carousel-img pointer-events-none select-none">
+                                {{ else }}
+                                    <div class="custom-carousel-img w-[240px] flex items-center justify-center bg-gray-100 text-gray-300 select-none">
+                                        <i class="ph ph-cooking-pot text-6xl pointer-events-none"></i>
+                                    </div>
+                                {{ end }}
+                            </div>
+
+                            <!-- Minimal Title Directly Below Image -->
+                            <h3 class="custom-carousel-title text-sm sm:text-base font-bold tracking-tight text-black mt-3 hover:text-primary transition-colors select-none text-left leading-tight">
+                                {{ .Title }}
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="flex items-center justify-center gap-6 mt-10">
+            <button id="prevBtn" class="w-10 h-10 flex items-center justify-center rounded-none bg-white border-2 border-black hover:bg-primary hover:text-white transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] focus:outline-none">
+                <i class="ph ph-arrow-left text-lg"></i>
+            </button>
+            <div id="dotsContainer" class="flex gap-2 items-center justify-center"></div>
+            <button id="nextBtn" class="w-10 h-10 flex items-center justify-center rounded-none bg-white border-2 border-black hover:bg-primary hover:text-white transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] focus:outline-none">
+                <i class="ph ph-arrow-right text-lg"></i>
+            </button>
+        </div>
+    </div>
+    {{ else }}
+    <div class="py-20 text-center border-2 border-dashed border-gray-300 max-w-2xl mx-auto px-4">
+        <i class="ph ph-star-half text-5xl text-gray-300 mb-4 block"></i>
+        <h3 class="text-xl font-bold mb-2">No favourites found</h3>
+        <p class="text-gray-500">Add ratings of 4.5 or higher to recipes in your pantry!</p>
+    </div>
+    {{ end }}
+</main>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('carouselTrack');
+    if (!track) return;
+
+    const slides = Array.from(track.children);
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+    
+    let currentIndex = 0;
+    let dragMoved = false;
+
+    function updateCarousel() {
+        if (slides.length === 0) return;
+        
+        const containerWidth = track.parentElement.clientWidth;
+        const activeSlide = slides[currentIndex];
+        const slideWidth = activeSlide.offsetWidth;
+        
+        // Calculate offset to align active slide's center with container's center
+        const slideOffset = activeSlide.offsetLeft;
+        const targetX = (containerWidth / 2) - (slideWidth / 2) - slideOffset;
+        
+        track.style.transform = `translateX(${targetX}px)`;
+        
+        // Update Dots
+        const dots = Array.from(dotsContainer.children);
+        dots.forEach((dot, idx) => {
+            if (idx === currentIndex) {
+                dot.classList.remove('bg-gray-300');
+                dot.classList.add('bg-primary', 'scale-125');
+            } else {
+                dot.classList.remove('bg-primary', 'scale-125');
+                dot.classList.add('bg-gray-300');
+            }
+        });
+    }
+
+    // Button controls
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    });
+
+    // Build Dots
+    slides.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = 'w-2 h-2 rounded-full bg-gray-300 transition-all duration-300 focus:outline-none';
+        dot.ariaLabel = `Go to slide ${idx + 1}`;
+        dot.addEventListener('click', () => {
+            currentIndex = idx;
+            updateCarousel();
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+        } else if (e.key === 'ArrowRight') {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        }
+    });
+
+    // Swipe controls (Touch)
+    let startTouchX = 0;
+    let startTouchY = 0;
+    let isTouchActive = false;
+
+    track.addEventListener('touchstart', (e) => {
+        startTouchX = e.touches[0].clientX;
+        startTouchY = e.touches[0].clientY;
+        isTouchActive = true;
+        dragMoved = false;
+    });
+
+    track.addEventListener('touchmove', (e) => {
+        if (!isTouchActive) return;
+        
+        const diffX = e.touches[0].clientX - startTouchX;
+        const diffY = e.touches[0].clientY - startTouchY;
+        
+        // Prevent page scrolling when swiping horizontally on the carousel
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            e.preventDefault();
+        }
+        
+        // Set dragMoved to block synthetic click on touchend
+        if (Math.abs(diffX) > 10) {
+            dragMoved = true;
+        }
+        
+        if (Math.abs(diffX) > 60) {
+            if (diffX > 0) {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            } else {
+                currentIndex = (currentIndex + 1) % slides.length;
+            }
+            updateCarousel();
+            isTouchActive = false;
+        }
+    }, { passive: false });
+
+    track.addEventListener('touchend', () => {
+        isTouchActive = false;
+    });
+
+    // Drag controls (Mouse)
+    let isMouseDown = false;
+    let startMouseX = 0;
+
+    track.addEventListener('mousedown', (e) => {
+        isMouseDown = true;
+        startMouseX = e.pageX;
+        dragMoved = false;
+    });
+
+    track.addEventListener('mousemove', (e) => {
+        if (!isMouseDown) return;
+        const diffX = e.pageX - startMouseX;
+        if (Math.abs(diffX) > 10) {
+            dragMoved = true;
+        }
+    });
+
+    window.addEventListener('mouseup', (e) => {
+        if (!isMouseDown) return;
+        isMouseDown = false;
+        
+        const diffX = e.pageX - startMouseX;
+        if (Math.abs(diffX) > 60) {
+            if (diffX > 0) {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            } else {
+                currentIndex = (currentIndex + 1) % slides.length;
+            }
+            updateCarousel();
+        }
+    });
+
+    track.addEventListener('mouseleave', () => {
+        isMouseDown = false;
+    });
+
+    // Prevent default navigation if mouse was dragged
+    track.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (dragMoved) {
+                e.preventDefault();
+            }
+        });
+    });
+
+    // Scroll Wheel / Trackpad support (Debounced/Locked for smooth single scrolling)
+    let isWheelLocked = false;
+    track.parentElement.addEventListener('wheel', (e) => {
+        // Prevent default scrolling to lock the page in place while browsing
+        e.preventDefault();
+        
+        if (isWheelLocked) return;
+        
+        const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        
+        if (delta > 8) {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+            isWheelLocked = true;
+            setTimeout(() => { isWheelLocked = false; }, 500);
+        } else if (delta < -8) {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+            isWheelLocked = true;
+            setTimeout(() => { isWheelLocked = false; }, 500);
+        }
+    }, { passive: false });
+
+    // Resize recalculation
+    window.addEventListener('resize', updateCarousel);
+
+    // Recalculate once images are fully loaded to avoid width=0 issues
+    window.addEventListener('load', updateCarousel);
+    
+    slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (img) {
+            if (img.complete) {
+                updateCarousel();
+            } else {
+                img.addEventListener('load', updateCarousel);
+            }
+        }
+    });
+
+    // Initial positioning
+    setTimeout(updateCarousel, 150);
+});
+</script>
+{{ end }}

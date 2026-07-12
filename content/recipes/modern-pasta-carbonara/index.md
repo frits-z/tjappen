@@ -8,6 +8,7 @@ cuisine: ["Italian"]
 category: ["Main"]
 diet: ["Meat"]
 occasion: ["Special"]
+rating: 4.9
 ingredients:
   - "250 | Pasta (g)"
   - "200 | Guanciale (g)"
@@ -24,7 +25,7 @@ notes:
 
 Dice the asparagus into tiny pieces (0.5cm each). Do not use the tips, save thosse for a different recipe. Cut the guanciale into bite sized cubes.
 
-In a bowl, mix the egg and egg yolks, and slowly add   the grated parmesan until it forms a semi-liquid paste.
+In a bowl, mix the egg and egg yolks, and slowly add the grated parmesan until it forms a semi-liquid paste.
 
 Boil salted water and cook the pasta al dente.
 

@@ -3,9 +3,37 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
 
         <!-- Top Bar -->
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <h1 class="text-3xl font-black tracking-tighter hover:text-primary transition-colors cursor-pointer"
-                onclick="window.scrollTo({top: 0, behavior: 'smooth'})">tjappen.</h1>
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 w-full">
+            <div class="flex w-full justify-between sm:justify-start items-center sm:gap-3 relative">
+                <h1 class="text-3xl font-black tracking-tighter hover:text-primary transition-colors cursor-pointer"
+                    onclick="window.scrollTo({top: 0, behavior: 'smooth'})">tjappen.</h1>
+                
+                <button id="curationsDropdownBtn" class="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none mt-1">
+                    more <i class="ph-fill ph-caret-down text-sm"></i>
+                </button>
+                
+                <!-- Dropdown menu -->
+                <div id="curationsDropdownMenu" class="hidden absolute right-0 sm:right-auto sm:left-3 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-xs uppercase tracking-wider select-none py-3" style="top: 100%; margin-top: 8px;">
+                    <!-- Subtitle: Curations -->
+                    <div class="px-4 pb-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                        Curations
+                    </div>
+                    <a href="/lists/all-time-favourites/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors mb-2">
+                        All-Time Favourites
+                    </a>
+                    
+                    <!-- Subtle Divider -->
+                    <div class="border-t border-gray-200 my-2 mx-3"></div>
+                    
+                    <!-- Subtitle: Other -->
+                    <div class="px-4 pt-4 pb-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                        Other
+                    </div>
+                    <a href="/about" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
+                        About
+                    </a>
+                </div>
+            </div>
 
             <div class="flex w-full sm:w-auto gap-2">
                 <div class="relative w-full sm:w-80">

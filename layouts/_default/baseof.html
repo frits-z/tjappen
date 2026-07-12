@@ -96,5 +96,22 @@
     </footer>
 
     {{ block "scripts" . }}{{ end }}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownBtn = document.getElementById('curationsDropdownBtn');
+            const dropdownMenu = document.getElementById('curationsDropdownMenu');
+            if (dropdownBtn && dropdownMenu) {
+                dropdownBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('hidden');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!dropdownMenu.contains(e.target) && e.target !== dropdownBtn) {
+                        dropdownMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
