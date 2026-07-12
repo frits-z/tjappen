@@ -43,6 +43,13 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
+      - name: Cache Hugo resources
+        uses: actions/cache@v4
+        with:
+          path: resources/_gen
+          key: ${{ runner.os }}-hugo-resources-${{ hashFiles('**/hugo.toml', '**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-hugo-resources-
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production

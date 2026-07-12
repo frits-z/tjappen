@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Minimalist recipe digital pantry built with Hugo and Tailwind CSS",
   "scripts": {
-    "build": "hugo --gc --minify --noTimes",
+    "build": "hugo --gc --cleanDestinationDir --minify --noTimes",
     "server": "hugo server -D --noTimes --poll 5000ms"
   },
   "devDependencies": {
