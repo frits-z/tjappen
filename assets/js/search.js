@@ -5,7 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const grid = document.getElementById('recipeGrid');
     if (!grid) return;
-    
+
+    // Pre-generate a stable array of random slot types for the standard shapes.
+    // This allows true randomness without causing shapes to morph while filtering.
+    const randomSlotTypes = Array.from({length: 1000}, () => {
+        const rand = Math.random();
+        if (rand < 0.20) return 'portrait-1';
+        if (rand < 0.40) return 'portrait-2';
+        return 'standard';
+    });
+
     // Convert nodelist mapping wrappers and shuffle them
     const recipeWrappers = Array.from(document.querySelectorAll('.article-wrapper'));
     
@@ -17,8 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     recipeWrappers.forEach(wrapper => grid.appendChild(wrapper));
     const cardsData = recipeWrappers.map(wrapper => {
         const card = wrapper.querySelector('.recipe-card');
+        const imageContainer = wrapper.querySelector('.image-container');
         return {
             wrapper: wrapper,
+            imageContainer: imageContainer,
             title: card.dataset.title.toLowerCase(),
             ingredients: (card.dataset.ingredients || '').toLowerCase(),
             taxonomies: {
@@ -170,6 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderGrid() {
         let count = 0;
+        let visibleIndex = 0;
+        let cooldown = 4;
+        let bigSide = 'left';
         
         cardsData.forEach(recipe => {
             const matchesSearch = !currentSearch || recipe.title.includes(currentSearch) || recipe.ingredients.includes(currentSearch);
@@ -183,6 +197,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (matchesSearch && matchesTaxonomies) {
                 recipe.wrapper.style.display = 'block';
+                
+                // --- DYNAMIC SLOT LOGIC ---
+                let type = 'standard';
+                if (visibleIndex === 0) {
+                    type = 'big';
+                    cooldown = 8;
+                } else if (cooldown <= 0) {
+                    type = 'big';
+                    cooldown = 8;
+                } else {
+                    cooldown--;
+                    type = randomSlotTypes[visibleIndex] || 'standard';
+                }
+
+                // Reset structural classes
+                recipe.wrapper.className = 'article-wrapper block';
+                recipe.imageContainer.className = 'image-container';
+
+                // Apply slot shape
+                if (type === 'big') {
+                    if (bigSide === 'left') {
+                        recipe.wrapper.classList.add('col-span-2', 'big-left');
+                        bigSide = 'right';
+                    } else {
+                        recipe.wrapper.classList.add('col-span-2', 'big-right');
+                        bigSide = 'left';
+                    }
+                    recipe.imageContainer.classList.add('aspect-[3/2]', 'md:aspect-square');
+                } else if (type === 'portrait-1') {
+                    recipe.wrapper.classList.add('col-span-1');
+                    recipe.imageContainer.classList.add('aspect-[4/5]');
+                } else if (type === 'portrait-2') {
+                    recipe.wrapper.classList.add('col-span-1');
+                    recipe.imageContainer.classList.add('aspect-[3/4]');
+                } else {
+                    recipe.wrapper.classList.add('col-span-1');
+                    recipe.imageContainer.classList.add('aspect-square');
+                }
+
+                visibleIndex++;
                 count++;
             } else {
                 recipe.wrapper.style.display = 'none';
@@ -198,6 +252,11 @@ document.addEventListener('DOMContentLoaded', () => {
             noResultsMessage.classList.remove('hidden');
         } else {
             noResultsMessage.classList.add('hidden');
+        }
+
+        // Reflow the masonry grid after DOM display updates
+        if (typeof window.applyMasonry === 'function') {
+            window.applyMasonry();
         }
     }
 

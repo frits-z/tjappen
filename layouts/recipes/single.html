@@ -329,7 +329,7 @@ $tagDesc = delimit $part2 " " }}{{ end -}}
       <span>Tags:</span>
       <div class="flex flex-wrap gap-x-3 gap-y-1">
         {{ range $i, $tag := $tags }}
-        <span class="text-gray-600 hover:text-black transition-colors duration-200">{{ . }}</span>
+        <span class="text-gray-400 hover:text-black transition-colors duration-200">{{ . }}</span>
         {{ if ne (add $i 1) (len $tags) }}<span class="text-gray-300 select-none">•</span>{{ end }}
         {{ end }}
       </div>

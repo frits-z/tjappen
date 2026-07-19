@@ -9,6 +9,7 @@ cuisine: ["Italian"]
 category: ["Salad", "Snack"]
 diet: ["Vegetarian", "Meat"]
 occasion: ["Weeknight", "Special"]
+season: ["Summer"]
 ingredients:
   - "40 | Cherry tomatoes (~350-400gr)"
   - "20 | Mini mozzarella balls (~250 gr)"
