@@ -9,14 +9,14 @@
                 <h1 class="text-3xl font-black tracking-tighter hover:text-primary transition-colors cursor-pointer"
                     onclick="window.scrollTo({top: 0, behavior: 'smooth'})">tjappen.</h1>
                 
-                <button id="curationsDropdownBtn" class="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none mt-1">
+                <button id="curationsDropdownBtn" class="flex items-center gap-1.5 text-sm font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none mt-1">
                     more <i class="ph-fill ph-caret-down text-sm"></i>
                 </button>
                 
                 <!-- Dropdown menu -->
-                <div id="curationsDropdownMenu" class="hidden absolute right-0 sm:right-auto sm:left-3 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-xs uppercase tracking-wider select-none py-3" style="top: 100%; margin-top: 8px;">
+                <div id="curationsDropdownMenu" class="hidden absolute right-0 sm:right-auto sm:left-3 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-sm uppercase tracking-wider select-none py-3" style="top: 100%; margin-top: 8px;">
                     <!-- Subtitle: Curations -->
-                    <div class="px-4 pb-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                    <div class="px-4 pb-2 text-sm font-black text-gray-400 tracking-widest uppercase">
                         Curations
                     </div>
                     <a href="/lists/all-time-favourites/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
@@ -30,7 +30,7 @@
                     <div class="border-t border-gray-200 my-2 mx-3"></div>
                     
                     <!-- Subtitle: Other -->
-                    <div class="px-4 pt-4 pb-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                    <div class="px-4 pt-4 pb-2 text-sm font-black text-gray-400 tracking-widest uppercase">
                         Other
                     </div>
                     <a href="/about" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
@@ -50,11 +50,7 @@
                         <i class="ph ph-x-circle text-lg"></i>
                     </button>
                 </div>
-                <button id="filterToggleBtn"
-                    class="flex items-center justify-center h-10 gap-2 px-4 bg-black text-white text-sm font-medium hover:bg-primary hover:text-white transition-colors">
-                    <i class="ph ph-faders text-lg"></i>
-                    <span id="filterToggleText">Filters</span>
-                </button>
+
             </div>
         </div>
 
@@ -64,26 +60,48 @@
 
 {{ define "main" }}
 {{- /* Filter Panel: Collapsible section containing all taxonomy filters. Injected via JS. */ -}}
-<!-- Collapsible Filter Panel (Moved outside header to allow scrolling) -->
-<div id="filterPanel"
-    class="hidden overflow-hidden transition-all duration-300 ease-in-out bg-white border-b border-gray-200">
-    <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div class="flex justify-between items-end mb-4">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-black">Filters</h2>
-            <button id="clearFiltersBtn"
-                class="text-xs font-bold text-black hover:text-primary uppercase hidden tracking-wider">Reset</button>
-        </div>
-        <div id="filterContainer" class="grid grid-cols-1">
-            <!-- Filters injected via JS -->
-        </div>
-    </div>
-</div>
+
 
 <main class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 mb-12">
     {{- /* Main Layout: Recipe grid and result counters */ -}}
-    <div class="mb-8 flex justify-between items-baseline">
-        <h2 class="text-xl font-bold tracking-tight">Index</h2>
-        <p class="text-sm font-medium text-gray-500" id="resultsCount">0 recipes in the cookbook</p>
+    <div class="mb-8 flex flex-col gap-4">
+        <div class="flex justify-between items-end border-b border-gray-200 pb-2">
+            <!-- Desktop Filter Bar -->
+            <div id="desktopFilterContainer" class="hidden md:flex items-center gap-8">
+                <span class="text-sm font-bold tracking-widest uppercase text-primary">Filter Recipes</span>
+                <div id="desktopFilters" class="flex items-center gap-10 relative">
+                    <!-- Dropdowns injected via JS -->
+                </div>
+            </div>
+            
+            <!-- Mobile Filter Toggle -->
+            <div class="md:hidden">
+                <button id="mobileFilterBtn" class="flex items-center gap-2 px-4 py-1.5 bg-white text-black text-sm font-bold uppercase tracking-widest border-2 border-black rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition-colors">
+                    <i class="ph ph-faders"></i> Filter recipes
+                </button>
+            </div>
+            
+            <p class="text-sm font-medium text-gray-500 pb-1" id="resultsCount">0 recipes in the cookbook</p>
+        </div>
+        
+        <!-- Active Filters Container -->
+        <div id="activeFiltersContainer" class="hidden flex-wrap items-center gap-2">
+            <div id="activeFiltersList" class="flex flex-wrap gap-2"></div>
+            <button id="clearFiltersBtn" class="text-[10px] font-bold text-primary uppercase tracking-widest ml-2 hover:text-black transition-colors hidden">Clear All</button>
+        </div>
+
+        <!-- Mobile Filter Panel (Accordion) -->
+        <div id="mobileFilterPanel" class="hidden md:hidden bg-white border border-gray-200 p-4 mb-4">
+            <div id="mobileFilters" class="flex flex-col">
+                <!-- Accordions injected via JS -->
+            </div>
+            <div class="flex justify-between items-center mt-6 pt-4">
+                <button id="closeMobileFilterBtn" class="flex items-center gap-1 text-[11px] font-bold text-black uppercase tracking-widest bg-white border-2 border-black px-4 py-2 rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition-colors">
+                    Close <i class="ph ph-x"></i>
+                </button>
+                <button id="mobileClearFiltersBtn" class="text-[11px] font-bold text-primary uppercase tracking-widest hidden hover:text-black transition-colors">Clear All</button>
+            </div>
+        </div>
     </div>
 
     <div id="noResultsMessage" class="hidden py-20 text-center">

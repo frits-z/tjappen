@@ -65,15 +65,23 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- DOM Elements ---
-    const filterContainer = document.getElementById('filterContainer');
     const searchInput = document.getElementById('searchInput');
     const resultsCount = document.getElementById('resultsCount');
-    const clearFiltersBtn = document.getElementById('clearFiltersBtn');
-    const filterToggleBtn = document.getElementById('filterToggleBtn');
-    const filterPanel = document.getElementById('filterPanel');
-    const filterToggleText = document.getElementById('filterToggleText');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
     const noResultsMessage = document.getElementById('noResultsMessage');
+    
+    // New UI Elements
+    const desktopFilters = document.getElementById('desktopFilters');
+    const mobileFilters = document.getElementById('mobileFilters');
+    const activeFiltersContainer = document.getElementById('activeFiltersContainer');
+    const activeFiltersList = document.getElementById('activeFiltersList');
+    const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+    const mobileClearFiltersBtn = document.getElementById('mobileClearFiltersBtn');
+    const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+    const mobileFilterPanel = document.getElementById('mobileFilterPanel');
+    const closeMobileFilterBtn = document.getElementById('closeMobileFilterBtn');
+    
+    let activeDropdown = null;
 
     /**
      * Initialize the UI by rendering filters, grid, and setting up listeners.
@@ -92,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSearch = e.target.value.toLowerCase();
             clearSearchBtn.classList.toggle('hidden', currentSearch.length === 0);
             renderGrid();
-            renderFilters(); // Re-render to update counts based on new search
+            renderFilters(); 
         });
 
         clearSearchBtn.addEventListener('click', () => {
@@ -104,24 +112,35 @@ document.addEventListener('DOMContentLoaded', () => {
             renderFilters();
         });
 
-        clearFiltersBtn.addEventListener('click', () => {
+        const clearAllFilters = () => {
             activeFilters = { cuisine: [], category: [], diet: [], occasion: [] };
             renderFilters();
             renderGrid();
-        });
+        };
 
-        filterToggleBtn.addEventListener('click', () => {
-            isFilterOpen = !isFilterOpen;
-            if (isFilterOpen) {
-                filterPanel.classList.remove('hidden');
-                filterToggleText.textContent = 'Close';
-                filterToggleBtn.classList.replace('bg-black', 'bg-gray-200');
-                filterToggleBtn.classList.replace('text-white', 'text-black');
-            } else {
-                filterPanel.classList.add('hidden');
-                filterToggleText.textContent = 'Filters';
-                filterToggleBtn.classList.replace('bg-gray-200', 'bg-black');
-                filterToggleBtn.classList.replace('text-black', 'text-white');
+        if (clearFiltersBtn) clearFiltersBtn.addEventListener('click', clearAllFilters);
+        if (mobileClearFiltersBtn) mobileClearFiltersBtn.addEventListener('click', clearAllFilters);
+
+        if (mobileFilterBtn) {
+            mobileFilterBtn.addEventListener('click', () => {
+                isFilterOpen = !isFilterOpen;
+                mobileFilterPanel.classList.toggle('hidden', !isFilterOpen);
+            });
+        }
+        
+        if (closeMobileFilterBtn) {
+            closeMobileFilterBtn.addEventListener('click', () => {
+                isFilterOpen = false;
+                mobileFilterPanel.classList.add('hidden');
+            });
+        }
+        
+        // Close desktop dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (activeDropdown && !e.target.closest('.desktop-dropdown')) {
+                const dropdownMenu = activeDropdown.querySelector('.dropdown-menu');
+                if (dropdownMenu) dropdownMenu.classList.add('hidden');
+                activeDropdown = null;
             }
         });
     }
@@ -179,43 +198,141 @@ document.addEventListener('DOMContentLoaded', () => {
      * Renders the filter panel UI, generating buttons with dynamic counts and states.
      */
     function renderFilters() {
-        let html = '';
+        if (!desktopFilters || !mobileFilters || !activeFiltersList) return;
+        
+        // Preserve open dropdown state
+        const openCategory = activeDropdown ? activeDropdown.dataset.category : null;
+        
+        // Preserve open mobile accordion state
+        const openMobileCategories = Array.from(mobileFilters.querySelectorAll('.mobile-accordion-section'))
+            .filter(section => {
+                const menu = section.querySelector('div');
+                return menu && !menu.classList.contains('hidden');
+            })
+            .map(section => section.dataset.category);
+        
+        let desktopHtml = '';
+        let mobileHtml = '';
         const categories = Object.entries(taxonomyOptions).filter(([_, options]) => options.length > 0);
+        
         categories.forEach(([category, options], index) => {
             const isLast = index === categories.length - 1;
-            const marginStyle = isLast ? '' : 'style="margin-bottom: 16px;"';
-            html += `
-                <div ${marginStyle}>
-                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3" style="margin-bottom: 12px;">${category}</h3>
-                    <div class="flex flex-wrap gap-2">
+            const hasActive = activeFilters[category].length > 0;
+            const headerColor = hasActive ? 'text-primary' : 'text-black';
+            
+            // --- Desktop Dropdown ---
+            desktopHtml += `
+                <div class="relative desktop-dropdown group/dropdown" data-category="${category}">
+                    <button class="flex items-center gap-1 text-sm font-bold uppercase tracking-widest ${headerColor} hover:text-primary transition-colors filter-dropdown-btn">
+                        ${category} <i class="ph-fill ph-caret-down text-[10px]"></i>
+                    </button>
+                    <div class="dropdown-menu absolute top-full left-0 mt-2 bg-white border border-gray-200 p-5 min-w-max pr-8 hidden shadow-xl z-30">
+                        <div class="grid ${options.length > 6 ? 'grid-cols-2' : 'grid-cols-1'} gap-y-3 gap-x-6">
+                            ${options.map(option => {
+                                const isActive = activeFilters[category].includes(option);
+                                const count = getOptionCount(category, option);
+                                const disabledAttr = count === 0 && !isActive ? 'disabled' : '';
+                                const opacityClass = count === 0 && !isActive ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:text-primary';
+                                return `
+                                    <label class="flex items-center gap-3 ${opacityClass} text-sm font-medium transition-colors whitespace-nowrap pr-4">
+                                        <input type="checkbox" class="form-checkbox text-primary rounded-sm border-gray-300 w-4 h-4 cursor-pointer" 
+                                            onchange="handleFilterClick('${category}', '${option}')" ${isActive ? 'checked' : ''} ${disabledAttr}>
+                                        <span>${option} <span class="text-gray-400 text-xs font-normal">(${count})</span></span>
+                                    </label>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // --- Mobile Accordion ---
+            const borderClass = isLast ? '' : 'border-b border-gray-200 pb-4 mb-4';
+            const isMobileOpen = openMobileCategories.includes(category);
+            const mobileMenuClass = isMobileOpen ? 'mt-4 pl-2 grid grid-cols-1 gap-3' : 'hidden mt-4 pl-2 grid grid-cols-1 gap-3';
+            const caretClass = isMobileOpen ? 'ph ph-caret-down transition-transform duration-200 rotate-180' : 'ph ph-caret-down transition-transform duration-200';
+            
+            mobileHtml += `
+                <div class="mobile-accordion-section ${borderClass}" data-category="${category}">
+                    <button class="w-full flex justify-between items-center text-left text-sm font-bold uppercase tracking-widest ${headerColor} hover:text-primary transition-colors py-2" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                        ${category} <i class="${caretClass}"></i>
+                    </button>
+                    <div class="${mobileMenuClass}">
                         ${options.map(option => {
                             const isActive = activeFilters[category].includes(option);
                             const count = getOptionCount(category, option);
-                            
-                            let buttonHtml = '';
-                            if (isActive) {
-                                // Active button - always clickable to deselect
-                                const baseClasses = "px-3 py-1 text-xs font-medium cursor-pointer transition-colors border";
-                                const activeClasses = "bg-primary text-white border-primary";
-                                buttonHtml = `<button class="${baseClasses} ${activeClasses}" onclick="handleFilterClick('${category}', '${option}')">${option} (${count})</button>`;
-                            } else if (count === 0) {
-                                // Disabled button - count is 0 and not active
-                                const baseClasses = "px-3 py-1 text-xs font-medium border";
-                                const disabledClasses = "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed opacity-60";
-                                buttonHtml = `<button class="${baseClasses} ${disabledClasses}" disabled>${option} (0)</button>`;
-                            } else {
-                                // Enabled inactive button
-                                const baseClasses = "px-3 py-1 text-xs font-medium cursor-pointer transition-colors border";
-                                const inactiveClasses = "bg-white text-black border-gray-300 hover:border-primary hover:text-primary";
-                                buttonHtml = `<button class="${baseClasses} ${inactiveClasses}" onclick="handleFilterClick('${category}', '${option}')">${option} (${count})</button>`;
-                            }
-                            return buttonHtml;
+                            const disabledAttr = count === 0 && !isActive ? 'disabled' : '';
+                            const opacityClass = count === 0 && !isActive ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:text-primary';
+                            return `
+                                <label class="flex items-center gap-3 ${opacityClass} text-sm font-medium transition-colors">
+                                    <input type="checkbox" class="form-checkbox text-primary rounded-sm border-gray-300 w-4 h-4 cursor-pointer" 
+                                        onchange="handleFilterClick('${category}', '${option}')" ${isActive ? 'checked' : ''} ${disabledAttr}>
+                                    <span>${option} <span class="text-gray-400 text-xs font-normal">(${count})</span></span>
+                                </label>
+                            `;
                         }).join('')}
                     </div>
                 </div>
             `;
         });
-        filterContainer.innerHTML = html;
+        
+        desktopFilters.innerHTML = desktopHtml;
+        mobileFilters.innerHTML = mobileHtml;
+        
+        // Re-attach desktop dropdown toggling
+        const dropdownBtns = desktopFilters.querySelectorAll('.filter-dropdown-btn');
+        dropdownBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const parent = btn.closest('.desktop-dropdown');
+                const menu = parent.querySelector('.dropdown-menu');
+                const isHidden = menu.classList.contains('hidden');
+                
+                // Close all others
+                desktopFilters.querySelectorAll('.dropdown-menu').forEach(m => m.classList.add('hidden'));
+                
+                if (isHidden) {
+                    menu.classList.remove('hidden');
+                    activeDropdown = parent;
+                } else {
+                    activeDropdown = null;
+                }
+            });
+        });
+        
+        // Re-open active dropdown if there was one
+        if (openCategory) {
+            const activeParent = desktopFilters.querySelector(`[data-category="${openCategory}"]`);
+            if (activeParent) {
+                activeParent.querySelector('.dropdown-menu').classList.remove('hidden');
+                activeDropdown = activeParent;
+            }
+        }
+
+        // --- Active Filters Row ---
+        let activeTagsHtml = '';
+        let hasActiveFilters = false;
+        
+        Object.entries(activeFilters).forEach(([category, selected]) => {
+            selected.forEach(option => {
+                hasActiveFilters = true;
+                activeTagsHtml += `
+                    <button class="flex items-center gap-1.5 px-3 py-1 bg-white border-2 border-black text-black text-[11px] font-bold tracking-widest rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition-colors group" onclick="handleFilterClick('${category}', '${option}')">
+                        ${option} <i class="ph ph-x text-primary text-xs group-hover:text-white transition-colors"></i>
+                    </button>
+                `;
+            });
+        });
+        
+        activeFiltersList.innerHTML = activeTagsHtml;
+        
+        if (hasActiveFilters) {
+            activeFiltersContainer.classList.remove('hidden');
+            activeFiltersContainer.classList.add('flex');
+        } else {
+            activeFiltersContainer.classList.add('hidden');
+            activeFiltersContainer.classList.remove('flex');
+        }
     }
 
     /**
@@ -249,7 +366,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsCount.textContent = `${count} recipes in the cookbook`;
         
         const hasActiveFilters = Object.values(activeFilters).some(arr => arr.length > 0);
-        clearFiltersBtn.style.display = hasActiveFilters ? 'block' : 'none';
+        if (clearFiltersBtn) clearFiltersBtn.classList.toggle('hidden', !hasActiveFilters);
+        if (mobileClearFiltersBtn) mobileClearFiltersBtn.classList.toggle('hidden', !hasActiveFilters);
 
         if (count === 0) {
             noResultsMessage.classList.remove('hidden');
