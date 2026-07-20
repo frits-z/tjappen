@@ -1,17 +1,21 @@
 baseURL = 'https://tjappen.com/'
 locale = 'en-us'
 title = 'tjappen.'
+disableKinds = ["taxonomy", "term", "section"]
 
 [taxonomies]
+  # Custom taxonomies used for filtering the recipe index
   cuisine = "cuisines"
   category = "categories"
   occasion = "occasions"
   diet = "diets"
 
 [outputs]
+  # Enables building a JSON file for the homepage, which powers the client-side search
   home = ["HTML", "JSON"]
 
 [markup]
   [markup.goldmark]
-    [markup.goldmark.renderer]
+  [markup.goldmark.renderer]
+      # Allows raw HTML in Markdown files (e.g., for specific layout overrides in recipes)
       unsafe = true

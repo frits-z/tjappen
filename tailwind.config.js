@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // Define where Tailwind should look for utility classes to compile
   content: [
     "./layouts/**/*.html",
     "./content/**/*.md",
@@ -10,6 +11,7 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
+      // Warm Minimalist color palette
       colors: {
         black: '#1a1a1a',
         white: '#fff7f1',

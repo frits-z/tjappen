@@ -1,4 +1,10 @@
+/**
+ * @fileoverview search.js
+ * Handles the client-side search, filtering, and masonry grid layout for the recipe index.
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
+    // --- State Management ---
     let currentSearch = "";
     let isFilterOpen = false;
     let activeFilters = { cuisine: [], category: [], diet: [], occasion: [] };
@@ -6,24 +12,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('recipeGrid');
     if (!grid) return;
 
-    // Pre-generate a stable array of random slot types for the standard shapes.
-    // This allows true randomness without causing shapes to morph while filtering.
-    const randomSlotTypes = Array.from({length: 1000}, () => {
-        const rand = Math.random();
-        if (rand < 0.20) return 'portrait-1';
-        if (rand < 0.40) return 'portrait-2';
-        return 'standard';
-    });
 
+
+    // --- DOM Parsing & Shuffling ---
     // Convert nodelist mapping wrappers and shuffle them
     const recipeWrappers = Array.from(document.querySelectorAll('.article-wrapper'));
     
+    // Fisher-Yates shuffle to randomize the order of recipes on initial load
     for (let i = recipeWrappers.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [recipeWrappers[i], recipeWrappers[j]] = [recipeWrappers[j], recipeWrappers[i]];
     }
     
     recipeWrappers.forEach(wrapper => grid.appendChild(wrapper));
+    
+    /**
+     * @typedef {Object} RecipeData
+     * @property {HTMLElement} wrapper - The outer article wrapper element.
+     * @property {HTMLElement} imageContainer - The container for the recipe image.
+     * @property {string} title - The title of the recipe (lowercase).
+     * @property {string} ingredients - The ingredients string (lowercase).
+     * @property {Object} taxonomies - Arrays of tags for each category.
+     */
+    
+    /** @type {RecipeData[]} */
     const cardsData = recipeWrappers.map(wrapper => {
         const card = wrapper.querySelector('.recipe-card');
         const imageContainer = wrapper.querySelector('.image-container');
@@ -41,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
+    /** 
+     * Extract unique sorted options for all taxonomy categories
+     * @type {Object.<string, string[]>} 
+     */
     const taxonomyOptions = {
         cuisine: [...new Set(cardsData.flatMap(r => r.taxonomies.cuisine))].sort(),
         category: [...new Set(cardsData.flatMap(r => r.taxonomies.category))].sort(),
@@ -48,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         occasion: [...new Set(cardsData.flatMap(r => r.taxonomies.occasion))].sort()
     };
 
+    // --- DOM Elements ---
     const filterContainer = document.getElementById('filterContainer');
     const searchInput = document.getElementById('searchInput');
     const resultsCount = document.getElementById('resultsCount');
@@ -58,18 +75,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearSearchBtn = document.getElementById('clearSearchBtn');
     const noResultsMessage = document.getElementById('noResultsMessage');
 
+    /**
+     * Initialize the UI by rendering filters, grid, and setting up listeners.
+     */
     function init() {
         renderFilters();
         renderGrid();
         setupEventListeners();
     }
 
+    /**
+     * Attach event listeners for search and filter UI controls.
+     */
     function setupEventListeners() {
         searchInput.addEventListener('input', (e) => {
             currentSearch = e.target.value.toLowerCase();
             clearSearchBtn.classList.toggle('hidden', currentSearch.length === 0);
             renderGrid();
-            renderFilters();
+            renderFilters(); // Re-render to update counts based on new search
         });
 
         clearSearchBtn.addEventListener('click', () => {
@@ -103,7 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Exported to window so onclick works from innerHTML
+    /**
+     * Global handler for filter button clicks, exposed to window for inline onclick usage.
+     * Toggles a filter value in the activeFilters state.
+     * @param {string} category - The taxonomy category (e.g., 'cuisine').
+     * @param {string} value - The specific tag value.
+     */
     window.handleFilterClick = function(category, value) {
         const index = activeFilters[category].indexOf(value);
         if (index > -1) {
@@ -115,14 +143,22 @@ document.addEventListener('DOMContentLoaded', () => {
         renderGrid();
     }
 
+    /**
+     * Calculate the number of recipes that would match if a specific filter option were selected,
+     * considering the current search query and *other* active filter categories.
+     * @param {string} category - The taxonomy category.
+     * @param {string} option - The specific tag value.
+     * @returns {number} The count of matching recipes.
+     */
     function getOptionCount(category, option) {
         let count = 0;
         cardsData.forEach(recipe => {
             const matchesSearch = !currentSearch || recipe.title.includes(currentSearch) || recipe.ingredients.includes(currentSearch);
             if (!matchesSearch) return;
 
+            // Check if recipe matches all *other* categories
             const matchesOtherCategories = Object.keys(activeFilters).every(cat => {
-                if (cat === category) return true;
+                if (cat === category) return true; // Ignore the category we're calculating for
                 const selected = activeFilters[cat];
                 if (selected.length === 0) return true;
                 const tags = recipe.taxonomies[cat] || [];
@@ -139,6 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return count;
     }
 
+    /**
+     * Renders the filter panel UI, generating buttons with dynamic counts and states.
+     */
     function renderFilters() {
         let html = '';
         const categories = Object.entries(taxonomyOptions).filter(([_, options]) => options.length > 0);
@@ -179,70 +218,34 @@ document.addEventListener('DOMContentLoaded', () => {
         filterContainer.innerHTML = html;
     }
 
+    /**
+     * Filters and renders the recipe grid based on current search and active filters.
+     * Also applies dynamic visual slot shaping (big, portrait, standard) for a varied layout.
+     */
     function renderGrid() {
         let count = 0;
-        let visibleIndex = 0;
-        let cooldown = 4;
-        let bigSide = 'left';
         
         cardsData.forEach(recipe => {
+            // Check text search
             const matchesSearch = !currentSearch || recipe.title.includes(currentSearch) || recipe.ingredients.includes(currentSearch);
             
+            // Check taxonomy filters (OR within a category, AND across categories)
             const matchesTaxonomies = Object.keys(activeFilters).every(category => {
                 const selected = activeFilters[category];
                 if (selected.length === 0) return true;
                 const tags = recipe.taxonomies[category] || [];
-                return selected.some(s => tags.includes(s)); // OR within
+                return selected.some(s => tags.includes(s));
             });
 
             if (matchesSearch && matchesTaxonomies) {
                 recipe.wrapper.style.display = 'block';
-                
-                // --- DYNAMIC SLOT LOGIC ---
-                let type = 'standard';
-                if (visibleIndex === 0) {
-                    type = 'big';
-                    cooldown = 8;
-                } else if (cooldown <= 0) {
-                    type = 'big';
-                    cooldown = 8;
-                } else {
-                    cooldown--;
-                    type = randomSlotTypes[visibleIndex] || 'standard';
-                }
-
-                // Reset structural classes
-                recipe.wrapper.className = 'article-wrapper block';
-                recipe.imageContainer.className = 'image-container';
-
-                // Apply slot shape
-                if (type === 'big') {
-                    if (bigSide === 'left') {
-                        recipe.wrapper.classList.add('col-span-2', 'big-left');
-                        bigSide = 'right';
-                    } else {
-                        recipe.wrapper.classList.add('col-span-2', 'big-right');
-                        bigSide = 'left';
-                    }
-                    recipe.imageContainer.classList.add('aspect-[3/2]', 'md:aspect-square');
-                } else if (type === 'portrait-1') {
-                    recipe.wrapper.classList.add('col-span-1');
-                    recipe.imageContainer.classList.add('aspect-[4/5]');
-                } else if (type === 'portrait-2') {
-                    recipe.wrapper.classList.add('col-span-1');
-                    recipe.imageContainer.classList.add('aspect-[3/4]');
-                } else {
-                    recipe.wrapper.classList.add('col-span-1');
-                    recipe.imageContainer.classList.add('aspect-square');
-                }
-
-                visibleIndex++;
                 count++;
             } else {
                 recipe.wrapper.style.display = 'none';
             }
         });
 
+        // Update UI counters and empty states
         resultsCount.textContent = `${count} recipes in the cookbook`;
         
         const hasActiveFilters = Object.values(activeFilters).some(arr => arr.length > 0);
@@ -254,10 +257,13 @@ document.addEventListener('DOMContentLoaded', () => {
             noResultsMessage.classList.add('hidden');
         }
 
-        // Reflow the masonry grid after DOM display updates
+        // Reflow the masonry grid after DOM display updates are complete
         if (typeof window.applyMasonry === 'function') {
             window.applyMasonry();
         }
+
+        // Fade in the grid now that it's properly positioned (avoids jarring layout shifts)
+        grid.classList.remove('opacity-0');
     }
 
     init();

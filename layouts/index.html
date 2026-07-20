@@ -1,4 +1,5 @@
 {{ define "header" }}
+{{- /* Header: Site navigation, search bar, and filter toggle button */ -}}
 <header class="border-b-2 border-black sticky top-0 z-20 bg-white">
     <div class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-4">
 
@@ -62,6 +63,7 @@
 {{ end }}
 
 {{ define "main" }}
+{{- /* Filter Panel: Collapsible section containing all taxonomy filters. Injected via JS. */ -}}
 <!-- Collapsible Filter Panel (Moved outside header to allow scrolling) -->
 <div id="filterPanel"
     class="hidden overflow-hidden transition-all duration-300 ease-in-out bg-white border-b border-gray-200">
@@ -78,6 +80,7 @@
 </div>
 
 <main class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 mb-12">
+    {{- /* Main Layout: Recipe grid and result counters */ -}}
     <div class="mb-8 flex justify-between items-baseline">
         <h2 class="text-xl font-bold tracking-tight">Index</h2>
         <p class="text-sm font-medium text-gray-500" id="resultsCount">0 recipes in the cookbook</p>
@@ -89,9 +92,16 @@
         <p class="text-gray-500">Maybe try broadening your filters or checking your spelling?</p>
     </div>
 
-    <div id="recipeGrid" class="playful-grid">
+    <noscript>
+        <style>
+            #recipeGrid {
+                opacity: 1 !important;
+            }
+        </style>
+    </noscript>
+    <div id="recipeGrid" class="playful-grid opacity-0 transition-opacity duration-500">
         {{ range $index, $page := where site.RegularPages "Type" "recipes" }}
-        <a href="{{ .RelPermalink }}" class="article-wrapper block col-span-1">
+        <a href="{{ .RelPermalink }}" class="article-wrapper">
             <article class="recipe-card group cursor-pointer flex flex-col"
                 data-title="{{ .Title | htmlEscape }}"
                 data-ingredients="{{ delimit .Params.ingredients " " | htmlEscape }}"
@@ -99,7 +109,7 @@
                 data-category="{{ if .Params.category }}{{ delimit .Params.category "," | htmlEscape }}{{ end }}"
                 data-occasion="{{ if .Params.occasion }}{{ delimit .Params.occasion "," | htmlEscape }}{{ end }}"
                 data-diet="{{ if .Params.diet }}{{ delimit .Params.diet "," | htmlEscape }}{{ end }}">
-                <div class="image-container aspect-square">
+                <div class="image-container">
                     {{ $image := .Resources.GetMatch "*hero*" }}
                     {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
                     {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
@@ -122,8 +132,13 @@
         {{ end }}
     </div>
 </main>
-
 <script>
+  {{- /* 
+    Playful Grid Masonry Logic
+    Calculates the heights of recipe cards and dynamically assigns grid row spans
+    so they pack tightly without gaps. Batched DOM reads/writes are used 
+    to prevent layout thrashing and preserve rendering performance.
+  */ -}}
   function applyMasonry() {
     const grid = document.getElementById('recipeGrid');
     if (!grid) return;
