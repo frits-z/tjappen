@@ -1,6 +1,6 @@
 ---
 title: "Pita with Za'atar Roasted Eggplant"
-date: 2026-07-20T19:33:54Z
+date: 2026-07-20
 description: "A delicious Middle Eastern pita sandwich packed with za'atar-roasted eggplant, creamy tahini sauce, hummus, Israeli salad, and hard-boiled eggs."
 time_active: 30
 time_total: 60

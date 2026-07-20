@@ -1,6 +1,6 @@
 ---
 title: "{{ replace .File.ContentBaseName "-" " " | title }}"
-date: {{ .Date }}
+date: {{ dateFormat "2006-01-02" .Date }}
 description: "A short, engaging summary of the recipe."
 time_active: 15  # Active prep time in minutes (integer)
 time_total: 30   # Total time in minutes (integer)
