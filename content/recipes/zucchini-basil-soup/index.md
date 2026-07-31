@@ -1,11 +1,12 @@
 ---
 title: "Creamy Zucchini & Basil Soup"
+date: 2026-07-31
 description: "An incredibly velvety and smooth zucchini soup packed with fresh basil, aromatic garlic, and a hint of chili flakes."
 time_active: 20
 time_total: 45
 servings: 4
 cuisine: ["European"]
-category: ["Main"]
+category: ["Soup"]
 diet: ["Vegetarian", "Plant-based"]
 occasion: ["Weeknight", "Batch-cook"]
 ingredients:
