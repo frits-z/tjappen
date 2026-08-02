@@ -22,6 +22,7 @@ ingredients:
 
 # Optional fields (uncomment to use):
 # draft: true                    # Set to true to hide this recipe from the live site (standard Hugo feature)
+# hidden_tag: "series-name"      # Optional tag for grouping special recipe series
 # rating: 5                      # Personal rating (e.g., 1-5 integer)
 # source: "Author or Cookbook Name"
 # source_url: "https://..."      # Links the source name above if defined
