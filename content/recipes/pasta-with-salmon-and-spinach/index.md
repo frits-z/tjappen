@@ -7,7 +7,7 @@ servings: 2
 cuisine: ["Italian"]
 category: ["Main"]
 diet: ["Fish"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
 ingredients:
   - "200 | Pasta (g)"
   - "100 | Salmon (g)"

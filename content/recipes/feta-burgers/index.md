@@ -8,7 +8,8 @@ servings: 1
 cuisine: ["Fusion"]
 category: ["Main"]
 diet: ["Meat"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
+season: ["Summer"]
 rating: 4.2
 ingredients:
  - "# Burger & Seasoning"

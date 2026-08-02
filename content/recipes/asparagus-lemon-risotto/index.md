@@ -9,7 +9,8 @@ servings: 4
 cuisine: ["Italian"]
 category: ["Main"]
 diet: ["Vegetarian"]
-occasion: ["Weeknight", "Special"]
+occasion: ["Midweek", "Weekend Project"]
+season: ["Spring", "Summer"]
 ingredients:
  - "# Base"
  - "2 | Onions (finely chopped)"

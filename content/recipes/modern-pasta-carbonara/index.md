@@ -7,7 +7,7 @@ servings: 2
 cuisine: ["Italian"]
 category: ["Main"]
 diet: ["Meat"]
-occasion: ["Special"]
+occasion: ["Weekend Project"]
 rating: 4.9
 ingredients:
   - "250 | Pasta (g)"

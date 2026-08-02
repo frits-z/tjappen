@@ -8,7 +8,7 @@ servings: 20
 cuisine: ["Italian"]
 category: ["Salad", "Snack"]
 diet: ["Vegetarian", "Meat"]
-occasion: ["Weeknight", "Special"]
+occasion: ["Midweek", "Weekend Project"]
 season: ["Summer"]
 ingredients:
   - "40 | Cherry tomatoes (~350-400gr)"

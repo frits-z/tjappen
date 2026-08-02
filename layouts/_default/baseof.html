@@ -98,19 +98,45 @@
     {{ block "scripts" . }}{{ end }}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const dropdownBtn = document.getElementById('curationsDropdownBtn');
-            const dropdownMenu = document.getElementById('curationsDropdownMenu');
-            if (dropdownBtn && dropdownMenu) {
-                dropdownBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    dropdownMenu.classList.toggle('hidden');
-                });
-                document.addEventListener('click', (e) => {
-                    if (!dropdownMenu.contains(e.target) && e.target !== dropdownBtn) {
-                        dropdownMenu.classList.add('hidden');
-                    }
+            // --- Generic dropdown handler for data-dropdown-btn buttons ---
+            const allDropdownBtns = document.querySelectorAll('[data-dropdown-btn]');
+            const allDropdownMenus = document.querySelectorAll('.header-dropdown');
+
+            function closeAllDropdowns(except) {
+                allDropdownMenus.forEach(menu => {
+                    if (menu !== except) menu.classList.add('hidden');
                 });
             }
+
+            allDropdownBtns.forEach(btn => {
+                const menuId = btn.getAttribute('data-dropdown-btn');
+                const menu = document.getElementById(menuId);
+                if (!menu) return;
+
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isHidden = menu.classList.contains('hidden');
+                    closeAllDropdowns();
+                    if (isHidden) menu.classList.remove('hidden');
+                });
+            });
+
+            // --- Fallback: legacy single dropdown (carousel-list, season-list pages) ---
+            const legacyBtn = document.getElementById('curationsDropdownBtn');
+            const legacyMenu = document.getElementById('curationsDropdownMenu');
+            if (legacyBtn && legacyMenu) {
+                legacyBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeAllDropdowns();
+                    legacyMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Close all dropdowns when clicking outside
+            document.addEventListener('click', () => {
+                closeAllDropdowns();
+                if (legacyMenu) legacyMenu.classList.add('hidden');
+            });
         });
     </script>
 </body>

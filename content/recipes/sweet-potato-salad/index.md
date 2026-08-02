@@ -7,7 +7,8 @@ servings: 2
 cuisine: ["European"]
 category: ["Salad"]
 diet: ["Vegetarian"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
+season: ["Spring", "Summer"]
 ingredients:
   - "500 | Sweet potatoes (g)"
   - "1 | Large carrot"

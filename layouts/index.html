@@ -9,40 +9,59 @@
                 <h1 class="text-3xl font-black tracking-tighter hover:text-primary transition-colors cursor-pointer"
                     onclick="window.scrollTo({top: 0, behavior: 'smooth'})">tjappen.</h1>
 
-                <button id="curationsDropdownBtn"
-                    class="flex items-center gap-1.5 text-sm font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none mt-1">
-                    more <i class="ph-fill ph-caret-down text-sm"></i>
-                </button>
+                <!-- ═══ Mobile: Single combined "more" dropdown ═══ -->
+                <div class="md:hidden relative">
+                    <button data-dropdown-btn="mobileMoreMenu"
+                        class="flex items-center gap-1.5 text-sm font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none mt-1">
+                        more <i class="ph-fill ph-caret-down text-sm"></i>
+                    </button>
 
-                <!-- Dropdown menu -->
-                <div id="curationsDropdownMenu"
-                    class="hidden absolute right-0 sm:right-auto sm:left-3 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-sm uppercase tracking-wider select-none py-3"
-                    style="top: 100%; margin-top: 8px;">
-                    <!-- Subtitle: Curations -->
-                    <div class="px-4 pb-2 text-sm font-black text-gray-400 tracking-widest uppercase">
-                        Curations
+                    <div id="mobileMoreMenu"
+                        class="header-dropdown hidden absolute right-0 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-sm uppercase tracking-wider select-none py-3"
+                        style="top: 100%; margin-top: 8px;">
+                        <div class="px-4 pb-2 text-sm font-black text-gray-400 tracking-widest uppercase">Curations</div>
+                        <a href="/lists/all-time-favourites/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">All-Time Favourites</a>
+                        <a href="/lists/recently-added/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">Recently Added</a>
+                        <a href="/lists/eat-the-season/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors mb-2">Eat the Season</a>
+                        <div class="border-t border-gray-200 my-2 mx-3"></div>
+                        <div class="px-4 pt-4 pb-2 text-sm font-black text-gray-400 tracking-widest uppercase">Other</div>
+                        <a href="/about" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">About</a>
                     </div>
-                    <a href="/lists/all-time-favourites/"
-                        class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
-                        All-Time Favourites
-                    </a>
-                    <a href="/lists/recently-added/"
-                        class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors mb-2">
-                        Recently Added
-                    </a>
-
-                    <!-- Subtle Divider -->
-                    <div class="border-t border-gray-200 my-2 mx-3"></div>
-
-                    <!-- Subtitle: Other -->
-                    <div class="px-4 pt-4 pb-2 text-sm font-black text-gray-400 tracking-widest uppercase">
-                        Other
-                    </div>
-                    <a href="/about"
-                        class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
-                        About
-                    </a>
                 </div>
+
+                <!-- ═══ Desktop: Separate "Curations" and "Other" dropdowns ═══ -->
+                <div class="hidden md:flex items-center gap-8">
+                    <!-- Curations dropdown -->
+                    <div class="relative">
+                        <button data-dropdown-btn="desktopCurationsMenu"
+                            class="flex items-center gap-1.5 text-sm font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none mt-1">
+                            curations <i class="ph-fill ph-caret-down text-sm"></i>
+                        </button>
+
+                        <div id="desktopCurationsMenu"
+                            class="header-dropdown hidden absolute left-0 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-sm uppercase tracking-wider select-none py-3"
+                            style="top: 100%; margin-top: 8px;">
+                            <a href="/lists/all-time-favourites/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">All-Time Favourites</a>
+                            <a href="/lists/recently-added/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">Recently Added</a>
+                            <a href="/lists/eat-the-season/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">Eat the Season</a>
+                        </div>
+                    </div>
+
+                    <!-- Other dropdown -->
+                    <div class="relative">
+                        <button data-dropdown-btn="desktopOtherMenu"
+                            class="flex items-center gap-1.5 text-sm font-black uppercase tracking-widest text-primary hover:text-black transition-colors focus:outline-none mt-1">
+                            other <i class="ph-fill ph-caret-down text-sm"></i>
+                        </button>
+
+                        <div id="desktopOtherMenu"
+                            class="header-dropdown hidden absolute left-0 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-sm uppercase tracking-wider select-none py-3"
+                            style="top: 100%; margin-top: 8px;">
+                            <a href="/about" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">About</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="flex w-full sm:w-auto gap-2">

@@ -7,7 +7,7 @@ servings: 4
 cuisine: ["Dutch"]
 category: ["Main"]
 diet: ["Meat"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
 ingredients:
   - "# Main"
   - "500 | Frozen spinach (g)"

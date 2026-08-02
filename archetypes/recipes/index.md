@@ -7,10 +7,10 @@ time_total: 30   # Total time in minutes (integer)
 servings: 4      # Base yield (integer)
 
 # Taxonomies (use existing tags from your filters where possible):
-cuisine: []      # e.g., ["Italian", "Thai", "Korean", "Catalan", "Dutch", "Fusion", "European"]
-category: []     # e.g., ["Main", "Salad", "Snack", "Essential", "One-pot"]
-diet: []         # e.g., ["Vegetarian", "Plant-based", "Meat", "Fish", "Low-carb"]
-occasion: []     # e.g., ["Weeknight", "Special", "Batch-cook"]
+cuisine: []      # e.g. (not limited) ["Italian", "Thai", "Korean", "Catalan", "Dutch", "Fusion", "European"]
+category: []     # Options: ["Main", "Salad", "Snack", "Essential", "Soup", "Side", "Dessert", "Baking", "Breakfast", "Drink"]
+diet: []         # e.g. (not limited) ["Vegetarian", "Plant-based", "Meat", "Fish", "Low-carb"]
+occasion: []     # Options: ["Midweek", "Weekend project", "Batch-cook", "Party", "Holiday", "Make-ahead"]
 
 # Ingredients structure: "Quantity | Item name (Unit)"
 # CRITICAL: The value to the left of the pipe MUST be a strict integer or float (e.g., 1.5 or 2)
@@ -26,7 +26,7 @@ ingredients:
 # source: "Author or Cookbook Name"
 # source_url: "https://..."      # Links the source name above if defined
 # author: "Guest Author Name"    # Default is "Frits" if omitted. Displays in Credits section.
-# season: []                     # List of seasons (options: "Spring", "Summer", "Autumn", "Winter", "All-year")
+# season: []                     # List of seasons (options: "Spring", "Summer", "Autumn", "Winter")
 # notes:
 #   - "Top tip: write a helpful cooking note or variation here"
 ---

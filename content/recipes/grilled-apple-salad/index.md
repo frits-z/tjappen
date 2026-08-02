@@ -8,7 +8,7 @@ servings: 4
 cuisine: ["European"]
 category: ["Salad"]
 diet: ["Vegetarian"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
 rating: 4.8
 ingredients:
  - "# Base"

@@ -7,7 +7,7 @@ servings: 14
 cuisine: ["Korean"]
 category: ["Main"]
 diet: ["Meat"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
 ingredients:
   - "2 | Chicken thighs (fat trimmed) (kg)"
   - "14 | Tortillas (large)"

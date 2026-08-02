@@ -7,7 +7,7 @@ servings: 6
 cuisine: ["Italian"]
 category: ["Main"]
 diet: ["Meat"]
-occasion: ["Special"]
+occasion: ["Weekend Project"]
 rating: 4.6
 ingredients:
   - "2 | Celery stalks"

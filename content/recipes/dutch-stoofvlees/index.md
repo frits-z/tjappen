@@ -9,8 +9,8 @@ servings: 6
 cuisine: ["Dutch"]
 category: ["Main", "One-pot"]
 diet: ["Meat"]
-occasion: ["Special", "Batch-cook"]
-
+occasion: ["Weekend Project", "Batch-cook"]
+season: ["Autumn", "Winter"]
 author: "Rune"
 
 ingredients:

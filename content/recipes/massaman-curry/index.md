@@ -8,6 +8,7 @@ cuisine: ["Thai"]
 category: ["Main"]
 diet: ["Plant-based"]
 occasion: ["Batch-cook"]
+season: ["Autumn", "Winter"]
 ingredients:
   - "5 | Red curry paste (tbsp)"
   - "1 | Cumin seed (tsp)"

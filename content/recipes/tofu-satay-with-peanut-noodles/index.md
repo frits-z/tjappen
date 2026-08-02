@@ -7,7 +7,7 @@ servings: 4
 cuisine: ["Indonesian"]
 category: ["Main"]
 diet: ["Plant-based"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
 rating: 4.7
 ingredients:
   - "500 | Firm tofu (g)"

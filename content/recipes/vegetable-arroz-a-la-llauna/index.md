@@ -7,7 +7,7 @@ servings: 2
 cuisine: ["Catalan"]
 category: ["Main"]
 diet: ["Plant-based"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
 ingredients:
   - "3 | Olive oil (tbsp)"
   - "125g | Chestnut mushrooms"

@@ -8,7 +8,7 @@ servings: 4
 cuisine: ["European"]
 category: ["Soup"]
 diet: ["Vegetarian", "Plant-based"]
-occasion: ["Weeknight", "Batch-cook"]
+occasion: ["Midweek", "Batch-cook"]
 ingredients:
  - "3 | Zucchinis, cut into 2cm cubes"
  - "2 | Onions (finely chopped)"

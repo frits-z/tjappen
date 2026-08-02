@@ -7,7 +7,7 @@ servings: 2
 cuisine: ["French"]
 category: ["Main"]
 diet: ["Meat"]
-occasion: ["Special"]
+occasion: ["Weekend Project"]
 rating: 4.8
 ingredients:
   - "2 | Duck breasts"

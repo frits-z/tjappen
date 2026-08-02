@@ -1,0 +1,197 @@
+{{ define "header" }}
+<nav class="border-b-2 border-black sticky top-0 z-20 bg-white">
+    <div class="max-w-[1600px] w-full mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
+            <i class="ph ph-arrow-left text-lg"></i> Index
+        </a>
+        
+        <div class="flex items-center gap-3 relative">
+            <a href="/" class="text-xl font-black lowercase tracking-tighter hover:text-primary transition-colors">tjappen.</a>
+            
+            <button id="curationsDropdownBtn" class="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none">
+                more <i class="ph-fill ph-caret-down text-sm"></i>
+            </button>
+            
+            <!-- Dropdown menu -->
+            <div id="curationsDropdownMenu" class="hidden absolute right-0 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-xs uppercase tracking-wider select-none py-3" style="top: 100%; margin-top: 8px;">
+                <!-- Subtitle: Curations -->
+                <div class="px-4 pb-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                    Curations
+                </div>
+                <a href="/lists/all-time-favourites/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
+                    All-Time Favourites
+                </a>
+                <a href="/lists/recently-added/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
+                    Recently Added
+                </a>
+                <a href="/lists/eat-the-season/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors mb-2">
+                    Eat the Season
+                </a>
+                
+                <!-- Subtle Divider -->
+                <div class="border-t border-gray-200 my-2 mx-3"></div>
+                
+                <!-- Subtitle: Other -->
+                <div class="px-4 pt-4 pb-2 text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                    Other
+                </div>
+                <a href="/about" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
+                    About
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+{{ end }}
+
+{{ define "main" }}
+<main class="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 mb-12">
+
+    <!-- Hero Section — Season name & emoji populated by JS -->
+    <div class="mb-12 text-center max-w-2xl mx-auto">
+        <span class="text-primary text-xs font-black uppercase tracking-widest block mb-3">{{ .Params.subtitle | default "eat the season" }}</span>
+
+        <div class="flex items-center justify-center gap-4 mb-4">
+            <span id="seasonEmoji" class="text-5xl sm:text-6xl select-none" aria-hidden="true"></span>
+            <h1 id="seasonName" class="text-5xl sm:text-7xl font-black tracking-tight lowercase"></h1>
+        </div>
+
+        <p id="seasonBlurb" class="text-gray-500 font-medium text-sm max-w-md mx-auto"></p>
+        <div class="h-0.5 bg-black w-24 mx-auto mt-6"></div>
+    </div>
+
+    <!-- Recipe Grid — All season-tagged recipes rendered hidden, JS reveals matching ones -->
+    <div id="seasonGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {{ range $index, $page := where site.RegularPages "Type" "recipes" }}
+            {{ if .Params.season }}
+            <a href="{{ .RelPermalink }}"
+               class="season-card hidden group"
+               data-season="{{ delimit .Params.season "," }}">
+                <article class="border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-200 cursor-pointer flex flex-col h-full">
+                    <!-- Image -->
+                    <div class="w-full aspect-[4/3] overflow-hidden bg-gray-100">
+                        {{ $image := .Resources.GetMatch "*hero*" }}
+                        {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
+                        {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
+                        {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
+                        {{ if $image }}
+                            {{ $scaled := $image.Fill "800x600 webp q80 Center" }}
+                            <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}"
+                                 width="{{ $scaled.Width }}" height="{{ $scaled.Height }}"
+                                 loading="lazy"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        {{ else }}
+                            <div class="w-full h-full flex items-center justify-center text-gray-300 group-hover:text-gray-400 transition-colors">
+                                <i class="ph ph-cooking-pot text-6xl"></i>
+                            </div>
+                        {{ end }}
+                    </div>
+                    <!-- Content -->
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h2 class="text-sm sm:text-base font-bold tracking-tight leading-tight text-black group-hover:text-primary transition-colors mb-2">
+                            {{ .Title }}
+                        </h2>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            {{ if .Params.time_total }}
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-500 flex items-center gap-1">
+                                <i class="ph ph-timer text-sm"></i> {{ .Params.time_total }} min
+                            </span>
+                            {{ end }}
+                            {{ if .Params.cuisine }}
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-500 flex items-center gap-1">
+                                <i class="ph ph-globe text-sm"></i> {{ delimit .Params.cuisine ", " }}
+                            </span>
+                            {{ end }}
+                        </div>
+                    </div>
+                </article>
+            </a>
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <!-- Empty State — shown by JS when no recipes match the current season -->
+    <div id="seasonEmpty" class="hidden py-20 text-center border-2 border-dashed border-gray-300 max-w-2xl mx-auto px-4">
+        <i class="ph ph-leaf text-5xl text-gray-300 mb-4 block"></i>
+        <h3 class="text-xl font-bold mb-2">No seasonal picks yet</h3>
+        <p class="text-gray-500">We haven't tagged any recipes for this season — check back soon!</p>
+    </div>
+
+</main>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Season Detection ---
+    const month = new Date().getMonth(); // 0-indexed (0=Jan, 11=Dec)
+    let currentSeason;
+    if (month >= 2 && month <= 4) currentSeason = 'Spring';
+    else if (month >= 5 && month <= 7) currentSeason = 'Summer';
+    else if (month >= 8 && month <= 10) currentSeason = 'Autumn';
+    else currentSeason = 'Winter';
+
+    // --- Season Theming ---
+    const seasonData = {
+        Spring: {
+            emoji: '🌸',
+            blurb: 'Fresh greens, tender herbs, and the first warm-weather meals. Time to shake off winter and eat light.'
+        },
+        Summer: {
+            emoji: '🌞',
+            blurb: 'Peak produce, bold flavors, and meals made for long evenings outside. This is what we cook when the sun stays up.'
+        },
+        Autumn: {
+            emoji: '🍂',
+            blurb: 'Rich stews, warm spices, and comfort food that hugs back. The kitchen smells incredible this time of year.'
+        },
+        Winter: {
+            emoji: '❄️',
+            blurb: 'Slow braises, hearty bowls, and the kind of cooking that makes you forget it\'s dark at 4pm.'
+        }
+    };
+
+    const data = seasonData[currentSeason];
+    document.getElementById('seasonName').textContent = currentSeason;
+    document.getElementById('seasonEmoji').textContent = data.emoji;
+    document.getElementById('seasonBlurb').textContent = data.blurb;
+
+    // --- Filter & Shuffle Recipes ---
+    const grid = document.getElementById('seasonGrid');
+    const allCards = Array.from(grid.querySelectorAll('.season-card'));
+
+    // Filter: keep cards whose data-season includes the current season
+    const matching = allCards.filter(card => {
+        const seasons = card.getAttribute('data-season').split(',');
+        return seasons.includes(currentSeason);
+    });
+
+    // Fisher-Yates Shuffle
+    for (let i = matching.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [matching[i], matching[j]] = [matching[j], matching[i]];
+    }
+
+    // Take up to 6
+    const selected = matching.slice(0, 6);
+
+    // Remove all cards from the grid first
+    allCards.forEach(card => card.remove());
+
+    if (selected.length === 0) {
+        // Show empty state
+        document.getElementById('seasonEmpty').classList.remove('hidden');
+    } else {
+        // Re-append selected cards in shuffled order, make them visible
+        selected.forEach((card, index) => {
+            card.classList.remove('hidden');
+            // Stagger the entrance with a slight offset on odd cards
+            if (index % 2 === 1) {
+                card.classList.add('sm:mt-8');
+            }
+            grid.appendChild(card);
+        });
+    }
+});
+</script>
+{{ end }}

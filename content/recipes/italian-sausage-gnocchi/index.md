@@ -7,7 +7,7 @@ servings: 2
 cuisine: ["Italian"]
 category: ["Main"]
 diet: ["Meat"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
 ingredients:
   - "500 | Gnocchi (g)"
   - "6 | Italian sausages"

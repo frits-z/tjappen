@@ -10,7 +10,7 @@ servings: 4      # Base yield (integer)
 cuisine: ["Mediterranean"]      
 category: ["Side"]
 diet: ["Plant-based"]       
-occasion: ["Weeknight"]    
+occasion: ["Midweek"]    
 
 # Ingredients structure: "Quantity | Item name (Unit)"
 # CRITICAL: The value to the left of the pipe MUST be a strict integer or float (e.g., 1.5 or 2)

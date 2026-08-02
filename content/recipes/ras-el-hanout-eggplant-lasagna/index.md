@@ -7,7 +7,7 @@ servings: 4
 cuisine: ["Fusion", "Middle Eastern"]
 category: ["Main"]
 diet: ["Meat", "Low-carb"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
 ingredients:
   - "3 | Eggplants"
   - "500 | Minced meat (g)"

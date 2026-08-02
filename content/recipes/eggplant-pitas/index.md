@@ -10,7 +10,7 @@ servings: 6
 cuisine: ["Middle Eastern"]
 category: ["Main"]
 diet: ["Vegetarian"]
-occasion: ["Weeknight"]
+occasion: ["Midweek"]
 
 ingredients:
   - "# Eggplant & Za'atar Oil"
