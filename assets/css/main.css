@@ -61,67 +61,86 @@
   .playful-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1px; /* 1px base row for mathematically perfect masonry */
+    /* JS will apply grid-auto-rows: 1px and row-gap: 0 once masonry logic runs */
     column-gap: 0.75rem;
-    row-gap: 0;
+    row-gap: 1.5rem;
     grid-auto-flow: dense;
     align-items: start;
   }
-  
-  @media (min-width: 640px) { .playful-grid { column-gap: 1.125rem; } }
-  @media (min-width: 768px) { .playful-grid { grid-template-columns: repeat(3, 1fr); column-gap: 1.5rem; } }
-  @media (min-width: 1024px) { .playful-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  @media (min-width: 640px) {
+    .playful-grid {
+      column-gap: 1.125rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .playful-grid {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .playful-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 
   /* Base wrapper and image styling (Standard Square) */
   .article-wrapper {
     @apply block col-span-1;
   }
+
   .article-wrapper .recipe-card {
     @apply h-full;
   }
+
   .article-wrapper .image-container {
     @apply aspect-square;
   }
 
   /* Slot 1: Big Left (Hero Size, Big Square on Desktop) */
-  .article-wrapper:nth-child(20n + 1) { 
-    @apply col-span-2; 
+  .article-wrapper:nth-child(20n + 1) {
+    @apply col-span-2;
   }
-  .article-wrapper:nth-child(20n + 1) .image-container { 
-    @apply aspect-[3/2] md:aspect-square; 
+
+  .article-wrapper:nth-child(20n + 1) .image-container {
+    @apply aspect-[3/2] md:aspect-square;
   }
 
   /* Slot 2: Portrait */
-  .article-wrapper:nth-child(20n + 2) .image-container { 
-    @apply aspect-[3/4]; 
+  .article-wrapper:nth-child(20n + 2) .image-container {
+    @apply aspect-[3/4];
   }
 
   /* Slot 3: Square */
-  .article-wrapper:nth-child(20n + 3) .image-container { 
-    @apply aspect-square; 
+  .article-wrapper:nth-child(20n + 3) .image-container {
+    @apply aspect-square;
   }
 
   /* Slot 6: Portrait */
-  .article-wrapper:nth-child(20n + 6) .image-container { 
-    @apply aspect-[4/5]; 
+  .article-wrapper:nth-child(20n + 6) .image-container {
+    @apply aspect-[4/5];
   }
 
   /* Slot 8: Slightly Portrait */
-  .article-wrapper:nth-child(20n + 8) .image-container { 
-    @apply aspect-[4/5]; 
+  .article-wrapper:nth-child(20n + 8) .image-container {
+    @apply aspect-[4/5];
   }
 
   /* Slot 11: Big Right (Hero Size, Big Square on Desktop) */
-  .article-wrapper:nth-child(20n + 11) { 
-    @apply col-span-2; 
+  .article-wrapper:nth-child(20n + 11) {
+    @apply col-span-2;
   }
-  .article-wrapper:nth-child(20n + 11) .image-container { 
-    @apply aspect-[3/2] md:aspect-square; 
+
+  .article-wrapper:nth-child(20n + 11) .image-container {
+    @apply aspect-[3/2] md:aspect-square;
   }
 
   /* Slot 15: Portrait */
-  .article-wrapper:nth-child(20n + 15) .image-container { 
-    @apply aspect-[3/4]; 
+  .article-wrapper:nth-child(20n + 15) .image-container {
+    @apply aspect-[3/4];
   }
 
   /* Aspect and overlay styling */

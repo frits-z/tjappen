@@ -8,32 +8,38 @@
             <div class="flex w-full justify-between sm:justify-start items-center sm:gap-3 relative">
                 <h1 class="text-3xl font-black tracking-tighter hover:text-primary transition-colors cursor-pointer"
                     onclick="window.scrollTo({top: 0, behavior: 'smooth'})">tjappen.</h1>
-                
-                <button id="curationsDropdownBtn" class="flex items-center gap-1.5 text-sm font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none mt-1">
+
+                <button id="curationsDropdownBtn"
+                    class="flex items-center gap-1.5 text-sm font-black uppercase tracking-widest text-primary hover:text-black transition-colors pl-3 border-l-2 border-black focus:outline-none mt-1">
                     more <i class="ph-fill ph-caret-down text-sm"></i>
                 </button>
-                
+
                 <!-- Dropdown menu -->
-                <div id="curationsDropdownMenu" class="hidden absolute right-0 sm:right-auto sm:left-3 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-sm uppercase tracking-wider select-none py-3" style="top: 100%; margin-top: 8px;">
+                <div id="curationsDropdownMenu"
+                    class="hidden absolute right-0 sm:right-auto sm:left-3 w-48 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-30 text-left text-sm uppercase tracking-wider select-none py-3"
+                    style="top: 100%; margin-top: 8px;">
                     <!-- Subtitle: Curations -->
                     <div class="px-4 pb-2 text-sm font-black text-gray-400 tracking-widest uppercase">
                         Curations
                     </div>
-                    <a href="/lists/all-time-favourites/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
+                    <a href="/lists/all-time-favourites/"
+                        class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
                         All-Time Favourites
                     </a>
-                    <a href="/lists/recently-added/" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors mb-2">
+                    <a href="/lists/recently-added/"
+                        class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors mb-2">
                         Recently Added
                     </a>
-                    
+
                     <!-- Subtle Divider -->
                     <div class="border-t border-gray-200 my-2 mx-3"></div>
-                    
+
                     <!-- Subtitle: Other -->
                     <div class="px-4 pt-4 pb-2 text-sm font-black text-gray-400 tracking-widest uppercase">
                         Other
                     </div>
-                    <a href="/about" class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
+                    <a href="/about"
+                        class="block px-4 py-3 font-bold hover:bg-black hover:text-white transition-colors">
                         About
                     </a>
                 </div>
@@ -73,21 +79,24 @@
                     <!-- Dropdowns injected via JS -->
                 </div>
             </div>
-            
+
             <!-- Mobile Filter Toggle -->
             <div class="md:hidden">
-                <button id="mobileFilterBtn" class="flex items-center gap-2 px-4 py-1.5 bg-white text-black text-sm font-bold uppercase tracking-widest border-2 border-black rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition-colors">
+                <button id="mobileFilterBtn"
+                    class="flex items-center gap-2 px-4 py-1.5 bg-white text-black text-sm font-bold uppercase tracking-widest border-2 border-black rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition-colors">
                     <i class="ph ph-faders"></i> Filter recipes
                 </button>
             </div>
-            
-            <p class="text-sm font-medium text-gray-500 pb-1" id="resultsCount">0 recipes in the cookbook</p>
+
+            <p class="text-sm font-medium text-gray-500 pb-1" id="resultsCount">0 recipes</p>
         </div>
-        
+
         <!-- Active Filters Container -->
         <div id="activeFiltersContainer" class="hidden flex-wrap items-center gap-2">
             <div id="activeFiltersList" class="flex flex-wrap gap-2"></div>
-            <button id="clearFiltersBtn" class="text-[10px] font-bold text-primary uppercase tracking-widest ml-2 hover:text-black transition-colors hidden">Clear All</button>
+            <button id="clearFiltersBtn"
+                class="text-[10px] font-bold text-primary uppercase tracking-widest ml-2 hover:text-black transition-colors hidden">Clear
+                All</button>
         </div>
 
         <!-- Mobile Filter Panel (Accordion) -->
@@ -96,10 +105,13 @@
                 <!-- Accordions injected via JS -->
             </div>
             <div class="flex justify-between items-center mt-6 pt-4">
-                <button id="closeMobileFilterBtn" class="flex items-center gap-1 text-[11px] font-bold text-black uppercase tracking-widest bg-white border-2 border-black px-4 py-2 rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition-colors">
+                <button id="closeMobileFilterBtn"
+                    class="flex items-center gap-1 text-[11px] font-bold text-black uppercase tracking-widest bg-white border-2 border-black px-4 py-2 rounded-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white transition-colors">
                     Close <i class="ph ph-x"></i>
                 </button>
-                <button id="mobileClearFiltersBtn" class="text-[11px] font-bold text-primary uppercase tracking-widest hidden hover:text-black transition-colors">Clear All</button>
+                <button id="mobileClearFiltersBtn"
+                    class="text-[11px] font-bold text-primary uppercase tracking-widest hidden hover:text-black transition-colors">Clear
+                    All</button>
             </div>
         </div>
     </div>
@@ -120,13 +132,12 @@
     <div id="recipeGrid" class="playful-grid opacity-0 transition-opacity duration-500">
         {{ range $index, $page := where site.RegularPages "Type" "recipes" }}
         <a href="{{ .RelPermalink }}" class="article-wrapper">
-            <article class="recipe-card group cursor-pointer flex flex-col"
-                data-title="{{ .Title | htmlEscape }}"
+            <article class="recipe-card group cursor-pointer flex flex-col" data-title="{{ .Title | htmlEscape }}"
                 data-ingredients="{{ delimit .Params.ingredients " " | htmlEscape }}"
-                data-cuisine="{{ if .Params.cuisine }}{{ delimit .Params.cuisine "," | htmlEscape }}{{ end }}"
-                data-category="{{ if .Params.category }}{{ delimit .Params.category "," | htmlEscape }}{{ end }}"
-                data-occasion="{{ if .Params.occasion }}{{ delimit .Params.occasion "," | htmlEscape }}{{ end }}"
-                data-diet="{{ if .Params.diet }}{{ delimit .Params.diet "," | htmlEscape }}{{ end }}">
+                data-cuisine="{{ if .Params.cuisine }}{{ delimit .Params.cuisine " ," | htmlEscape }}{{ end }}"
+                data-category="{{ if .Params.category }}{{ delimit .Params.category " ," | htmlEscape }}{{ end }}"
+                data-occasion="{{ if .Params.occasion }}{{ delimit .Params.occasion " ," | htmlEscape }}{{ end }}"
+                data-diet="{{ if .Params.diet }}{{ delimit .Params.diet " ," | htmlEscape }}{{ end }}">
                 <div class="image-container">
                     {{ $image := .Resources.GetMatch "*hero*" }}
                     {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
@@ -134,7 +145,8 @@
                     {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
                     {{ if $image }}
                     {{ $scaled := $image.Resize "1000x webp q80" }}
-                    <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
+                    <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" width="{{ $scaled.Width }}"
+                        height="{{ $scaled.Height }}" loading="lazy">
                     {{ else }}
                     <div
                         class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-300 transition-all duration-500 group-hover:scale-110 group-hover:text-gray-400">
@@ -143,7 +155,9 @@
                     {{ end }}
                 </div>
                 <div class="flex-shrink-0 flex flex-col justify-start pt-2">
-                    <h2 class="text-sm sm:text-base tracking-tight leading-tight text-black group-hover:text-primary transition-colors">{{ .Title }}</h2>
+                    <h2
+                        class="text-sm sm:text-base tracking-tight leading-tight text-black group-hover:text-primary transition-colors">
+                        {{ .Title }}</h2>
                 </div>
             </article>
         </a>
@@ -151,48 +165,60 @@
     </div>
 </main>
 <script>
-  {{- /* 
+    {
+        {
+            - /* 
     Playful Grid Masonry Logic
     Calculates the heights of recipe cards and dynamically assigns grid row spans
     so they pack tightly without gaps. Batched DOM reads/writes are used 
     to prevent layout thrashing and preserve rendering performance.
-  */ -}}
-  function applyMasonry() {
-    const grid = document.getElementById('recipeGrid');
-    if (!grid) return;
-    const items = grid.querySelectorAll('.article-wrapper');
-    const colGap = parseFloat(window.getComputedStyle(grid).columnGap) || 0;
-    
-    // BATCH 1: Clear existing spans
-    items.forEach(item => {
-      item.style.gridRowEnd = 'auto';
-    });
-    
-    // BATCH 2: Perform all DOM reads (this prevents layout thrashing slowdown!)
-    const heights = [];
-    items.forEach((item, index) => {
-      const card = item.querySelector('.recipe-card');
-      heights[index] = card.getBoundingClientRect().height;
-    });
+  */ -}
+    }
+    function applyMasonry() {
+        const grid = document.getElementById('recipeGrid');
+        if (!grid) return;
+        const items = grid.querySelectorAll('.article-wrapper');
+        const colGap = parseFloat(window.getComputedStyle(grid).columnGap) || 0;
 
-    // BATCH 3: Perform all DOM writes
-    items.forEach((item, index) => {
-      const rowSpan = Math.ceil(heights[index] + colGap);
-      item.style.gridRowEnd = `span ${rowSpan}`;
+        // BATCH 1: Clear existing spans and temporarily disable 1px rows
+        // This prevents the grid from collapsing, which would otherwise pull all lazy images into the viewport
+        grid.style.gridAutoRows = 'auto';
+        items.forEach(item => {
+            item.style.gridRowEnd = 'auto';
+        });
+
+        // BATCH 2: Perform all DOM reads (this prevents layout thrashing slowdown!)
+        const heights = [];
+        items.forEach((item, index) => {
+            const card = item.querySelector('.recipe-card');
+            heights[index] = card.getBoundingClientRect().height;
+        });
+
+        // BATCH 3: Perform all DOM writes
+        // Now apply the 1px rows via JS so the masonry logic works
+        grid.style.gridAutoRows = '1px';
+        grid.style.rowGap = '0px';
+        items.forEach((item, index) => {
+            const rowSpan = Math.ceil(heights[index] + colGap);
+            item.style.gridRowEnd = `span ${rowSpan}`;
+        });
+    }
+
+    // Expose to window so search.js can call it after rendering grid
+    window.applyMasonry = applyMasonry;
+
+    window.addEventListener('load', applyMasonry);
+
+    // Debounce the resize event to prevent massive slowdown while dragging window
+    // Only trigger on width changes to prevent scroll jumps on mobile when address bar hides/shows
+    let resizeTimer;
+    let lastWindowWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+        if (window.innerWidth === lastWindowWidth) return;
+        lastWindowWidth = window.innerWidth;
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(applyMasonry, 100);
     });
-  }
-
-  // Expose to window so search.js can call it after rendering grid
-  window.applyMasonry = applyMasonry;
-
-  window.addEventListener('load', applyMasonry);
-  
-  // Debounce the resize event to prevent massive slowdown while dragging window
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(applyMasonry, 100);
-  });
 </script>
 {{ end }}
 

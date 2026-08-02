@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Parsing & Shuffling ---
     // Convert nodelist mapping wrappers and shuffle them
     const recipeWrappers = Array.from(document.querySelectorAll('.article-wrapper'));
-    
+
     // Fisher-Yates shuffle to randomize the order of recipes on initial load
     for (let i = recipeWrappers.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [recipeWrappers[i], recipeWrappers[j]] = [recipeWrappers[j], recipeWrappers[i]];
     }
-    
+
     recipeWrappers.forEach(wrapper => grid.appendChild(wrapper));
-    
+
     /**
      * @typedef {Object} RecipeData
      * @property {HTMLElement} wrapper - The outer article wrapper element.
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @property {string} ingredients - The ingredients string (lowercase).
      * @property {Object} taxonomies - Arrays of tags for each category.
      */
-    
+
     /** @type {RecipeData[]} */
     const cardsData = recipeWrappers.map(wrapper => {
         const card = wrapper.querySelector('.recipe-card');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsCount = document.getElementById('resultsCount');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
     const noResultsMessage = document.getElementById('noResultsMessage');
-    
+
     // New UI Elements
     const desktopFilters = document.getElementById('desktopFilters');
     const mobileFilters = document.getElementById('mobileFilters');
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileFilterBtn = document.getElementById('mobileFilterBtn');
     const mobileFilterPanel = document.getElementById('mobileFilterPanel');
     const closeMobileFilterBtn = document.getElementById('closeMobileFilterBtn');
-    
+
     let activeDropdown = null;
 
     /**
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSearch = e.target.value.toLowerCase();
             clearSearchBtn.classList.toggle('hidden', currentSearch.length === 0);
             renderGrid();
-            renderFilters(); 
+            renderFilters();
         });
 
         clearSearchBtn.addEventListener('click', () => {
@@ -127,14 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileFilterPanel.classList.toggle('hidden', !isFilterOpen);
             });
         }
-        
+
         if (closeMobileFilterBtn) {
             closeMobileFilterBtn.addEventListener('click', () => {
                 isFilterOpen = false;
                 mobileFilterPanel.classList.add('hidden');
             });
         }
-        
+
         // Close desktop dropdowns when clicking outside
         document.addEventListener('click', (e) => {
             if (activeDropdown && !e.target.closest('.desktop-dropdown')) {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {string} category - The taxonomy category (e.g., 'cuisine').
      * @param {string} value - The specific tag value.
      */
-    window.handleFilterClick = function(category, value) {
+    window.handleFilterClick = function (category, value) {
         const index = activeFilters[category].indexOf(value);
         if (index > -1) {
             activeFilters[category].splice(index, 1);
@@ -199,10 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function renderFilters() {
         if (!desktopFilters || !mobileFilters || !activeFiltersList) return;
-        
+
         // Preserve open dropdown state
         const openCategory = activeDropdown ? activeDropdown.dataset.category : null;
-        
+
         // Preserve open mobile accordion state
         const openMobileCategories = Array.from(mobileFilters.querySelectorAll('.mobile-accordion-section'))
             .filter(section => {
@@ -210,16 +210,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 return menu && !menu.classList.contains('hidden');
             })
             .map(section => section.dataset.category);
-        
+
         let desktopHtml = '';
         let mobileHtml = '';
         const categories = Object.entries(taxonomyOptions).filter(([_, options]) => options.length > 0);
-        
+
         categories.forEach(([category, options], index) => {
             const isLast = index === categories.length - 1;
             const hasActive = activeFilters[category].length > 0;
             const headerColor = hasActive ? 'text-primary' : 'text-black';
-            
+
             // --- Desktop Dropdown ---
             desktopHtml += `
                 <div class="relative desktop-dropdown group/dropdown" data-category="${category}">
@@ -229,29 +229,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="dropdown-menu absolute top-full left-0 mt-2 bg-white border border-gray-200 p-5 min-w-max pr-8 hidden shadow-xl z-30">
                         <div class="grid ${options.length > 6 ? 'grid-cols-2' : 'grid-cols-1'} gap-y-3 gap-x-6">
                             ${options.map(option => {
-                                const isActive = activeFilters[category].includes(option);
-                                const count = getOptionCount(category, option);
-                                const disabledAttr = count === 0 && !isActive ? 'disabled' : '';
-                                const opacityClass = count === 0 && !isActive ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:text-primary';
-                                return `
+                const isActive = activeFilters[category].includes(option);
+                const count = getOptionCount(category, option);
+                const disabledAttr = count === 0 && !isActive ? 'disabled' : '';
+                const opacityClass = count === 0 && !isActive ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:text-primary';
+                return `
                                     <label class="flex items-center gap-3 ${opacityClass} text-sm font-medium transition-colors whitespace-nowrap pr-4">
                                         <input type="checkbox" class="form-checkbox text-primary rounded-sm border-gray-300 w-4 h-4 cursor-pointer" 
                                             onchange="handleFilterClick('${category}', '${option}')" ${isActive ? 'checked' : ''} ${disabledAttr}>
                                         <span>${option} <span class="text-gray-400 text-xs font-normal">(${count})</span></span>
                                     </label>
                                 `;
-                            }).join('')}
+            }).join('')}
                         </div>
                     </div>
                 </div>
             `;
-            
+
             // --- Mobile Accordion ---
             const borderClass = isLast ? '' : 'border-b border-gray-200 pb-4 mb-4';
             const isMobileOpen = openMobileCategories.includes(category);
             const mobileMenuClass = isMobileOpen ? 'mt-4 pl-2 grid grid-cols-1 gap-3' : 'hidden mt-4 pl-2 grid grid-cols-1 gap-3';
             const caretClass = isMobileOpen ? 'ph ph-caret-down transition-transform duration-200 rotate-180' : 'ph ph-caret-down transition-transform duration-200';
-            
+
             mobileHtml += `
                 <div class="mobile-accordion-section ${borderClass}" data-category="${category}">
                     <button class="w-full flex justify-between items-center text-left text-sm font-bold uppercase tracking-widest ${headerColor} hover:text-primary transition-colors py-2" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
@@ -259,26 +259,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                     <div class="${mobileMenuClass}">
                         ${options.map(option => {
-                            const isActive = activeFilters[category].includes(option);
-                            const count = getOptionCount(category, option);
-                            const disabledAttr = count === 0 && !isActive ? 'disabled' : '';
-                            const opacityClass = count === 0 && !isActive ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:text-primary';
-                            return `
+                const isActive = activeFilters[category].includes(option);
+                const count = getOptionCount(category, option);
+                const disabledAttr = count === 0 && !isActive ? 'disabled' : '';
+                const opacityClass = count === 0 && !isActive ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:text-primary';
+                return `
                                 <label class="flex items-center gap-3 ${opacityClass} text-sm font-medium transition-colors">
                                     <input type="checkbox" class="form-checkbox text-primary rounded-sm border-gray-300 w-4 h-4 cursor-pointer" 
                                         onchange="handleFilterClick('${category}', '${option}')" ${isActive ? 'checked' : ''} ${disabledAttr}>
                                     <span>${option} <span class="text-gray-400 text-xs font-normal">(${count})</span></span>
                                 </label>
                             `;
-                        }).join('')}
+            }).join('')}
                     </div>
                 </div>
             `;
         });
-        
+
         desktopFilters.innerHTML = desktopHtml;
         mobileFilters.innerHTML = mobileHtml;
-        
+
         // Re-attach desktop dropdown toggling
         const dropdownBtns = desktopFilters.querySelectorAll('.filter-dropdown-btn');
         dropdownBtns.forEach(btn => {
@@ -287,10 +287,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const parent = btn.closest('.desktop-dropdown');
                 const menu = parent.querySelector('.dropdown-menu');
                 const isHidden = menu.classList.contains('hidden');
-                
+
                 // Close all others
                 desktopFilters.querySelectorAll('.dropdown-menu').forEach(m => m.classList.add('hidden'));
-                
+
                 if (isHidden) {
                     menu.classList.remove('hidden');
                     activeDropdown = parent;
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-        
+
         // Re-open active dropdown if there was one
         if (openCategory) {
             const activeParent = desktopFilters.querySelector(`[data-category="${openCategory}"]`);
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Active Filters Row ---
         let activeTagsHtml = '';
         let hasActiveFilters = false;
-        
+
         Object.entries(activeFilters).forEach(([category, selected]) => {
             selected.forEach(option => {
                 hasActiveFilters = true;
@@ -323,9 +323,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             });
         });
-        
+
         activeFiltersList.innerHTML = activeTagsHtml;
-        
+
         if (hasActiveFilters) {
             activeFiltersContainer.classList.remove('hidden');
             activeFiltersContainer.classList.add('flex');
@@ -341,11 +341,11 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function renderGrid() {
         let count = 0;
-        
+
         cardsData.forEach(recipe => {
             // Check text search
             const matchesSearch = !currentSearch || recipe.title.includes(currentSearch) || recipe.ingredients.includes(currentSearch);
-            
+
             // Check taxonomy filters (OR within a category, AND across categories)
             const matchesTaxonomies = Object.keys(activeFilters).every(category => {
                 const selected = activeFilters[category];
@@ -363,8 +363,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Update UI counters and empty states
-        resultsCount.textContent = `${count} recipes in the cookbook`;
-        
+        resultsCount.textContent = `${count} recipes`;
+
         const hasActiveFilters = Object.values(activeFilters).some(arr => arr.length > 0);
         if (clearFiltersBtn) clearFiltersBtn.classList.toggle('hidden', !hasActiveFilters);
         if (mobileClearFiltersBtn) mobileClearFiltersBtn.classList.toggle('hidden', !hasActiveFilters);
