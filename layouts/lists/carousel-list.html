@@ -44,7 +44,7 @@
 {{ define "main" }}
 <style>
     #carouselTrack {
-        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        /* transition managed by JS for infinite scroll snap-back */
     }
     .carousel-slide {
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
@@ -57,33 +57,74 @@
     .carousel-slide a {
         user-select: none;
     }
-    .custom-carousel-img {
-        height: 240px;
+    /* .carousel-card owns the width; image and title both inherit it */
+    .carousel-card {
+        width: 240px;
         max-width: 80vw;
-        width: auto;
+    }
+    .carousel-img-wrap {
+        width: 100%;
+        height: 240px;
+        overflow: hidden;
+    }
+    .carousel-img-wrap img {
+        display: block;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
     }
+    /* Title fills card width and wraps naturally */
     .custom-carousel-title {
-        max-width: 80vw;
+        width: 100%;
     }
-    
+
+    /* --- Organic shape variations (7-child cycle, targeting the card wrapper) --- */
+    /* 1: Square */
+    .carousel-slide:nth-child(7n+1) .carousel-card { width: 240px; }
+    /* 2: Slight portrait */
+    .carousel-slide:nth-child(7n+2) .carousel-card { width: 205px; }
+    /* 3: Slight landscape */
+    .carousel-slide:nth-child(7n+3) .carousel-card { width: 275px; }
+    /* 4: Portrait */
+    .carousel-slide:nth-child(7n+4) .carousel-card { width: 195px; }
+    /* 5: Near-square landscape */
+    .carousel-slide:nth-child(7n+5) .carousel-card { width: 255px; }
+    /* 6: Near-square portrait */
+    .carousel-slide:nth-child(7n+6) .carousel-card { width: 220px; }
+    /* 7: Landscape */
+    .carousel-slide:nth-child(7n+7) .carousel-card { width: 265px; }
+
     @media (min-width: 640px) { /* sm */
-        .custom-carousel-img {
-            height: 450px;
+        .carousel-card {
+            width: 450px;
             max-width: none;
         }
-        .custom-carousel-title {
-            max-width: 420px;
+        .carousel-img-wrap {
+            height: 450px;
         }
+        .carousel-slide:nth-child(7n+1) .carousel-card { width: 450px; }
+        .carousel-slide:nth-child(7n+2) .carousel-card { width: 385px; }
+        .carousel-slide:nth-child(7n+3) .carousel-card { width: 515px; }
+        .carousel-slide:nth-child(7n+4) .carousel-card { width: 365px; }
+        .carousel-slide:nth-child(7n+5) .carousel-card { width: 480px; }
+        .carousel-slide:nth-child(7n+6) .carousel-card { width: 412px; }
+        .carousel-slide:nth-child(7n+7) .carousel-card { width: 497px; }
     }
-    
+
     @media (min-width: 768px) { /* md */
-        .custom-carousel-img {
+        .carousel-card {
+            width: 500px;
+        }
+        .carousel-img-wrap {
             height: 500px;
         }
-        .custom-carousel-title {
-            max-width: 460px;
-        }
+        .carousel-slide:nth-child(7n+1) .carousel-card { width: 500px; }
+        .carousel-slide:nth-child(7n+2) .carousel-card { width: 425px; }
+        .carousel-slide:nth-child(7n+3) .carousel-card { width: 575px; }
+        .carousel-slide:nth-child(7n+4) .carousel-card { width: 405px; }
+        .carousel-slide:nth-child(7n+5) .carousel-card { width: 530px; }
+        .carousel-slide:nth-child(7n+6) .carousel-card { width: 458px; }
+        .carousel-slide:nth-child(7n+7) .carousel-card { width: 552px; }
     }
 </style>
 
@@ -114,7 +155,7 @@
     <!-- Carousel Outer Wrapper - Full Width -->
     <div class="w-full relative">
         <!-- Overflow Container - py-16 allows staggered offsets without clipping -->
-        <div class="w-full overflow-hidden py-16">
+        <div class="w-full overflow-hidden py-4">
             <div id="carouselTrack" data-list-type="{{ .Params.list_type }}" class="flex gap-8 transition-transform duration-600 ease-out cursor-grab active:cursor-grabbing select-none py-4">
                 {{ range $index, $recipe := $favourites }}
                 {{ $offsetClass := "mt-6" }}
@@ -127,27 +168,30 @@
                 <div class="carousel-slide flex-shrink-0 w-auto opacity-100" data-index="{{ $index }}">
                     <div class="{{ $offsetClass }}">
                         <a href="{{ .RelPermalink }}" draggable="false" class="block pointer-events-auto">
-                            <!-- Image Container with no borders, natural aspect ratios -->
-                            <div class="bg-gray-100 overflow-hidden shadow-sm">
-                                {{ $image := .Resources.GetMatch "*hero*" }}
-                                {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
-                                {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
-                                {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
-                                {{ if $image }}
-                                    {{/* Resize by height (e.g. 800px height) to maintain natural aspect ratios */}}
-                                    {{ $scaled := $image.Resize "x800 webp q85" }}
-                                    <img draggable="false" src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" class="custom-carousel-img pointer-events-none select-none">
-                                {{ else }}
-                                    <div class="custom-carousel-img w-[240px] flex items-center justify-center bg-gray-100 text-gray-300 select-none">
-                                        <i class="ph ph-cooking-pot text-6xl pointer-events-none"></i>
-                                    </div>
-                                {{ end }}
-                            </div>
+                            <!-- .carousel-card owns the width; image and title both fill it -->
+                            <div class="carousel-card">
+                                <!-- Image fills card width, crops to fixed height -->
+                                <div class="carousel-img-wrap bg-gray-100 shadow-sm">
+                                    {{ $image := .Resources.GetMatch "*hero*" }}
+                                    {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
+                                    {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
+                                    {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
+                                    {{ if $image }}
+                                        {{/* Resize to 800px wide to ensure enough pixels for all crop widths */}}
+                                        {{ $scaled := $image.Resize "800x webp q85" }}
+                                        <img draggable="false" src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" class="pointer-events-none select-none">
+                                    {{ else }}
+                                        <div class="w-full h-full flex items-center justify-center text-gray-300 select-none">
+                                            <i class="ph ph-cooking-pot text-6xl pointer-events-none"></i>
+                                        </div>
+                                    {{ end }}
+                                </div>
 
-                            <!-- Minimal Title Directly Below Image -->
-                            <h3 class="custom-carousel-title text-sm sm:text-base font-bold tracking-tight text-black mt-3 hover:text-primary transition-colors select-none text-left leading-tight">
-                                {{ .Title }}
-                            </h3>
+                                <!-- Title wraps within card width -->
+                                <h3 class="custom-carousel-title text-sm sm:text-base font-bold tracking-tight text-black mt-3 hover:text-primary transition-colors select-none text-left leading-tight">
+                                    {{ .Title }}
+                                </h3>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -183,56 +227,107 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!track) return;
 
     const listType = track.getAttribute('data-list-type');
-    let slides = Array.from(track.children);
+    let originalSlides = Array.from(track.children);
 
-    if (listType === 'favourites' && slides.length > 0) {
+    if (originalSlides.length === 0) return;
+
+    if (listType === 'favourites' && originalSlides.length > 0) {
         // Fisher-Yates Shuffle (Client-side randomizer on refresh)
-        for (let i = slides.length - 1; i > 0; i--) {
+        for (let i = originalSlides.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [slides[i], slides[j]] = [slides[j], slides[i]];
+            [originalSlides[i], originalSlides[j]] = [originalSlides[j], originalSlides[i]];
         }
-        // Re-append slides and re-apply stagger margins dynamically to keep clean cycles
-        slides.forEach((slide, index) => {
+        // Re-append slides in shuffled order
+        originalSlides.forEach((slide) => {
             track.appendChild(slide);
-            const innerDiv = slide.firstElementChild;
-            if (innerDiv) {
-                innerDiv.classList.remove('mt-0', 'mt-6', 'mt-16');
-                const mod = index % 3;
-                if (mod === 0) {
-                    innerDiv.classList.add('mt-6');
-                } else if (mod === 1) {
-                    innerDiv.classList.add('mt-16');
-                } else {
-                    innerDiv.classList.add('mt-0');
-                }
-            }
         });
     }
+
+    // Apply stagger margins to original slides
+    function applyStaggerMargins(slideEl, index) {
+        const innerDiv = slideEl.firstElementChild;
+        if (innerDiv) {
+            innerDiv.classList.remove('mt-0', 'mt-6', 'mt-16');
+            const mod = index % 3;
+            if (mod === 0) {
+                innerDiv.classList.add('mt-6');
+            } else if (mod === 1) {
+                innerDiv.classList.add('mt-16');
+            } else {
+                innerDiv.classList.add('mt-0');
+            }
+        }
+    }
+
+    originalSlides.forEach((slide, index) => applyStaggerMargins(slide, index));
+
+    // --- Infinite Carousel: clone slides on both ends ---
+    const realCount = originalSlides.length;
+
+    // Clone all slides and append after (suffix clones)
+    originalSlides.forEach((slide, index) => {
+        const clone = slide.cloneNode(true);
+        clone.classList.add('carousel-clone');
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+        applyStaggerMargins(clone, index);
+        track.appendChild(clone);
+    });
+
+    // Clone all slides and prepend before (prefix clones)
+    for (let i = originalSlides.length - 1; i >= 0; i--) {
+        const clone = originalSlides[i].cloneNode(true);
+        clone.classList.add('carousel-clone');
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+        applyStaggerMargins(clone, i);
+        track.insertBefore(clone, track.firstChild);
+    }
+
+    // Now track has: [cloneN..clone0] [real0..realN] [clone0..cloneN]
+    // All slides including clones
+    let allSlides = Array.from(track.children);
+    // currentIndex is in the "all slides" space. Real slides start at index realCount.
+    let currentIndex = realCount; // points to real slide 0
 
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('dotsContainer');
-    
-    let currentIndex = 0;
     let dragMoved = false;
+    let isSnapping = false; // flag to prevent input during snap-back
 
-    function updateCarousel() {
-        if (slides.length === 0) return;
-        
+    function getRealIndex() {
+        return ((currentIndex - realCount) % realCount + realCount) % realCount;
+    }
+
+    function centerOnSlide(animate) {
+        if (allSlides.length === 0) return;
+
         const containerWidth = track.parentElement.clientWidth;
-        const activeSlide = slides[currentIndex];
+        const activeSlide = allSlides[currentIndex];
+        if (!activeSlide) return;
         const slideWidth = activeSlide.offsetWidth;
-        
-        // Calculate offset to align active slide's center with container's center
+
         const slideOffset = activeSlide.offsetLeft;
         const targetX = (containerWidth / 2) - (slideWidth / 2) - slideOffset;
-        
+
+        if (!animate) {
+            track.style.transition = 'none';
+        } else {
+            track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        }
         track.style.transform = `translateX(${targetX}px)`;
-        
-        // Update Dots
+
+        // Force reflow when disabling transition
+        if (!animate) {
+            void track.offsetHeight;
+        }
+
+        // Update Dots (based on real index)
+        const realIdx = getRealIndex();
         const dots = Array.from(dotsContainer.children);
         dots.forEach((dot, idx) => {
-            if (idx === currentIndex) {
+            if (idx === realIdx) {
                 dot.classList.remove('bg-gray-300');
                 dot.classList.add('bg-primary', 'scale-125');
             } else {
@@ -242,37 +337,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // After an animated transition, check if we've gone into clone territory and snap back
+    function snapIfNeeded() {
+        const lowerBound = realCount;         // first real slide
+        const upperBound = realCount * 2 - 1; // last real slide
+
+        if (currentIndex < lowerBound || currentIndex > upperBound) {
+            // Map back to the real range
+            const realIdx = getRealIndex();
+            currentIndex = realCount + realIdx;
+            // Instant jump (no animation)
+            centerOnSlide(false);
+        }
+        isSnapping = false;
+    }
+
+    // Listen for transition end to trigger snap-back
+    track.addEventListener('transitionend', () => {
+        snapIfNeeded();
+    });
+
+    function navigateTo(newIndex, animate = true) {
+        if (isSnapping) return;
+        currentIndex = newIndex;
+        isSnapping = true;
+        centerOnSlide(animate);
+        // Fallback: if transitionend doesn't fire (e.g. same position), still unlock
+        setTimeout(() => { isSnapping = false; }, 700);
+    }
+
+    function goNext() {
+        navigateTo(currentIndex + 1);
+    }
+
+    function goPrev() {
+        navigateTo(currentIndex - 1);
+    }
+
     // Button controls
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel();
-    });
+    prevBtn.addEventListener('click', goPrev);
+    nextBtn.addEventListener('click', goNext);
 
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-    });
-
-    // Build Dots
-    slides.forEach((_, idx) => {
+    // Build Dots (only for real slides)
+    for (let idx = 0; idx < realCount; idx++) {
         const dot = document.createElement('button');
         dot.className = 'w-2 h-2 rounded-full bg-gray-300 transition-all duration-300 focus:outline-none';
         dot.ariaLabel = `Go to slide ${idx + 1}`;
         dot.addEventListener('click', () => {
-            currentIndex = idx;
-            updateCarousel();
+            navigateTo(realCount + idx);
         });
         dotsContainer.appendChild(dot);
-    });
+    }
 
     // Keyboard controls
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateCarousel();
+            goPrev();
         } else if (e.key === 'ArrowRight') {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateCarousel();
+            goNext();
         }
     });
 
@@ -290,27 +412,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     track.addEventListener('touchmove', (e) => {
         if (!isTouchActive) return;
-        
+
         const diffX = e.touches[0].clientX - startTouchX;
         const diffY = e.touches[0].clientY - startTouchY;
-        
+
         // Prevent page scrolling when swiping horizontally on the carousel
         if (Math.abs(diffX) > Math.abs(diffY)) {
             e.preventDefault();
         }
-        
+
         // Set dragMoved to block synthetic click on touchend
         if (Math.abs(diffX) > 10) {
             dragMoved = true;
         }
-        
+
         if (Math.abs(diffX) > 60) {
             if (diffX > 0) {
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                goPrev();
             } else {
-                currentIndex = (currentIndex + 1) % slides.length;
+                goNext();
             }
-            updateCarousel();
             isTouchActive = false;
         }
     }, { passive: false });
@@ -340,15 +461,14 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('mouseup', (e) => {
         if (!isMouseDown) return;
         isMouseDown = false;
-        
+
         const diffX = e.pageX - startMouseX;
         if (Math.abs(diffX) > 60) {
             if (diffX > 0) {
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                goPrev();
             } else {
-                currentIndex = (currentIndex + 1) % slides.length;
+                goNext();
             }
-            updateCarousel();
         }
     });
 
@@ -357,56 +477,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Prevent default navigation if mouse was dragged
-    track.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (dragMoved) {
-                e.preventDefault();
-            }
-        });
-    });
+    track.addEventListener('click', (e) => {
+        if (dragMoved) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }, true);
 
     // Scroll Wheel / Trackpad support (Debounced/Locked for smooth single scrolling)
     let isWheelLocked = false;
     track.parentElement.addEventListener('wheel', (e) => {
         // Prevent default scrolling to lock the page in place while browsing
         e.preventDefault();
-        
+
         if (isWheelLocked) return;
-        
+
         const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-        
+
         if (delta > 8) {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateCarousel();
+            goNext();
             isWheelLocked = true;
             setTimeout(() => { isWheelLocked = false; }, 500);
         } else if (delta < -8) {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateCarousel();
+            goPrev();
             isWheelLocked = true;
             setTimeout(() => { isWheelLocked = false; }, 500);
         }
     }, { passive: false });
 
     // Resize recalculation
-    window.addEventListener('resize', updateCarousel);
+    window.addEventListener('resize', () => centerOnSlide(false));
 
     // Recalculate once images are fully loaded to avoid width=0 issues
-    window.addEventListener('load', updateCarousel);
-    
-    slides.forEach(slide => {
+    window.addEventListener('load', () => centerOnSlide(false));
+
+    allSlides.forEach(slide => {
         const img = slide.querySelector('img');
         if (img) {
             if (img.complete) {
-                updateCarousel();
+                centerOnSlide(false);
             } else {
-                img.addEventListener('load', updateCarousel);
+                img.addEventListener('load', () => centerOnSlide(false));
             }
         }
     });
 
-    // Initial positioning
-    setTimeout(updateCarousel, 150);
+    // Initial positioning (no animation, instant center)
+    centerOnSlide(false);
+    // Re-center after a tick to account for late layout
+    setTimeout(() => centerOnSlide(false), 150);
 });
 </script>
 {{ end }}
