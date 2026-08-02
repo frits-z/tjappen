@@ -165,15 +165,12 @@
     </div>
 </main>
 <script>
-    {
-        {
-            - /* 
+    /* 
     Playful Grid Masonry Logic
     Calculates the heights of recipe cards and dynamically assigns grid row spans
     so they pack tightly without gaps. Batched DOM reads/writes are used 
     to prevent layout thrashing and preserve rendering performance.
-  */ -}
-    }
+    */
     function applyMasonry() {
         const grid = document.getElementById('recipeGrid');
         if (!grid) return;
@@ -185,6 +182,8 @@
         grid.style.gridAutoRows = 'auto';
         items.forEach(item => {
             item.style.gridRowEnd = 'auto';
+            const card = item.querySelector('.recipe-card');
+            card.style.height = 'auto'; // Prevent stretching to row height during measurement
         });
 
         // BATCH 2: Perform all DOM reads (this prevents layout thrashing slowdown!)
@@ -201,6 +200,8 @@
         items.forEach((item, index) => {
             const rowSpan = Math.ceil(heights[index] + colGap);
             item.style.gridRowEnd = `span ${rowSpan}`;
+            const card = item.querySelector('.recipe-card');
+            card.style.height = ''; // Revert to h-full
         });
     }
 
