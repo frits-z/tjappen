@@ -33,7 +33,6 @@ ingredients:
   - 0.5 | lemon zest (tsp)
   - '# For the cucumber salad'
   - 0.5 | cucumber, finely diced
-  - 10 | sprigs fresh cilantro
   - 1 | handful of dill
   - 3 | rice vinegar (tbsp)
   - 3 | boiling water (tbsp)
