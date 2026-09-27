@@ -1,5 +1,6 @@
 ---
 title: "Pasta Alla Norma"
+cover: "cover.jpg"
 date: 2026-04-12
 description: "A Sicilian classic with roasted aubergines, rich tomato sauce, and salty pecorino cheese."
 time_active: 15

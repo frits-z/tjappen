@@ -177,8 +177,11 @@
                                 <div class="carousel-img-wrap bg-gray-100 shadow-sm">
                                     {{ $image := .Resources.GetMatch "*hero*" }}
                                     {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
+                                    {{ if not $image }}{{ if .Params.cover }}{{ $image = .Resources.GetMatch .Params.cover }}{{ end }}{{ end }}
                                     {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
+                                    {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpeg" }}{{ end }}
                                     {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
+                                    {{ if not $image }}{{ $image = .Resources.GetMatch "*.webp" }}{{ end }}
                                     {{ if $image }}
                                         {{/* Resize to 800px wide to ensure enough pixels for all crop widths */}}
                                         {{ $scaled := $image.Resize "800x webp q85" }}

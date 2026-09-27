@@ -1,5 +1,6 @@
 ---
 title: "Seared Artichoke with Almond Paste"
+cover: "cover.webp"
 date: 2026-07-20
 description: "A warm Mediterranean starter that combines seared jarred artichoke hearts with a creamy almond paste base, fresh mint and basil, and crispy fried capers."
 time_active: 10  # Active prep time in minutes (integer)

@@ -1,5 +1,6 @@
 ---
 title: "Dutch Stoofvlees"
+cover: "cover.jpeg"
 date: 2026-07-30
 description: "A traditional Dutch beef stew made with beef short ribs or shank, red wine, and warm spices, cooked low and slow for a rich and earthy finish."
 time_active: 45

@@ -1,5 +1,6 @@
 ---
 title: "Creamy Zucchini & Basil Soup"
+cover: "cover.webp"
 date: 2026-07-31
 description: "An incredibly velvety and smooth zucchini soup packed with fresh basil, aromatic garlic, and a hint of chili flakes."
 time_active: 20

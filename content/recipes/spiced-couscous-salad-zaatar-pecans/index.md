@@ -1,5 +1,6 @@
 ---
 title: "Spiced Couscous Salad with Za'atar and Pecans"
+cover: "cover.webp"
 date: 2026-07-31
 description: "A spiced couscous salad with chickpeas, feta, and a za'atar dressing, optimized for meal prep."
 time_active: 15

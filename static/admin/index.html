@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tjappen. &mdash; content manager</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Sveltia CMS -->
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+
+  <style>
+    /* Neo-brutalist styling for Quick Importer */
+    #tj-importer-root * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .tj-floating-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99999;
+      background: #fff7f1;
+      color: #000;
+      border: 2px solid #000;
+      padding: 12px 20px;
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 4px 4px 0px 0px #000;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+    .tj-floating-btn:hover {
+      background: #000;
+      color: #fff;
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px 0px #000;
+    }
+
+    .tj-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 100000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .tj-modal-backdrop.open {
+      display: flex;
+    }
+
+    .tj-modal {
+      background: #fff7f1;
+      border: 3px solid #000;
+      box-shadow: 8px 8px 0px 0px #000;
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 2px solid #000;
+      background: #fff;
+    }
+    .tj-header h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .tj-close-btn {
+      background: transparent;
+      border: 2px solid transparent;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.1s;
+    }
+    .tj-close-btn:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .tj-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .tj-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tj-input, .tj-textarea {
+      width: 100%;
+      background: #fff;
+      border: 2px solid #000;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: #000;
+      border-radius: 0;
+      box-shadow: 2px 2px 0px 0px #000;
+    }
+    .tj-input:focus, .tj-textarea:focus {
+      outline: none;
+      background: #fffae6;
+    }
+    .tj-textarea {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.45;
+      resize: vertical;
+      min-height: 200px;
+    }
+
+    .tj-auth-bar {
+      border: 2px solid #000;
+      padding: 10px 14px;
+      background: #fff;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 2px 2px 0px 0px #000;
+    }
+
+    .tj-btn {
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+      padding: 10px 16px;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px 0px #000;
+      transition: all 0.1s;
+    }
+    .tj-btn:hover {
+      background: #000;
+      color: #fff;
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px 0px #000;
+    }
+    .tj-btn-primary {
+      background: #000;
+      color: #fff;
+    }
+    .tj-btn-primary:hover {
+      background: #ff5722;
+      color: #fff;
+    }
+    .tj-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .tj-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      padding: 16px 20px;
+      border-top: 2px solid #000;
+      background: #fff;
+    }
+
+    .tj-status {
+      padding: 10px 12px;
+      border: 2px solid #000;
+      font-size: 13px;
+      font-weight: 600;
+      display: none;
+    }
+    .tj-status.info { display: block; background: #e0f2fe; }
+    .tj-status.success { display: block; background: #dcfce7; border-color: #166534; }
+    .tj-status.error { display: block; background: #fee2e2; border-color: #991b1b; color: #991b1b; }
+
+    .tj-drop-zone {
+      border: 2px dashed #000;
+      background: #fff;
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .tj-drop-zone:hover {
+      background: #fdf2e9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Quick Importer UI -->
+  <div id="tj-importer-root">
+    <!-- Floating Trigger Button -->
+    <button id="tj-open-btn" class="tj-floating-btn" title="Paste a complete index.md file to instantly commit to GitHub">
+      <span>📋</span> Quick Import index.md
+    </button>
+
+    <!-- Modal Backdrop -->
+    <div id="tj-modal-backdrop" class="tj-modal-backdrop">
+      <div class="tj-modal">
+        <!-- Header -->
+        <div class="tj-header">
+          <h2>Quick Import Recipe</h2>
+          <button id="tj-close-btn" class="tj-close-btn" title="Close">&times;</button>
+        </div>
+
+        <!-- Body -->
+        <div class="tj-body">
+          <!-- Auth Section -->
+          <div class="tj-auth-bar" id="tj-auth-box">
+            <div id="tj-auth-status">Checking GitHub authorization...</div>
+            <div id="tj-pat-input-row" style="display: none; gap: 8px; margin-top: 4px;">
+              <input type="password" id="tj-pat-token" class="tj-input" placeholder="Paste GitHub Personal Access Token (repo contents access)" style="flex: 1;" />
+              <button id="tj-save-pat" class="tj-btn">Save</button>
+            </div>
+          </div>
+
+          <!-- Recipe Slug -->
+          <div>
+            <div class="tj-label">
+              <span>Recipe Folder / Slug</span>
+              <span style="font-weight: normal; text-transform: none; color: #666;">(e.g. sweet-potato-salad)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-family: monospace; font-size: 12px; font-weight: bold;">content/recipes/</span>
+              <input type="text" id="tj-recipe-slug" class="tj-input" placeholder="my-recipe-name" style="flex: 1;" />
+              <span style="font-family: monospace; font-size: 12px; font-weight: bold;">/</span>
+            </div>
+          </div>
+
+          <!-- index.md Paste / File Area -->
+          <div>
+            <div class="tj-label">
+              <span>index.md Content (Frontmatter + Steps)</span>
+              <div>
+                <input type="file" id="tj-file-picker" accept=".md,.markdown" style="display: none;" />
+                <button id="tj-pick-file-btn" class="tj-btn" style="padding: 4px 8px; font-size: 11px;">📁 Load file from disk</button>
+              </div>
+            </div>
+            <textarea id="tj-recipe-md" class="tj-textarea" placeholder="Paste your entire index.md file here, e.g.:
+
+---
+title: &quot;My Favorite Pasta&quot;
+date: 2026-09-27
+time_active: 15
+time_total: 25
+servings: 2
+cuisine: [&quot;Italian&quot;]
+category: [&quot;Main&quot;]
+ingredients:
+  - &quot;200 | Rigatoni (g)&quot;
+---
+
+Cook pasta until al dente.
+
+Serve warm with freshly grated cheese."></textarea>
+          </div>
+
+          <!-- Cover Image File Picker -->
+          <div>
+            <div class="tj-label">
+              <span>Cover Photo (Optional)</span>
+              <span id="tj-image-filename-hint" style="font-weight: normal; text-transform: none; color: #666;">saves as cover.jpg</span>
+            </div>
+            <div id="tj-drop-zone" class="tj-drop-zone">
+              <input type="file" id="tj-image-input" accept="image/*" style="display: none;" />
+              <span id="tj-image-label">📸 Click or drag to attach photo (from camera or library)</span>
+            </div>
+            <div id="tj-image-preview-wrap" style="display: none; align-items: center; gap: 12px; margin-top: 8px;">
+              <img id="tj-image-preview" src="" style="width: 56px; height: 56px; object-fit: cover; border: 2px solid #000;" />
+              <span id="tj-image-name" style="font-size: 13px; font-weight: bold;"></span>
+              <button id="tj-remove-image-btn" class="tj-btn" style="padding: 2px 8px; font-size: 11px; margin-left: auto;">Remove</button>
+            </div>
+          </div>
+
+          <!-- Status / Feedback Box -->
+          <div id="tj-status" class="tj-status"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="tj-footer">
+          <button id="tj-cancel-btn" class="tj-btn">Cancel</button>
+          <button id="tj-submit-btn" class="tj-btn tj-btn-primary">🚀 Publish to GitHub</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const GITHUB_REPO = 'frits-z/tjappen';
+      const GITHUB_BRANCH = 'main';
+
+      // DOM Elements
+      const openBtn = document.getElementById('tj-open-btn');
+      const backdrop = document.getElementById('tj-modal-backdrop');
+      const closeBtn = document.getElementById('tj-close-btn');
+      const cancelBtn = document.getElementById('tj-cancel-btn');
+      const submitBtn = document.getElementById('tj-submit-btn');
+
+      const authStatus = document.getElementById('tj-auth-status');
+      const patInputRow = document.getElementById('tj-pat-input-row');
+      const patTokenInput = document.getElementById('tj-pat-token');
+      const savePatBtn = document.getElementById('tj-save-pat');
+
+      const slugInput = document.getElementById('tj-recipe-slug');
+      const mdInput = document.getElementById('tj-recipe-md');
+      const pickFileBtn = document.getElementById('tj-pick-file-btn');
+      const filePicker = document.getElementById('tj-file-picker');
+
+      const dropZone = document.getElementById('tj-drop-zone');
+      const imageInput = document.getElementById('tj-image-input');
+      const imagePreviewWrap = document.getElementById('tj-image-preview-wrap');
+      const imagePreview = document.getElementById('tj-image-preview');
+      const imageName = document.getElementById('tj-image-name');
+      const removeImageBtn = document.getElementById('tj-remove-image-btn');
+
+      const statusBox = document.getElementById('tj-status');
+
+      let selectedImageFile = null;
+
+      // Modal open/close
+      openBtn.addEventListener('click', () => {
+        backdrop.classList.add('open');
+        checkAuth();
+      });
+      function closeModal() {
+        backdrop.classList.remove('open');
+        clearStatus();
+      }
+      closeBtn.addEventListener('click', closeModal);
+      cancelBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
+      });
+
+      // Status helper
+      function showStatus(msg, type = 'info') {
+        statusBox.className = 'tj-status ' + type;
+        statusBox.innerHTML = msg;
+      }
+      function clearStatus() {
+        statusBox.className = 'tj-status';
+        statusBox.innerHTML = '';
+      }
+
+      // GitHub Token retrieval
+      function getGitHubToken() {
+        const custom = localStorage.getItem('tjappen_github_pat');
+        if (custom) return custom.trim();
+
+        // Check Sveltia / Decap localStorage keys
+        const keys = ['sveltia-cms.user', 'sveltia-cms.auth', 'decap-cms-user', 'netlify-cms-user'];
+        for (const k of keys) {
+          try {
+            const raw = localStorage.getItem(k);
+            if (raw) {
+              const parsed = JSON.parse(raw);
+              if (parsed.token) return parsed.token;
+              if (parsed.access_token) return parsed.access_token;
+            }
+          } catch(e) {}
+        }
+        return null;
+      }
+
+      function checkAuth() {
+        const token = getGitHubToken();
+        if (token) {
+          authStatus.innerHTML = `🟢 <strong>Connected to GitHub</strong> (repo: <code>${GITHUB_REPO}</code>) &bull; <a href="#" id="tj-change-token" style="color: #000; text-decoration: underline; font-size: 11px;">Change token</a>`;
+          patInputRow.style.display = 'none';
+          const changeLink = document.getElementById('tj-change-token');
+          if (changeLink) {
+            changeLink.addEventListener('click', (e) => {
+              e.preventDefault();
+              patInputRow.style.display = 'flex';
+            });
+          }
+        } else {
+          authStatus.innerHTML = `⚠️ <strong>GitHub token needed.</strong> Enter a token with repo access: (<a href="https://github.com/settings/tokens?type=beta" target="_blank" style="color:#000;">generate token</a>)`;
+          patInputRow.style.display = 'flex';
+        }
+      }
+
+      savePatBtn.addEventListener('click', () => {
+        const val = patTokenInput.value.trim();
+        if (val) {
+          localStorage.setItem('tjappen_github_pat', val);
+          patTokenInput.value = '';
+          checkAuth();
+          showStatus('Token saved! You are ready to commit.', 'success');
+        }
+      });
+
+      // Auto-extract slug from Title
+      function autoSlugFromMarkdown() {
+        const text = mdInput.value;
+        const titleMatch = text.match(/^title:\s*["']?([^"'\r\n]+)["']?/m);
+        if (titleMatch && titleMatch[1]) {
+          const title = titleMatch[1].trim();
+          const autoSlug = title.toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/[\s_]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+          if (!slugInput.value || slugInput.dataset.autoSlug === slugInput.value) {
+            slugInput.value = autoSlug;
+            slugInput.dataset.autoSlug = autoSlug;
+          }
+        }
+      }
+
+      mdInput.addEventListener('input', autoSlugFromMarkdown);
+
+      // Load file from disk into textarea
+      pickFileBtn.addEventListener('click', () => filePicker.click());
+      filePicker.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          mdInput.value = evt.target.result;
+          autoSlugFromMarkdown();
+          showStatus(`Loaded <code>${file.name}</code> into editor.`, 'info');
+        };
+        reader.readAsText(file);
+      });
+
+      // Cover image drop/select
+      dropZone.addEventListener('click', () => imageInput.click());
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.style.background = '#fef3c7';
+      });
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.style.background = '#fff';
+      });
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.style.background = '#fff';
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+          handleImageFile(e.dataTransfer.files[0]);
+        }
+      });
+
+      imageInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          handleImageFile(e.target.files[0]);
+        }
+      });
+
+      function handleImageFile(file) {
+        selectedImageFile = file;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          imagePreview.src = e.target.result;
+          imageName.textContent = file.name + ' (' + Math.round(file.size / 1024) + ' KB)';
+          imagePreviewWrap.style.display = 'flex';
+          dropZone.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      }
+
+      removeImageBtn.addEventListener('click', () => {
+        selectedImageFile = null;
+        imageInput.value = '';
+        imagePreviewWrap.style.display = 'none';
+        dropZone.style.display = 'block';
+      });
+
+      // Base64 encodings
+      function utf8ToBase64(str) {
+        const bytes = new TextEncoder().encode(str);
+        let binary = '';
+        for (let i = 0; i < bytes.byteLength; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        return btoa(binary);
+      }
+
+      function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const bytes = new Uint8Array(reader.result);
+            let binary = '';
+            for (let i = 0; i < bytes.byteLength; i++) {
+              binary += String.fromCharCode(bytes[i]);
+            }
+            resolve(btoa(binary));
+          };
+          reader.onerror = reject;
+          reader.readAsArrayBuffer(file);
+        });
+      }
+
+      // Commit to GitHub
+      submitBtn.addEventListener('click', async () => {
+        const token = getGitHubToken();
+        if (!token) {
+          showStatus('Error: GitHub token missing. Please paste a token above.', 'error');
+          return;
+        }
+
+        const slug = slugInput.value.trim().toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '');
+        if (!slug) {
+          showStatus('Error: Recipe slug / folder name is required.', 'error');
+          slugInput.focus();
+          return;
+        }
+
+        const content = mdInput.value.trim();
+        if (!content) {
+          showStatus('Error: index.md content cannot be empty.', 'error');
+          mdInput.focus();
+          return;
+        }
+
+        // Validate Frontmatter date format
+        const dateMatch = content.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);
+        if (!dateMatch) {
+          const hasAnyDate = content.match(/^date:\s*(.+)$/m);
+          if (hasAnyDate) {
+            showStatus(`Invalid date format: "${hasAnyDate[1]}". Must be YYYY-MM-DD to pass CI validation.`, 'error');
+          } else {
+            showStatus('Missing "date: YYYY-MM-DD" in frontmatter. Please add it so recipe validation passes.', 'error');
+          }
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = '⏳ Committing to GitHub...';
+        showStatus('1/2: Preparing files for GitHub...', 'info');
+
+        const headers = {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        };
+
+        const mdPath = `content/recipes/${slug}/index.md`;
+
+        try {
+          // Check if file already exists (get SHA)
+          let existingSha = null;
+          try {
+            const checkRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${mdPath}?ref=${GITHUB_BRANCH}`, { headers });
+            if (checkRes.ok) {
+              const checkData = await checkRes.json();
+              existingSha = checkData.sha;
+              if (!confirm(`A recipe already exists at ${mdPath}. Do you want to overwrite it?`)) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🚀 Publish to GitHub';
+                clearStatus();
+                return;
+              }
+            }
+          } catch(err) {}
+
+          let finalContent = content;
+          let imgFilename = null;
+
+          if (selectedImageFile) {
+            let ext = 'jpg';
+            const nameParts = selectedImageFile.name.split('.');
+            if (nameParts.length > 1) {
+              ext = nameParts.pop().toLowerCase();
+            }
+            if (ext === 'jpeg') ext = 'jpg';
+            imgFilename = `cover.${ext}`;
+
+            // If frontmatter doesn't already have cover:, inject it!
+            if (!finalContent.match(/^cover:\s*.+$/m)) {
+              finalContent = finalContent.replace(/^---\r?\n/, `---\ncover: "${imgFilename}"\n`);
+            }
+          }
+
+          // 1. Commit index.md
+          showStatus(`Uploading <code>${mdPath}</code>...`, 'info');
+          const mdBody = {
+            message: `Add recipe: ${slug}`,
+            content: utf8ToBase64(finalContent),
+            branch: GITHUB_BRANCH,
+            ...(existingSha ? { sha: existingSha } : {})
+          };
+
+          const putMdRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${mdPath}`, {
+            method: 'PUT',
+            headers,
+            body: JSON.stringify(mdBody)
+          });
+
+          if (!putMdRes.ok) {
+            const errData = await putMdRes.json();
+            throw new Error(`GitHub API error (${putMdRes.status}): ${errData.message}`);
+          }
+
+          // 2. Commit Cover Image if provided
+          if (selectedImageFile) {
+            let ext = 'jpg';
+            const nameParts = selectedImageFile.name.split('.');
+            if (nameParts.length > 1) {
+              ext = nameParts.pop().toLowerCase();
+            }
+            if (ext === 'jpeg') ext = 'jpg';
+            const imgPath = `content/recipes/${slug}/cover.${ext}`;
+
+            showStatus(`Uploading cover image to <code>${imgPath}</code>...`, 'info');
+
+            let imgSha = null;
+            try {
+              const checkImg = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${imgPath}?ref=${GITHUB_BRANCH}`, { headers });
+              if (checkImg.ok) {
+                const imgData = await checkImg.json();
+                imgSha = imgData.sha;
+              }
+            } catch(e) {}
+
+            const base64Img = await fileToBase64(selectedImageFile);
+            const imgBody = {
+              message: `Add cover photo for: ${slug}`,
+              content: base64Img,
+              branch: GITHUB_BRANCH,
+              ...(imgSha ? { sha: imgSha } : {})
+            };
+
+            const putImgRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${imgPath}`, {
+              method: 'PUT',
+              headers,
+              body: JSON.stringify(imgBody)
+            });
+
+            if (!putImgRes.ok) {
+              const errImg = await putImgRes.json();
+              console.warn('Image upload error:', errImg);
+            }
+          }
+
+          // Success!
+          showStatus(`🎉 <strong>Success!</strong> Recipe <code>${slug}</code> committed to <code>main</code>.<br><br>
+            <a href="https://github.com/${GITHUB_REPO}/tree/${GITHUB_BRANCH}/content/recipes/${slug}" target="_blank" style="color: #000; font-weight: bold; text-decoration: underline;">View on GitHub</a> &bull;
+            <a href="javascript:location.reload()" style="color: #000; font-weight: bold; text-decoration: underline;">Reload CMS</a>`, 'success');
+
+          submitBtn.textContent = '✅ Published!';
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = '🚀 Publish to GitHub';
+          }, 4000);
+
+        } catch (error) {
+          console.error(error);
+          showStatus(`Error uploading to GitHub: ${error.message}`, 'error');
+          submitBtn.disabled = false;
+          submitBtn.textContent = '🚀 Publish to GitHub';
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>

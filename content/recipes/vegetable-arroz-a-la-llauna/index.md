@@ -1,5 +1,6 @@
 ---
 title: "Vegetable Arroz a la Llauna"
+cover: "cover.png"
 date: 2026-04-27
 time_active: 20
 time_total: 35

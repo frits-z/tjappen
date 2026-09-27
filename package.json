@@ -4,6 +4,7 @@
   "description": "Minimalist recipe digital pantry built with Hugo and Tailwind CSS",
   "scripts": {
     "validate": "node scripts/validate-recipes.js",
+    "add-covers": "node scripts/add-cover-field.js",
     "build": "node scripts/validate-recipes.js && hugo --gc --cleanDestinationDir --minify --noTimes",
     "server": "hugo server -D --disableFastRender --noTimes --poll 2s"
   },

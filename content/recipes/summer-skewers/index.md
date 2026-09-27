@@ -1,5 +1,6 @@
 ---
 title: "Summer Skewers"
+cover: "cover.png"
 date: 2026-06-06
 description: "A refreshing caprese-style summer appetizer with an optional Italian ham twist, perfect for a beach day or road trip."
 time_active: 15

@@ -160,8 +160,11 @@
                 <div class="image-container">
                     {{ $image := .Resources.GetMatch "*hero*" }}
                     {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
+                    {{ if not $image }}{{ if .Params.cover }}{{ $image = .Resources.GetMatch .Params.cover }}{{ end }}{{ end }}
                     {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
+                    {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpeg" }}{{ end }}
                     {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
+                    {{ if not $image }}{{ $image = .Resources.GetMatch "*.webp" }}{{ end }}
                     {{ if $image }}
                     {{ $scaled := $image.Resize "1000x webp q80" }}
                     <img src="{{ $scaled.RelPermalink }}" alt="{{ .Title }}" width="{{ $scaled.Width }}"

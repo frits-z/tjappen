@@ -1,5 +1,6 @@
 ---
 title: "Tofu Satay with noodles"
+cover: "cover.png"
 date: 2026-04-17
 time_active: 25
 time_total: 45

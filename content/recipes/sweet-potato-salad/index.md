@@ -4,6 +4,7 @@ date: 2026-04-16
 time_active: 20
 time_total: 40
 servings: 2
+cover: "cover.png"
 cuisine: ["European"]
 category: ["Salad"]
 diet: ["Vegetarian"]

@@ -1,0 +1,161 @@
+# Sveltia CMS / Decap CMS Configuration for tjappen
+backend:
+  name: github
+  repo: frits-z/tjappen
+  branch: main
+
+# Fallback media directory
+media_folder: "assets/images"
+public_folder: "/images"
+
+# Uncomment the line below if you want an editorial workflow (draft PRs before publishing)
+# publish_mode: editorial_workflow
+
+collections:
+  - name: "recipes"
+    label: "Recipes"
+    label_singular: "Recipe"
+    folder: "content/recipes"
+    create: true
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    slug: "{{title}}"
+    summary: "{{title}} • {{time_total}}m • {{servings}}p • {{category}}"
+    sortable_fields: ["date", "title", "time_total", "rating"]
+    fields:
+      - { label: "Title", name: "title", widget: "string", hint: "The name of the dish." }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, hint: "Date added (YYYY-MM-DD)." }
+      - { label: "Description", name: "description", widget: "string", required: false, hint: "A short, engaging 1-2 sentence summary." }
+
+      - label: "Cover Image"
+        name: "cover"
+        widget: "image"
+        required: false
+        choose_url: false
+        hint: "Upload a photo from your camera or library. It will be saved into the recipe folder."
+
+      - { label: "Active Prep Time (mins)", name: "time_active", widget: "number", value_type: "int", min: 0, default: 15 }
+      - { label: "Total Time (mins)", name: "time_total", widget: "number", value_type: "int", min: 0, default: 30 }
+      - { label: "Base Servings", name: "servings", widget: "number", value_type: "int", min: 1, default: 2, hint: "Base yield. The site scales ingredient amounts dynamically from this number." }
+
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        multiple: true
+        options:
+          - "Main"
+          - "Salad"
+          - "Snack"
+          - "Essential"
+          - "Soup"
+          - "Side"
+          - "Dessert"
+          - "Baking"
+          - "Breakfast"
+          - "Drink"
+
+      - label: "Cuisine"
+        name: "cuisine"
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - "American"
+          - "Catalan"
+          - "Dutch"
+          - "European"
+          - "French"
+          - "Fusion"
+          - "Greek"
+          - "Indian"
+          - "Indonesian"
+          - "Italian"
+          - "Japanese"
+          - "Korean"
+          - "Mediterranean"
+          - "Mexican"
+          - "Middle Eastern"
+          - "Moroccan"
+          - "Spanish"
+          - "Thai"
+          - "Vietnamese"
+
+      - label: "Diet"
+        name: "diet"
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - "Vegetarian"
+          - "Plant-based"
+          - "Meat"
+          - "Fish"
+          - "Low-carb"
+
+      - label: "Occasion"
+        name: "occasion"
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - "Midweek"
+          - "Weekend project"
+          - "Batch-cook"
+          - "Party"
+          - "Holiday"
+          - "Make-ahead"
+
+      - label: "Season"
+        name: "season"
+        widget: "select"
+        multiple: true
+        required: false
+        hint: "Pick applicable seasons (or All-year)."
+        options:
+          - "Spring"
+          - "Summer"
+          - "Autumn"
+          - "Winter"
+          - "All-year"
+
+      - label: "Ingredients"
+        name: "ingredients"
+        widget: "list"
+        hint: "Format: 'Quantity | Item (Unit)' for scalable amounts (e.g. '500 | Sweet potatoes (g)'). Use '# Section Title' for headings (e.g. '# Sauce')."
+        field:
+          label: "Ingredient item"
+          name: "item"
+          widget: "string"
+
+      - label: "Cooking Notes & Tips"
+        name: "notes"
+        widget: "list"
+        required: false
+        hint: "Helpful tips, variations, or author attribution (e.g. 'By Rune')."
+        field:
+          label: "Note"
+          name: "note"
+          widget: "string"
+
+      - { label: "Personal Rating (1-5)", name: "rating", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1, required: false }
+      - { label: "Recipe Author / Submitter", name: "author", widget: "string", required: false, default: "Frits", hint: "Name displayed in credits (defaults to Frits if omitted)." }
+      - { label: "Source Name", name: "source", widget: "string", required: false, hint: "e.g. Cookbook name or website" }
+      - { label: "Source URL", name: "source_url", widget: "string", required: false, hint: "Link to original recipe or inspiration" }
+      - { label: "Draft (Hide from live site)", name: "draft", widget: "boolean", default: false, required: false }
+
+      - label: "Instructions / Method"
+        name: "body"
+        widget: "markdown"
+        hint: "Write step-by-step instructions. Leave an empty line between each step so they format into separate numbered cards on the site."
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "content/about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Page Type", name: "type", widget: "hidden", default: "page" }
+          - { label: "Content", name: "body", widget: "markdown" }

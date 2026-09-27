@@ -1,5 +1,6 @@
 ---
 title: "Simple Feta & Sriracha Beef Burger"
+cover: "cover.webp"
 date: 2026-07-11
 description: "A quick and flavorful beef burger topped with creamy feta, fresh cucumber, and a spicy sriracha mayo."
 time_active: 15

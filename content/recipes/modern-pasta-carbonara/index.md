@@ -1,5 +1,6 @@
 ---
 title: "Modern Pasta Carbonara"
+cover: "cover.jpg"
 date: 2026-04-16
 time_active: 5
 time_total: 30

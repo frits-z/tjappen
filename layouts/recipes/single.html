@@ -6,8 +6,11 @@
 */ -}}
 {{- $hero := .Resources.GetMatch "*hero*" -}}
 {{- if not $hero }}{{ $hero = .Resources.GetMatch "*cover*" }}{{ end -}}
+{{- if not $hero }}{{ if .Params.cover }}{{ $hero = .Resources.GetMatch .Params.cover }}{{ end }}{{ end -}}
 {{- if not $hero }}{{ $hero = .Resources.GetMatch "*.jpg" }}{{ end -}}
+{{- if not $hero }}{{ $hero = .Resources.GetMatch "*.jpeg" }}{{ end -}}
 {{- if not $hero }}{{ $hero = .Resources.GetMatch "*.png" }}{{ end -}}
+{{- if not $hero }}{{ $hero = .Resources.GetMatch "*.webp" }}{{ end -}}
 
 {{- $description := "" -}}
 {{- if .Params.description -}}
@@ -195,8 +198,11 @@ $tagDesc = delimit $part2 " " }}{{ end -}}
 
     {{ $hero := .Resources.GetMatch "*hero*" }}
     {{ if not $hero }}{{ $hero = .Resources.GetMatch "*cover*" }}{{ end }}
+    {{ if not $hero }}{{ if .Params.cover }}{{ $hero = .Resources.GetMatch .Params.cover }}{{ end }}{{ end }}
     {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.jpg" }}{{ end }}
+    {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.jpeg" }}{{ end }}
     {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.png" }}{{ end }}
+    {{ if not $hero }}{{ $hero = .Resources.GetMatch "*.webp" }}{{ end }}
     {{ if $hero }}
     {{ $scaled := $hero.Fill "1600x800 webp q80 Center" }}
     <figure class="hero-image mb-12">

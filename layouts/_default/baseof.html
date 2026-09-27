@@ -48,8 +48,11 @@
     {{ if .IsPage }}
         {{ $image := .Resources.GetMatch "*hero*" }}
         {{ if not $image }}{{ $image = .Resources.GetMatch "*cover*" }}{{ end }}
+        {{ if not $image }}{{ if .Params.cover }}{{ $image = .Resources.GetMatch .Params.cover }}{{ end }}{{ end }}
         {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpg" }}{{ end }}
+        {{ if not $image }}{{ $image = .Resources.GetMatch "*.jpeg" }}{{ end }}
         {{ if not $image }}{{ $image = .Resources.GetMatch "*.png" }}{{ end }}
+        {{ if not $image }}{{ $image = .Resources.GetMatch "*.webp" }}{{ end }}
         {{ if $image }}
             {{ $scaled := $image.Fill "1200x630 webp q80 Center" }}
             <meta property="og:image" content="{{ $scaled.Permalink }}">

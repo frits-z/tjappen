@@ -1,5 +1,6 @@
 ---
 title: "Korean BBQ chicken wraps"
+cover: "cover.jpg"
 date: 2026-04-16
 time_active: 25
 time_total: 85

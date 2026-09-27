@@ -1,5 +1,6 @@
 ---
 title: "Catalan Sofregit"
+cover: "cover.png"
 date: 2026-04-27
 time_active: 120
 time_total: 120
