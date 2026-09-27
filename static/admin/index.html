@@ -593,12 +593,22 @@ Serve warm with freshly grated cheese."></textarea>
           return;
         }
 
-        const content = mdInput.value.trim();
+        let content = mdInput.value.trim();
         if (!content) {
           showStatus('Error: index.md content cannot be empty.', 'error');
           mdInput.focus();
           return;
         }
+
+        // Auto-fix frontmatter closing delimiter if written as '--'
+        content = content.replace(/^---\r?\n([\s\S]*?)\r?\n--\s*$/m, '---\n$1\n---');
+
+        // Auto-correct asterisks to dashes in YAML frontmatter (e.g. * "1 | cabbage" -> - "1 | cabbage")
+        // YAML lists require dashes, asterisks are reserved for YAML aliases
+        content = content.replace(/^---\r?\n([\s\S]*?)\r?\n---/, (match, fm) => {
+          const sanitizedFm = fm.replace(/^(\s*)\*\s+/gm, '$1- ');
+          return `---\n${sanitizedFm}\n---`;
+        });
 
         // Validate Frontmatter date format
         const dateMatch = content.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);

@@ -14,17 +14,17 @@ occasion: ["Batch-cook"]
 
 ingredients:
 
-* "1 | red cabbage (small head)"
-* "2 | water (cups)"
-* "2 | apple cider vinegar (cups)"
-* "3 | cane sugar (tsp)"
-* "3 | salt (tsp)"
-* "2 | whole cumin seeds, optional (tsp)"
-* "2 | garlic, smashed (cloves)"
+- "1 | red cabbage (small head)"
+- "2 | water (cups)"
+- "2 | apple cider vinegar (cups)"
+- "3 | cane sugar (tsp)"
+- "3 | salt (tsp)"
+- "2 | whole cumin seeds, optional (tsp)"
+- "2 | garlic, smashed (cloves)"
 
 notes:
-* "Keeps well in the fridge for at least 2 weeks. Put a label on it so you don't forget the date!"
-* "The warm brine helps to soften the cabbage fibers a bit, giving you the right level of crisp."
+- "Keeps well in the fridge for at least 2 weeks. Put a label on it so you don't forget the date!"
+- "The warm brine helps to soften the cabbage fibers a bit, giving you the right level of crisp."
 
 ---
 
