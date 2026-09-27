@@ -9,6 +9,15 @@ backend:
 media_folder: "assets/images"
 public_folder: "/images"
 
+# Client-side image optimization (resizes large camera photos before committing to Git)
+media_libraries:
+  default:
+    transformations:
+      raster_image:
+        quality: 90
+        width: 2400
+        height: 2400
+
 # Uncomment the line below if you want an editorial workflow (draft PRs before publishing)
 # publish_mode: editorial_workflow
 
