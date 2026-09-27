@@ -3,6 +3,7 @@ backend:
   name: github
   repo: frits-z/tjappen
   branch: main
+  base_url: https://sveltia-cms-auth.fritsvdzalm.workers.dev
 
 # Fallback media directory
 media_folder: "assets/images"
