@@ -33,6 +33,19 @@ function validateRecipes() {
             
             const frontmatter = match[1];
             
+            // Check for unquoted pipe character in lists (e.g. "- | Salt and pepper")
+            const unquotedPipeRegex = /^\s*-\s*\|\s*(\S.*)$/m;
+            const pipeMatch = frontmatter.match(unquotedPipeRegex);
+            if (pipeMatch) {
+                errors.push(`[${folder}] Invalid YAML syntax: unquoted pipe "- | ${pipeMatch[1]}". Qualitative ingredients without quantities should not have a leading pipe (write "- \\"${pipeMatch[1]}\\"" or remove the pipe).`);
+            }
+
+            // Check for asterisks in frontmatter lists
+            const asteriskListRegex = /^\s*\*\s+/m;
+            if (asteriskListRegex.test(frontmatter)) {
+                errors.push(`[${folder}] Invalid YAML syntax: asterisk bullet points "* ..." found in frontmatter. Use dashes "- ..." for YAML lists.`);
+            }
+            
             // Check for the date field
             const dateRegex = new RegExp(`^${DATE_FIELD}:\\s*([\\s\\S]*?)$`, 'm');
             const dateMatch = frontmatter.match(dateRegex);

@@ -14,12 +14,15 @@ diet: []         # e.g. (not limited) ["Vegetarian", "Plant-based", "Meat", "Fis
 occasion: []     # Options: ["Midweek", "Weekend project", "Batch-cook", "Party", "Holiday", "Make-ahead"]
 
 # Ingredients structure: "Quantity | Item name (Unit)"
-# CRITICAL: The value to the left of the pipe MUST be a strict integer or float (e.g., 1.5 or 2)
-# to allow client-side servings scaling. Qualitative amounts belong on the right.
-# Use "- '# Section Name'" to create subtitle separators in the list.
+# - Measured: The value left of the pipe MUST be a strict integer or float (e.g., 1.5 or 2)
+#   for client-side servings scaling (e.g. "1.5 | Potatoes (kg)").
+# - Unmeasured/to taste: Do NOT include a pipe '|'. Simply write: "Salt and pepper (to taste)" or "Olive oil".
+# - Section separators: Use "- '# Section Name'" to create subtitle headers.
+# ALWAYS keep quotes around ingredients!
 ingredients:
   - "# Section Title (Optional)"
   - "1 | Item description"
+  - "Salt and pepper (to taste)"
 
 # Optional fields (uncomment to use):
 # draft: true                    # Set to true to hide this recipe from the live site (standard Hugo feature)

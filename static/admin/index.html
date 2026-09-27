@@ -7,6 +7,8 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <!-- Sveltia CMS -->
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+  <!-- js-yaml for client-side YAML validation and serialization -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 
   <style>
     /* Neo-brutalist styling for Quick Importer */
@@ -600,27 +602,55 @@ Serve warm with freshly grated cheese."></textarea>
           return;
         }
 
+        // Parse frontmatter and body
         // Auto-fix frontmatter closing delimiter if written as '--'
         content = content.replace(/^---\r?\n([\s\S]*?)\r?\n--\s*$/m, '---\n$1\n---');
 
-        // Auto-correct asterisks to dashes in YAML frontmatter (e.g. * "1 | cabbage" -> - "1 | cabbage")
-        // YAML lists require dashes, asterisks are reserved for YAML aliases
-        content = content.replace(/^---\r?\n([\s\S]*?)\r?\n---/, (match, fm) => {
-          const sanitizedFm = fm.replace(/^(\s*)\*\s+/gm, '$1- ');
-          return `---\n${sanitizedFm}\n---`;
-        });
-
-        // Validate Frontmatter date format
-        const dateMatch = content.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);
-        if (!dateMatch) {
-          const hasAnyDate = content.match(/^date:\s*(.+)$/m);
-          if (hasAnyDate) {
-            showStatus(`Invalid date format: "${hasAnyDate[1]}". Must be YYYY-MM-DD to pass CI validation.`, 'error');
-          } else {
-            showStatus('Missing "date: YYYY-MM-DD" in frontmatter. Please add it so recipe validation passes.', 'error');
-          }
+        const fmMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---\s*([\s\S]*)$/);
+        if (!fmMatch) {
+          showStatus('Error: Missing frontmatter delimiters (--- ... ---).', 'error');
           return;
         }
+
+        let rawFm = fmMatch[1];
+        let bodyContent = fmMatch[2].trim();
+
+        // 1. Auto-sanitize common copy-paste quirks:
+        // Asterisks to dashes:
+        rawFm = rawFm.replace(/^(\s*)\*\s+/gm, '$1- ');
+        // Unquoted leading pipe on ingredients: "- | Salt" -> '- "Salt"'
+        rawFm = rawFm.replace(/^(\s*-\s*)\|\s*(\S.*)$/gm, '$1"$2"');
+
+        // 2. Parse with real YAML engine (js-yaml)
+        let parsedFm;
+        try {
+          parsedFm = jsyaml.load(rawFm);
+          if (typeof parsedFm !== 'object' || parsedFm === null) {
+            throw new Error('Frontmatter must be a valid YAML object.');
+          }
+        } catch (err) {
+          showStatus(`❌ YAML Syntax Error in frontmatter: ${err.message}`, 'error');
+          submitBtn.disabled = false;
+          submitBtn.textContent = '🚀 Publish to GitHub';
+          return;
+        }
+
+        // 3. Validate date format (YYYY-MM-DD)
+        if (!parsedFm.date) {
+          showStatus('Missing "date: YYYY-MM-DD" in frontmatter.', 'error');
+          return;
+        }
+        let dateVal = parsedFm.date;
+        if (dateVal instanceof Date) {
+          dateVal = dateVal.toISOString().split('T')[0];
+        } else {
+          dateVal = String(dateVal).trim().replace(/^['"]|['"]$/g, '');
+        }
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(dateVal)) {
+          showStatus(`Invalid date: "${dateVal}". Must be YYYY-MM-DD to pass CI validation.`, 'error');
+          return;
+        }
+        parsedFm.date = dateVal;
 
         submitBtn.disabled = true;
         submitBtn.textContent = '⏳ Committing to GitHub...';
@@ -651,7 +681,6 @@ Serve warm with freshly grated cheese."></textarea>
             }
           } catch(err) {}
 
-          let finalContent = content;
           let imgFilename = null;
 
           if (selectedImageFile) {
@@ -663,11 +692,16 @@ Serve warm with freshly grated cheese."></textarea>
             if (ext === 'jpeg') ext = 'jpg';
             imgFilename = `cover.${ext}`;
 
-            // If frontmatter doesn't already have cover:, inject it!
-            if (!finalContent.match(/^cover:\s*.+$/m)) {
-              finalContent = finalContent.replace(/^---\r?\n/, `---\ncover: "${imgFilename}"\n`);
+            // Ensure cover: is in frontmatter
+            if (!parsedFm.cover) {
+              parsedFm.cover = imgFilename;
             }
           }
+
+          // 4. Re-serialize frontmatter with jsyaml.dump()!
+          // This GUARANTEES 100% syntactically valid YAML for Hugo!
+          const cleanYaml = jsyaml.dump(parsedFm, { lineWidth: -1, quotingType: '"', forceQuotes: false });
+          const finalContent = `---\n${cleanYaml}---\n\n${bodyContent}\n`;
 
           // 1. Commit index.md
           showStatus(`Uploading <code>${mdPath}</code>...`, 'info');
