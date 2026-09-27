@@ -17,14 +17,15 @@ occasion:
   - Weeknight
 season: []
 ingredients:
+  - 4 | tiny flatbreads
   - 2 | large eggplants, cubed
+  - '# Marinade'
   - 4 | olive oil (tbsp)
   - 1 | tomato paste (tbsp)
   - 1 | maple syrup or honey (tbsp)
   - 1 | smoked paprika powder (tsp)
   - 1 | garlic powder (tsp)
   - 1 | sriracha (tbsp)
-  - 4 | tiny flatbreads
   - Salt and pepper to taste
   - '# For the whipped feta'
   - 200 | (vegan) feta (g)
