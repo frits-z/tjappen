@@ -1,42 +1,52 @@
 ---
-cover: "cover.jpg"
-title: "Tiny Flatbreads with Whipped Feta and Sweet-Spicy Eggplant"
+title: Tiny Flatbreads with Whipped Feta and Sweet-Spicy Eggplant
 date: 2026-09-26
-description: "A delicious combination of ultimate soft, roasted eggplant tossed in a sweet and spicy marinade, served on warm flatbreads with light whipped feta and a fresh cucumber salad."
+description: A delicious combination of ultimate soft, roasted eggplant tossed in a sweet and spicy marinade, served on warm flatbreads with light whipped feta and a fresh cucumber salad.
+cover: cover.jpg
 time_active: 30
 time_total: 30
 servings: 4
-
-cuisine: ["Middle Eastern", "Fusion"]
-category: ["Main"]
-diet: ["Vegetarian"]
-occasion: ["Weeknight"]
-
+category:
+  - Main
+cuisine:
+  - Middle Eastern
+  - Fusion
+diet:
+  - Vegetarian
+occasion:
+  - Weeknight
+season: []
 ingredients:
-  - "2 | large eggplants, cubed"
-  - "4 | olive oil (tbsp)"
-  - "1 | tomato paste (tbsp)"
-  - "1 | maple syrup or honey (tbsp)"
-  - "1 | smoked paprika powder (tsp)"
-  - "1 | garlic powder (tsp)"
-  - "1 | sriracha (tbsp)"
-  - "4 | tiny flatbreads"
-  - "Salt and pepper to taste"
-  - "# For the whipped feta"
-  - "200 | (vegan) feta (g)"
-  - "2 | (vegan) Greek yogurt (tbsp)"
-  - "1 | lemon juice (tbsp)"
-  - "0.5 | lemon zest (tsp)"
-  - "# For the cucumber salad"
-  - "0.5 | cucumber, finely diced"
-  - "10 | sprigs fresh cilantro"
-  - "1 | handful of dill"
-  - "3 | rice vinegar (tbsp)"
-  - "3 | boiling water (tbsp)"
-  - "Pinch of salt & sugar"
-  - "# Toppings"
-  - "Sriracha"
-  - "Soft, fresh herbs of choice, finely chopped"
+  - 2 | large eggplants, cubed
+  - 4 | olive oil (tbsp)
+  - 1 | tomato paste (tbsp)
+  - 1 | maple syrup or honey (tbsp)
+  - 1 | smoked paprika powder (tsp)
+  - 1 | garlic powder (tsp)
+  - 1 | sriracha (tbsp)
+  - 4 | tiny flatbreads
+  - Salt and pepper to taste
+  - '# For the whipped feta'
+  - 200 | (vegan) feta (g)
+  - 2 | (vegan) Greek yogurt (tbsp)
+  - 1 | lemon juice (tbsp)
+  - 0.5 | lemon zest (tsp)
+  - '# For the cucumber salad'
+  - 0.5 | cucumber, finely diced
+  - 10 | sprigs fresh cilantro
+  - 1 | handful of dill
+  - 3 | rice vinegar (tbsp)
+  - 3 | boiling water (tbsp)
+  - Pinch of salt & sugar
+  - '# Toppings'
+  - Sriracha
+  - Soft, fresh herbs of choice, finely chopped
+notes: []
+rating: null
+author: Rune
+source: ''
+source_url: ''
+draft: false
 ---
 
 Preheat the oven to 200°C. Line a baking sheet with baking paper.
