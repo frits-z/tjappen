@@ -11,10 +11,79 @@
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 
   <style>
-    /* Neo-brutalist styling for Quick Importer */
+    /* Neo-brutalist styling for Quick Importer with full Dark Mode insulation */
+    #tj-importer-root,
     #tj-importer-root * {
       box-sizing: border-box;
+      color-scheme: light !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #tj-importer-root {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Force pure black text across all modal elements to insulate against mobile dark mode */
+    #tj-importer-root,
+    #tj-importer-root .tj-modal,
+    #tj-importer-root .tj-body,
+    #tj-importer-root .tj-label,
+    #tj-importer-root .tj-label span,
+    #tj-importer-root .tj-header,
+    #tj-importer-root .tj-header h2,
+    #tj-importer-root .tj-auth-bar,
+    #tj-importer-root #tj-auth-status,
+    #tj-importer-root .tj-drop-zone,
+    #tj-importer-root #tj-image-label,
+    #tj-importer-root #tj-image-name,
+    #tj-importer-root span,
+    #tj-importer-root p,
+    #tj-importer-root div,
+    #tj-importer-root strong {
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
+    }
+
+    #tj-importer-root a {
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
+      text-decoration: underline;
+    }
+
+    #tj-importer-root .tj-hint {
+      color: #555555 !important;
+      -webkit-text-fill-color: #555555 !important;
+      font-weight: normal !important;
+      text-transform: none !important;
+      font-size: 11px !important;
+    }
+
+    #tj-importer-root code {
+      background: #f1ede8 !important;
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
+      border: 1px solid #dcd5cc !important;
+      padding: 1px 5px !important;
+      border-radius: 2px !important;
+      font-size: 11px !important;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    }
+
+    #tj-importer-root input,
+    #tj-importer-root textarea {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
+      caret-color: #000000 !important;
+      border: 2px solid #000000 !important;
+      color-scheme: light !important;
+    }
+
+    #tj-importer-root input::placeholder,
+    #tj-importer-root textarea::placeholder {
+      color: #666666 !important;
+      -webkit-text-fill-color: #666666 !important;
+      opacity: 1 !important;
     }
 
     .tj-floating-btn {
@@ -22,15 +91,16 @@
       bottom: 24px;
       right: 24px;
       z-index: 99999;
-      background: #fff7f1;
-      color: #000;
-      border: 2px solid #000;
-      padding: 12px 20px;
+      background: #fff7f1 !important;
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
+      border: 2px solid #000000;
+      padding: 12px 18px;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      box-shadow: 4px 4px 0px 0px #000;
+      box-shadow: 4px 4px 0px 0px #000000;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -38,34 +108,40 @@
       transition: all 0.15s ease;
     }
     .tj-floating-btn:hover {
-      background: #000;
-      color: #fff;
+      background: #000000 !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
       transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0px 0px #000;
+      box-shadow: 2px 2px 0px 0px #000000;
+    }
+    .tj-floating-btn:hover span {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
     }
 
     .tj-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(0, 0, 0, 0.7);
       z-index: 100000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 12px;
     }
     .tj-modal-backdrop.open {
       display: flex;
     }
 
     .tj-modal {
-      background: #fff7f1;
-      border: 3px solid #000;
-      box-shadow: 8px 8px 0px 0px #000;
+      background: #fff7f1 !important;
+      border: 3px solid #000000;
+      box-shadow: 6px 6px 0px 0px #000000;
       width: 100%;
       max-width: 680px;
-      max-height: 90vh;
+      max-height: 92vh;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       display: flex;
       flex-direction: column;
     }
@@ -74,20 +150,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 20px;
-      border-bottom: 2px solid #000;
-      background: #fff;
+      padding: 14px 18px;
+      border-bottom: 2px solid #000000;
+      background: #ffffff !important;
     }
     .tj-header h2 {
       margin: 0;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
     .tj-close-btn {
-      background: transparent;
-      border: 2px solid transparent;
+      background: transparent !important;
+      border: 2px solid transparent !important;
       font-size: 20px;
       font-weight: 900;
       cursor: pointer;
@@ -96,18 +172,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
       transition: all 0.1s;
     }
     .tj-close-btn:hover {
-      background: #000;
-      color: #fff;
+      background: #000000 !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
     }
 
     .tj-body {
-      padding: 20px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .tj-label {
@@ -123,63 +202,68 @@
 
     .tj-input, .tj-textarea {
       width: 100%;
-      background: #fff;
-      border: 2px solid #000;
+      background: #ffffff !important;
+      border: 2px solid #000000 !important;
       padding: 10px 12px;
       font-size: 14px;
-      color: #000;
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
       border-radius: 0;
-      box-shadow: 2px 2px 0px 0px #000;
+      box-shadow: 2px 2px 0px 0px #000000;
     }
     .tj-input:focus, .tj-textarea:focus {
       outline: none;
-      background: #fffae6;
+      background: #fffae6 !important;
     }
     .tj-textarea {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
       font-size: 13px;
       line-height: 1.45;
       resize: vertical;
-      min-height: 200px;
+      min-height: 170px;
     }
 
     .tj-auth-bar {
-      border: 2px solid #000;
-      padding: 10px 14px;
-      background: #fff;
+      border: 2px solid #000000;
+      padding: 10px 12px;
+      background: #ffffff !important;
       font-size: 13px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      box-shadow: 2px 2px 0px 0px #000;
+      box-shadow: 2px 2px 0px 0px #000000;
     }
 
     .tj-btn {
-      background: #fff;
-      color: #000;
-      border: 2px solid #000;
+      background: #ffffff !important;
+      color: #000000 !important;
+      -webkit-text-fill-color: #000000 !important;
+      border: 2px solid #000000 !important;
       padding: 10px 16px;
       font-weight: 800;
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       cursor: pointer;
-      box-shadow: 2px 2px 0px 0px #000;
+      box-shadow: 2px 2px 0px 0px #000000;
       transition: all 0.1s;
     }
     .tj-btn:hover {
-      background: #000;
-      color: #fff;
+      background: #000000 !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
       transform: translate(1px, 1px);
-      box-shadow: 1px 1px 0px 0px #000;
+      box-shadow: 1px 1px 0px 0px #000000;
     }
     .tj-btn-primary {
-      background: #000;
-      color: #fff;
+      background: #000000 !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
     }
     .tj-btn-primary:hover {
-      background: #ff5722;
-      color: #fff;
+      background: #ff5722 !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
     }
     .tj-btn:disabled {
       opacity: 0.5;
@@ -191,25 +275,55 @@
       display: flex;
       justify-content: flex-end;
       gap: 12px;
-      padding: 16px 20px;
-      border-top: 2px solid #000;
-      background: #fff;
+      padding: 14px 18px;
+      border-top: 2px solid #000000;
+      background: #ffffff !important;
     }
 
     .tj-status {
       padding: 10px 12px;
-      border: 2px solid #000;
+      border: 2px solid #000000;
       font-size: 13px;
       font-weight: 600;
       display: none;
     }
-    .tj-status.info { display: block; background: #e0f2fe; }
-    .tj-status.success { display: block; background: #dcfce7; border-color: #166534; }
-    .tj-status.error { display: block; background: #fee2e2; border-color: #991b1b; color: #991b1b; }
+    .tj-status.info {
+      display: block;
+      background: #e0f2fe !important;
+      border-color: #0284c7 !important;
+      color: #0369a1 !important;
+      -webkit-text-fill-color: #0369a1 !important;
+    }
+    .tj-status.info * {
+      color: #0369a1 !important;
+      -webkit-text-fill-color: #0369a1 !important;
+    }
+    .tj-status.success {
+      display: block;
+      background: #dcfce7 !important;
+      border-color: #16a34a !important;
+      color: #15803d !important;
+      -webkit-text-fill-color: #15803d !important;
+    }
+    .tj-status.success * {
+      color: #15803d !important;
+      -webkit-text-fill-color: #15803d !important;
+    }
+    .tj-status.error {
+      display: block;
+      background: #fee2e2 !important;
+      border-color: #dc2626 !important;
+      color: #b91c1c !important;
+      -webkit-text-fill-color: #b91c1c !important;
+    }
+    .tj-status.error * {
+      color: #b91c1c !important;
+      -webkit-text-fill-color: #b91c1c !important;
+    }
 
     .tj-drop-zone {
-      border: 2px dashed #000;
-      background: #fff;
+      border: 2px dashed #000000;
+      background: #ffffff !important;
       padding: 14px;
       text-align: center;
       cursor: pointer;
@@ -217,7 +331,66 @@
       font-weight: 600;
     }
     .tj-drop-zone:hover {
-      background: #fdf2e9;
+      background: #fdf2e9 !important;
+    }
+
+    @media (max-width: 768px) {
+      .tj-floating-btn {
+        padding: 10px 14px;
+        font-size: 12px;
+        bottom: 24px;
+        right: 16px;
+      }
+      .tj-modal {
+        max-height: 94vh;
+        margin: 6px;
+      }
+      .tj-body {
+        padding: 12px;
+        gap: 12px;
+      }
+      .tj-header {
+        padding: 12px 14px;
+      }
+      .tj-footer {
+        padding: 12px 14px;
+      }
+    }
+
+    /* Fallback media query to enforce dark mode isolation */
+    @media (prefers-color-scheme: dark) {
+      #tj-importer-root,
+      #tj-importer-root .tj-modal,
+      #tj-importer-root .tj-body,
+      #tj-importer-root .tj-label,
+      #tj-importer-root .tj-label span,
+      #tj-importer-root .tj-header,
+      #tj-importer-root .tj-header h2,
+      #tj-importer-root .tj-auth-bar,
+      #tj-importer-root #tj-auth-status,
+      #tj-importer-root .tj-drop-zone,
+      #tj-importer-root #tj-image-label,
+      #tj-importer-root #tj-image-name,
+      #tj-importer-root span,
+      #tj-importer-root p,
+      #tj-importer-root div,
+      #tj-importer-root code,
+      #tj-importer-root strong,
+      #tj-importer-root a {
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+      }
+      #tj-importer-root input,
+      #tj-importer-root textarea {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+      }
+      .tj-btn-primary {
+        background: #000000 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+      }
     }
   </style>
 </head>
@@ -254,7 +427,7 @@
           <div>
             <div class="tj-label">
               <span>Recipe Folder / Slug</span>
-              <span style="font-weight: normal; text-transform: none; color: #666;">(e.g. sweet-potato-salad)</span>
+              <span class="tj-hint">(e.g. sweet-potato-salad)</span>
             </div>
             <div style="display: flex; align-items: center; gap: 6px;">
               <span style="font-family: monospace; font-size: 12px; font-weight: bold;">content/recipes/</span>
@@ -295,7 +468,7 @@ Serve warm with freshly grated cheese."></textarea>
           <div>
             <div class="tj-label">
               <span>Cover Photo (Optional)</span>
-              <span id="tj-image-filename-hint" style="font-weight: normal; text-transform: none; color: #666;">saves as cover.jpg</span>
+              <span id="tj-image-filename-hint" class="tj-hint">saves as cover.jpg</span>
             </div>
             <div id="tj-drop-zone" class="tj-drop-zone">
               <input type="file" id="tj-image-input" accept="image/*" style="display: none;" />
@@ -332,6 +505,28 @@ Serve warm with freshly grated cheese."></textarea>
       const closeBtn = document.getElementById('tj-close-btn');
       const cancelBtn = document.getElementById('tj-cancel-btn');
       const submitBtn = document.getElementById('tj-submit-btn');
+
+      // Responsive visibility: on mobile, only show when inside the New Recipe screen
+      function updateVisibility() {
+        const isMobile = window.innerWidth <= 768;
+        const hash = window.location.hash || '';
+        const isNewRecipe = hash.includes('/collections/recipes/new');
+
+        if (isMobile) {
+          if (isNewRecipe) {
+            openBtn.style.display = 'flex';
+          } else {
+            openBtn.style.display = 'none';
+          }
+        } else {
+          openBtn.style.display = 'flex';
+        }
+      }
+
+      window.addEventListener('hashchange', updateVisibility);
+      window.addEventListener('resize', updateVisibility);
+      setInterval(updateVisibility, 350);
+      updateVisibility();
 
       const authStatus = document.getElementById('tj-auth-status');
       const patInputRow = document.getElementById('tj-pat-input-row');
